@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>300</x>
+      <y>30</y>
+      <w>510</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>Particuliere klanten bekijken
+halign=left</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>100</x>
+      <y>140</y>
+      <w>140</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Hoofd particulieren</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>860</x>
+      <y>130</y>
+      <w>80</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>Vrek Bank</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>300</x>
+      <y>100</y>
+      <w>310</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Toon top-10 hoogste saldi partiuliere klanten</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>580</x>
+      <y>160</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Print resultaat op scherm </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>120</y>
+      <w>320</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;includes&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;300.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>180</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;extends&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>360</x>
+      <y>250</y>
+      <w>270</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Export resultaat naar bestand</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>110</y>
+      <w>150</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;80.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>190</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;80.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>170</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;100.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>300</x>
+      <y>340</y>
+      <w>510</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>Aanvullende informatie
+
+Omschrijving: Hoofd particulieren wil kunnen inzien welke 10 particuliere klanten
+het hoogste saldo op hun rekening hebben staan.
+
+Pre-conditie: Hoofd particulieren is ingelogd
+				  
+Scenario: 
+1. Hoofd particulieren kiest in een menu de optie 'top-10 hoogste 
+   saldi particuliere klanten inzien'
+2. Resultaat wordt geprint op het scherm
+3. Indien gewenst, kan hoofd particulieren ervoor kiezen het resultaat naar
+   een bestand te laten exporteren.
+
+Post-conditie: Hoofd particulieren ziet een scherm met de top-10 hoogste saldi
+   van particuliere klanten.  
+
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
