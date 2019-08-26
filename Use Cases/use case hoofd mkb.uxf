@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>400</x>
-      <y>20</y>
-      <w>860</w>
-      <h>810</h>
+      <x>273</x>
+      <y>7</y>
+      <w>602</w>
+      <h>567</h>
     </coordinates>
     <panel_attributes>MKB klanten bekijken
 halign=center</panel_attributes>
@@ -16,10 +16,10 @@ halign=center</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>1280</x>
-      <y>390</y>
-      <w>80</w>
-      <h>110</h>
+      <x>889</x>
+      <y>266</y>
+      <w>56</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Vrek Bank</panel_attributes>
     <additional_attributes/>
@@ -27,10 +27,10 @@ halign=center</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>270</x>
-      <y>390</y>
-      <w>100</w>
-      <h>110</h>
+      <x>182</x>
+      <y>266</y>
+      <w>70</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>Hoofd MKB</panel_attributes>
     <additional_attributes/>
@@ -38,10 +38,10 @@ halign=center</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
-      <y>30</y>
-      <w>340</w>
-      <h>170</h>
+      <x>0</x>
+      <y>14</y>
+      <w>238</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>halign=left
 Pre-condities
@@ -54,10 +54,10 @@ Pre-condities
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>480</x>
-      <y>90</y>
-      <w>320</w>
-      <h>70</h>
+      <x>329</x>
+      <y>56</y>
+      <w>224</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>toon top10 zakelijke klanten (saldo)
 bg=yellow</panel_attributes>
@@ -66,10 +66,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>470</x>
-      <y>350</y>
-      <w>320</w>
-      <h>70</h>
+      <x>322</x>
+      <y>238</y>
+      <w>224</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>toon top10 zakelijke klanten (cashflow)
 bg=orange</panel_attributes>
@@ -78,10 +78,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>480</x>
-      <y>590</y>
-      <w>310</w>
-      <h>70</h>
+      <x>329</x>
+      <y>406</y>
+      <w>217</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>toon gemiddeld saldo per segment
 bg=red</panel_attributes>
@@ -90,10 +90,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>910</x>
-      <y>90</y>
-      <w>270</w>
-      <h>60</h>
+      <x>630</x>
+      <y>56</y>
+      <w>189</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>print results naar scherm
 bg=yellow</panel_attributes>
@@ -102,10 +102,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>900</x>
-      <y>200</y>
-      <w>280</w>
-      <h>60</h>
+      <x>623</x>
+      <y>133</y>
+      <w>196</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>export results naar bestand
 bg=yellow</panel_attributes>
@@ -114,10 +114,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>140</y>
-      <w>100</w>
-      <h>80</h>
+      <x>707</x>
+      <y>91</y>
+      <w>63</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
@@ -126,10 +126,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
-      <y>110</y>
-      <w>190</w>
-      <h>330</h>
+      <x>210</x>
+      <y>70</y>
+      <w>133</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;310.0;170.0;10.0</additional_attributes>
@@ -137,10 +137,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
-      <y>370</y>
-      <w>180</w>
-      <h>70</h>
+      <x>210</x>
+      <y>252</y>
+      <w>126</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;50.0;160.0;10.0</additional_attributes>
@@ -148,10 +148,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
-      <y>410</y>
-      <w>190</w>
-      <h>230</h>
+      <x>210</x>
+      <y>280</y>
+      <w>133</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;170.0;210.0</additional_attributes>
@@ -159,10 +159,10 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>900</x>
-      <y>350</y>
-      <w>270</w>
-      <h>60</h>
+      <x>623</x>
+      <y>238</y>
+      <w>189</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>print results naar scherm
 bg=orange</panel_attributes>
@@ -171,10 +171,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>900</x>
-      <y>470</y>
-      <w>270</w>
-      <h>60</h>
+      <x>623</x>
+      <y>322</y>
+      <w>189</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>export results naar bestand
 bg=orange</panel_attributes>
@@ -183,10 +183,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>100</y>
-      <w>140</w>
-      <h>40</h>
+      <x>546</x>
+      <y>63</y>
+      <w>98</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;includes&gt;&gt;</panel_attributes>
@@ -195,10 +195,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>360</y>
-      <w>140</w>
-      <h>40</h>
+      <x>539</x>
+      <y>245</y>
+      <w>98</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;includes&gt;&gt;</panel_attributes>
@@ -207,10 +207,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>400</y>
-      <w>100</w>
-      <h>90</h>
+      <x>707</x>
+      <y>273</y>
+      <w>63</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
@@ -219,10 +219,10 @@ bg=orange</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>600</y>
-      <w>130</w>
-      <h>40</h>
+      <x>539</x>
+      <y>413</y>
+      <w>91</w>
+      <h>28</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;includes&gt;&gt;</panel_attributes>
@@ -231,10 +231,10 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>890</x>
-      <y>590</y>
-      <w>270</w>
-      <h>60</h>
+      <x>616</x>
+      <y>406</y>
+      <w>189</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>print results naar scherm
 bg=red</panel_attributes>
@@ -243,10 +243,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>890</x>
-      <y>710</y>
-      <w>270</w>
-      <h>60</h>
+      <x>616</x>
+      <y>490</y>
+      <w>189</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>export results naar bestand
 bg=red</panel_attributes>
@@ -255,10 +255,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>640</y>
-      <w>100</w>
-      <h>90</h>
+      <x>700</x>
+      <y>441</y>
+      <w>63</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 &lt;&lt;extends&gt;&gt;</panel_attributes>
@@ -267,10 +267,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
-      <y>110</y>
-      <w>170</w>
-      <h>330</h>
+      <x>812</x>
+      <y>70</y>
+      <w>119</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;150.0;310.0</additional_attributes>
@@ -278,10 +278,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1170</x>
-      <y>220</y>
-      <w>170</w>
-      <h>220</h>
+      <x>812</x>
+      <y>147</y>
+      <w>119</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;150.0;200.0</additional_attributes>
@@ -289,10 +289,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>370</y>
-      <w>180</w>
-      <h>70</h>
+      <x>805</x>
+      <y>252</y>
+      <w>126</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;10.0;160.0;50.0</additional_attributes>
@@ -300,10 +300,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1160</x>
-      <y>410</y>
-      <w>180</w>
-      <h>110</h>
+      <x>805</x>
+      <y>280</y>
+      <w>126</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;90.0;160.0;10.0</additional_attributes>
@@ -311,10 +311,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1150</x>
-      <y>410</y>
-      <w>190</w>
-      <h>230</h>
+      <x>798</x>
+      <y>280</y>
+      <w>133</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;210.0;170.0;10.0</additional_attributes>
@@ -322,10 +322,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1150</x>
-      <y>410</y>
-      <w>190</w>
-      <h>350</h>
+      <x>798</x>
+      <y>280</y>
+      <w>133</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes>10.0;330.0;170.0;10.0</additional_attributes>
@@ -333,10 +333,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>10</x>
-      <y>510</y>
-      <w>350</w>
-      <h>320</h>
+      <x>0</x>
+      <y>350</y>
+      <w>245</w>
+      <h>224</h>
     </coordinates>
     <panel_attributes>halign=left
 alternatieve scenarios
