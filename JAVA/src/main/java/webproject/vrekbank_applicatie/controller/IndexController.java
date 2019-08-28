@@ -15,8 +15,8 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping(value = "register")
+    @GetMapping(value = "")
     public String indexRegisterHandler() {
-        return "Register";
+        return "Registration";
     }
 }

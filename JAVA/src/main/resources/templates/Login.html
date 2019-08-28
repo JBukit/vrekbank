@@ -9,5 +9,16 @@
 
 <h1> Dit is de loginpagina</h1>
 
+
+<form th:action="@{LoginHandler}" th:object="${Customer}" method="post">
+    Login:<br>
+    <input type="text" username="username"><br>
+    Password:<br>
+    <input type="text" name="password"><br>
+<br>
+    <br>
+    <input type="submit" value="Ga verder">
+</form>
+
 </body>
 </html>
