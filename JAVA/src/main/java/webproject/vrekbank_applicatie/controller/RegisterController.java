@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class RegisterController {
 
-    @GetMapping(value = "register")
+    @GetMapping(value = "Registration")
     public String indexRegisterHandler() {
-        return "confirmation";
+        return "RegistrationConfirmation";
     }
 }
