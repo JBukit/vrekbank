@@ -33,7 +33,7 @@ fontsize=10
       <w>810</w>
       <h>240</h>
     </coordinates>
-    <panel_attributes>Particuliere klanten bekijken
+    <panel_attributes>Top 10 saldi particuliere klanten bekijken
 halign=left</panel_attributes>
     <additional_attributes/>
   </element>
@@ -56,7 +56,7 @@ halign=left</panel_attributes>
       <w>310</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Toon top-10 hoogste saldi partiuliere klanten</panel_attributes>
+    <panel_attributes>1. Opvragen top-10 hoogste saldi partiuliere klanten</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -67,7 +67,7 @@ halign=left</panel_attributes>
       <w>230</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Print resultaat op scherm </panel_attributes>
+    <panel_attributes>2. Print resultaat op scherm </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -102,7 +102,7 @@ halign=left</panel_attributes>
       <w>270</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Export resultaat naar bestand</panel_attributes>
+    <panel_attributes>3. Export resultaat naar bestand</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
