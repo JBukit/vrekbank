@@ -20,7 +20,7 @@ public class LoginController {
         // check login-information in database, for now default Customer
         Customer customer1 = new Customer (0, "", "", "", "", "", "", "", 'z',
                 "", 0, "Donald", "1", 0);
-        
+
         // if check = ok, proceed:
         if (customer.equals(customer1)) {
 
