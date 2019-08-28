@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Overview</title>
@@ -12,5 +12,20 @@
         Rekeningen incl saldo.
         Vanaf hier mogelijkheid om geld te kunnen overmaken, ...
     </p>
+    <div>
+        <h2> Rekeningoverzicht (incl. saldo), moet dynamisch overzicht zijn en altijd juiste aantal rekeningen van die klant laten zien :</h2>
+        <!--<form action="#" th:action="@{loginHandler}" th:object="${customer}" method="post">-->
+            <table>
+                <tr>
+                    <td>Rekening-nummer</td>
+                    <td>Saldo</td>
+                </tr>
+                <tr>
+                    <td>Rekening xxx (IBAN halen uit database op basis van klantID)</td>
+                    <td>Saldo xxx,xx (saldo halen uit databsase op basis van IBAN)</td>
+                </tr>
+            </table>
+        <!--</form>-->
+    </div>
 </body>
 </html>
