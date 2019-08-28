@@ -10,8 +10,13 @@ import webproject.vrekbank_applicatie.model.Customer;
 public class IndexController {
 
     @GetMapping(value = "login")
-    public String indexHandler() {
-       // Customer client = new Customer();
+    public String indexLoginHandler() {
+       Customer customer = new Customer();
         return "login";
+    }
+
+    @GetMapping(value = "register")
+    public String indexRegisterHandler() {
+        return "register";
     }
 }

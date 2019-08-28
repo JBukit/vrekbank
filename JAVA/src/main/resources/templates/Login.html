@@ -8,8 +8,23 @@
 <body>
 
 <h1> Dit is de loginpagina</h1>
-<! HIER KOMT FORMULIER CODE TERUG>
+<form action="#" th:action="@{loginHandler}" th:object="${customer}" method="post">
+    <table>
+        <tr>
+            <td>Naam:</td>
+            <td><input type="text" th:field="*{name}"></td>
+        </tr>
 
+        <td>
+        <td>Password:</td>
+        <input type="text" th:field="*{password}"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" , name="OK"></td>
+        </tr>
+
+    </table>
 </form>
 
 </body>
