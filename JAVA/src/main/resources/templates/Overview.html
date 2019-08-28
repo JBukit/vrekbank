@@ -5,20 +5,8 @@
     <title>Overview</title>
 </head>
 <body>
-    <h1>
-        Overzicht pagina met rekening(en) van ingelogde klant
-    </h1>
-    <div th:unless="${#lists.isEmpty(allAccounts)}">
-        <h2> Rekeningoverzicht:</h2>
-        <table>
-            <tr>
-                <td>Rekeningnummer</td>
-                <td>Saldo</td>
-            </tr>
-            <tr th:each="account:${allAccounts.getElementBy(accountId}">
-                <td><span th:text="${account}"/></td>
-            </tr>
-        </table>
+    <h1> Welkom <span th:text="${name}"/></h1>
+
     </div>
 </body>
 </html>
