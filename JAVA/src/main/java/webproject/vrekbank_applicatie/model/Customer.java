@@ -17,7 +17,7 @@ public class Customer {
     private String zipcode;
     private String city;
     private String email;
-    private String sex;       // moet nog char worden
+    private char sex;
     private String dob;  // moet nog datatype date worden
     private int BSN;
     private String username;
@@ -35,12 +35,12 @@ public class Customer {
     // constructors
 
     public Customer() {
-        this(0, "", "", "", "", "", "", "", "",
+        this(0, "", "", "", "", "", "", "", 'z',
                 "", 0, "", "", 0);
     }
 
     public Customer(int customerId, String firstName, String suffix, String lastName, String address, String zipcode,
-                    String city, String email, String sex, String dob, int BSN, String username, String password, int PIN) {
+                    String city, String email, char sex, String dob, int BSN, String username, String password, int PIN) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.suffix = suffix;
@@ -123,11 +123,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getSex() {
+    public char getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(char sex) {
         this.sex = sex;
     }
 
