@@ -22,10 +22,10 @@ public class LoginController {
                 "", 0, "Donald", "1", 0);
 
         // if check = ok, proceed:
-        if (customer.equals(customer1)) {
+        if (customer.getUsername().equals(customer1.getUsername()) && customer.getPassword().equals(customer1.getPassword())) {
 
             // add Customer-name to html page
-            model.addAttribute("name", customer.getFirstName());
+            model.addAttribute("name", customer.getUsername());
 
             // make lists with accounts, to be added from database
             List<PersonalAccount> accounts = new ArrayList<>();
