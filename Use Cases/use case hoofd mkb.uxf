@@ -59,7 +59,7 @@ Pre-condities
       <w>224</w>
       <h>49</h>
     </coordinates>
-    <panel_attributes>toon top10 zakelijke klanten (saldo)
+    <panel_attributes>1. toon top10 zakelijke klanten (saldo)
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -71,7 +71,7 @@ bg=yellow</panel_attributes>
       <w>224</w>
       <h>49</h>
     </coordinates>
-    <panel_attributes>toon top10 zakelijke klanten (cashflow)
+    <panel_attributes>1. toon top10 zakelijke klanten (cashflow)
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -83,7 +83,7 @@ bg=orange</panel_attributes>
       <w>217</w>
       <h>49</h>
     </coordinates>
-    <panel_attributes>toon gemiddeld saldo per segment
+    <panel_attributes>1. toon gemiddeld saldo per segment
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -95,7 +95,7 @@ bg=red</panel_attributes>
       <w>189</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>print results naar scherm
+    <panel_attributes>2. print results naar scherm
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -107,7 +107,7 @@ bg=yellow</panel_attributes>
       <w>196</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>export results naar bestand
+    <panel_attributes>3. export results naar bestand
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -164,7 +164,7 @@ bg=yellow</panel_attributes>
       <w>189</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>print results naar scherm
+    <panel_attributes>2. print results naar scherm
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -176,7 +176,7 @@ bg=orange</panel_attributes>
       <w>189</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>export results naar bestand
+    <panel_attributes>3. export results naar bestand
 bg=orange</panel_attributes>
     <additional_attributes/>
   </element>
@@ -236,7 +236,7 @@ bg=orange</panel_attributes>
       <w>189</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>print results naar scherm
+    <panel_attributes>2. print results naar scherm
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
@@ -248,7 +248,7 @@ bg=red</panel_attributes>
       <w>189</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>export results naar bestand
+    <panel_attributes>3. export results naar bestand
 bg=red</panel_attributes>
     <additional_attributes/>
   </element>
