@@ -4,13 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import webproject.vrekbank_applicatie.model.Customer;
 
 @Controller
-public class LoginController {
+public class IndexController {
 
-    @GetMapping(value = "Overview")
-    public String loginHandler () {
-        return "Overview";
+    @GetMapping(value = "login")
+    public String indexHandler() {
+       // Customer client = new Customer();
+        return "login";
     }
-
 }
