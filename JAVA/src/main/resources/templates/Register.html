@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+
+<h1>Klant worden bij VrekBank</h1>
+
+Vul hier uw gegevens in:
+<br>
+<br>
+<form th:action="@{RegisterHandler}" th:object="${Customer}" method="post">
+    Voornaam:<br>
+    <input type="text" name="firstName"><br>
+    Tussenvoegsels:<br>
+    <input type="text" name="suffix"><br>
+    Achternaam:<br>
+    <input type="text" name="lastName"><br>
+    Straat en huisnummer:<br>
+    <input type="text" name="address"><br>
+    Postcode:<br>
+    <input type="text" name="zipcode"><br>
+    Plaats:<br>
+    <input type="text" name="city"><br>
+    Geboortedatum:<br>
+    <input type="text" name="dob"><br>
+    BSN:<br>
+    <input type="text" name="BSN"><br>
+    E-mailadres:<br>
+    <input type="text" name="email"><br>
+    Geslacht:<br>
+    <input type="radio" name="gender" value="male"> Man<br>
+    <input type="radio" name="gender" value="female"> Vrouw<br><br><br>
+    Maak nieuw gebruikersaccount:<br><br>
+    Gebruikersnaam:<br>
+    <input type="text" name="userName"><br>
+    Wachtwoord:<br>
+    <input type="text" name="password"><br>
+    Pincode:<br>
+    <input type="text" name="pin"><br><br>
+    <input type="submit" value="Ga verder">
+</form>
+
+
+<br>
+Ga <a href="/">terug</a> naar het begin...
+
+</body>
+</html>
