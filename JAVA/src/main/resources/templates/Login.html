@@ -10,9 +10,9 @@
 <h1> Dit is de loginpagina</h1>
 
 
-<form th:action="@{LoginHandler}" th:object="${Customer}" method="post">
+<form th:action="@{loginOverviewHandler}" th:object="${Customer}" method="post">
     Login:<br>
-    <input type="text" username="username"><br>
+    <input type="text" name="username"><br>
     Password:<br>
     <input type="text" name="password"><br>
 <br>
