@@ -15,46 +15,47 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    @GetMapping(value = "Overview")
+    @PostMapping(value = "Overview")
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
         // check login-information in database, for now default Customer
         Customer customer1 = new Customer (0, "", "", "", "", "", "", "", 'z',
-                "", 0, "Donald", "Duck", 0);
-
-        // if check = not ok, go back to Login
-        if (!customer.equals(customer1)) {
-            return "Login";
-        }
+                "", 0, "Donald", "1", 0);
+        
         // if check = ok, proceed:
+        if (customer.equals(customer1)) {
 
-        // add Customer-name to html page
-        model.addAttribute("name",customer.getFirstName());
+            // add Customer-name to html page
+            model.addAttribute("name", customer.getFirstName());
 
-        // make lists with accounts, to be added from database
-        List<PersonalAccount> accounts = new ArrayList<>();
+            // make lists with accounts, to be added from database
+            List<PersonalAccount> accounts = new ArrayList<>();
 
-        // add accounts of customer (from database, now by hand)
-        accounts.add(new PersonalAccount(1,"NL1",10,0,false));
-        accounts.add(new PersonalAccount(2,"NL2",20,0,false));
-        accounts.add(new PersonalAccount(3,"NL3",30,0,false));
+            // add accounts of customer (from database, now by hand)
+            accounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
+            accounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
+            accounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
 
-        //model.addAttribute("accounts",accounts);
+            //model.addAttribute("accounts",accounts);
 
-        // split PersonalAccount objects in 2 separate list (IBAN and balance)
-        List<String> IBANs = new ArrayList<>();
-        for (int i = 0; i < accounts.size(); i++) {
-            IBANs.add(accounts.get(i).getIBAN());
+            // split PersonalAccount objects in 2 separate list (IBAN and balance)
+            List<String> IBANs = new ArrayList<>();
+            for (int i = 0; i < accounts.size(); i++) {
+                IBANs.add(accounts.get(i).getIBAN());
+            }
+            List<Double> balances = new ArrayList<>();
+            for (int i = 0; i < accounts.size(); i++) {
+                balances.add(accounts.get(i).getBalance());
+            }
+
+            // add lists to .html
+            model.addAttribute("IBAN", IBANs);
+            model.addAttribute("balance", balances);
+
+            return "Overview";
         }
-        List<Double> balances = new ArrayList<>();
-        for (int i = 0; i < accounts.size(); i++) {
-            balances.add(accounts.get(i).getBalance());
-        }
-
-        // add lists to .html
-        model.addAttribute("IBAN",IBANs);
-        model.addAttribute ("balance", balances);
-
-        return "Overview";
+        // if check = not ok, go back to Login
+        return "Login";
     }
+
 
 }
