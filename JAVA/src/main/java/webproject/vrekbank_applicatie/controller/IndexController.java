@@ -13,8 +13,8 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping(value = "register")
-    public String indexRegisterHandler() {
-        return "Registration";
+    @GetMapping(value = "registration")
+    public String indexRegistrationHandler() {
+        return "registration";
     }
 }

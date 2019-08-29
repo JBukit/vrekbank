@@ -3,10 +3,6 @@ package webproject.vrekbank_applicatie.model;
 //Klasse customer, voor rekeninghouders en gemachtigden.
 //@author team 3, VrekBank, Jacco vd Heuvel
 
-
-
-import java.util.zip.DataFormatException;
-
 public class Customer {
 // variabelen
     private int customerId;
