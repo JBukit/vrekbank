@@ -17,7 +17,7 @@ public class Customer {
     private String city;
     private String email;
     private char sex;
-    private LocalDate dob;
+    private String dob; // wordt later LocalDate
     private int BSN;
     private String username;
     private String password;
@@ -28,11 +28,11 @@ public class Customer {
     // constructors
     public Customer() {
         this(0, "", "", "", "", "", "", "",
-                'z', (LocalDate.parse("0000.00.00")), 0, "", "", 0);
+                'z', "", 0, "", "", 0);
     }
-
+// later in no args contrscutor bij dob gebruiken: (LocalDate.parse("0000.00.00"))
     public Customer(int customerId, String firstName, String suffix, String lastName, String address, String zipcode,
-                    String city, String email, char sex,  LocalDate dob, int BSN, String username, String password,
+                    String city, String email, char sex,  String dob, int BSN, String username, String password,
                     int PIN) {
         this.customerId = customerId;
         this.firstName = firstName;
@@ -124,11 +124,11 @@ public class Customer {
         this.sex = sex;
     }
 
-    public LocalDate getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(LocalDate dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
