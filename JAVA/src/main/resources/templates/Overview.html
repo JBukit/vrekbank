@@ -7,6 +7,31 @@
 <body>
     <h1> Welkom <span th:text="${name}"/></h1>
 
+    <!--Alleen laten zien indien deze klant een persoonlijke rekening heeft -->
+    <div th:unless="${#lists.isEmpty(personalAccounts)}">
+        <h2>Overzicht van persoonlijke rekeningen</h2>
+            <table>
+                <tr>
+                    <td>Rekeningnummer: </td>
+                    <td>Saldo: </td>
+                </tr>
+                <tr th:each="account : ${personalAccounts}">
+                    <td><span th:text="${account.IBAN}"/></td>
+                    <td><span th:text="${account.balance}"/></td>
+
+                </tr>
+            </table>
+    </div>
+    <!-- Lege regel -->
+    <br>
+    <!-- Alleen laten zien indien deze klant een zakelijke rekening heeft -->
+    <h2> Overzicht van zakelijke rekeningen</h2>
+    <table>
+        <tr>
+            <td>Rekeningnummer: </td>
+            <td>Saldo: </td>
+        </tr>
+    </table>
     </div>
 </body>
 </html>

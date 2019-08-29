@@ -28,23 +28,23 @@ public class LoginController {
             model.addAttribute("name", customer.getUsername());
 
             // make lists with accounts, to be added from database
-            List<PersonalAccount> accounts = new ArrayList<>();
+            List<PersonalAccount> personalAccounts = new ArrayList<>();
 
             // add accounts of customer (from database, now by hand)
-            accounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
-            accounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
-            accounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
+            personalAccounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
+            personalAccounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
+            personalAccounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
 
-            //model.addAttribute("accounts",accounts);
+            model.addAttribute("personalAccounts",personalAccounts);
 
             // split PersonalAccount objects in 2 separate list (IBAN and balance)
             List<String> IBANs = new ArrayList<>();
-            for (int i = 0; i < accounts.size(); i++) {
-                IBANs.add(accounts.get(i).getIBAN());
+            for (int i = 0; i < personalAccounts.size(); i++) {
+                IBANs.add(personalAccounts.get(i).getIBAN());
             }
             List<Double> balances = new ArrayList<>();
-            for (int i = 0; i < accounts.size(); i++) {
-                balances.add(accounts.get(i).getBalance());
+            for (int i = 0; i < personalAccounts.size(); i++) {
+                balances.add(personalAccounts.get(i).getBalance());
             }
 
             // add lists to .html
