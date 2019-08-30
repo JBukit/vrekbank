@@ -3,12 +3,19 @@ package webproject.vrekbank_applicatie.model;
 //Klasse customer, voor rekeninghouders en gemachtigden.
 //@author team 3, VrekBank, Jacco vd Heuvel
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.Date;
 
+@Entity
 public class Customer {
 // variabelen
+    @Id
+    @GeneratedValue
     private int customerId;
+
     private String firstName;
     private String suffix;
     private String lastName;
