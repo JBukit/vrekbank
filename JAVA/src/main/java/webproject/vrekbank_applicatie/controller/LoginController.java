@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 
@@ -28,28 +29,33 @@ public class LoginController {
             model.addAttribute("name", customer.getUsername());
 
             // make lists with accounts, to be added from database
-            List<PersonalAccount> accounts = new ArrayList<>();
+            List<PersonalAccount> personalAccounts = new ArrayList<>();
+            List<BusinessAccount> businessAccounts = new ArrayList<>();
 
             // add accounts of customer (from database, now by hand)
-            accounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
-            accounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
-            accounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
+            personalAccounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
+            personalAccounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
+            personalAccounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
 
-            //model.addAttribute("accounts",accounts);
+            businessAccounts.add(new BusinessAccount(1,"NL1",500,0,true,1));
+            businessAccounts.add(new BusinessAccount(2,"NL2",600,0,true,2));
 
-            // split PersonalAccount objects in 2 separate list (IBAN and balance)
+            model.addAttribute("personalAccounts",personalAccounts);
+            model.addAttribute("businessAccounts", businessAccounts);
+
+/*            // split PersonalAccount objects in 2 separate list (IBAN and balance)
             List<String> IBANs = new ArrayList<>();
-            for (int i = 0; i < accounts.size(); i++) {
-                IBANs.add(accounts.get(i).getIBAN());
+            for (int i = 0; i < personalAccounts.size(); i++) {
+                IBANs.add(personalAccounts.get(i).getIBAN());
             }
             List<Double> balances = new ArrayList<>();
-            for (int i = 0; i < accounts.size(); i++) {
-                balances.add(accounts.get(i).getBalance());
+            for (int i = 0; i < personalAccounts.size(); i++) {
+                balances.add(personalAccounts.get(i).getBalance());
             }
 
             // add lists to .html
             model.addAttribute("IBAN", IBANs);
-            model.addAttribute("balance", balances);
+            model.addAttribute("balance", balances);*/
 
             return "Overview";
         }

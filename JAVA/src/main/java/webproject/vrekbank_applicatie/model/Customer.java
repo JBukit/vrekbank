@@ -3,6 +3,9 @@ package webproject.vrekbank_applicatie.model;
 //Klasse customer, voor rekeninghouders en gemachtigden.
 //@author team 3, VrekBank, Jacco vd Heuvel
 
+import java.time.LocalDate;
+import java.util.Date;
+
 public class Customer {
 // variabelen
     private int customerId;
@@ -14,29 +17,23 @@ public class Customer {
     private String city;
     private String email;
     private char sex;
-    private String dob;  // moet nog datatype date worden
+    private String dob; // wordt later LocalDate
     private int BSN;
     private String username;
     private String password;
     private int PIN;
 
-    // methoden . Discussiepunt; mogen deze void zijn?
-    //public PersonalAccount OpenPersonaAccount() {
-   // }
-// twee aparte methoden hiervoor?
-    //public BusinessAccount OpenBusinessAccount() {
-    // }
 
 
     // constructors
-
     public Customer() {
-        this(0, "", "", "", "", "", "", "", 'z',
-                "", 0, "", "", 0);
+        this(0, "", "", "", "", "", "", "",
+                'z', "", 0, "", "", 0);
     }
-
+// later in no args contrscutor bij dob gebruiken: (LocalDate.parse("0000.00.00"))
     public Customer(int customerId, String firstName, String suffix, String lastName, String address, String zipcode,
-                    String city, String email, char sex, String dob, int BSN, String username, String password, int PIN) {
+                    String city, String email, char sex,  String dob, int BSN, String username, String password,
+                    int PIN) {
         this.customerId = customerId;
         this.firstName = firstName;
         this.suffix = suffix;
@@ -166,4 +163,13 @@ public class Customer {
     public void setPIN(int PIN) {
         this.PIN = PIN;
     }
+
+
+    // overige methoden . Discussiepunt; mogen deze void zijn?
+    //public PersonalAccount OpenPersonaAccount() {
+    // }
+// twee aparte methoden hiervoor?
+    //public BusinessAccount OpenBusinessAccount() {
+    // }
+
 }
