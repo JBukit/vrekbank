@@ -13,44 +13,16 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>vrekbank_applicatie</name>
     <description>webProject Bank</description>
-<form th:action="@{RegisterHandler}" th:object="${Customer}" method="post">
-    Voornaam:<br>
-    <input type="text" name="firstName"><br>
-    Tussenvoegsels:<br>
-    <input type="text" name="suffix"><br>
-    Achternaam:<br>
-    <input type="text" name="lastName"><br>
-    Straat en huisnummer:<br>
-    <input type="text" name="address"><br>
-    Postcode:<br>
-    <input type="text" name="zipcode"><br>
-    Plaats:<br>
-    <input type="text" name="city"><br>
-    Geboortedatum:<br>
-    <input type="text" name="dob"><br>
-    BSN:<br>
-    <input type="text" name="BSN"><br>
-    E-mailadres:<br>
-    <input type="text" name="email"><br>
-    Geslacht:<br>
-    <input type="radio" name="gender" value="male"> Man<br>
-    <input type="radio" name="gender" value="female"> Vrouw<br><br><br>
-    Maak nieuw gebruikersaccount:<br><br>
-    Gebruikersnaam:<br>
-    <input type="text" name="userName"><br>
-    Wachtwoord:<br>
-    <input type="text" name="password"><br>
-    Pincode:<br>
-    <input type="text" name="pin"><br><br>
-    <input type="submit" value="Ga verder">
-</form>
 
     <properties>
         <java.version>11</java.version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>

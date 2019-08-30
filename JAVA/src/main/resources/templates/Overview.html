@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Overview</title>
+    <title>RekeningOverzicht</title>
 </head>
 <body>
     <h1> Welkom <span th:text="${name}"/></h1>
@@ -15,9 +15,9 @@
                     <td>Rekeningnummer: </td>
                     <td>Saldo: </td>
                 </tr>
-                <tr th:each="account : ${personalAccounts}">
-                    <td><span th:text="${account.IBAN}"/></td>
-                    <td><span th:text="${account.balance}"/></td>
+                <tr th:each="personalAccount : ${personalAccounts}">
+                    <td><span th:text="${personalAccount.IBAN}"/></td>
+                    <td><span th:text="${personalAccount.balance}"/></td>
 
                 </tr>
             </table>
@@ -25,13 +25,19 @@
     <!-- Lege regel -->
     <br>
     <!-- Alleen laten zien indien deze klant een zakelijke rekening heeft -->
-    <h2> Overzicht van zakelijke rekeningen</h2>
-    <table>
-        <tr>
-            <td>Rekeningnummer: </td>
-            <td>Saldo: </td>
-        </tr>
-    </table>
+    <div th:unless="${#lists.isEmpty(businessAccounts)}">
+        <h2>Overzicht van zakelijke rekeningen</h2>
+        <table>
+            <tr>
+                <td>Rekeningnummer: </td>
+                <td>Saldo: </td>
+            </tr>
+            <tr th:each="businessAccount : ${businessAccounts}">
+                <td><span th:text="${businessAccount.IBAN}"/></td>
+                <td><span th:text="${businessAccount.balance}"/></td>
+
+            </tr>
+        </table>
     </div>
 </body>
 </html>
