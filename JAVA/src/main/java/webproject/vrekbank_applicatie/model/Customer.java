@@ -164,7 +164,6 @@ public class Customer {
         this.PIN = PIN;
     }
 
-
     // overige methoden . Discussiepunt; mogen deze void zijn?
     //public PersonalAccount OpenPersonaAccount() {
     // }
