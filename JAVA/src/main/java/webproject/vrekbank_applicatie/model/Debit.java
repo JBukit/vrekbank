@@ -9,8 +9,8 @@ public class Debit extends Transaction {
     public Debit() {
     }
 
-    public Debit(int transactionNr, String description, String IBAN, double amount) {
-        super(transactionNr, description);
+    public Debit(int transactionNr, String description, String date, String IBAN, double amount) {
+        super(transactionNr, description, date);
         this.IBAN = IBAN;
         this.amount = amount;
     }
