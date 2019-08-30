@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>AdditionalAccount</title>
+</head>
+<body>
+
+<h1>Extra rekening openen voor bestaande klanten</h1>
+
+
+<!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
+
+Vul hier uw gegevens in:
+<br>
+<br>
+
+<form th:action="@{additionalAccountConfirmationHandler}" th:object="${Customer}" method="post">
+
+
+    <input type="boolean" name="password"><br>
+
+    Pincode:<br>
+    <input type="text" name="pin"><br><br>
+
+    <input type="submit" value="Ga verder">
+
+</form>
+
+<br>
+<h3></h3>Ga <a href="Index.html">terug</a> naar het begin/>
+
+</body>
+</html>
