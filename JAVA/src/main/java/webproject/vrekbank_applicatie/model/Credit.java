@@ -9,8 +9,8 @@ public class Credit extends Transaction {
     public Credit() {
     }
 
-    public Credit(int transactionNr, String description, String IBAN, double amount) {
-        super(transactionNr, description);
+    public Credit(int transactionNr, String description, String date, String IBAN, double amount) {
+        super(transactionNr, description, date);
         this.IBAN = IBAN;
         this.amount = amount;
     }

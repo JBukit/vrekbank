@@ -4,15 +4,17 @@ abstract class Transaction {
     // variables
     private int transactionNr;
     private String description;
+    private String date;
 
     // constructors
     public Transaction() {
     }
 
-    public Transaction(int transactionNr, String description) {
+    public Transaction(int transactionNr, String description, String date) {
         super();
         this.transactionNr = transactionNr;
         this.description = description;
+        this.date = date;
     }
 
     // getters and setters
