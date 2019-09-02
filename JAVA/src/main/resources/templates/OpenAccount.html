@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Account</title>
+</head>
+<body>
+
+<h1>Open hier uw (extra) rekening</h1>
+
+
+<!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
+
+Wat voor soort (extra) rekening wilt u?:
+<br>
+<br>
+
+<form th:action="@{openAccountConfirmationHandler}" th:object="${Customer}" method="post">
+
+    Wat voor soort rekening wilt u? :<br>
+    <input type="radio" name="businessAccount" value=false> Particulier<br>
+    <input type="radio" name="businessAccount" value=true> MKB<br><br><br>
+
+    Indien u een MKB rekening wilt, voor welke sector?
+    <!-- nu nog string accepteren, later pull down met bestaande lijst></-->
+
+
+    <br>
+    <br>
+
+    <input type="submit" value="Vraag aan">
+
+
+</form>
+
+<br>
+<h3></h3>Ga <a href="Overview.html">terug</a> naar uw rekeningenoverzicht. WERKT NOG NIET. oa object doorgeven?>
+
+<br>
+<h3></h3>Ga <a href="Index.html">terug</a> naar de index>
+
+</body>
+</html>
