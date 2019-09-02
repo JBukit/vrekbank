@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Transfer</title>
+</head>
+<body>
+    <h1> <span th:text="${name}"/>, op deze pagina kan je geld overmaken </h1>
+
+    <div>
+    <form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}" method="post">
+            <table>
+                <tr>
+                    <td> Van: </td>
+                    <td> <span th:text="${personalAccount.IBAN}"/></td>
+                    <td> Naam: </td>
+                    <td> <span th:text="${name}"/></td>
+                </tr>
+                <tr>
+                    <td> Naar: </td>
+                    <td> <input type="text" name="IBAN"> </td>
+                    <td> Naam: </td>
+                    <td> <input type="text" name="firstName"> </td>
+                </tr>
+                <tr>
+                    <td> Bedrag: </td>
+                    <td> <input type="text" name="amount"> </td>
+                </tr>
+                <tr>
+                    <td> Beschrijving: </td>
+                    <td> <input type="text" name="description"> </td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="confirm"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
