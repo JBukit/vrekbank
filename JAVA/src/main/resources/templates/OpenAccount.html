@@ -9,27 +9,28 @@
 <h1>Open hier uw (extra) rekening</h1>
 
 
+
+<br>
+<br>
+
 <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
-
-Wat voor soort (extra) rekening wilt u?:
-<br>
-<br>
-
 <form th:action="@{openAccountConfirmationHandler}" th:object="${Customer}" method="post">
 
     Wat voor soort rekening wilt u? :<br>
     <input type="radio" name="businessAccount" value=false> Particulier<br>
     <input type="radio" name="businessAccount" value=true> MKB<br><br><br>
 
-    Indien u een MKB rekening wilt, voor welke sector?
-    <!-- nu nog string accepteren, later pull down met bestaande lijst></-->
+
+    <!-- Nu nog string accepteren, later pull down met bestaande lijst></-->
+    <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
+        Indien u een MKB rekening wilt, voor welke sector?<br>
+        <input type="text" name="sector"><br>
 
 
     <br>
     <br>
 
     <input type="submit" value="Vraag aan">
-
 
 </form>
 
