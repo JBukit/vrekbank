@@ -2,7 +2,7 @@ package webproject.vrekbank_applicatie.controller;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class TransactionController {
+public class TransferController {
 
 //    public String transactionHandler{}
 

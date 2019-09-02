@@ -1,6 +1,6 @@
 package webproject.vrekbank_applicatie.model;
 
-public class Debit extends Transaction {
+public class Debit extends Transfer {
     // variables
     private String IBAN;
     private double amount;

@@ -1,6 +1,6 @@
 package webproject.vrekbank_applicatie.model;
 
-public class Credit extends Transaction {
+public class Credit extends Transfer {
     // variables
     private String IBAN;
     private double amount;

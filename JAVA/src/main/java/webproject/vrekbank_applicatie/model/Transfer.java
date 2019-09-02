@@ -1,16 +1,16 @@
 package webproject.vrekbank_applicatie.model;
 
-abstract class Transaction {
+abstract class Transfer {
     // variables
     private int transactionNr;
     private String description;
     private String date;
 
     // constructors
-    public Transaction() {
+    public Transfer() {
     }
 
-    public Transaction(int transactionNr, String description, String date) {
+    public Transfer(int transactionNr, String description, String date) {
         super();
         this.transactionNr = transactionNr;
         this.description = description;
