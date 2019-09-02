@@ -1,5 +1,9 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
 public class BusinessAccount extends Account {
     // variables
     private int companyId;

@@ -1,10 +1,12 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.*;
 import java.util.*;
 
 public abstract class Account {
     // variables
     private int accountId;
+
     private String IBAN;
     private double balance;
     private double minimumBalance;
