@@ -8,7 +8,7 @@
     <h1> <span th:text="${name}"/>, op deze pagina kan je geld overmaken </h1>
 
     <div>
-    <form th:action="@{confirmationTransferHandler}" th:object="${Debit}" method="post">
+    <form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}" method="post">
             <table>
                 <tr>
                     <td> Van: </td>
