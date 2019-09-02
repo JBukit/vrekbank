@@ -18,7 +18,6 @@
                 <tr th:each="personalAccount : ${personalAccounts}">
                     <td><span th:text="${personalAccount.IBAN}"/></td>
                     <td><span th:text="${personalAccount.balance}"/></td>
-
                 </tr>
             </table>
     </div>
@@ -35,9 +34,13 @@
             <tr th:each="businessAccount : ${businessAccounts}">
                 <td><span th:text="${businessAccount.IBAN}"/></td>
                 <td><span th:text="${businessAccount.balance}"/></td>
-
             </tr>
         </table>
     </div>
+
+
+<br>
+    <h2>Klik <a href="/openaccount">hier</a> om een nieuwe rekening te openen. </h2>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 package webproject.vrekbank_applicatie.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,12 +10,16 @@ import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
+import webproject.vrekbank_applicatie.service.CustomerValidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class LoginController {
+
+    @Autowired
+    CustomerValidator customerValidator;
 
     @PostMapping(value = "Overview")
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
