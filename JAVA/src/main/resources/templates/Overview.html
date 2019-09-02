@@ -16,8 +16,9 @@
                     <td>Saldo: </td>
                 </tr>
                 <tr th:each="personalAccount : ${personalAccounts}">
-                    <td><span th:text="${personalAccount.IBAN}"/></td>
+                    <td><a href="rekening/${personalAccount.IBAN}"><span th:text="${personalAccount.IBAN}"/></a></td>
                     <td><span th:text="${personalAccount.balance}"/></td>
+                    </form>
                 </tr>
             </table>
     </div>

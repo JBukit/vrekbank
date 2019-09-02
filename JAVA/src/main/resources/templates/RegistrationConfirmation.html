@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>RegistrationConfirmation</title>
 </head>
 <body>
 
-<h1>Welkom bij VrekBank.</h1>
+<h1>Hallo <span th:text="${firstname}"></span>, welkom bij VrekBank.</h1>
+
 Vanaf vandaag bent u klant bij ons. Wij doen er alles aan om u goed van dienst te zijn.
 <br>
 <br>
-
-Uw gebruikersnaam is:
+Uw gebruikersnaam is: <span th:text="${username}"></span>
 <br>
-
+<br>
 Klik <a href="/login">hier</a> om in te loggen.
 
 </body>

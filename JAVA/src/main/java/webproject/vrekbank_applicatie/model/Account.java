@@ -6,6 +6,7 @@ import java.util.*;
 public abstract class Account {
     // variables
     private int accountId;
+
     private String IBAN;
     private double balance;
     private double minimumBalance;
@@ -13,7 +14,6 @@ public abstract class Account {
 
     private List<Customer> owners;
     private List<Customer> representatives;
-
 
     // constructors
     public Account() {
@@ -137,5 +137,6 @@ public abstract class Account {
         String ibanFinalString = sbFinal.toString();
         System.out.println(ibanFinalString);
         String IBAN = ibanFinalString;
-        return IBAN;}
+        return IBAN;
+    }
 }
