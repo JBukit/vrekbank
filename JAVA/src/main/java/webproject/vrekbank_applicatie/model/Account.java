@@ -1,10 +1,14 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.*;
 
+@Entity
 public abstract class Account {
     // variables
+    @Id
+    @GeneratedValue
     private int accountId;
 
     private String IBAN;
@@ -12,7 +16,10 @@ public abstract class Account {
     private double minimumBalance;
     private boolean businessAccount;
 
+    @ManyToMany (mappedBy = "accountsOwned")
     private List<Customer> owners;
+
+    @ManyToMany (mappedBy = "accountsRepresented")
     private List<Customer> representatives;
 
     // constructors
@@ -28,8 +35,8 @@ public abstract class Account {
         this.balance = balance;
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
-        owners = new ArrayList<Customer>();
-        representatives = new ArrayList<Customer>();
+        this.owners = new ArrayList<>();
+        this.representatives = new ArrayList<>();
     }
 
     // getters and setters
