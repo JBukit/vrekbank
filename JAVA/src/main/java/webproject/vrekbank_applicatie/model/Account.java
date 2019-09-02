@@ -76,7 +76,7 @@ public abstract class Account {
 
     // methode om IBAN aan te maken
 
-    private static String CreateIBAN() {
+    public static String CreateIBAN() {
         final int CORRECTIONS_LETTER_TO_NUMBER = 55; // A = 10, B = 11, enz..
         final int NUMBERS_IN_ACCOUNTNUMBER = 10;
         String nameBank = "ABNA";
