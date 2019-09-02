@@ -6,8 +6,11 @@ package webproject.vrekbank_applicatie.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -29,6 +32,12 @@ public class Customer {
     private String username;
     private String password;
     private int PIN;
+
+    @ManyToMany
+    private List<Customer> accountsOwned;
+
+    @ManyToMany
+    private List<Customer> accountsRepresented;
 
 
 
@@ -55,6 +64,8 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.PIN = PIN;
+        this.accountsOwned = new ArrayList<>();
+        this.accountsRepresented = new ArrayList<>();
     }
 
     //getters and setters

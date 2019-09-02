@@ -2,7 +2,7 @@ package webproject.vrekbank_applicatie.model;
 
 import javax.persistence.Entity;
 
-
+@Entity
 public class PersonalAccount extends Account {
     // variables
 
