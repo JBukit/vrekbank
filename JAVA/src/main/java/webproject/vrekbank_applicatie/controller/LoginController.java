@@ -22,14 +22,21 @@ public class LoginController {
 
     @PostMapping(value = "Overview")
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
-        // check login-information in database, for now default Customer
+        // find customer in database by Username of login
+        Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
+        System.out.println(c.getUsername());
+        System.out.println(c.getPassword());
+        System.out.println(c.getCustomerId());
+
+
+        // for now default Customer
         Customer customer1 = new Customer (0, "", "", "", "", "", "", "", 'z',
                 "", 0, "Donald", "1", 0);
 
         // if check = ok, proceed:
-        if (customer.getUsername().equals(customer1.getUsername()) && customer.getPassword().equals(customer1.getPassword())) {
+        if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
 
-            // add Customer-name to html page
+            // add Customer-name to html page to show username in page
             model.addAttribute("name", customer.getUsername());
 
             // make lists with accounts, to be added from database
@@ -46,20 +53,6 @@ public class LoginController {
 
             model.addAttribute("personalAccounts",personalAccounts);
             model.addAttribute("businessAccounts", businessAccounts);
-
-/*            // split PersonalAccount objects in 2 separate list (IBAN and balance)
-            List<String> IBANs = new ArrayList<>();
-            for (int i = 0; i < personalAccounts.size(); i++) {
-                IBANs.add(personalAccounts.get(i).getIBAN());
-            }
-            List<Double> balances = new ArrayList<>();
-            for (int i = 0; i < personalAccounts.size(); i++) {
-                balances.add(personalAccounts.get(i).getBalance());
-            }
-
-            // add lists to .html
-            model.addAttribute("IBAN", IBANs);
-            model.addAttribute("balance", balances);*/
 
             return "Overview";
         }
