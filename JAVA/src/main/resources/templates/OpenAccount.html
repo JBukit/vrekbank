@@ -14,15 +14,17 @@
 <br>
 
 <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
-<form th:action="@{openAccountConfirmationHandler}" th:object="${Customer}" method="post">
+<form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
 
     Wat voor soort rekening wilt u? :<br>
     <input type="radio" name="businessAccount" value=false> Particulier<br>
     <input type="radio" name="businessAccount" value=true> MKB<br><br><br>
 
+    <input type="submit" value="Vraag aan">
+</form>
 
     <!-- Nu nog string accepteren, later pull down met bestaande lijst></-->
-    <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
+   <!-- <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
         Indien u een MKB rekening wilt, voor welke sector?<br>
         <input type="text" name="sector"><br>
 
@@ -30,12 +32,13 @@
     <br>
     <br>
 
-    <input type="submit" value="Vraag aan">
 
-</form>
+-->
+
 
 <br>
-<h3></h3>Ga <a href="Overview.html">terug</a> naar uw rekeningenoverzicht. WERKT NOG NIET. oa object doorgeven?>
+<h3></h3>Ga <a href="Overview.html">terug</a> naar uw rekeningenoverzicht. WERKT NOG NIET. oa object doorgeven?
+nog handler plaatsen?>
 
 <br>
 <h3></h3>Ga <a href="Index.html">terug</a> naar de index>

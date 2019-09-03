@@ -8,17 +8,16 @@ import webproject.vrekbank_applicatie.model.Account;
 
 @Controller
 public class OpenAccountController {
-
-    @PostMapping(value = "Vraag aan")
-    public String OpenAccountOpenAccountConfirmationHandler(@ModelAttribute Account account, Model model) {
+    @PostMapping(value = "OpenAccountConfirmation")
+    public String OpenAccountOpenAccountConfirmationHandler() {
 
         // fill in new account/object
 
         //model.addAttribute("businessAccount", account.setBusinessAccount(account.isBusinessAccount());
 
-        account.setBalance(0);
-        account.setMinimumBalance(0);
-        account.setBusinessAccount(account.isBusinessAccount());
+        //account.setBalance(0);
+        //account.setMinimumBalance(0);
+        //account.setBusinessAccount(account.isBusinessAccount());
 
 
         // generate IBAN (including check that is does not yet exist) and add to new account/model?
@@ -29,7 +28,7 @@ public class OpenAccountController {
         // add accountinfo to database
 
         // go to OpenAccountConfirmationScreen
-        return "AccountConfirmation";
+        return "OpenAccountConfirmation";
     }
 }
 

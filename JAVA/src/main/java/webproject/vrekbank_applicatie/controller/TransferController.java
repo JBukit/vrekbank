@@ -2,6 +2,7 @@ package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import webproject.vrekbank_applicatie.model.Customer;
@@ -11,9 +12,13 @@ import webproject.vrekbank_applicatie.model.Transfer;
 @Controller
 public class TransferController {
 
-//    @PostMapping(value = "confirm")
-//    public String transferConfirmationTransferHandler (@ModelAttribute Transfer transfer, Model model){
-//
+
+    @GetMapping(value = "transaction")
+    public String transferHandler() {
+        return "Transfer";
+
+
+////
 //    Transfer transfer1 = new Transfer();
 //
 //    //Maak een if-statement:    transferamount > 0   &&   balance -transferamount >=  minimumbalance   &&
@@ -28,6 +33,9 @@ public class TransferController {
 //        //Indien niet aan een voorwaarde voldaan: Pagina wordt herladen en gebruiker moet het opnieuw invullen
 //
 //    }
+
+    }
+
 }
 
 

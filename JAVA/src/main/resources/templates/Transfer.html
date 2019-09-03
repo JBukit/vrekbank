@@ -7,14 +7,16 @@
 <body>
 <h1> <span th:text="${name}"/>, op deze pagina kan je geld overmaken </h1>
 
-<div>
-    <form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}" method="post">
+​
+<!--<div>
+    &lt;!&ndash;<form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}">&ndash;&gt; &lt;!&ndash;method="post"&ndash;&gt;
         <table>
             <tr>
                 <td> Van: </td>
-                <td> <input type="text" th:field="*{creditIban}"> </td> <!--session nodig-->
+                <td> <input type="text" th:field="*{creditIban}"> </td> &lt;!&ndash;session nodig&ndash;&gt;
                 <td> Naam: </td>
-                <td> <input type="text" th:field="firstName"> </td> <!--session-->
+                <td> <input type="text" th:field="firstName"> </td> &lt;!&ndash;session&ndash;&gt;
+
             </tr>
             <tr>
                 <td> Naar: </td>
@@ -40,7 +42,12 @@
                 </td>
             </tr>
         </table>
+
     </form>
 </div>
+
+
+</div>-->
+
 </body>
 </html>
