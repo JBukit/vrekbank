@@ -25,9 +25,10 @@
 <br>
 
 
-<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${Customer}" method="post">
+<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" method="post">
 
-
+    Wat is de naam van het bedrijf waarvoor u de rekening wilt?:<br>
+    <input type="text" name="CompanyName"><br>
     <input type="submit" value="Vraag een MKB rekening aan">
 </form>
 
