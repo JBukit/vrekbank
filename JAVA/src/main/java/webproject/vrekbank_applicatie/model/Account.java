@@ -71,6 +71,21 @@ public abstract class Account {
         this.businessAccount = businessAccount;
     }
 
+    public List<Customer> getOwners() {
+        return owners;
+    }
+
+    public void setOwners(List<Customer> owners) {
+        this.owners = owners;
+    }
+
+    public List<Customer> getRepresentatives() {
+        return representatives;
+    }
+
+    public void setRepresentatives(List<Customer> representatives) {
+        this.representatives = representatives;
+    }
 
     // methode om IBAN aan te maken
     public static String CreateIBAN() {
