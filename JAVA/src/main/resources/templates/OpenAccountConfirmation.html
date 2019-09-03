@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Open Account Confirmation </title>
@@ -7,13 +7,32 @@
 
 <body>
 
-<h1>Uw nieuwe account is aangemaakt.
+<h1> Uw nieuwe rekening is aangemaakt.</h1>
 
-IBAN:
-Tenaamstelling:
-Particulier/MKB
-Sector:
+    <!--nog toevoegen voorwaarde alleen particulier-->
 
-</h1>
+<h3>
+    U heeft een particuliere rekening geopend.
+    Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span>
+
+    <br>
+    <br>
+    <br>
+
+    U heeft het fantastische bedrag van <span th:text="${saldo}"></span> Euro op deze rekening staan.
+
+    <br>
+    <br>
+    <br>
+
+    Gelieve niet te proberen onder een saldo van <span th:text="${minimumsaldo}"></span> Euro uit te komen, anders
+    zien wij ons genoodzaakt Incassobureau Binnen Zonder Kloppen te activeren...
+
+    <br>
+    <br>
+    <br>
+
+
+</h3>
 </body>
 </html>
