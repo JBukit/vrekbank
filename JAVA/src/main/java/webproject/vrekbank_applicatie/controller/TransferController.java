@@ -8,9 +8,9 @@ import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.Transfer;
 
 
-//@Controller
-//public class TransferController {
-//
+@Controller
+public class TransferController {
+
 //    @PostMapping(value = "confirm")
 //    public String transferConfirmationTransferHandler (@ModelAttribute Transfer transfer, Model model){
 //
@@ -28,7 +28,7 @@ import webproject.vrekbank_applicatie.model.Transfer;
 //        //Indien niet aan een voorwaarde voldaan: Pagina wordt herladen en gebruiker moet het opnieuw invullen
 //
 //    }
-//}
+}
 
 
 

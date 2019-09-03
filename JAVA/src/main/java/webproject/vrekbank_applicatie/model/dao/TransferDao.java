@@ -5,7 +5,5 @@ import webproject.vrekbank_applicatie.model.Transfer;
 
 public interface TransferDao extends CrudRepository<Transfer, Integer> {
 
-        // additional methodes to check/update in database
-
     }
 
