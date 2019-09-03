@@ -1,7 +1,14 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Transfer {
     // variables
+    @Id
+    @GeneratedValue
     private int transactionNr;
     private String description;
     private String date;
@@ -11,6 +18,7 @@ public class Transfer {
 
     // constructors
     public Transfer() {
+        this(0,"","","","",0);
     }
 
     public Transfer(int transactionNr, String description, String date, String debitIban, String creditIban, double transferamount) {
