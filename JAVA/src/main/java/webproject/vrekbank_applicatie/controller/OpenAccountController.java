@@ -9,14 +9,19 @@ import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
-
+import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
 import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 
 @Controller
 public class OpenAccountController {
 
+    // als het werkt met daos voor beide subklassen de nu ongebruikte accountdao en accountvalidator verwijderen
+
     @Autowired
     AccountValidator validator;
+
+    @Autowired
+    PersonalAccountValidator personalAccountValidator;
 
     @Autowired
     BusinessAccountValidator businessAccountValidator;
@@ -26,11 +31,11 @@ public class OpenAccountController {
     // nu gedaan door in klasse om te zetten in string.
 
 
-    // handler voor particulier rekening. later evt aan te passen tot 1 handler voor ook MKB,
-    // die via bijv radio knop beide subklassen kan aanmaken
-
     @PostMapping(value = "OpenPersonalAccountConfirmation")
     public String OpenAccountOpenPersonalAccountConfirmationHandler(@ModelAttribute PersonalAccount personalAccount, Model model) {
+
+        //Customer dezeklant = new Customer();
+        //ArrayList<> lijstje = new ArrayList<Customer> (dezeklant);
 
         // fill in new account/object
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
@@ -38,35 +43,65 @@ public class OpenAccountController {
         personalAccount.setMinimumBalance(0);
         personalAccount.setIBAN(CreateIBAN());
         personalAccount.setBusinessAccount(false);
+        // lijst eigenaren in account beschrijven met de klant. Daarnaast deze klant toevoegen in het lijstje rekeningen
+        //in die klant
 
         //opnemen in  model, in ieder geval om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", personalAccount.getBalance());
         model.addAttribute("minimumsaldo", personalAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", personalAccount.getIBAN());
 
-
         // add accountinfo to database
 
-        validator.saveAccount(personalAccount);
+        personalAccountValidator.savePersonalAccount(personalAccount);
 
         // go to OpenAccountConfirmationScreen
         return "OpenPersonalAccountConfirmation";
     }
 
-    // tweede handler voor MKB rekeningen. NOG DOEN: set company
+
+    // handler voor particulier rekening. later evt aan te passen tot 1 handler voor ook MKB,
+    // die via bijv radio knop beide subklassen kan aanmaken
+
+//    @PostMapping(value = "OpenPersonalAccountConfirmation")
+//    public String OpenAccountOpenPersonalAccountConfirmationHandler(@ModelAttribute PersonalAccount personalAccount, Model model) {
+//
+//        //Customer dezeklant = new Customer();
+//        //ArrayList<> lijstje = new ArrayList<Customer> (dezeklant);
+//
+//        // fill in new account/object
+//        personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
+//        personalAccount.setBalance(0);
+//        personalAccount.setMinimumBalance(0);
+//        personalAccount.setIBAN(CreateIBAN());
+//        personalAccount.setBusinessAccount(false);
+//        //personalAccount.setOwners(lijstje);
+//
+//        //opnemen in  model, in ieder geval om in bevestigingsscherm gegevens terug te kunnen geven.
+//        model.addAttribute("saldo", personalAccount.getBalance());
+//        model.addAttribute("minimumsaldo", personalAccount.getMinimumBalance());
+//        model.addAttribute("rekeningnummer", personalAccount.getIBAN());
+//
+//        // add accountinfo to database
+//
+//        validator.saveAccount(personalAccount);
+//
+//        // go to OpenAccountConfirmationScreen
+//        return "OpenPersonalAccountConfirmation";
+//    }
+
+    // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
     public String OpenAccountOpenBusinessAccountConfirmationHandler(@ModelAttribute BusinessAccount businessAccount,
                                                                     Model model) {
-        // fill in new account/object
+        // fill in new account/object.
         businessAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
         businessAccount.setBalance(0);
         businessAccount.setMinimumBalance(0);
         businessAccount.setIBAN(CreateIBAN());
         businessAccount.setBusinessAccount(true);
 
-        // nog koppelen met de input van de klant
-
-        //opnemen in  model, in ieder geval om in bevestigingsscherm gegevens terug te kunnen geven.
+        //opnemen in  model, om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", businessAccount.getBalance());
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", businessAccount.getIBAN());

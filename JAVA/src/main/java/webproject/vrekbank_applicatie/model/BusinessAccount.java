@@ -34,5 +34,3 @@ public class BusinessAccount extends Account {
         this.companyName = companyName;
     }
 }
-
-
