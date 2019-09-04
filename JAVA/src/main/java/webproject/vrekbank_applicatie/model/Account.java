@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.*;
 
-@Entity
+@MappedSuperclass
 public abstract class Account {
     // variables
     @Id
