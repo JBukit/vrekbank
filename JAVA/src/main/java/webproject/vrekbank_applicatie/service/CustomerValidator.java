@@ -29,7 +29,4 @@ public class CustomerValidator {
         Customer c = customerDao.findByUsername(name);
         return c;
     }
-
-
-
 }

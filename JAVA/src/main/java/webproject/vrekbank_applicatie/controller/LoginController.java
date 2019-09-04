@@ -60,6 +60,4 @@ public class LoginController {
         // if check = not ok, go back to Login
         return "Login";
     }
-
-
 }

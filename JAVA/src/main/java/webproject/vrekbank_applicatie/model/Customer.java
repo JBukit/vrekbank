@@ -3,10 +3,7 @@ package webproject.vrekbank_applicatie.model;
 //Klasse customer, voor rekeninghouders en gemachtigden.
 //@author team 3, VrekBank, Jacco vd Heuvel
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,12 +30,20 @@ public class Customer {
     private String password;
     private int PIN;
 
-    @ManyToMany
-    private List<Customer> accountsOwned;
 
+    @OneToMany
+    private List<PersonalAccount> personalAccounts;
+
+//    @ManyToMany (mappedBy = "personalAccountsOwned")
+//    private List<PersonalAccount> personalAccountsOwned;
+//
+//    @ManyToMany
+//    private List<BusinessAccount> businessAccountsOwned;
+//
+
+    // deze nog doen voor beide soorten rekening
     @ManyToMany
     private List<Customer> accountsRepresented;
-
 
 
     // constructors
@@ -64,7 +69,7 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.PIN = PIN;
-        this.accountsOwned = new ArrayList<>();
+        this.personalAccounts = new ArrayList<>();
         this.accountsRepresented = new ArrayList<>();
     }
 

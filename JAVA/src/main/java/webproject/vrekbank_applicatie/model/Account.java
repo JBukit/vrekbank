@@ -16,15 +16,22 @@ public abstract class Account {
     private double minimumBalance;
     private boolean businessAccount;
 
-    @ManyToMany (mappedBy = "accountsOwned")
-    private List<Customer> owners;
+    @ManyToOne
+    private Customer owner;
+
+    //@ManyToMany (mappedBy = "accountsOwned")
+    //private List<Customer> owners;
+
+
+    //@ManyToMany (mappedBy = "personalAccountsOwned")
+//    private List<Customer> owners;
 
     @ManyToMany (mappedBy = "accountsRepresented")
     private List<Customer> representatives;
 
     // constructors
     public Account() {
-        owners = new ArrayList<Customer>();
+        //owners = new ArrayList<Customer>();
         representatives = new ArrayList<Customer>();
     }
 
@@ -35,7 +42,7 @@ public abstract class Account {
         this.balance = balance;
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
-        this.owners = new ArrayList<>();
+        //this.owners = new ArrayList<>();
         this.representatives = new ArrayList<>();
     }
 
@@ -71,13 +78,16 @@ public abstract class Account {
         this.businessAccount = businessAccount;
     }
 
-    public List<Customer> getOwners() {
-        return owners;
+    public Customer getOwner() {
+        return owner;
     }
 
-    public void setOwners(List<Customer> owners) {
-        this.owners = owners;
+    public void setOwner(Customer owner) {
+        this.owner = owner;
     }
+    //    public List<Customer> getOwners() {     return owners;}
+
+//    public void setOwners(List<Customer> owners) {this.owners = owners;}
 
     public List<Customer> getRepresentatives() {
         return representatives;
