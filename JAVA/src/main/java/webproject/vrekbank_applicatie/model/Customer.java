@@ -34,6 +34,9 @@ public class Customer {
     @OneToMany
     private List<PersonalAccount> personalAccounts;
 
+    @OneToMany
+    private List<BusinessAccount> businessAccounts;
+
 //    @ManyToMany (mappedBy = "personalAccountsOwned")
 //    private List<PersonalAccount> personalAccountsOwned;
 //
@@ -42,7 +45,7 @@ public class Customer {
 //
 
     // deze nog doen voor beide soorten rekening
-    @ManyToMany
+    @OneToMany
     private List<Customer> accountsRepresented;
 
 
