@@ -2,22 +2,23 @@ package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.Transfer;
 
 
 @Controller
-@SessionAttributes("name")
+@SessionAttributes({"name", "iban"})
 public class AccountSummaryController {
 
 
     @GetMapping(value = "transaction")
     public String accountSummaryTransactionHandler(@ModelAttribute Transfer transfer, Model model) {
         model.containsAttribute("name");
+
+
+        model.containsAttribute("iban");
+
         return "Transfer";
 
 ////
