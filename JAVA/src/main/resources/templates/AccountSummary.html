@@ -5,31 +5,41 @@
     <title>Rekening Overzicht</title>
 </head>
 
+
 <body>
 
-<h1> Welkom <span th:text="${name}"/></h1>
-<h2>
-    Dit is het overzicht van rekeningnummer <span th:text="${iban}"/>
-</h2>
+<h1>Welkom <span th:text="${name}"/></h1>
+
+<h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
+
+<p>NOTE: Er moet nog een - voor als het een debit transfer is!</p>
 
 <div th:unless="${#lists.isEmpty(totalTransferList)}">
-    <table>
-        <tr>
-            <td>Datum: </td>
-            <td>Omschrijving: </td>
-            <td>Bedrag: </td>
+    <table style="width:50%">
+        <tr align="left">
+            <th>Datum: </th>
+            <th>Omschrijving: </th>
+            <th>Bedrag: </th>
+            <th>Credit rekening: </th>
+            <th>Debit rekening: </th>
         </tr>
         <tr th:each="transfer : ${totalTransferList}">
             <td><span th:text="${transfer.date}"/></td>
             <td><span th:text="${transfer.description}"/></td>
             <td><span th:text="${transfer.transferamount}"/></td>
+            <td><span th:text="${transfer.creditIban}"/></td>
+            <td><span th:text="${transfer.debitIban}"/></td>
         </tr>
     </table>
 </div>
 
+<div>
+
 <h2>Klik <a href="transaction">hier</a> om geld over te maken naar een andere rekening. </h2>
 
 <h2>Klik <a href="overview">hier</a> om terug te gaan naar je account overview. </h2>
+
+</div>
 
 </body>
 
