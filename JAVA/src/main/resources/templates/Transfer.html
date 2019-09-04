@@ -13,9 +13,9 @@
 <table>
     <tr>
         <td> Van (Iban): </td>
-        <td> <input type=" text" name="${iban}"> </td>
+        <td> <input type="text" name="iban" readonly="readonly" th:value="${iban}"> </td>
         <td> Naam: </td>
-        <td> <input type=" text" name="${name}"></td>
+        <td> <input type="text" name="name" readonly="readonly" th:value="${name}"></td>
     </tr>
     <tr>
         <td> Naar (Iban): </td>
@@ -40,9 +40,10 @@
     <br><input type="submit" value="Verstuur">
 </form>
     <br>
-    <h3>Ga <a href="AccountSummary.html">terug</a> naar uw rekeningoverzicht </h3>
+    <h3>Ga <a href="accountsummary">terug</a> naar uw rekeningoverzicht </h3>
     <br>
     <h3>Ga terug naar het <a href="Index.html">begin</a> </h3>
+
 </body>
 </html>
 ​
