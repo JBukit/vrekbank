@@ -27,15 +27,22 @@ public class LoginController {
         // find customer in database by Username of login
         Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
 
-        // if check = ok, proceed:
-        if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
 
+        if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
+            // if check = ok, proceed:
             // add Customer-name to html page to show username in page
             model.addAttribute("name", customer.getUsername());
 
             // make lists with accounts, to be added from database
             List<PersonalAccount> personalAccounts = new ArrayList<>();
             List<BusinessAccount> businessAccounts = new ArrayList<>();
+
+            // add PersonalAccounts from logged-in customer
+            // find id from customer
+            int id = customer.getCustomerId();
+
+            // find accounts from customer_id
+
 
             // add accounts of customer (from database, now by hand)
             personalAccounts.add(new PersonalAccount(1, "NL1", 10, 0, false));

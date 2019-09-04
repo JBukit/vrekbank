@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 
+import java.util.List;
+
 @Service
 public class AccountValidator {
 
@@ -20,6 +22,10 @@ public class AccountValidator {
     public void saveAccount (Account account) {
         accountDao.save(account);
     }
+
+/*    public List<Account> findAccountsByCustomerId (int id) {
+        accountDao.
+    }*/
 
 
 }
