@@ -5,8 +5,43 @@
     <title>Transfer</title>
 </head>
 <body>
-<h1> <span th:text="${name}"/>, op deze pagina kan je geld overmaken </h1>
+<h1> <span th:text="${name}"/> , op deze pagina kan je geld overmaken </h1>
 
+
+<form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}" method="post">
+    <legend>Transactiegegevens</legend>
+    <fieldset>
+<table>
+    <tr>
+        <td> Van (Iban): </td>
+        <td> <input type=" text" th:field="*{creditIban}"> </td>
+        <td> Naam: </td>
+        <td> <input type=" text" th:field="firstName"></td>
+    </tr>
+    <tr>
+        <td> Naar (Iban): </td>
+        <td> <input type="text"  th:field="*{debitIban}"> </td>
+        <td> Naam: </td>
+        <td> <input type="text"  th:field="*firstName"></td>
+    </tr>
+    <tr>
+        <td> Bedrag: </td>
+        <td><input type="text"   th:field="*{transferamount}"></td>
+    </tr>
+    <tr>
+        <td> Beschrijving: </td>
+        <td> <input type="text"  th:field="*{description}"></td>
+    </tr>
+    <tr>
+        <td> Datum: (jjjj-mm-dd) </td>
+        <td> <input type="text"  th:field="*{date}"></td>
+    </tr>
+</table>
+        </fieldset>
+    <br> <a href="confirmationTransfer">bevestig</a>
+</form>
+</body>
+</html>
 ​
 <!--<div>
     &lt;!&ndash;<form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}">&ndash;&gt; &lt;!&ndash;method="post"&ndash;&gt;
@@ -45,7 +80,6 @@
 
     </form>
 </div>
-
 
 </div>-->
 
