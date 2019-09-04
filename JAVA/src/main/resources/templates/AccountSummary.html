@@ -7,22 +7,29 @@
 
 <body>
 
-<h1>Welkom ... Dit is het overzicht van rekeningnummer <span th:text="${IBAN}"/> </h1>
+<h1> Welkom <span th:text="${name}"/></h1>
+<h2>
+    Dit is het overzicht van rekeningnummer <span th:text="${iban}"/>
+</h2>
 
-<div>
+<div th:unless="${#lists.isEmpty(totalTransferList)}">
     <table>
         <tr>
-            <td>Datum</td>
-            <td>Omschrijving</td>
-            <td>Bedrag</td>
+            <td>Datum: </td>
+            <td>Omschrijving: </td>
+            <td>Bedrag: </td>
         </tr>
-        <tr>
-
+        <tr th:each="transfer : ${totalTransferList}">
+            <td><span th:text="${transfer.date}"/></td>
+            <td><span th:text="${transfer.description}"/></td>
+            <td><span th:text="${transfer.transferamount}"/></td>
         </tr>
     </table>
 </div>
 
 <h2>Klik <a href="transaction">hier</a> om geld over te maken naar een andere rekening. </h2>
+
+<h2>Klik <a href="overview">hier</a> om terug te gaan naar je account overview. </h2>
 
 </body>
 
