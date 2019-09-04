@@ -12,14 +12,14 @@
     Dit is het overzicht van rekeningnummer <span th:text="${iban}"/>
 </h2>
 
-<div th:unless="${#lists.isEmpty(transfers)}">
+<div th:unless="${#lists.isEmpty(totalTransferList)}">
     <table>
         <tr>
             <td>Datum: </td>
             <td>Omschrijving: </td>
             <td>Bedrag: </td>
         </tr>
-        <tr th:each="transfer : ${transfers}">
+        <tr th:each="transfer : ${totalTransferList}">
             <td><span th:text="${transfer.date}"/></td>
             <td><span th:text="${transfer.description}"/></td>
             <td><span th:text="${transfer.transferamount}"/></td>
@@ -28,6 +28,8 @@
 </div>
 
 <h2>Klik <a href="transaction">hier</a> om geld over te maken naar een andere rekening. </h2>
+
+<h2>Klik <a href="overview">hier</a> om terug te gaan naar je account overview. </h2>
 
 </body>
 
