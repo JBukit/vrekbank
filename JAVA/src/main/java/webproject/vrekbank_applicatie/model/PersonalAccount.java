@@ -1,10 +1,12 @@
 package webproject.vrekbank_applicatie.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class PersonalAccount extends Account {
     // variables
+
 
     // constructors
     public PersonalAccount() {

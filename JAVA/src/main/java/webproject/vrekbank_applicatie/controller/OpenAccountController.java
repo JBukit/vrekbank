@@ -1,24 +1,31 @@
 package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
+import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
+import webproject.vrekbank_applicatie.service.CustomerValidator;
 import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
+
 import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 
 @Controller
+@SessionAttributes("name")
 public class OpenAccountController {
 
     // als het werkt met daos voor beide subklassen de nu ongebruikte accountdao en accountvalidator verwijderen
 
-    @Autowired
-    AccountValidator validator;
+    //@Autowired
+    //AccountValidator validator;
 
     @Autowired
     PersonalAccountValidator personalAccountValidator;
@@ -26,13 +33,17 @@ public class OpenAccountController {
     @Autowired
     BusinessAccountValidator businessAccountValidator;
 
+    @Autowired
+    CustomerValidator customerValidator;
+
     //NOG BEDENKEN: hoe account in DB koppelen aan klant (via session?)
     // HOE COMPANY invoegen in business rekening? Is dat eerder aan session geladen?
     // nu gedaan door in klasse om te zetten in string.
 
-
     @PostMapping(value = "OpenPersonalAccountConfirmation")
-    public String OpenAccountOpenPersonalAccountConfirmationHandler(@ModelAttribute PersonalAccount personalAccount, Model model) {
+    public String OpenAccountOpenPersonalAccountConfirmationHandler(@SessionAttribute("name") String name,
+                                                                    @ModelAttribute PersonalAccount personalAccount,
+                                                                    Model model) {
 
         //Customer dezeklant = new Customer();
         //ArrayList<> lijstje = new ArrayList<Customer> (dezeklant);
@@ -43,6 +54,14 @@ public class OpenAccountController {
         personalAccount.setMinimumBalance(0);
         personalAccount.setIBAN(CreateIBAN());
         personalAccount.setBusinessAccount(false);
+
+        System.out.println(name);
+
+        Customer user = customerValidator.findCustomerByUsername(name);
+        // zet in betreffende lijst
+        //personalAccount.getOwners().add(user);
+        personalAccount.setOwner(user);
+
         // lijst eigenaren in account beschrijven met de klant. Daarnaast deze klant toevoegen in het lijstje rekeningen
         //in die klant
 
@@ -58,7 +77,6 @@ public class OpenAccountController {
         // go to OpenAccountConfirmationScreen
         return "OpenPersonalAccountConfirmation";
     }
-
 
     // handler voor particulier rekening. later evt aan te passen tot 1 handler voor ook MKB,
     // die via bijv radio knop beide subklassen kan aanmaken
@@ -114,6 +132,3 @@ public class OpenAccountController {
         return "OpenBusinessAccountConfirmation";
     }
 }
-
-
-
