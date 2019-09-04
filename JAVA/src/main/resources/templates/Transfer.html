@@ -8,80 +8,42 @@
 <h1> <span th:text="${name}"/> , op deze pagina kan je geld overmaken </h1>
 
 
-<form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}" method="post">
+<form th:action="@{login}" th:object="${Transfer}" method="post">
     <legend>Transactiegegevens</legend>
     <fieldset>
 <table>
     <tr>
         <td> Van (Iban): </td>
-        <td> <input type=" text" th:field="*{creditIban}"> </td>
+        <td> <input type=" text" name="creditIban"> </td>
         <td> Naam: </td>
-        <td> <input type=" text" th:field="firstName"></td>
+        <td> <input type=" text" name="name"></td>
     </tr>
     <tr>
         <td> Naar (Iban): </td>
-        <td> <input type="text"  th:field="*{debitIban}"> </td>
+        <td> <input type="text"  name="debitIban"> </td>
         <td> Naam: </td>
-        <td> <input type="text"  th:field="*firstName"></td>
+        <td> <input type="text"  name="recipientName"></td>
     </tr>
     <tr>
         <td> Bedrag: </td>
-        <td><input type="text"   th:field="*{transferamount}"></td>
+        <td><input type="text"   name="transferamount"></td>
     </tr>
     <tr>
         <td> Beschrijving: </td>
-        <td> <input type="text"  th:field="*{description}"></td>
+        <td> <input type="text"  name="description"></td>
     </tr>
     <tr>
         <td> Datum: (jjjj-mm-dd) </td>
-        <td> <input type="text"  th:field="*{date}"></td>
+        <td> <input type="text"  name="date"></td>
     </tr>
 </table>
         </fieldset>
     <br> <a href="confirmationTransfer">bevestig</a>
 </form>
+    <br>
+    <h3>Ga <a href="AccountSummary.html">terug</a> naar uw rekeningoverzicht </h3>
+    <br>
+    <h3>Ga terug naar het <a href="Index.html">begin</a> </h3>
 </body>
 </html>
 ​
-<!--<div>
-    &lt;!&ndash;<form th:action="@{transferConfirmationTransferHandler}" th:object="${transfer}">&ndash;&gt; &lt;!&ndash;method="post"&ndash;&gt;
-        <table>
-            <tr>
-                <td> Van: </td>
-                <td> <input type="text" th:field="*{creditIban}"> </td> &lt;!&ndash;session nodig&ndash;&gt;
-                <td> Naam: </td>
-                <td> <input type="text" th:field="firstName"> </td> &lt;!&ndash;session&ndash;&gt;
-
-            </tr>
-            <tr>
-                <td> Naar: </td>
-                <td> <input type="text" th:field="*{debitIban}"> </td>
-                <td> Naam: </td>
-                <td> <input type="text" th:field="firstName"> </td>
-            </tr>
-            <tr>
-                <td> Bedrag: </td>
-                <td> <input type="text" th:field="*{transferamount}"> </td>
-            </tr>
-            <tr>
-                <td> Beschrijving: </td>
-                <td> <input type="text" th:field="*{description}"> </td>
-            </tr>
-            <tr>
-                <td> Datum: (jjjj-mm-dd) </td>
-                <td> <input type="text" th:field="*{date}"> </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="/confirmationTransfer">bevestig</a>
-                </td>
-            </tr>
-        </table>
-
-    </form>
-</div>
-
-</div>-->
-
-</body>
-</html>
