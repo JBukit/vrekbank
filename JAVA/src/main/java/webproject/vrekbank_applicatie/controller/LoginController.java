@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@SessionAttributes("name")
 public class LoginController {
 
     @Autowired
@@ -24,14 +26,6 @@ public class LoginController {
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
         // find customer in database by Username of login
         Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
-        System.out.println(c.getUsername());
-        System.out.println(c.getPassword());
-        System.out.println(c.getCustomerId());
-
-
-        // for now default Customer
-        Customer customer1 = new Customer (0, "", "", "", "", "", "", "", 'z',
-                "", 0, "Donald", "1", 0);
 
         // if check = ok, proceed:
         if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {

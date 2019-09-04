@@ -9,28 +9,38 @@
 <h1>Open hier uw (extra) rekening</h1>
 
 
-
 <br>
 <br>
+<h1> Wilt u een particuliere of zakelijke (MKB) rekening?</h1>
 
 <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
-<form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
+<form th:action="@{OpenPersonalAccountConfirmation}" th:object="${Customer}" method="post">
 
-    Wat voor soort rekening wilt u? :<br>
-    <input type="radio" name="businessAccount" value=false> Particulier<br>
-    <input type="radio" name="businessAccount" value=true> MKB<br><br><br>
 
-    <input type="submit" value="Vraag aan">
+    <input type="submit" value="Vraag een particuliere rekening aan">
 </form>
 
-    <!-- Nu nog string accepteren, later pull down met bestaande lijst></-->
-   <!-- <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
-        Indien u een MKB rekening wilt, voor welke sector?<br>
-        <input type="text" name="sector"><br>
+<br>
+<br>
+<br>
 
 
-    <br>
-    <br>
+<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" method="post">
+
+    Wat is de naam van het bedrijf waarvoor u de rekening wilt?:<br>
+    <input type="text" name="CompanyName"><br>
+    <input type="submit" value="Vraag een MKB rekening aan">
+</form>
+
+
+<!-- Nu nog string accepteren, later pull down met bestaande lijst></-->
+<!-- <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
+     Indien u een MKB rekening wilt, voor welke sector?<br>
+     <input type="text" name="sector"><br>
+
+
+ <br>
+ <br>
 
 
 -->
