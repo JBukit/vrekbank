@@ -21,6 +21,15 @@ public class TransferController {
         model.containsAttribute("iban");
         model.containsAttribute("name");
 
+        // Controle in twee voorwaarden ( beiden moeten gelden, volgorde willekeurig);
+
+        // 1. over te boeken bedrag is beschikbaar.
+        // pseudocode: if saldo - transferamount >= minimumsaldo
+
+        // 2. if Combinatie iban en naam ontvanger bestaat (VREK klant)
+
+        // in volgende ronde moet dit uitgebreid worden; if ontvanger geen vrekklant, dan de IBAN kan bestaan check.
+
         // model vullen uit transferobject
         model.addAttribute("debitIban", iban); // betaler
 
@@ -33,8 +42,14 @@ public class TransferController {
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
 
-        //uit tranfer object schriijven naar database
-       // transferValidator.saveTransfer(transfer);
+        //uit tranferobject schrijven naar database in 3 stappen (volgorde?)
+
+        //1.update tabel betaler
+
+        //2. update tabel ontvanger (bij eigen klant)
+
+        //3. insert in tabel transfer
+        // transferValidator.saveTransfer(transfer);
 
         return "TransferConfirmation";
 
