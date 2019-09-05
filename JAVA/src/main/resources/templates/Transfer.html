@@ -13,19 +13,18 @@
 <table>
     <tr>
         <td> Van (Iban): </td>
-        <td> <input type="text" name="iban" readonly="readonly" th:value="${iban}"> </td>
+
+        <td> <input type="text" name="debitIban" readonly="readonly" th:value="${debitIban}"> </td>
         <td> Naam: </td>
-        <td> <input type="text" name="name" readonly="readonly" th:value="${name}"></td>
-    </tr>
-    <tr>
-        <td> Naar (Iban): </td>
-        <td> <input type="text"  name="debitIban"> </td>
+        <td> <input type="text" name="debitIbanName" readonly="readonly" th:value="${debitIbanName}"></td>
+
+        <td> <input type="text" name="creditIban"> </td>
         <td> Naam: </td>
-        <td> <input type="text"  name="recipientName"></td>
-    </tr>
+        <td> <input type="text" name="creditIbanName"></td>
+
     <tr>
         <td> Bedrag: </td>
-        <td><input type="text"   name="transferamount"></td>
+        <td><input type="text"   name="transferAmount"></td>
     </tr>
     <tr>
         <td> Beschrijving: </td>
@@ -37,7 +36,9 @@
     </tr>
 </table>
         </fieldset>
-    <br><input type="submit" value="Verstuur">
+
+    <input type="submit" value="Verstuur">
+
 </form>
     <br>
     <h3>Ga <a href="accountsummary">terug</a> naar uw rekeningoverzicht </h3>
