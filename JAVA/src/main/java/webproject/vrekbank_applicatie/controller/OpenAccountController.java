@@ -50,12 +50,10 @@ public class OpenAccountController {
 
         // fill in new account/object
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        personalAccount.setBalance(0);
+        personalAccount.setBalance(100);
         personalAccount.setMinimumBalance(0);
         personalAccount.setIBAN(CreateIBAN());
         personalAccount.setBusinessAccount(false);
-
-        System.out.println(name);
 
         Customer user = customerValidator.findCustomerByUsername(name);
         // zet in betreffende lijst
@@ -110,14 +108,21 @@ public class OpenAccountController {
 
     // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
-    public String OpenAccountOpenBusinessAccountConfirmationHandler(@ModelAttribute BusinessAccount businessAccount,
+    public String OpenAccountOpenBusinessAccountConfirmationHandler(@SessionAttribute("name") String name,
+                                                                    @ModelAttribute BusinessAccount businessAccount,
                                                                     Model model) {
         // fill in new account/object.
         businessAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        businessAccount.setBalance(0);
+        businessAccount.setBalance(100);
         businessAccount.setMinimumBalance(0);
         businessAccount.setIBAN(CreateIBAN());
         businessAccount.setBusinessAccount(true);
+
+
+        Customer user = customerValidator.findCustomerByUsername(name);
+        // zet in betreffende lijst
+        //personalAccount.getOwners().add(user);
+        businessAccount.setOwner(user);
 
         //opnemen in  model, om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", businessAccount.getBalance());

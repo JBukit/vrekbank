@@ -38,7 +38,7 @@ public class OverviewController {
 
     //Show overview recent transactions
     @GetMapping(value = "rekening")
-    public String loginOverviewHandler (@RequestParam String iban, Model model) {
+    public String overviewAccountSummaryHandler (@RequestParam String iban, Model model) {
 
         //pass name of logged in customer to show username on this page
         model.containsAttribute("name");
