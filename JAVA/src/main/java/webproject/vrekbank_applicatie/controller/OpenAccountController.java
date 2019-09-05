@@ -50,7 +50,7 @@ public class OpenAccountController {
 
         // fill in new account/object
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        personalAccount.setBalance(0);
+        personalAccount.setBalance(100);
         personalAccount.setMinimumBalance(0);
         personalAccount.setIBAN(CreateIBAN());
         personalAccount.setBusinessAccount(false);
@@ -113,7 +113,7 @@ public class OpenAccountController {
                                                                     Model model) {
         // fill in new account/object.
         businessAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        businessAccount.setBalance(0);
+        businessAccount.setBalance(100);
         businessAccount.setMinimumBalance(0);
         businessAccount.setIBAN(CreateIBAN());
         businessAccount.setBusinessAccount(true);
