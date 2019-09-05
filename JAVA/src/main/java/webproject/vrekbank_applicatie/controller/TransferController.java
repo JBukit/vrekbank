@@ -19,11 +19,11 @@ public class TransferController {
 
     @PostMapping(value = "TransferConfirmation")
     public String transferTransferConfirmation (@ModelAttribute Transfer transfer, Model model) {
-        transferValidator.saveTransfer(transfer);
+//        transferValidator.saveTransfer(transfer);
         model.addAttribute("creditIban", transfer.getCreditIban());
         model.addAttribute("debitIban", transfer.getDebitIban());
-        model.addAttribute("creditIbanName", transfer.getCreditIbanName());
-        model.addAttribute("debitIbanName", transfer.getDebitIbanName());
+//        model.addAttribute("creditIbanName", transfer.getCreditIbanName());
+//        model.addAttribute("debitIbanName", transfer.getDebitIbanName());
         model.addAttribute("transferAmount",transfer.getTransferAmount());
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
