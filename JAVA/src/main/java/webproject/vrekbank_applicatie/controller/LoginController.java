@@ -7,10 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
+import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
+import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +25,16 @@ public class LoginController {
     @Autowired
     CustomerValidator customerValidator;
 
+    @Autowired
+    PersonalAccountValidator personalAccountValidator;
+
+    @Autowired
+    BusinessAccountValidator businessAccountValidator;
+
     @PostMapping(value = "Overview")
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
         // find customer in database by Username of login
         Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
-
 
         if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
             // if check = ok, proceed:
@@ -37,20 +45,9 @@ public class LoginController {
             List<PersonalAccount> personalAccounts = new ArrayList<>();
             List<BusinessAccount> businessAccounts = new ArrayList<>();
 
-            // add PersonalAccounts from logged-in customer
-            // find id from customer
-            int id = customer.getCustomerId();
-
-            // find accounts from customer_id
-
-
-            // add accounts of customer (from database, now by hand)
-            personalAccounts.add(new PersonalAccount(1, "NL1", 10, 0, false));
-            personalAccounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
-            personalAccounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
-
-            businessAccounts.add(new BusinessAccount(1,"NL1",500,0,true,1));
-            businessAccounts.add(new BusinessAccount(2,"NL2",600,0,true,2));
+            // find accounts for customer
+            personalAccounts = personalAccountValidator.findAllPersonalAccountByCustomer(c);
+            businessAccounts = businessAccountValidator.findAllBusinessAccountByCustomer(c);
 
             model.addAttribute("personalAccounts",personalAccounts);
             model.addAttribute("businessAccounts", businessAccounts);

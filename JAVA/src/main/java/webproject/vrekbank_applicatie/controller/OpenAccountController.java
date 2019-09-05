@@ -110,7 +110,7 @@ public class OpenAccountController {
 
     // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
-    public String OpenAccountOpenBusinessAccountConfirmationHandler(@ModelAttribute BusinessAccount businessAccount,
+    public String OpenAccountOpenBusinessAccountConfirmationHandler(@SessionAttribute("name") String name,@ModelAttribute BusinessAccount businessAccount,
                                                                     Model model) {
         // fill in new account/object.
         businessAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
@@ -124,6 +124,11 @@ public class OpenAccountController {
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", businessAccount.getIBAN());
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
+
+        Customer user = customerValidator.findCustomerByUsername(name);
+        System.out.println(user.getCustomerId());
+        // koppel customer aan account
+        businessAccount.setOwner(user);
 
         // add accountinfo to database
         businessAccountValidator.saveBusinessAccount(businessAccount);

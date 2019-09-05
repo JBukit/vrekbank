@@ -34,16 +34,15 @@ public class Customer {
     @OneToMany
     private List<PersonalAccount> personalAccounts;
 
+    @OneToMany
+    private List<BusinessAccount> businessAccounts;
+
 //    @ManyToMany (mappedBy = "personalAccountsOwned")
 //    private List<PersonalAccount> personalAccountsOwned;
-//
-//    @ManyToMany
-//    private List<BusinessAccount> businessAccountsOwned;
-//
 
     // deze nog doen voor beide soorten rekening
-    @ManyToMany
-    private List<Customer> accountsRepresented;
+//    @ManyToMany
+//    private List<Customer> accountsRepresented;
 
 
     // constructors
@@ -70,7 +69,8 @@ public class Customer {
         this.password = password;
         this.PIN = PIN;
         this.personalAccounts = new ArrayList<>();
-        this.accountsRepresented = new ArrayList<>();
+        this.businessAccounts = new ArrayList<>();
+//        this.accountsRepresented = new ArrayList<>();
     }
 
     //getters and setters

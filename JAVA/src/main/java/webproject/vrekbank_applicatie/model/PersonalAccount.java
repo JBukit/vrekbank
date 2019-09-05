@@ -7,7 +7,6 @@ import javax.persistence.ManyToOne;
 public class PersonalAccount extends Account {
     // variables
 
-
     // constructors
     public PersonalAccount() {
     }
