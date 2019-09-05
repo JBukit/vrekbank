@@ -5,7 +5,7 @@
     <title>RekeningOverzicht</title>
 </head>
 <body>
-    <h1> Welkom <span th:text="${name}"/></h1>
+    <h1> Welkom <span th:text="${firstName}"/></h1>
 
     <!--Alleen laten zien indien deze klant een persoonlijke rekening heeft -->
     <div th:unless="${#lists.isEmpty(personalAccounts)}">
