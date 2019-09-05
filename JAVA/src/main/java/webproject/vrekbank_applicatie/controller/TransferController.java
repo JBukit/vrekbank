@@ -35,9 +35,6 @@ public class TransferController {
 
         model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
 
-//        model.addAttribute("creditIbanName", transfer.getCreditIbanName());
-//        model.addAttribute("debitIbanName", transfer.getDebitIbanName());
-
         model.addAttribute("transferAmount",transfer.getTransferAmount());
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
