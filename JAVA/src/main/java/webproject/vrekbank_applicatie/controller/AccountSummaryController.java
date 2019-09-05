@@ -8,16 +8,16 @@ import webproject.vrekbank_applicatie.model.Transfer;
 
 
 @Controller
-@SessionAttributes({"debitIbanName", "debitIban"})
+@SessionAttributes({"name", "iban"})
 public class AccountSummaryController {
 
 
     @GetMapping(value = "transaction")
     public String accountSummaryTransactionHandler(@ModelAttribute Transfer transfer, Model model) {
-        model.containsAttribute("debitIbanName");
+        model.containsAttribute("name");
 
 
-        model.containsAttribute("debitIban");
+        model.containsAttribute("iban");
 
         return "Transfer";
 
