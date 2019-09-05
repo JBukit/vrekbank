@@ -22,7 +22,9 @@ public class TransferController {
         transferValidator.saveTransfer(transfer);
         model.addAttribute("creditIban", transfer.getCreditIban());
         model.addAttribute("debitIban", transfer.getDebitIban());
-        model.addAttribute("transferamount",transfer.getTransferamount());
+        model.addAttribute("creditIbanName", transfer.getCreditIbanName());
+        model.addAttribute("debitIbanName", transfer.getDebitIbanName());
+        model.addAttribute("transferAmount",transfer.getTransferAmount());
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
         return "TransferConfirmation";

@@ -2,6 +2,7 @@ package webproject.vrekbank_applicatie.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BusinessAccount extends Account {

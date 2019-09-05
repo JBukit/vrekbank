@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Transfer Confirmation</title>
@@ -13,30 +13,47 @@
 <table>
 
     <tr>
-        <td>Van rekening:</td>
-        <td><td> <input type=" text" name="creditIban"> </td></td>
+        <td>Van rekening: <span th:text="${creditIban}"></span></td>
+        <td></td>
+    </tr>
+    <br>
+
+    <tr>
+        <td></td>
+        <td><td> <span th:text="${creditIbanName}"></span> </td></td>
         <td></td>
     </tr>
 
     <tr>
-        <td>Naar rekening:</td>
-        <td>[rekeninghouder]</td>
-        <td>[rekeningnummer]</td>
+        <td>naar rekening:</td>
+
+        <td><td> <span th:text="${debitIban}"></span> </td></td>
+        <td></td>
+    </tr>
+    <br>
+
+    <tr>
+        <td></td>
+        <td><td> <span th:text="${debitIbanName}"></span> </td></td>
+        <td></td>
     </tr>
 
     <tr>
         <td>Bedrag:</td>
-        <td>[bedrag]</td>
+        <td><td> <span th:text="${transferAmount}"></span> </td></td>
+        <td></td>
     </tr>
 
     <tr>
         <td>Omschrijving:</td>
-        <td>[omschrijving]</td>
+        <td><td> <span th:text="${description}"></span> </td></td>
+        <td></td>
     </tr>
 
     <tr>
         <td>Uitgevoerd op:</td>
-        <td>[datum tijd]</td>
+        <td><td> <span th:text="${date}"></span> </td></td>
+        <td></td>
     </tr>
 
 </table>

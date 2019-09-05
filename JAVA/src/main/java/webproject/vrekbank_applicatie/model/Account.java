@@ -26,13 +26,13 @@ public abstract class Account {
     //@ManyToMany (mappedBy = "personalAccountsOwned")
 //    private List<Customer> owners;
 
-    @ManyToMany (mappedBy = "accountsRepresented")
-    private List<Customer> representatives;
+//    @ManyToMany
+//    private List<Customer> representatives;
 
     // constructors
     public Account() {
         //owners = new ArrayList<Customer>();
-        representatives = new ArrayList<Customer>();
+//        representatives = new ArrayList<Customer>();
     }
 
     public Account(int accountId, String IBAN, double balance,
@@ -43,7 +43,7 @@ public abstract class Account {
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
         //this.owners = new ArrayList<>();
-        this.representatives = new ArrayList<>();
+//        this.representatives = new ArrayList<>();
     }
 
     // getters and setters
@@ -89,13 +89,13 @@ public abstract class Account {
 
 //    public void setOwners(List<Customer> owners) {this.owners = owners;}
 
-    public List<Customer> getRepresentatives() {
-        return representatives;
-    }
+//    public List<Customer> getRepresentatives() {
+//        return representatives;
+//    }
 
-    public void setRepresentatives(List<Customer> representatives) {
-        this.representatives = representatives;
-    }
+//    public void setRepresentatives(List<Customer> representatives) {
+//        this.representatives = representatives;
+//    }
 
     // methode om IBAN aan te maken
     public static String CreateIBAN() {
