@@ -8,25 +8,25 @@
 <h1> <span th:text="${name}"/> , op deze pagina kan je geld overmaken </h1>
 
 
-<form th:action="@{login}" th:object="${Transfer}" method="post">
+<form th:action="@{TransferConfirmation}" th:object="${Transfer}" method="post">
     <legend>Transactiegegevens</legend>
     <fieldset>
 <table>
     <tr>
         <td> Van (Iban): </td>
-        <td> <input type=" text" name="creditIban"> </td>
+        <td> <input type="text" name="creditIban"> </td>
         <td> Naam: </td>
-        <td> <input type=" text" name="name"></td>
+        <td> <input type="text" name="creditIbanName"></td>
     </tr>
     <tr>
         <td> Naar (Iban): </td>
         <td> <input type="text"  name="debitIban"> </td>
         <td> Naam: </td>
-        <td> <input type="text"  name="recipientName"></td>
+        <td> <input type="text"  name="debitIbanName"></td>
     </tr>
     <tr>
         <td> Bedrag: </td>
-        <td><input type="text"   name="transferamount"></td>
+        <td><input type="text"   name="transferAmount"></td>
     </tr>
     <tr>
         <td> Beschrijving: </td>
@@ -38,7 +38,8 @@
     </tr>
 </table>
         </fieldset>
-    <br> <a href="TransferConfirmation">bevestig</a>
+    <input type="submit" value="Verstuur">
+
 </form>
     <br>
     <h3>Ga <a href="AccountSummary.html">terug</a> naar uw rekeningoverzicht </h3>
