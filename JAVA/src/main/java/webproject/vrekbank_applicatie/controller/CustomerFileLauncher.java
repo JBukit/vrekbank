@@ -1,8 +1,9 @@
-package webproject.vrekbank_applicatie.model;
+package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
+import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class CustomerFileLauncher {
     @Autowired
     CustomerValidator validator;
 
-    public static void makeCustomerList() {
+    public void makeCustomerList() {
         Scanner customerReader;
         customerList = new ArrayList<>();
         try {
@@ -43,8 +44,7 @@ public class CustomerFileLauncher {
                 String password = customerSplit[11];
                 int PIN = Integer.parseInt(customerSplit[12]);
                 Customer newCustomer = new Customer(0, firstName, suffix, lastName, address, zipcode, city, email, sex, dob, BSN, userName, password, PIN);
-                customerList.add(newCustomer);
-
+                validator.saveCustomer(newCustomer);
             }
         } catch (FileNotFoundException geenfile) {
             System.out.println("Not found");
