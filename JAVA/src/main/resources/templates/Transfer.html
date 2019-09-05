@@ -12,15 +12,19 @@
         <table>
             <tr>
                 <td> Van (Iban): </td>
-                <td> <input type="text" name="debitIban" readonly="readonly" th:value="${debitIban}"> </td>
+                <td> <input type="text" name="iban" readonly="readonly" th:value="${iban}"> </td>
                 <td> Naam: </td>
-                <td> <input type="text" name="debitIbanName" readonly="readonly" th:value="${debitIbanName}"></td>
-                <td> <input type="text" name="creditIban"> </td>
+                <td> <input type="text" name="name" readonly="readonly" th:value="${name}"></td>
+            </tr>
+            <tr>
+                <td> Naar (Iban): </td>
+                <td> <input type="text"  name="debitIban"> </td>
                 <td> Naam: </td>
-                <td> <input type="text" name="creditIbanName"></td>
+                <td> <input type="text"  name="recipientName"></td>
+            </tr>
             <tr>
                 <td> Bedrag: </td>
-                <td><input type="text"   name="transferAmount"></td>
+                <td><input type="text"   name="transferamount"></td>
             </tr>
             <tr>
                 <td> Beschrijving: </td>
@@ -32,14 +36,16 @@
             </tr>
         </table>
     </fieldset>
-    <input type="submit" value="Verstuur">
+    <br><input type="submit" value="Bevestig">
 </form>
 <br>
-<h3>Ga <a href="accountsummary">terug</a> naar uw rekeningoverzicht </h3>
+<h3>Ga <a href="AccountSummary">terug</a> naar je transactieoverzicht </h3>
+<br>
+<h3>Ga <a href="overview">terug</a> naar je rekeningoverzicht </h3>
 <br>
 <h3>Ga terug naar het <a href="Index.html">begin</a> </h3>
 </body>
 </html>
 
-​
+
 
