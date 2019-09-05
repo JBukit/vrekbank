@@ -1,13 +1,11 @@
 package webproject.vrekbank_applicatie.controller;
 
+import org.hibernate.mapping.Index;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
@@ -15,6 +13,8 @@ import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
 import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
+
+import java.lang.module.FindException;
 
 import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 
@@ -135,5 +135,15 @@ public class OpenAccountController {
 
         // go to OpenAccountConfirmationScreen
         return "OpenBusinessAccountConfirmation";
+    }
+
+    @PostMapping(value = "Index")
+    public String OpenAccountIndexHandler() {
+        return "Index";
+    }
+
+    @GetMapping(value = "Overview")
+    public String OverviewHandler() {
+        return "Overview";
     }
 }

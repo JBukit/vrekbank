@@ -6,17 +6,16 @@
 </head>
 <body>
 
-<h1>Open hier uw (extra) rekening</h1>
-
+<h1> Open hier uw (extra) rekening</h1>
 
 <br>
 <br>
-<h1> Wilt u een particuliere of zakelijke (MKB) rekening?</h1>
 
 <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
 <form th:action="@{OpenPersonalAccountConfirmation}" th:object="${Customer}" method="post">
-
-
+<br>
+    <h2> Particuliere rekening</h2>
+<br>
     <input type="submit" value="Vraag een particuliere rekening aan">
 </form>
 
@@ -24,18 +23,20 @@
 <br>
 <br>
 
-
+<h2> Zakelijke (MKB) rekening</h2>
+<br>
 <form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" method="post">
 
     Wat is de naam van het bedrijf waarvoor u de rekening wilt?:<br>
-    <input type="text" name="CompanyName"><br>
-
+<br>    <input type="text" name="CompanyName"><br>
+<br>
     <!-- later dropdown menu van maken, als wij een tabel met sectoren aangemaakt hebben-->
     In welke economische sector is uw bedrijf actief?
+    <br>
 
-    <input type="text" name="Sector"><br>
+    <br><input type="text" name="Sector"><br>
 
-
+<br>
     <input type="submit" value="Vraag een MKB rekening aan">
 </form>
 
@@ -45,20 +46,26 @@
      Indien u een MKB rekening wilt, voor welke sector?<br>
      <input type="text" name="sector"><br>
 
-
  <br>
  <br>
-
 
 -->
 
+<br>
+
+<h3></h3>Ga naar uw <a href="Overview">rekeningoverzicht</a>
+
 
 <br>
-<h3></h3>Ga <a href="Overview.html">terug</a> naar uw rekeningenoverzicht. WERKT NOG NIET. oa object doorgeven?
-nog handler plaatsen?>
+<br>
 
 <br>
-<h3></h3>Ga <a href="Index.html">terug</a> naar de index>
+<br>
+<br>
+
+<form>
+    <input type="button" value="Log out en ga terug naar index" onclick="window.location.href='Index.html'" />
+</form>
 
 </body>
 </html>
