@@ -42,8 +42,7 @@ public class LoginController {
             personalAccounts.add(new PersonalAccount(2, "NL2", 20, 0, false));
             personalAccounts.add(new PersonalAccount(3, "NL3", 30, 0, false));
 
-            businessAccounts.add(new BusinessAccount(1,"NL1",500,0,true,1));
-            businessAccounts.add(new BusinessAccount(2,"NL2",600,0,true,2));
+
 
             model.addAttribute("personalAccounts",personalAccounts);
             model.addAttribute("businessAccounts", businessAccounts);
