@@ -28,7 +28,6 @@ public class TransferController {
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
         return "TransferConfirmation";
-
     }
 
     @GetMapping(value = "accountsummary")
