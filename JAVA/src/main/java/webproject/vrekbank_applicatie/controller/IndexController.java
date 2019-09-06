@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import webproject.vrekbank_applicatie.model.Customer;
+import webproject.vrekbank_applicatie.model.Employee;
 
 @Controller
 public class IndexController {
@@ -29,5 +30,10 @@ public class IndexController {
     public String initdb(Model model){
         customerFileLauncher.makeCustomerList();
         return "login";
+    }
+
+    @GetMapping (value = "employeeIndex")
+    public String indexEmployeeHandler () {
+        return "EmployeeIndex";
     }
 }
