@@ -33,4 +33,3 @@ public class TransferValidator {
         transfers = transferDao.findByDebitIban(debitIban);
         return transfers;    }
 }
-

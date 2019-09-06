@@ -19,7 +19,7 @@ public class TransferController {
     AccountValidator accountValidator;
 
     @PostMapping(value = "TransferConfirmation")
-    public String transferTransferConfirmation (@SessionAttribute("iban") String iban, @ModelAttribute Transfer transfer, Model model) {
+    public String transferTransferConfirmationHandler (@SessionAttribute("iban") String iban, @ModelAttribute Transfer transfer, Model model) {
 
         // in transferobject iban van betaler opnemen
 
@@ -34,33 +34,24 @@ public class TransferController {
         // 1. over te boeken bedrag is beschikbaar.
         // pseudocode: if saldo - transferamount >= minimumsaldo
 
-        // 2. if Combinatie iban en voornaam ontvanger bestaat (VREK klant)
+        // 2. if Combinatie iban en voor?naam ontvanger bestaat (VREK klant)
 
         // in volgende ronde moet dit uitgebreid worden; if ontvanger geen vrekklant, dan de IBAN kan bestaan check.
 
-
-
         // model vullen uit transferobject
         model.addAttribute("debitIban", iban); // betaler
-
         model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
-
         model.addAttribute("transferAmount",transfer.getTransferAmount());
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
 
-
-
-
         //uit tranferobject schrijven naar database in 3 stappen (volgorde?)
 
-        //1.update tabel betaler
+        //1.update tabel betaler(debitIban)
+        accountValidator.Updatebalance(iban, transfer);
 
-        //nog een update functie in accountvalidator schrijven?
-        //accountValidator.
-
-        //2. update tabel ontvanger (bij eigen klant)
-        //accountvalidator....
+        //2. update tabel ontvanger (crebitiban)
+        accountValidator.Updatebalance(transfer.getCreditIban(), transfer);
 
         //3. insert in tabel transfer
         transferValidator.saveTransfer(transfer);

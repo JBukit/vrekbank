@@ -1,8 +1,10 @@
 package webproject.vrekbank_applicatie.model;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import java.math.BigInteger;
-import java.util.*;
 
 @MappedSuperclass
 public abstract class Account {
@@ -11,7 +13,7 @@ public abstract class Account {
     @GeneratedValue
     private int accountId;
 
-    private String IBAN;
+    private String iban;
     private double balance;
     private double minimumBalance;
     private boolean businessAccount;
@@ -35,10 +37,10 @@ public abstract class Account {
 //        representatives = new ArrayList<Customer>();
     }
 
-    public Account(int accountId, String IBAN, double balance,
+    public Account(int accountId, String iban, double balance,
                    double minimumBalance, boolean businessAccount) {
         this.accountId = accountId;
-        this.IBAN = IBAN;
+        this.iban = iban;
         this.balance = balance;
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
@@ -53,11 +55,11 @@ public abstract class Account {
     public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
-    public String getIBAN() {
-        return IBAN;
+    public String getIban() {
+        return iban;
     }
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
     public double getBalance() {
         return balance;

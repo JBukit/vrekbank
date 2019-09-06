@@ -1,20 +1,15 @@
 package webproject.vrekbank_applicatie.controller;
 
-import org.hibernate.mapping.Index;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
-import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
 import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
-
-import java.lang.module.FindException;
 
 import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 
@@ -52,7 +47,7 @@ public class OpenAccountController {
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
         personalAccount.setBalance(100);
         personalAccount.setMinimumBalance(0);
-        personalAccount.setIBAN(CreateIBAN());
+        personalAccount.setIban(CreateIBAN());
         personalAccount.setBusinessAccount(false);
 
         Customer user = customerValidator.findCustomerByUsername(name);
@@ -66,7 +61,7 @@ public class OpenAccountController {
         //opnemen in  model, in ieder geval om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", personalAccount.getBalance());
         model.addAttribute("minimumsaldo", personalAccount.getMinimumBalance());
-        model.addAttribute("rekeningnummer", personalAccount.getIBAN());
+        model.addAttribute("rekeningnummer", personalAccount.getIban());
 
         // add accountinfo to database
 
@@ -116,13 +111,13 @@ public class OpenAccountController {
         businessAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
         businessAccount.setBalance(100);
         businessAccount.setMinimumBalance(0);
-        businessAccount.setIBAN(CreateIBAN());
+        businessAccount.setIban(CreateIBAN());
         businessAccount.setBusinessAccount(true);
 
         //opnemen in  model, om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", businessAccount.getBalance());
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
-        model.addAttribute("rekeningnummer", businessAccount.getIBAN());
+        model.addAttribute("rekeningnummer", businessAccount.getIban());
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
 
         Customer user = customerValidator.findCustomerByUsername(name);
