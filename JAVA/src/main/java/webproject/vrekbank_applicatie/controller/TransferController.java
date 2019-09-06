@@ -19,7 +19,7 @@ public class TransferController {
     AccountValidator accountValidator;
 
     @PostMapping(value = "TransferConfirmation")
-    public String transferTransferConfirmationHandler (@SessionAttribute("iban") String iban, @ModelAttribute Transfer transfer, Model model) {
+    public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer transfer, Model model) {
 
         // in transferobject iban van betaler opnemen
 
@@ -41,7 +41,7 @@ public class TransferController {
         // model vullen uit transferobject
         model.addAttribute("debitIban", iban); // betaler
         model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
-        model.addAttribute("transferAmount",transfer.getTransferAmount());
+        model.addAttribute("transferAmount", transfer.getTransferAmount());
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
 
