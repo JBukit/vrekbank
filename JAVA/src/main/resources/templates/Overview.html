@@ -31,10 +31,12 @@
             <tr>
                 <td>Rekeningnummer: </td>
                 <td>Saldo: </td>
+                <td>Bedrijfsnaam:</td>
             </tr>
             <tr th:each="businessAccount : ${businessAccounts}">
                 <td><a th:href="@{rekening(iban=${businessAccount.IBAN})}"><span th:text="${businessAccount.IBAN}"/></td>
                 <td><span th:text="${businessAccount.balance}"/></td>
+                <td><span th:text="${businessAccount.companyName}"/></td>
             </tr>
         </table>
     </div>

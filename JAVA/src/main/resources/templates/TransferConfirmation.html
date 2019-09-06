@@ -13,30 +13,23 @@
 <table>
 
     <tr>
-        <td>Van rekening: <span th:text="${creditIban}"></span></td>
+        <td>Van rekening:</td>
+        <td><td><span th:text="${debitIban}"></span></td></td>
         <td></td>
     </tr>
     <br>
 
-    <tr>
-        <td></td>
-        <td><td> <span th:text="${creditIbanName}"></span> </td></td>
-        <td></td>
-    </tr>
+
 
     <tr>
         <td>naar rekening:</td>
 
-        <td><td> <span th:text="${debitIban}"></span> </td></td>
+        <td><td> <span th:text="${creditIban}"></span> </td></td>
         <td></td>
     </tr>
     <br>
 
-    <tr>
-        <td></td>
-        <td><td> <span th:text="${debitIbanName}"></span> </td></td>
-        <td></td>
-    </tr>
+   <!-- nog toevoegen: naam ontvanger, evt naam betaler-->
 
     <tr>
         <td>Bedrag:</td>

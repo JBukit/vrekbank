@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Controller
-@SessionAttributes({"name", "iban"})
+@SessionAttributes({"name", "firstName", "iban"})
 public class OverviewController {
 
     @Autowired
@@ -40,8 +40,8 @@ public class OverviewController {
     @GetMapping(value = "rekening")
     public String overviewAccountSummaryHandler (@RequestParam String iban, Model model) {
 
-        //pass name of logged in customer to show username on this page
-        model.containsAttribute("name");
+        //pass name of logged in customer to show firstname on this page
+        model.containsAttribute("firstName");
 
         //pass IBAN number that was selected in Overview.html
         model.addAttribute("iban", iban);
