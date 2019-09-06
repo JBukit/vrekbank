@@ -5,7 +5,7 @@
     <title>Transfer</title>
 </head>
 <body>
-<h1> <span th:text="${name}"/> , op deze pagina kan je geld overmaken vanaf <span th:text="${iban}"/> </h1>
+<h1> <span th:text="${firstName}"/> , op deze pagina kan je geld overmaken vanaf <span th:text="${iban}"/> </h1>
 <form th:action="@{TransferConfirmation}" th:object="${Transfer}" method="post">
     <legend>Transactiegegevens</legend>
     <fieldset>
@@ -14,7 +14,7 @@
                 <td> Van (Iban): </td>
                 <td> <input type="text" name="iban" readonly="readonly" th:value="${iban}"> </td>
                 <td> Naam: </td>
-                <td> <input type="text" name="name" readonly="readonly" th:value="${name}"></td>
+                <td> <input type="text" name="name" readonly="readonly" th:value="${firstName}"></td>
             </tr>
             <tr>
                 <td> Naar (Iban): </td>

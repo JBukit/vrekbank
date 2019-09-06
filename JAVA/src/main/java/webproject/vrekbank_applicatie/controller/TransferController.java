@@ -9,7 +9,7 @@ import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.TransferValidator;
 
 @Controller
-@SessionAttributes({"name", "iban"})
+@SessionAttributes({"name", "firstName", "iban"})
 public class TransferController {
 
     @Autowired
@@ -27,14 +27,14 @@ public class TransferController {
 
 // poging tot doorgeven naar volgend scherm
         model.containsAttribute("iban");
-        model.containsAttribute("name");
+        model.containsAttribute("firstName");
 
         // Controle in twee voorwaarden ( beiden moeten gelden, volgorde willekeurig);
 
         // 1. over te boeken bedrag is beschikbaar.
         // pseudocode: if saldo - transferamount >= minimumsaldo
 
-        // 2. if Combinatie iban en naam ontvanger bestaat (VREK klant)
+        // 2. if Combinatie iban en voornaam ontvanger bestaat (VREK klant)
 
         // in volgende ronde moet dit uitgebreid worden; if ontvanger geen vrekklant, dan de IBAN kan bestaan check.
 
