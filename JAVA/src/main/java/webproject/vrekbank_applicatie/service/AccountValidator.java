@@ -26,10 +26,9 @@ public class AccountValidator {
 
     // iban leidt tot account id, leidt tot balance
 
-    public void Updatebalance (String iban, Transfer transfer) {
+    public void UpdateBalance (String iban, Transfer transfer) {
     //1
-//        Account a = accountDao.findByIBAN(iban);
-
+      //  Account a = accountDao.findByIban(iban);
         Account a = null;
         // 2
         double balance = a.getBalance();
@@ -38,9 +37,9 @@ public class AccountValidator {
         // 4
         a.setBalance(newBalance);
         // 5 schrijven naar db??
+        //accountDao.save(a);
 
     }
-
 
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
