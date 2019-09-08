@@ -50,8 +50,8 @@ public class TransferController {
         //1.update tabel betaler(debitIban)
        accountValidator.UpdateBalance(iban, transfer);
 
-        //2. update tabel ontvanger (crebitiban)
-       // accountValidator.UpdateBalance(transfer.getCreditIban(), transfer);
+        //2. update tabel ontvanger (crebitiban)  // deze apart of opnemen in stap 1?
+        accountValidator.UpdateBalance(transfer.getCreditIban(), transfer);
 
         //3. insert in tabel transfer
         transferValidator.saveTransfer(transfer);

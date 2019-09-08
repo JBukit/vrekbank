@@ -35,10 +35,11 @@ public class AccountValidator {
         double newBalance = balance - transfer.getTransferAmount();
         // 4
         a.setBalance(newBalance);
-        // 5 schrijven naar db??
+        // 5 schrijven naar db
         accountDao.save(a);
 
     }
+    // schrijven naar rekening ontvanger in zelfde functie of separaat?
 
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
