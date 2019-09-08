@@ -28,8 +28,7 @@ public class AccountValidator {
 
     public void UpdateBalance (String iban, Transfer transfer) {
     //1
-      //  Account a = accountDao.findByIban(iban);
-        Account a = null;
+      Account a = accountDao.findByIban(iban);
         // 2
         double balance = a.getBalance();
         // 3
