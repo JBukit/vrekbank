@@ -37,7 +37,7 @@ public class AccountValidator {
         // 4
         a.setBalance(newBalance);
         // 5 schrijven naar db??
-        //accountDao.save(a);
+        accountDao.save(a);
 
     }
 
