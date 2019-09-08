@@ -1,7 +1,14 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
     // variables
+    @Id
+    @GeneratedValue
     private int employeeId;
     private String firstName;
     private String suffix;
