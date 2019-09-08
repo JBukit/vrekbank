@@ -48,7 +48,7 @@ public class TransferController {
         //uit tranferobject schrijven naar database in 3 stappen (volgorde?)
 
         //1.update tabel betaler(debitIban)
-       // accountValidator.UpdateBalance(iban, transfer);
+       //accountValidator.UpdateBalance(iban, transfer);
 
         //2. update tabel ontvanger (crebitiban)
        // accountValidator.UpdateBalance(transfer.getCreditIban(), transfer);

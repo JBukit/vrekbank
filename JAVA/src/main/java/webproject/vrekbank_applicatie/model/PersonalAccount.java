@@ -12,8 +12,8 @@ public class PersonalAccount extends Account {
     }
 
     // getters and setters
-    public PersonalAccount(int accountId, String IBAN, double balance,
+    public PersonalAccount(int accountId, String iban, double balance,
                            double minimumBalance, boolean businessAccount) {
-        super(accountId, IBAN, balance, minimumBalance, businessAccount);
+        super(accountId, iban, balance, minimumBalance, businessAccount);
     }
 }

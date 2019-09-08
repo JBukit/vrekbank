@@ -15,9 +15,9 @@ public class BusinessAccount extends Account {
     public BusinessAccount() {
     }
 
-    public BusinessAccount(int accountId, String IBAN, double balance, double minimumBalance,
+    public BusinessAccount(int accountId, String iban, double balance, double minimumBalance,
                            boolean businessAccount, String companyName, String sector) {
-        super(accountId, IBAN, balance, minimumBalance, businessAccount);
+        super(accountId, iban, balance, minimumBalance, businessAccount);
         //this.companyId = companyId;
         this.companyName = companyName;
         this.sector = sector;
