@@ -105,7 +105,6 @@ public class OpenAccountController {
 
     // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
-
     public String OpenAccountOpenBusinessAccountConfirmationHandler(@SessionAttribute("name") String name,
                                                                     @ModelAttribute BusinessAccount businessAccount,
                                                                     Model model) {
