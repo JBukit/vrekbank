@@ -25,41 +25,56 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
-    // iban leidt tot account id, leidt tot balance
-
-    public void UpdateDebitBalance (String iban, Transfer transfer) {
-    //1
-      Account payingaccount = accountDao.findByIban(iban);
-        // 2
+    public boolean UpdateDebitBalance(String iban, Transfer transfer) {
+        //1 Rekening betaler ophalen uit database
+        Account payingaccount = accountDao.findByIban(iban);
+        // 2 Huidige balans van betaler uitlezen
         double balance = payingaccount.getBalance();
-        // 3
+        // 3 Nieuw saldo uitrekenen
         double newBalance = balance - transfer.getTransferAmount();
-        // 4
-        payingaccount.setBalance(newBalance);
-        // 5 schrijven naar db
-        accountDao.save(payingaccount);
+        //voorwaarde voldoende op rekening, dan 4 en 5 uitvoeren
+        if (newBalance >= payingaccount.getMinimumBalance()) {
+            // 4 nieuw saldo in object zetten
+            payingaccount.setBalance(newBalance);
+            // 5 schrijven naar db
+            accountDao.save(payingaccount);
+            return true;
+        } else {
+            return false;
+        }
     }
-//    schrijven naar rekening ontvanger
-    public void UpdateCreditBalance (String iban, Transfer transfer) {
 
+    //    schrijven naar rekening ontvanger
+    public boolean UpdateCreditBalance(String iban, Transfer transfer) {
         //1 Rekening ontvanger ophalen uit database
         Account receivingaccount = accountDao.findByIban(iban);
 
-        //2 Huidige balans van ontvanger uitlezen
-        double balance = receivingaccount.getBalance();
+        if (receivingaccount != null) {
+            //2 Huidige balans van ontvanger uitlezen
+            double balance = receivingaccount.getBalance();
 
-        //3 Nieuw saldo uitrekenen
-        double newBalance = balance + transfer.getTransferAmount();
+            //3 Nieuw saldo uitrekenen
+            double newBalance = balance + transfer.getTransferAmount();
 
-        //4 Nieuw saldo in object zetten
-        receivingaccount.setBalance(newBalance);
+            // voorwaarde rekeningnr ontvanger bestaat bij VrekBank
 
-        //5 Database aanpassen
-        accountDao.save(receivingaccount);
+            //4 Nieuw saldo in object zetten
+            receivingaccount.setBalance(newBalance);
+
+            //5 Database aanpassen
+            accountDao.save(receivingaccount);
+
+            return true;
+        } else {
+            return false;
+        }
+
     }
+
+}
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
         accountDao.
     }*/
 
-}
+
