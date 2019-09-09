@@ -121,7 +121,7 @@ public class OpenAccountController {
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
 
         Customer user = customerValidator.findCustomerByUsername(name);
-        System.out.println(user.getCustomerId());
+
         // koppel customer aan account
         businessAccount.setOwner(user);
 
