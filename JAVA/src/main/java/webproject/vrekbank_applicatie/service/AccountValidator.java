@@ -41,8 +41,6 @@ public class AccountValidator {
     // schrijven naar rekening ontvanger
 
 
-
-
 /*    public List<Account> findAccountsByCustomerId (int id) {
         accountDao.
     }*/
