@@ -13,4 +13,9 @@ public class EmployeeIndexController {
         return "EmployeeLogin";
     }
 
+    @GetMapping (value = "employeeRegister")
+    public String EmployeeIndexRegistrationHandler () {
+        return "EmployeeRegistration";
+    }
+
 }

@@ -1,26 +1,33 @@
 package webproject.vrekbank_applicatie.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
     // variables
+    @Id
+    @GeneratedValue
     private int employeeId;
     private String firstName;
     private String suffix;
     private String lastName;
     private String userName;
     private String password;
+    private String typeFunction;
 
     // constructors
     public Employee() {
     }
 
-    public Employee(int employeeId, String firstName, String suffix, String lastName, String userName, String password) {
-        super();
-        this.employeeId = employeeId;
+    public Employee(String firstName, String suffix, String lastName, String userName, String password, String function) {
         this.firstName = firstName;
         this.suffix = suffix;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
+        this.typeFunction = function;
     }
 
     // getters and setters
@@ -59,5 +66,11 @@ public class Employee {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String getTypeFunction() {
+        return typeFunction;
+    }
+    public void setTypeFunction(String typeFunction) {
+        this.typeFunction = typeFunction;
     }
 }
