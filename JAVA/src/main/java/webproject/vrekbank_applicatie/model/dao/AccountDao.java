@@ -7,4 +7,6 @@ public interface AccountDao extends CrudRepository<Account, Integer> {
 
     // additional methodes to check/update in database
 
+    public Account findByIban(String iban);
+
 }

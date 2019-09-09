@@ -1,17 +1,19 @@
 package webproject.vrekbank_applicatie.model;
 
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
+
 import javax.persistence.*;
 import java.math.BigInteger;
-import java.util.*;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Account {
     // variables
     @Id
     @GeneratedValue
     private int accountId;
 
-    private String IBAN;
+    private String iban;
     private double balance;
     private double minimumBalance;
     private boolean businessAccount;
@@ -35,10 +37,10 @@ public abstract class Account {
 //        representatives = new ArrayList<Customer>();
     }
 
-    public Account(int accountId, String IBAN, double balance,
+    public Account(int accountId, String iban, double balance,
                    double minimumBalance, boolean businessAccount) {
         this.accountId = accountId;
-        this.IBAN = IBAN;
+        this.iban = iban;
         this.balance = balance;
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
@@ -53,11 +55,11 @@ public abstract class Account {
     public void setAccountId(int accountId) {
         this.accountId = accountId;
     }
-    public String getIBAN() {
-        return IBAN;
+    public String getIban() {
+        return iban;
     }
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
     public double getBalance() {
         return balance;
@@ -112,7 +114,7 @@ public abstract class Account {
         String bankNationality = "NL";
         String numberBankNationality = "";
         int bankNumberNationality;
-        String IBAN = null;
+        String iban = null;
 
        // omzetten nameBank in getal
        for (int i = 0; i < nameBank.length();i++) {
@@ -133,7 +135,7 @@ public abstract class Account {
         for (int i = 0; i < 1; i++) {
             long randomAccountNumber = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
 
-            //Concatenate all numbers to get IBAN in String
+            //Concatenate all numbers to get iban in String
             StringBuilder sb = new StringBuilder();
             sb.append(bankNumber);
             sb.append(randomAccountNumber);
@@ -168,8 +170,8 @@ public abstract class Account {
 
             //Convert StringBuilder to String
             String ibanFinalString = sbFinal.toString();
-            IBAN = ibanFinalString;
+            iban = ibanFinalString;
         }
-        return IBAN;
+        return iban;
     }
 }
