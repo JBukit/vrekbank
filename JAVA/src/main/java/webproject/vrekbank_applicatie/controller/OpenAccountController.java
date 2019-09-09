@@ -19,7 +19,7 @@ public class OpenAccountController {
 
     int welkomstcadeau = 100;
     int standaardminimum = 0;
-    // als het werkt met daos voor beide subklassen de nu ongebruikte accountdao en accountvalidator verwijderen
+
 
     //@Autowired
     //AccountValidator validator;

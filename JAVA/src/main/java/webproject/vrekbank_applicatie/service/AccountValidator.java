@@ -3,6 +3,7 @@ package webproject.vrekbank_applicatie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 
@@ -38,11 +39,28 @@ public class AccountValidator {
         // 5 schrijven naar db
         accountDao.save(payingaccount);
     }
-    // schrijven naar rekening ontvanger
+//    schrijven naar rekening ontvanger
+    public void UpdateCreditBalance (String iban, Transfer transfer) {
 
+        //1 Rekening ontvanger ophalen uit database
+        Account receivingaccount = accountDao.findByIban(iban);
+
+        //2 Huidige balans van ontvanger uitlezen
+        double balance = receivingaccount.getBalance();
+
+        //3 Nieuw saldo uitrekenen
+        double newBalance = balance + transfer.getTransferAmount();
+
+        //4 Nieuw saldo in object zetten
+        receivingaccount.setBalance(newBalance);
+
+        //5 Database aanpassen
+        accountDao.save(receivingaccount);
+    }
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
         accountDao.
     }*/
+
 
 }

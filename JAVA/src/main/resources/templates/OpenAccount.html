@@ -25,7 +25,7 @@
 
 <h2> Zakelijke (MKB) rekening</h2>
 <br>
-<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" method="post">
+<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" id="BusinessAccount" method="post">
 
     Wat is de naam van het bedrijf waarvoor u de rekening wilt?:<br>
 <br>    <input type="text" name="CompanyName"><br>
@@ -33,39 +33,31 @@
     <!-- later dropdown menu van maken, als wij een tabel met sectoren aangemaakt hebben-->
     In welke economische sector is uw bedrijf actief?
     <br>
-
-    <br><input type="text" name="Sector"><br>
-
+    <br>
+    <select name="sector" form="BusinessAccount">
+        <option value="Bouw">Bouw</option>
+        <option value="Financien">Financien</option>
+        <option value="Handel">Handel</option>
+        <option value="Horeca">Horeca</option>
+        <option value="Industrie">Industrie</option>
+        <option value="Landbouw">Landbouw</option>
+        <option value="Logistiek">Logistiek</option>
+        <option value="Onderwijs">Onderwijs</option>
+        <option value="IT">IT</option>
+        <option value="Zorg">Zorg</option>
+    </select>
+<br>
+<br>
 <br>
     <input type="submit" value="Vraag een MKB rekening aan">
 </form>
-
-
-<!-- Nu nog string accepteren, later pull down met bestaande lijst></-->
-<!-- <form th:action="@{OpenAccountConfirmation}" th:object="${Customer}" method="post">
-     Indien u een MKB rekening wilt, voor welke sector?<br>
-     <input type="text" name="sector"><br>
-
- <br>
- <br>
-
--->
-
 <br>
-
+<br>
 <h3></h3>Ga naar uw <a href="Overview">rekeningoverzicht</a>
+<br>
+<br>
+<input type="button" value="Log out en ga terug naar index" onclick="window.location.href='Index.html'" />
 
-
-<br>
-<br>
-
-<br>
-<br>
-<br>
-
-<form>
-    <input type="button" value="Log out en ga terug naar index" onclick="window.location.href='Index.html'" />
-</form>
 
 </body>
 </html>
