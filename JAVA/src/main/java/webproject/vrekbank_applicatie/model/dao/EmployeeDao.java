@@ -5,5 +5,7 @@ import webproject.vrekbank_applicatie.model.Employee;
 
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
+    public Employee findEmployeeByUserName (String userName);
+
 
 }
