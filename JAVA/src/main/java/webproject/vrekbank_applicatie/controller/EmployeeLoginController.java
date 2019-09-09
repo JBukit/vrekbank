@@ -25,7 +25,7 @@ public class EmployeeLoginController {
 
     // handler voor checken of ingegeven login gegevens kloppen
     @PostMapping(value = "employeeOverview")
-    public String EmployeeLoginOverviewHandler(@ModelAttribute Employee loggedInEmployee, Model model) {
+    public String EmployeeOverviewHoofdParticulieren(@ModelAttribute Employee loggedInEmployee, Model model) {
         // find employee based on inlog-information (userName en PW)
         Employee employee = employeeValidator.findEmployeeByUserName(loggedInEmployee.getUserName());
 
