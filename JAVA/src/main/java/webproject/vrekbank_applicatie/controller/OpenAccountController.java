@@ -17,6 +17,8 @@ import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 @SessionAttributes("name")
 public class OpenAccountController {
 
+    int welkomstcadeau = 100;
+    int standaardminimum = 0;
     // als het werkt met daos voor beide subklassen de nu ongebruikte accountdao en accountvalidator verwijderen
 
     //@Autowired
@@ -45,8 +47,8 @@ public class OpenAccountController {
 
         // fill in new account/object
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        personalAccount.setBalance(100);
-        personalAccount.setMinimumBalance(0);
+        personalAccount.setBalance(welkomstcadeau);
+        personalAccount.setMinimumBalance(standaardminimum);
         personalAccount.setIban(CreateIBAN());
         personalAccount.setBusinessAccount(false);
 
@@ -121,7 +123,7 @@ public class OpenAccountController {
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
 
         Customer user = customerValidator.findCustomerByUsername(name);
-        System.out.println(user.getCustomerId());
+
         // koppel customer aan account
         businessAccount.setOwner(user);
 

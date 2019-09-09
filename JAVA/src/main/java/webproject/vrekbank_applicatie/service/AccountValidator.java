@@ -26,19 +26,21 @@ public class AccountValidator {
 
     // iban leidt tot account id, leidt tot balance
 
-    public void UpdateBalance (String iban, Transfer transfer) {
+    public void UpdateDebitBalance (String iban, Transfer transfer) {
     //1
-      Account a = accountDao.findByIban(iban);
+      Account payingaccount = accountDao.findByIban(iban);
         // 2
-        double balance = a.getBalance();
+        double balance = payingaccount.getBalance();
         // 3
         double newBalance = balance - transfer.getTransferAmount();
         // 4
-        a.setBalance(newBalance);
-        // 5 schrijven naar db??
-        accountDao.save(a);
-
+        payingaccount.setBalance(newBalance);
+        // 5 schrijven naar db
+        accountDao.save(payingaccount);
     }
+    // schrijven naar rekening ontvanger
+
+
 
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
