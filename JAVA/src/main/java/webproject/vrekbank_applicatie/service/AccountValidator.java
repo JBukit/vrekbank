@@ -3,6 +3,7 @@ package webproject.vrekbank_applicatie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 
@@ -44,5 +45,6 @@ public class AccountValidator {
 /*    public List<Account> findAccountsByCustomerId (int id) {
         accountDao.
     }*/
+
 
 }
