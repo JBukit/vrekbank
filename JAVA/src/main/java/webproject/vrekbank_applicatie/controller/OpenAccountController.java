@@ -121,6 +121,7 @@ public class OpenAccountController {
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", businessAccount.getIban());
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
+        model.addAttribute ("sector", businessAccount.getSector());
 
         Customer user = customerValidator.findCustomerByUsername(name);
 
