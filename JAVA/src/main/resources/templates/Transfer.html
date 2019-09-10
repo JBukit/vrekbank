@@ -5,34 +5,40 @@
     <title>Transfer</title>
 </head>
 <body>
-<h1> <span th:text="${firstName}"/> , op deze pagina kan je geld overmaken vanaf <span th:text="${iban}"/> </h1>
+<h1><span th:text="${firstName}"/> , op deze pagina kan je geld overmaken vanaf <span th:text="${iban}"/></h1>
 <form th:action="@{TransferConfirmation}" th:object="${Transfer}" method="post">
     <legend>Transactiegegevens</legend>
     <fieldset>
         <table>
             <tr>
-                <td> Van (Iban): </td>
-                <td> <input type="text" name="iban" readonly="readonly" th:value="${iban}"> </td>
-                <td> Naam: </td>
-                <td> <input type="text" name="name" readonly="readonly" th:value="${firstName}"></td>
+                <td> Van (Iban):</td>
+                <td><input type="text" name="iban" readonly="readonly" th:value="${iban}"></td>
+                <td> Naam:</td>
+                <td><input type="text" name="name" readonly="readonly" th:value="${firstName}"></td>
             </tr>
             <tr>
-                <td> Naar (Iban): </td>
-                <td> <input type="text"  name="creditIban"> </td>
-                <td> Naam: </td>
-                <td> <input type="text"  name="recipientName"></td>
+                <td> Naar (Iban):</td>
+                <td><input type="text" name="creditIban"></td>
+
+                <div th:object="${Recipient}">
+
+                    <td> Naam ontvanger (achternaam zonder voorvoegsels):</td>
+                    <td><input type="text" name="recipientName"></td>
+
+                </div>
+
             </tr>
             <tr>
-                <td> Bedrag: </td>
-                <td><input type="text"   name="transferAmount"></td>
+                <td> Bedrag:</td>
+                <td><input type="text" name="transferAmount"></td>
             </tr>
             <tr>
-                <td> Beschrijving: </td>
-                <td> <input type="text"  name="description"></td>
+                <td> Beschrijving:</td>
+                <td><input type="text" name="description"></td>
             </tr>
             <tr>
-                <td> Datum: (jjjj-mm-dd) </td>
-                <td> <input type="text"  name="date"></td>
+                <td> Datum: (jjjj-mm-dd)</td>
+                <td><input type="text" name="date"></td>
             </tr>
         </table>
     </fieldset>
@@ -40,7 +46,7 @@
 </form>
 <br>
 <br>
-<h3>Ga terug naar het <a href="Index.html">begin</a> </h3>
+<h3>Ga terug naar het <a href="Index.html">begin</a></h3>
 </body>
 </html>
 
