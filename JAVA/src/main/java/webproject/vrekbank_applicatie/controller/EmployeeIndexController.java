@@ -18,4 +18,20 @@ public class EmployeeIndexController {
         return "EmployeeRegistration";
     }
 
+    @GetMapping (value = "MKBHighestBalance")
+    public String MKBHighestBalanceHandler () {
+        return "MKBHighestBalance";
+    }
+
+    @GetMapping (value = "MKBMostTransfers")
+    public String MKBMostTransfersHandler () {
+        return "MKBMostTransfers";
+    }
+
+    @GetMapping (value = "MKBSectorView")
+    public String MKBSectorViewHandler () {
+        return "MKBSectorView";
+    }
+
+
 }
