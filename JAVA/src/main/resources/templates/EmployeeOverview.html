@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>EmployeeOverview</title>
+</head>
+<body>
+<h1>Overzicht voor inzien gegevens, gebaseerd op functie van ingelogde Employee</h1>
+<div th:unless="${#lists.isEmpty(top10)}">
+    <h2>Top 10 Particuliere klanten met hoogste saldo</h2>
+        <table>
+            <tr>
+                <td>Saldo:</td>
+                <td>Iban:</td>
+            </tr>
+            <tr th:each="account : ${top10}">
+                <td><span th:text="${account.balance}"/></td>
+                <td><span th:text="${account.iban}"/></td>
+            </tr>
+
+
+        </table>
+</div>
+
+</body>
+</html>

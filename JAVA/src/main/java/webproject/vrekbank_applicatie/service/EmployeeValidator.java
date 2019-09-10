@@ -14,4 +14,9 @@ public class EmployeeValidator {
     public void saveEmployee (Employee employee) {
         employeeDao.save(employee);
     }
+
+    public Employee findEmployeeByUserName (String userName) {
+        return employeeDao.findEmployeeByUserName(userName);
+    }
+
 }

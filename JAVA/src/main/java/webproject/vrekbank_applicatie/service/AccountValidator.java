@@ -3,6 +3,7 @@ package webproject.vrekbank_applicatie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 
@@ -24,25 +25,56 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
-    // iban leidt tot account id, leidt tot balance
-
-    public void UpdateBalance (String iban, Transfer transfer) {
-    //1
-      Account a = accountDao.findByIban(iban);
-        // 2
-        double balance = a.getBalance();
-        // 3
+    public boolean UpdateDebitBalance(String iban, Transfer transfer) {
+        //1 Rekening betaler ophalen uit database
+        Account payingaccount = accountDao.findByIban(iban);
+        // 2 Huidige balans van betaler uitlezen
+        double balance = payingaccount.getBalance();
+        // 3 Nieuw saldo uitrekenen
         double newBalance = balance - transfer.getTransferAmount();
-        // 4
-        a.setBalance(newBalance);
-        // 5 schrijven naar db??
-        accountDao.save(a);
+        //voorwaarde voldoende op rekening, dan 4 en 5 uitvoeren
+        if (newBalance >= payingaccount.getMinimumBalance()) {
+            // 4 nieuw saldo in object zetten
+            payingaccount.setBalance(newBalance);
+            // 5 schrijven naar db
+            accountDao.save(payingaccount);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //    schrijven naar rekening ontvanger
+    public boolean UpdateCreditBalance(String iban, Transfer transfer) {
+        //1 Rekening ontvanger ophalen uit database
+        Account receivingaccount = accountDao.findByIban(iban);
+
+        if (receivingaccount != null) {
+            //2 Huidige balans van ontvanger uitlezen
+            double balance = receivingaccount.getBalance();
+
+            //3 Nieuw saldo uitrekenen
+            double newBalance = balance + transfer.getTransferAmount();
+
+            // voorwaarde rekeningnr ontvanger bestaat bij VrekBank
+
+            //4 Nieuw saldo in object zetten
+            receivingaccount.setBalance(newBalance);
+
+            //5 Database aanpassen
+            accountDao.save(receivingaccount);
+
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
+}
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
         accountDao.
     }*/
 
-}
+

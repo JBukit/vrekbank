@@ -17,7 +17,9 @@ import static webproject.vrekbank_applicatie.model.Account.CreateIBAN;
 @SessionAttributes("name")
 public class OpenAccountController {
 
-    // als het werkt met daos voor beide subklassen de nu ongebruikte accountdao en accountvalidator verwijderen
+    int welkomstcadeau = 100;
+    int standaardminimum = 0;
+
 
     //@Autowired
     //AccountValidator validator;
@@ -45,8 +47,8 @@ public class OpenAccountController {
 
         // fill in new account/object
         personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-        personalAccount.setBalance(100);
-        personalAccount.setMinimumBalance(0);
+        personalAccount.setBalance(welkomstcadeau);
+        personalAccount.setMinimumBalance(standaardminimum);
         personalAccount.setIban(CreateIBAN());
         personalAccount.setBusinessAccount(false);
 
@@ -103,7 +105,6 @@ public class OpenAccountController {
 
     // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
-
     public String OpenAccountOpenBusinessAccountConfirmationHandler(@SessionAttribute("name") String name,
                                                                     @ModelAttribute BusinessAccount businessAccount,
                                                                     Model model) {
@@ -119,9 +120,10 @@ public class OpenAccountController {
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", businessAccount.getIban());
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
+        model.addAttribute ("sector", businessAccount.getSector());
 
         Customer user = customerValidator.findCustomerByUsername(name);
-        System.out.println(user.getCustomerId());
+
         // koppel customer aan account
         businessAccount.setOwner(user);
 

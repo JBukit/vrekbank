@@ -54,6 +54,6 @@ public class LoginController {
             return "Overview";
         }
         // if check = not ok, go back to Login
-        return "Login";
+        return "ErrorLogin";
     }
 }
