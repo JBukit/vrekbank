@@ -1,39 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Startpagina</title>
+    <meta charset="utf-8">
+    <title>VrekBank</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-​
-​
+
 <body>
-<h1> Welkom bij VrekBank</h1>
-​
-<h2/>
-​
-<img src="https://i.postimg.cc/GpzMkf31/19bee9e1-79d6-4bed-a314-d18e09b310c8.jpg" alt="Scrooge McDuck" style="width: 200px; height: auto;
- max-width: 25%; float: left; padding: 4px; margin: 4px 0 4px 4px;"><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2>Klik <a href="/login">hier</a> om in te loggen. </h2>
-<br>
-<h2>Klik <a href="/registration">hier</a> om te registreren.</h2>
-<br>
-<form action="employeeIndex">
-    <input type="submit" value="Ga naar MedewerkersSite"/>
-</form>
-<br>
-<br>
-Klik <a href="initdb">hier</a> om de database te vullen.
-​
-​
-​
+
+<section class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+        <!-- Nav Bar -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+
+            <a class="navbar-brand" href="">VrekBank</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+
+
+        <!-- Title -->
+
+        <div class="row">
+
+            <div class="col-lg-6">
+                <h1 class="big-heading">Voor de echte vrek die op z'n geld zit</h1>
+
+                <a href="/registration" class="btn btn-info btn-lg" role="button">Registreer</a>
+                <a href="/login" class="btn btn-outline-light btn-lg" role="button">Login</a>
+
+            </div>
+
+            <div class="col-lg-6">
+                <img class="title-image" src="images/money.png" alt="duck">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- Features -->
+
+<section class="white-section" id="features">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-check-circle fa-4x"></i>
+                <h3 class="feature-title">Makkelijk in gebruik.</h3>
+                <p>VrekBank geeft je een direct overzicht van je persoonlijke en zakelijke financiën.</p>
+            </div>
+
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-bullseye fa-4x"></i>
+                <h3 class="feature-title">Onbeperkt rekeningen openen.</h3>
+                <p>You get an account! And you get an account!</p>
+            </div>
+
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-heart fa-4x"></i>
+                <h3 class="feature-title">Gratis geld!</h3>
+                <p>VrekBank houdt van al haar klanten en geeft daarom elke nieuwe klant 100 euro!</p>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+<!-- Testimonials -->
+
+<section class="colored-section" id="testimonials">
+
+    <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active container-fluid">
+                <h2 class="testimonial-text">Het is een fijn gevoel dat mijn zelf gestolen geld veilig is bij de VrekBank wanneer ik met de jongens op pad ben.</h2>
+                <img class="testimonial-image" src="images/jongen.png" alt="Zware Jongen">
+                <em>Zware Jongen, Onbekend</em>
+            </div>
+            <div class="carousel-item container-fluid">
+                <h2 class="testimonial-text">Ik vind regelmatig volle portemonnee's en win nogal eens een flinke prijs, dus de VrekBank is een uitkomst voor mij.</h2>
+                <img class="testimonial-image" src="images/guus.png" alt="Guus">
+                <em>Guus Geluk, Duckstad</em>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+</section>
+
+
+<!-- Press -->
+
+<section class="colored-section" id="press">
+    <img class="press-logo" src="images/moneymag.png" alt="moneymag-logo">
+    <img class="press-logo" src="images/forbes.svg" alt="forbes-logo">
+    <img class="press-logo" src="images/bizinsider.png" alt="biz-insider-logo">
+    <img class="press-logo" src="images/mashable.png" alt="mashable-logo">
+
+</section>
+
+
+<!-- Pricing -->
+
+<section class="white-section" id="pricing">
+
+    <h2 class="section-heading">Met één klik open je de perfecte rekening.</h2>
+    <p>VrekBank biedt scherpgesprijsde opties voor individuen en ondernemers.</p>
+
+    <div class="row">
+
+        <div class="pricing-column col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Persoonlijke Rekening</h3>
+                </div>
+                <div class="card-body">
+                    <h2 class="price-text">Gratis</h2>
+                    <p>Welkomstgeschenk van €100</p>
+                    <p>Gratis betaalkaart</p>
+                    <p>24/7 telefonisch support</p>
+                    <button class="btn btn-lg btn-block btn-outline-info" type="button">Meer informatie</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-column col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>MKB Rekening</h3>
+                </div>
+                <div class="card-body">
+                    <h2 class="price-text">€49 / maand</h2>
+                    <p>Welkomstgeschenk van €100</p>
+                    <p>Geen wurgkredieten</p>
+                    <p>24/7 telefonisch support</p>
+                    <button class="btn btn-lg btn-block btn-outline-info" type="button">Meer informatie</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-column col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Private Banking</h3>
+                </div>
+                <div class="card-body">
+                    <h2 class="price-text">€99 / maand</h2>
+                    <p>Ondergebracht in Duycker&Verdien</p>
+                    <p>Gediverseerde portfolio</p>
+                    <p>Persoonlijke concierge</p>
+                    <button class="btn btn-lg btn-block btn-outline-info" type="button">Meer informatie</button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</section>
+
+
+<!-- Call to Action -->
+
+<section class="colored-section" id="cta">
+
+    <div class="container-fluid">
+
+        <h3 class="big-heading">Join de Vrek familie en open vandaag nog een rekening.</h3>
+        <a href="/registration" class="btn btn-info btn-lg" role="button">Registreer</a>
+    </div>
+</section>
+
+
+<!-- Footer -->
+
+<footer class="white-section" id="footer">
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+
+    <div>
+    <a href="/employeeIndex" class="btn btn-info btn-lg" role="button">Ga naar MedewerkersSite</a>
+    </div>
+
+<!--    <form action="employeeIndex">-->
+<!--        <input type="submit" value="Ga naar MedewerkersSite"/>-->
+<!--    </form>-->
+
+    Klik <a href="initdb">hier</a> om de database te vullen.
+
+</footer>
+
+
+</body>
+
+</html>
+
+
 </body>
 </html>

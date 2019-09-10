@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>MKB: Ballers</title>
 </head>
 <body>
 
-<h1>Tien accounts met de meest actieve klanten</h1>
+<h1>Top 10 MKB klanten met de meeste transacties</h1>
+
+<table>
+    <tr>
+        <td>Naam bedrijf:</td>
+        <td>Sector:</td>
+        <td>Totaal transacties:</td>
+    </tr>
+    <tr th:each="account : ${top10}">
+        <td><span th:text="${businessaccount.companyName}"/></td>
+        <td><span th:text="${businessaccount.sector}"/></td>
+        <td><span th:text="${transfer}"/></td>
+    </tr>
+
+
+</table>
 
 </body>
 </html>
