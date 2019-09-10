@@ -11,4 +11,6 @@ public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Inte
     // additional methodes to check/update in database
 
     public List<BusinessAccount> findByOwner(Customer customer);
+
+    public List<BusinessAccount> findAll ();
 }
