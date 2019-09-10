@@ -1,5 +1,7 @@
 package webproject.vrekbank_applicatie.controller;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +11,12 @@ import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.TransferValidator;
 
+
+
 @Controller
 @SessionAttributes({"name", "firstName", "iban"})
-public class TransferController {
+public class TransferController// implements Transaction
+ {
 
     @Autowired
     TransferValidator transferValidator;
@@ -22,6 +27,7 @@ public class TransferController {
     @PostMapping(value = "TransferConfirmation")
     public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer
             transfer, Model model, @ModelAttribute Recipient recipient, Model model2) {
+        // nog controleren; attrictuten van deze twee objecten kunnen we waarschijnlijk ook in 1 modelobject zetten?
 
         // in transferobject iban van betaler opnemen
 
@@ -50,21 +56,37 @@ public class TransferController {
         // recipientname tijdelijk vastleggen
         model2.addAttribute("recipientName", recipient.getRecipientName());
 
-        //uit tranferobject schrijven naar database in 3 stappen (volgorde?)
+        // Transactie starten
+        Session session = null;
+        Transaction transaction = null;
+        transaction.begin();
 
+        try {
+        //uit tranferobject schrijven naar database in 3 stappen. Nb: de checks staan in de update-functies.
         //1.update tabel betaler(debitIban)
-        accountValidator.UpdateDebitBalance(iban, transfer);
+        boolean afschrijving = accountValidator.UpdateDebitBalance(iban, transfer);
 
         //2. update tabel ontvanger (crebitiban)  // deze apart of opnemen in stap 1?
-        accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
-
+        boolean bijschrijving = accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
 
         //3. insert in tabel transfer
         transferValidator.saveTransfer(transfer);
 
+        // indien beide updates gelukt zijn, dus niet een gestruikeld over een check, hele transactie doorvoeren
+        if(afschrijving & bijschrijving)
+        {transaction.commit();}
+
+        // indien een of beide updates mislukt zijn, alles terugdraaien
+        else {transaction.rollback();}
+
+        // catch statement nog te gebruiken; in eerste versie gooien we geen exeptions
+        }catch (Exception ex) {
+            ex.printStackTrace();
+            transaction.rollback(); }
+        finally {session.close();}
+
         return "TransferConfirmation";
     }
-
 
     @GetMapping(value = "accountsummary")
     public String transferAccountSummaryHandler() {
