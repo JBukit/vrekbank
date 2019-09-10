@@ -8,7 +8,7 @@
 <h1>Aanmaken werknemersAccount:</h1>
 <br>
 <br>
-<form th:action="@{EmployeeRegistrationConfirmation}" th:object="${Employee}" method="post">
+<form th:action="@{EmployeeRegistrationConfirmation}" th:object="${Employee}" id="EmployeeRegistration" method="post">
     Voornaam:<br>
     <input type="text" name="firstName"><br>
     Tussenvoegsels:<br>
@@ -16,7 +16,10 @@
     Achternaam:<br>
     <input type="text" name="lastName"><br>
     Functie: (beter om dropdown menu te maken met keuzes?<br>
-    <input type="text" name="typeFunction"><br>
+    <select name="typeFunction" form="EmployeeRegistration" required>
+        <option value="Hoofd Particulieren">Hoofd Particulieren</option>
+        <option value="Hoofd MKB">Hoofd MKB</option>
+    </select>
     <br><br>
 
     Vul inloggegevens in:<br><br>
