@@ -3,20 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-<h1>Inloggen</h1>
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card logincard">
+            <div class="card-header loginheader">
+                <h3>Log in</h3>
+            </div>
+            <div class="card-body">
+                <form th:action="@{Overview}" th:object="${Customer}" method="post">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" class="form-control" name="username" placeholder="username">
 
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+                    <div class="row align-items-center remember">
+                        <input type="checkbox">Onthoud mij
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Nog geen account?<a href="/registration">Registreer</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <input type="button" class="btn btn-outline-light btn-sm" value="Ga terug" onclick="history.back()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<form th:action="@{Overview}" th:object="${Customer}" method="post">
-    Login:<br>
-    <input type="text" name="username"><br>
-    Password:<br>
-    <input type="text" name="password"><br><br>
-    <input type="button" value="Ga terug" onclick="history.back()"> <input type="submit" value="Login">
-</form>
 
 </body>
 </html>
+
+
+
+<!--<h1>Inloggen</h1>-->
+
+
+<!--<form th:action="@{Overview}" th:object="${Customer}" method="post">-->
+<!--    Login:<br>-->
+<!--    <input type="text" name="username"><br>-->
+<!--    Password:<br>-->
+<!--    <input type="text" name="password"><br><br>-->
+<!--    <input type="button" value="Ga terug" onclick="history.back()"> <input type="submit" value="Login">-->
+<!--</form>-->
+
