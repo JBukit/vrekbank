@@ -32,7 +32,7 @@ public class TransferController {
         // Controle in twee voorwaarden ( beiden moeten gelden, volgorde willekeurig);
 
         // 1. over te boeken bedrag is beschikbaar.
-        // pseudocode: if saldo - transferamount >= minimumsaldo
+        //        // pseudocode: if saldo - transferamount >= minimumsaldo    (IS GEDAAN in de Validator!)
 
         // 2. if Combinatie iban en voor?naam ontvanger bestaat (VREK klant)
 
