@@ -43,11 +43,7 @@ public class EmployeeIndexController {
     public String MKBHighestBalanceHandler (@SessionAttribute("name") String name,
                                             @ModelAttribute Employee loggedInEmployee, Model model) {
     // find employee based on inlog-information (userName en PW)
-        System.out.println("start");
         Employee employee = employeeValidator.findEmployeeByUserName(name);
-        System.out.println(loggedInEmployee.getUserName());
-        System.out.println(employee.getTypeFunction());
-
         // if function = Hoofd MKB, show 10 accounts with highest balance
         if (employee.getTypeFunction().equals(FUNCTION_HEAD_MKB)) {
             List<BusinessAccount> top10 = BusinessAccountValidator.showTop10BusinessAccounts();
