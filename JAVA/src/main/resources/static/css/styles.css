@@ -274,3 +274,20 @@ input:focus{
 .links a{
   margin-left: 4px;
 }
+
+
+/*Below CSS for Error.html*/
+
+
+.error {
+  background-image: url('https://i.imgur.com/z92KL2Z.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Source Sans Pro";
+}
+
+.error-actions .btn {
+  margin-left:6rem;
+  margin-top: 25rem;
+}
