@@ -51,29 +51,32 @@ public class AccountValidator {
         Account receivingaccount = accountDao.findByIban(iban);
 
         // voorwaarde rekeningnr ontvanger bestaat bij VrekBank en
-        if (receivingaccount != null &
+        if (receivingaccount != null)
             // voorwaarde opgegeven naam ontvanger (achternaam zonder voorvoegsels, later te verrijken) staat ook in DB
-            recipient.getRecipientName().equals(receivingaccount.getOwner().getLastName()) ){
+            if (recipient.getRecipientName().equals(receivingaccount.getOwner().getLastName())) {
 
-            //2 Huidige balans van ontvanger uitlezen
-            double balance = receivingaccount.getBalance();
+                //2 Huidige balans van ontvanger uitlezen
+                double balance = receivingaccount.getBalance();
 
-            //3 Nieuw saldo uitrekenen
-            double newBalance = balance + transfer.getTransferAmount();
+                //3 Nieuw saldo uitrekenen
+                double newBalance = balance + transfer.getTransferAmount();
 
-            //4 Nieuw saldo in object zetten
-            receivingaccount.setBalance(newBalance);
+                //4 Nieuw saldo in object zetten
+                receivingaccount.setBalance(newBalance);
 
-            //5 Database aanpassen
-            accountDao.save(receivingaccount);
+                //5 Database aanpassen
+                accountDao.save(receivingaccount);
 
-            return true;
-        } else {
+                return true;
+            } else {
+                return false;
+            }
+        else {
             return false;
         }
 
-    }
 
+    }
 }
 
 /*    public List<Account> findAccountsByCustomerId (int id) {
