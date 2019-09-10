@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<h1>Hier vind u de top 10 MKB rekeningen met het hoogste saldo:</h1>
+<h1>Top 10 MKB rekeningen</h1>
 
 <div th:unless="${#lists.isEmpty(top10)}">
-    <h2>Top 10 MKB klanten met hoogste saldo</h2>
+    <h2>Hier vind u de top 10 MKB rekeningen met het hoogste saldo:</h2>
     <table>
         <tr>
             <td>Saldo:</td>
@@ -19,8 +19,6 @@
             <td><span th:text="${account.balance}"/></td>
             <td><span th:text="${account.iban}"/></td>
         </tr>
-
-
     </table>
 </div>
 
