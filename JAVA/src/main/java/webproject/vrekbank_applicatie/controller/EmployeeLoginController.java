@@ -16,6 +16,7 @@ import java.util.List;
 public class EmployeeLoginController {
 
     private final String FUNCTION_HEAD_PERSONAL = "Hoofd Particulieren";
+    private final String FUNCTION_HEAD_MKB = "Hoofd MKB";
 
     @Autowired
     EmployeeValidator employeeValidator;
@@ -30,9 +31,15 @@ public class EmployeeLoginController {
         Employee employee = employeeValidator.findEmployeeByUserName(loggedInEmployee.getUserName());
 
         // if function = Hoofd Particuliern, show 10 accounts with highest balance
-        if(employee.getTypeFunction().equals(FUNCTION_HEAD_PERSONAL)) {
+        if (employee.getTypeFunction().equals(FUNCTION_HEAD_PERSONAL)) {
             List<PersonalAccount> top10 = personalAccountValidator.showTop10PersonalAccounts();
             model.addAttribute("top10", top10);
+            return "EmployeeOverview";
+        }
+
+
+        if (employee.getTypeFunction().equals(FUNCTION_HEAD_MKB)) {
+            return "MKBOverview";
         }
         return "EmployeeOverview";
     }

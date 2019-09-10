@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
+import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 
@@ -45,18 +46,20 @@ public class AccountValidator {
     }
 
     //    schrijven naar rekening ontvanger
-    public boolean UpdateCreditBalance(String iban, Transfer transfer) {
+    public boolean UpdateCreditBalance(String iban, Transfer transfer, Recipient recipient) {
         //1 Rekening ontvanger ophalen uit database
         Account receivingaccount = accountDao.findByIban(iban);
 
-        if (receivingaccount != null) {
+        // voorwaarde rekeningnr ontvanger bestaat bij VrekBank en
+        if (receivingaccount != null &
+            // voorwaarde opgegeven naam ontvanger (achternaam zonder voorvoegsels, later te verrijken) staat ook in DB
+            recipient.getRecipientName().equals(receivingaccount.getOwner().getLastName()) ){
+
             //2 Huidige balans van ontvanger uitlezen
             double balance = receivingaccount.getBalance();
 
             //3 Nieuw saldo uitrekenen
             double newBalance = balance + transfer.getTransferAmount();
-
-            // voorwaarde rekeningnr ontvanger bestaat bij VrekBank
 
             //4 Nieuw saldo in object zetten
             receivingaccount.setBalance(newBalance);

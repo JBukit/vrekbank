@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.Transfer;
+import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.TransferValidator;
 
@@ -19,7 +20,8 @@ public class TransferController {
     AccountValidator accountValidator;
 
     @PostMapping(value = "TransferConfirmation")
-    public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer transfer, Model model) {
+    public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer
+            transfer, Model model, @ModelAttribute Recipient recipient, Model model2) {
 
         // in transferobject iban van betaler opnemen
 
@@ -45,14 +47,17 @@ public class TransferController {
         model.addAttribute("description", transfer.getDescription());
         model.addAttribute("date", transfer.getDate());
 
+        // recipientname tijdelijk vastleggen
+        model2.addAttribute("recipientName", recipient.getRecipientName());
+
         //uit tranferobject schrijven naar database in 3 stappen (volgorde?)
 
         //1.update tabel betaler(debitIban)
         accountValidator.UpdateDebitBalance(iban, transfer);
 
         //2. update tabel ontvanger (crebitiban)  // deze apart of opnemen in stap 1?
-        //accountValidator.UpdateBalance(transfer.getCreditIban(), transfer);
-        accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer);
+        accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
+
 
         //3. insert in tabel transfer
         transferValidator.saveTransfer(transfer);
