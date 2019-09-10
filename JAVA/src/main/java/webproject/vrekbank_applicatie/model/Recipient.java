@@ -8,19 +8,17 @@ package webproject.vrekbank_applicatie.model;
 
 public class Recipient {
 
-    public String recipientName;
+    //variabele
+    private String recipientName;
 
 
-
+// constructor
     public Recipient(String recipientName) {
         this.recipientName = recipientName;
     }
 
+    //getter
     public String getRecipientName() {
         return recipientName;
-    }
-
-    public void setRecipientName(String recipientName) {
-        this.recipientName = recipientName;
     }
 }
