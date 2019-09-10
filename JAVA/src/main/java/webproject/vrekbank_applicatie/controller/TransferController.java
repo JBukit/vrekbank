@@ -1,6 +1,7 @@
 package webproject.vrekbank_applicatie.controller;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,10 @@ import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.TransferValidator;
 
 
-
 @Controller
 @SessionAttributes({"name", "firstName", "iban"})
 public class TransferController// implements Transaction
- {
+{
 
     @Autowired
     TransferValidator transferValidator;
@@ -57,12 +57,14 @@ public class TransferController// implements Transaction
         model2.addAttribute("recipientName", recipient.getRecipientName());
 
         // Transactie starten
-        Session session = null;
-        Transaction transaction = null;
-        transaction.begin();
-
-        try {
-        //uit tranferobject schrijven naar database in 3 stappen. Nb: de checks staan in de update-functies.
+//        SessionFactory sessionFactory;
+//        Session session = null;
+//        session = sessionFactory.openSession();
+//        Transaction transaction = null;
+//        transaction = session.beginTransaction();
+//
+//        try {
+//            //uit tranferobject schrijven naar database in 3 stappen. Nb: de checks staan in de update-functies.
         //1.update tabel betaler(debitIban)
         boolean afschrijving = accountValidator.UpdateDebitBalance(iban, transfer);
 
@@ -73,20 +75,27 @@ public class TransferController// implements Transaction
         transferValidator.saveTransfer(transfer);
 
         // indien beide updates gelukt zijn, dus niet een gestruikeld over een check, hele transactie doorvoeren
-        if(afschrijving & bijschrijving)
-        {transaction.commit();}
+//            if (afschrijving & bijschrijving) {
+//                transaction.commit();
+        //}
 
-        // indien een of beide updates mislukt zijn, alles terugdraaien
-        else {transaction.rollback();}
+//            // indien een of beide updates mislukt zijn, alles terugdraaien
+//            else {
+//                transaction.rollback();
+//                //toevoegen een return naar een foutmeldingspagina
+//            }
+//            // catch statement nog te gebruiken; in eerste versie gooien we geen exeptions
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            transaction.rollback();
+//            /// toevoegen een return naar een foutmeldingspagina
+//        } finally {
+//            session.close();
 
-        // catch statement nog te gebruiken; in eerste versie gooien we geen exeptions
-        }catch (Exception ex) {
-            ex.printStackTrace();
-            transaction.rollback(); }
-        finally {session.close();}
 
         return "TransferConfirmation";
     }
+
 
     @GetMapping(value = "accountsummary")
     public String transferAccountSummaryHandler() {
