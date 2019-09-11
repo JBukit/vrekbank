@@ -1,3 +1,4 @@
+/*Below CSS for Index.html*/
 
 body {
   font-family: "Source Sans Pro";
@@ -13,8 +14,6 @@ p {
   color: #8f8f8f;
 }
 
-
-
 /* Headings */
 
 .big-heading {
@@ -29,7 +28,6 @@ p {
 }
 
 /* Containers */
-
 
 .container-fluid{
   padding: 7% 15%;
@@ -49,7 +47,6 @@ p {
 .white-section {
   background-color: #fff;
 }
-
 
 /* Navigation Bar */
 
@@ -147,7 +144,6 @@ p {
   margin: 20px;
 }
 
-
 #press {
   background-color: #96C1B7;
   padding-bottom: 3%;
@@ -173,11 +169,7 @@ p {
   padding: 3% 2%;
 }
 
-/* CTA Section */
-
-
 /* Footer Section */
-
 
 .social-icon {
   margin: 20px 10px;
@@ -278,7 +270,6 @@ input:focus{
 
 /*Below CSS for Error.html*/
 
-
 .error {
   background-image: url('https://i.imgur.com/z92KL2Z.png');
   background-size: cover;
@@ -291,6 +282,7 @@ input:focus{
   margin-left:6rem;
   margin-top:25rem;
 }
+
 
 /*Below CSS for ErrorLogin.html*/
 
