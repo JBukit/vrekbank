@@ -298,3 +298,25 @@ input:focus{
   margin-left:6rem;
   margin-top:30rem;
 }
+
+/*Below CSS for Overview.html*/
+
+.colored-section-navbar {
+  background-color: #96C1B7;
+  color: #fff;
+  height: 100px;
+}
+
+#title .container-fluid {
+  padding: 1% 15% 7%;
+}
+
+#testies .container-fluid {
+  padding: 2% 20%;
+}
+
+.knop {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+;
+}
