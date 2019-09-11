@@ -289,5 +289,20 @@ input:focus{
 
 .error-actions .btn {
   margin-left:6rem;
-  margin-top: 25rem;
+  margin-top:25rem;
+}
+
+/*Below CSS for ErrorLogin.html*/
+
+.errorlogin {
+  background-image: url('https://i.imgur.com/uKJj0WC.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Source Sans Pro";
+}
+
+.errorlogin-actions .btn {
+  margin-left:6rem;
+  margin-top:30rem;
 }
