@@ -3,42 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <title>Rekening Overzicht</title>
-</head>
 
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
 
 <body>
 
-<h1>Welkom <span th:text="${firstName}"/></h1>
+<!-- Nav Bar -->
 
-<h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
+<section class="colored-section-navbar" id="title">
 
-<p>NOTE: Er moet nog een - voor als het een debit transfer is!</p>
+    <div class="container-fluid navbarheight">
 
-<div th:unless="${#lists.isEmpty(totalTransferList)}">
-    <table style="width:50%">
-        <tr align="left">
-            <th>Datum: </th>
-            <th>Omschrijving: </th>
-            <th>Bedrag: </th>
-            <th>Credit rekening: </th>
-            <th>Debit rekening: </th>
-        </tr>
-        <tr th:each="transfer : ${totalTransferList}">
-            <td><span th:text="${transfer.date}"/></td>
-            <td><span th:text="${transfer.description}"/></td>
-            <td><span th:text="${transfer.transferAmount}"/></td>
-            <td><span th:text="${transfer.creditIban}"/></td>
-            <td><span th:text="${transfer.debitIban}"/></td>
-        </tr>
-    </table>
-</div>
-<div>
+        <nav class="navbar navbar-expand-lg navbar-dark">
 
-<h2>Klik <a href="transaction">hier</a> om geld over te maken naar een andere rekening. </h2>
+            <a class="navbar-brand" href="">VrekBank</a>
 
-<h2>Klik <a href="overview">hier</a> om terug te gaan naar je account overview. </h2>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-</div>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</section>
+
+<!-- Welcome message  -->
+
+
+<section class="white-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="col-md">
+            <h1> Welkom <span th:text="${firstName}"/></h1>
+            <h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Table overview transactions -->
+
+<section class="white-section" id="testies">
+
+    <section class="container-fluid">
+
+        <div th:unless="${#lists.isEmpty(totalTransferList)}">
+            <h3>Overzicht van transacties</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Datum: </th>
+                    <th scope="col">Omschrijving: </th>
+                    <th scope="col">Bedrag: </th>
+                    <th scope="col">Credit rekening: </th>
+                    <th scope="col">Debit rekening: </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transfer : ${totalTransferList}">
+                    <td><span th:text="${transfer.date}"/></td>
+                    <td><span th:text="${transfer.description}"/></td>
+                    <td><span th:text="${transfer.transferAmount}"/></td>
+                    <td><span th:text="${transfer.creditIban}"/></td>
+                    <td><span th:text="${transfer.debitIban}"/></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- Buttons Transfer & Overview -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a href="/transaction" class="btn btn-info btn-lg" role="button">Maak geld over naar een andere rekening</a>
+        </div>
+        <div class="knop">
+            <a href="/overview" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer class="white-section" id="footer">
+
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+
+</footer>
 
 </body>
 
