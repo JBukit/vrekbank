@@ -299,7 +299,7 @@ input:focus{
   margin-top:30rem;
 }
 
-/*Below CSS for Overview.html*/
+/*Below CSS for Overview.html & AccountSummary.html*/
 
 .colored-section-navbar {
   background-color: #96C1B7;
@@ -320,3 +320,26 @@ input:focus{
   padding-top: 1rem;
 ;
 }
+
+
+/*Below CSS for Transfer.html*/
+
+#meow {
+  padding-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
