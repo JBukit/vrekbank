@@ -2,6 +2,7 @@ package webproject.vrekbank_applicatie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Recipient;
@@ -26,23 +27,31 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
-    public boolean UpdateDebitBalance(String iban, Transfer transfer) {
+
+    public Account prepareDeduction  (String iban, Transfer transfer) {
         //1 Rekening betaler ophalen uit database
         Account payingaccount = accountDao.findByIban(iban);
         // 2 Huidige balans van betaler uitlezen
         double balance = payingaccount.getBalance();
         // 3 Nieuw saldo uitrekenen
         double newBalance = balance - transfer.getTransferAmount();
-        //voorwaarde voldoende op rekening, dan 4 en 5 uitvoeren
-        if (newBalance >= payingaccount.getMinimumBalance()) {
-            // 4 nieuw saldo in object zetten
-            payingaccount.setBalance(newBalance);
-            // 5 schrijven naar db
-            accountDao.save(payingaccount);
+        // 4 nieuw saldo in object zetten
+        payingaccount.setBalance(newBalance);
+        //5 geeft object met beoogd nieuw saldo terug
+        return payingaccount;
+    }
+
+    public boolean debitDeductionIsAllowed(String iban, Transfer transfer) {
+        //voorwaarde voldoende op rekening checken
+        if (prepareDeduction(iban, transfer).getBalance() >= prepareDeduction(iban, transfer).getMinimumBalance()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public void UpdateDebitBalance (String iban, Transfer transfer){
+            accountDao.save(prepareDeduction(iban, transfer));
     }
 
     //    schrijven naar rekening ontvanger
