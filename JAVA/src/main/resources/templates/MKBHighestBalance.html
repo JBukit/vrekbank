@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>MKBHighestBalance</title>
 </head>
 <body>
 
-<h1>Hier vind u de rekeningen met het hoogste saldo:</h1>
+<h1>Top 10 MKB rekeningen</h1>
+
+<div th:unless="${#lists.isEmpty(top10)}">
+    <h2>Hier vind u de top 10 MKB rekeningen met het hoogste saldo:</h2>
+    <table>
+        <tr>
+            <td>Saldo:</td>
+            <td>Iban:</td>
+        </tr>
+        <tr th:each="account : ${top10}">
+            <td><span th:text="${account.balance}"/></td>
+            <td><span th:text="${account.iban}"/></td>
+        </tr>
+    </table>
+</div>
+
+<br>
+<input type="button" value="Ga terug" onclick="history.back()">
 
 </body>
 </html>

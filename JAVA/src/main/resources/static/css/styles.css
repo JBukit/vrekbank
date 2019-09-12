@@ -1,3 +1,4 @@
+/*Below CSS for Index.html*/
 
 body {
   font-family: "Source Sans Pro";
@@ -13,8 +14,6 @@ p {
   color: #8f8f8f;
 }
 
-
-
 /* Headings */
 
 .big-heading {
@@ -29,7 +28,6 @@ p {
 }
 
 /* Containers */
-
 
 .container-fluid{
   padding: 7% 15%;
@@ -49,7 +47,6 @@ p {
 .white-section {
   background-color: #fff;
 }
-
 
 /* Navigation Bar */
 
@@ -147,7 +144,6 @@ p {
   margin: 20px;
 }
 
-
 #press {
   background-color: #96C1B7;
   padding-bottom: 3%;
@@ -173,11 +169,7 @@ p {
   padding: 3% 2%;
 }
 
-/* CTA Section */
-
-
 /* Footer Section */
-
 
 .social-icon {
   margin: 20px 10px;
@@ -194,3 +186,160 @@ p {
     transform: rotate(0);
   }
 }
+
+
+/*Below CSS for Login.html*/
+
+html,body{
+  background-image: url('https://i.imgur.com/Ee8kCfB.png');
+  /*background-color: #96C1B7;*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Source Sans Pro";
+}
+
+.container{
+  height: 100%;
+  align-content: center;
+}
+
+.logincard{
+  height: 400px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.2) !important;
+}
+
+.loginheader h3{
+  color: white;
+}
+
+.card-footer{
+  height: 100px;
+}
+
+.justify-content-center {
+  padding-bottom: 15px;
+}
+
+.input-group-prepend span{
+  width: 50px;
+  background-color: #96C1B7;
+  color: black;
+  border:0 !important;
+}
+
+input:focus{
+  box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+  color: white;
+}
+
+.remember input
+{
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.login_btn{
+  color: black;
+  background-color: #96C1B7;
+  width: 100px;
+}
+
+.login_btn:hover{
+  color: black;
+  background-color: white;
+}
+
+.links{
+  color: white;
+}
+
+.links a{
+  margin-left: 4px;
+}
+
+
+/*Below CSS for Error.html*/
+
+.error {
+  background-image: url('https://i.imgur.com/z92KL2Z.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Source Sans Pro";
+}
+
+.error-actions .btn {
+  margin-left:6rem;
+  margin-top:25rem;
+}
+
+
+/*Below CSS for ErrorLogin.html*/
+
+.errorlogin {
+  background-image: url('https://i.imgur.com/uKJj0WC.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  font-family: "Source Sans Pro";
+}
+
+.errorlogin-actions .btn {
+  margin-left:6rem;
+  margin-top:30rem;
+}
+
+/*Below CSS for Overview.html & AccountSummary.html*/
+
+.colored-section-navbar {
+  background-color: #96C1B7;
+  color: #fff;
+  height: 100px;
+}
+
+#title .container-fluid {
+  padding: 1% 15% 7%;
+}
+
+#testies .container-fluid {
+  padding: 2% 20%;
+}
+
+.knop {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+;
+}
+
+
+/*Below CSS for Transfer.html*/
+
+#meow {
+  padding-bottom: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
