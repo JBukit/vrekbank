@@ -28,17 +28,17 @@ public class AccountValidator {
     }
 
 
-    public Account prepareDeduction  (String iban, Transfer transfer) {
+    public Account prepareDeduction(String iban, Transfer transfer) {
         //1 Rekening betaler ophalen uit database
-        Account payingaccount = accountDao.findByIban(iban);
+        Account payingAccount = accountDao.findByIban(iban);
         // 2 Huidige balans van betaler uitlezen
-        double balance = payingaccount.getBalance();
+        double balance = payingAccount.getBalance();
         // 3 Nieuw saldo uitrekenen
         double newBalance = balance - transfer.getTransferAmount();
         // 4 nieuw saldo in object zetten
-        payingaccount.setBalance(newBalance);
+        payingAccount.setBalance(newBalance);
         //5 geeft object met beoogd nieuw saldo terug
-        return payingaccount;
+        return payingAccount;
     }
 
     public boolean debitDeductionIsAllowed(String iban, Transfer transfer) {
@@ -50,46 +50,41 @@ public class AccountValidator {
         }
     }
 
-    public void UpdateDebitBalance (String iban, Transfer transfer){
-            accountDao.save(prepareDeduction(iban, transfer));
+    public void updateDebitBalance(String iban, Transfer transfer) {
+        accountDao.save(prepareDeduction(iban, transfer));
     }
 
-    //    schrijven naar rekening ontvanger
-    public boolean UpdateCreditBalance(String iban, Transfer transfer, Recipient recipient) {
-        //1 Rekening ontvanger ophalen uit database
-        Account receivingaccount = accountDao.findByIban(iban);
 
-        // voorwaarde rekeningnr ontvanger bestaat bij VrekBank en
-        if (receivingaccount != null)
-            // voorwaarde opgegeven naam ontvanger (achternaam zonder voorvoegsels, later te verrijken) staat ook in DB
-            if (recipient.getRecipientName().equals(receivingaccount.getOwner().getLastName())) {
+    public Account prepareAddition(String iban, Transfer transfer) {
+        // 1. Rekening ontvanger ophalen
+        Account receivingAccount = accountDao.findByIban(iban);
+        // 2. Hoeveel geld op rekening ontvanger bepalen
+        double balance = receivingAccount.getBalance();
+        // 3. Nieuw saldo = oud saldo + bijschrijving
+        double newBalance = balance + transfer.getTransferAmount();
+        // 4. Muteer het object
+        receivingAccount.setBalance(newBalance);
+        return receivingAccount;
+    }
 
-                //2 Huidige balans van ontvanger uitlezen
-                double balance = receivingaccount.getBalance();
-
-                //3 Nieuw saldo uitrekenen
-                double newBalance = balance + transfer.getTransferAmount();
-
-                //4 Nieuw saldo in object zetten
-                receivingaccount.setBalance(newBalance);
-
-                //5 Database aanpassen
-                accountDao.save(receivingaccount);
-
+    public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
+        // 1. Controleer of iban ontvanger in de database voorkomt
+        if (accountDao.findByIban(iban) != null) {
+            if (accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getRecipientName())) {
                 return true;
             } else {
                 return false;
             }
-        else {
+        } else {
             return false;
         }
+    }
 
-
+    public void updateCreditBalance(String iban, Transfer transfer) {
+        prepareAddition(iban, transfer);
+        accountDao.save(prepareAddition(iban, transfer));
     }
 }
 
-/*    public List<Account> findAccountsByCustomerId (int id) {
-        accountDao.
-    }*/
 
 

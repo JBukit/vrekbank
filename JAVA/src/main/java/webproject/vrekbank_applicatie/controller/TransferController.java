@@ -36,6 +36,7 @@ public class TransferController {
         model.containsAttribute("iban");
         model.containsAttribute("firstName");
 
+
         // model vullen uit transferobject
         model.addAttribute("debitIban", iban); // betaler
         model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
@@ -51,26 +52,28 @@ public class TransferController {
 
         //1.check op rekening betaler
 
-        accountValidator.debitDeductionIsAllowed(iban, transfer);
+        boolean balanceOK = accountValidator.debitDeductionIsAllowed(iban, transfer);
 
         //2. check op rekening ontvanger
+        boolean nameCorrect = accountValidator.creditAdditionIsAllowed(transfer.getCreditIban(), transfer, recipient);
+
 
         // 3. If 1 en 2 true, alle drie de mutaties op database uitvoeren
+        if (balanceOK & nameCorrect) {
 
-        accountValidator.UpdateDebitBalance(iban, transfer);
+            accountValidator.updateDebitBalance(iban, transfer);
 
-        accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
+            accountValidator.updateCreditBalance(transfer.getCreditIban(), transfer);
 
-        transferValidator.saveTransfer(transfer);
+            transferValidator.saveTransfer(transfer);
 
-        return "TransferConfirmation";
+            return "TransferConfirmation";
+
+        } else {return "TransferFailed";}
     }
 
 
-
-
 //                //toevoegen links naar specifieke foutmeldingspagina?
-
 
 
     @GetMapping(value = "accountsummary")

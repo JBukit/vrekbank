@@ -105,7 +105,8 @@
                     <span class="input-group-text">Naar</span>
                 </div>
                 <input type="text" name="creditIban" class="form-control" placeholder="IBAN ontvanger">
-                th:object="${Transfer}"
+
+                <div th:object="${Recipient}">
                 <input type="text" name="recipientName" class="form-control" placeholder="Naam ontvanger (achternaam zonder voorvoegsel)">
             </div>
 
