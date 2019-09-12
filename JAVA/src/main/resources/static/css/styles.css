@@ -328,6 +328,11 @@ input:focus{
   padding-bottom: 1rem;
 }
 
+.img-fluid {
+  height: 15rem;
+  width: 25rem;
+}
+
 
 
 
