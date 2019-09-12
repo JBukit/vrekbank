@@ -3,49 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
 
-<h1>Klant worden bij VrekBank</h1>
+<!-- Nav Bar -->
+<section class="colored-section-navbar" id="title">
+    <div class="container-fluid navbarheight">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="">VrekBank</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
 
-Vul hier uw gegevens in:
-<br>
-<br>
-<form th:action="@{RegistrationConfirmation}" th:object="${customer}" method="post">
-    Voornaam:<br>
-    <input type="text" name="firstName"><br>
-    Tussenvoegsels:<br>
-    <input type="text" name="suffix"><br>
-    Achternaam:<br>
-    <input type="text" name="lastName"><br>
-    Straat en huisnummer:<br>
-    <input type="text" name="address"><br>
-    Postcode:<br>
-    <input type="text" name="zipcode"><br>
-    Plaats:<br>
-    <input type="text" name="city"><br>
-    Geboortedatum:<br>
-    <input type="text" name="dob"><br>
-    BSN:<br>
-    <input type="text" name="BSN"><br>
-    E-mailadres:<br>
-    <input type="text" name="email"><br>
-    Geslacht:<br>
-    <input type="radio" name="sex" value='m'> Man<br>
-    <input type="radio" name="sex" value='f'> Vrouw<br><br><br>
-    Maak nieuw gebruikersaccount:<br><br>
-    Gebruikersnaam:<br>
-    <input type="text" name="username"><br>
-    Wachtwoord:<br>
-    <input type="text" name="password"><br>
-    Pincode:<br>
-    <input type="text" name="PIN"><br><br>
-    <input type="button" value="Ga terug" onclick="history.back()"> <input type="submit" value="Verstuur">
-</form>
+<section class="colored-section" id="testies">
+    <div class="container-fluid">
+        <div class="col-md">
 
+            <h1>Klant worden bij VrekBank</h1>
+        </div>
+    </div>
+</section>
 
-<!--<br>
-Ga <a href="Index.html">terug</a> naar het begin...-->
+<section class="colored-section" id="testies">
+
+    <section class="container-fluid">
+
+        <form th:action="@{RegistrationConfirmation}" th:object="${customer}" method="post">
+            <legend>Vul hier uw gegevens in</legend>
+            <br>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm">
+                    <label for="inputFirstName">Voornaam</label>
+                    <input type="text" name="firstName" class="form-control" id="inputFirstName" placeholder="Voornaam">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="inputSuffix">Tussenvoegsels</label>
+                    <input type="text" name="suffix" class="form-control" id="inputSuffix" placeholder="tussenvoegsels">
+                </div>
+                <div class="form-group col-sm">
+                    <label for="inputLastName">Achternaam</label>
+                    <input type="text" name="lastName" class="form-control" id="inputLastName" placeholder="Achternaam">
+                </div>
+            </div>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm-6">
+                    <label for="inputAddress">Straat en huisnummer:</label>
+                    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="Hoofdweg 123">
+                </div>
+            </div>
+            <div class="fform-horizontal row">
+                <div class="form-group col-sm-6">
+                    <label for="inputCity">Plaats</label>
+                    <input type="text" name="city" class="form-control" id="inputCity" placeholder="Duckstad">
+                </div>
+                <div class="form-group col-sm-2">
+                    <label for="inputZipCode">Postcode</label>
+                    <input type="text" name="zipcode" class="form-control" id="inputZipCode" placeholder="1234 AA">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="inputGender">Geslacht</label>
+                    <select id="inputGender" class="form-control" name="sex">
+                        <option selected>Kies...</option>
+                        <option value="m">Man</option>
+                        <option value="v">Vrouw</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm-6">
+                    <label for="inputDOB">Geboortedatum</label>
+                    <input type="text" name="dob" class="form-control" id="inputDOB" placeholder="dd-mm-jjjj">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="inputBSN">BSN</label>
+                    <input type="text" name="BSN" class="form-control" id="inputBSN" placeholder="123456789">
+                </div>
+            </div>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm-6">
+                    <label for="inputEmail">E-mailadres</label>
+                    <input type="text" name="email" class="form-control" id="inputEmail" placeholder="dagobert@duck.nl">
+                </div>
+            </div>
+            <br>
+            <br>
+            <legend>Nieuw gebruikersaccount aanmaken</legend>
+            <br>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm-4">
+                    <label for="inputUserName">Gebruikersnaam</label>
+                    <input type="text" name="username" class="form-control" id="inputUserName" placeholder="Gebruikersnaam">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="inputPassword">Wachtwoord</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Wachtwoord">
+                </div>
+            </div>
+            <div class="form-horizontal row">
+                <div class="form-group col-sm-4">
+                    <label for="inputPIN">PIN</label>
+                    <input type="text" name="PIN" class="form-control" id="inputPIN" placeholder="1234">
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Registreer</button>
+        </form>
+
+    </section>
+</section>
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="colored-section" id="footer">
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+</footer>
 
 </body>
 </html>
