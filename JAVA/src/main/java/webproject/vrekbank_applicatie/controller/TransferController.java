@@ -1,9 +1,10 @@
 package webproject.vrekbank_applicatie.controller;
 
-import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.Transfer;
@@ -12,11 +13,9 @@ import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.TransferValidator;
 
 
-
 @Controller
 @SessionAttributes({"name", "firstName", "iban"})
-public class TransferController// implements Transaction
- {
+public class TransferController {
 
     @Autowired
     TransferValidator transferValidator;
@@ -37,14 +36,6 @@ public class TransferController// implements Transaction
         model.containsAttribute("iban");
         model.containsAttribute("firstName");
 
-        // Controle in twee voorwaarden ( beiden moeten gelden, volgorde willekeurig);
-
-        // 1. over te boeken bedrag is beschikbaar.
-        //        // pseudocode: if saldo - transferamount >= minimumsaldo    (IS GEDAAN in de Validator!)
-
-        // 2. if Combinatie iban en voor?naam ontvanger bestaat (VREK klant)
-
-        // in volgende ronde moet dit uitgebreid worden; if ontvanger geen vrekklant, dan de IBAN kan bestaan check.
 
         // model vullen uit transferobject
         model.addAttribute("debitIban", iban); // betaler
@@ -56,41 +47,36 @@ public class TransferController// implements Transaction
         // recipientname tijdelijk vastleggen
         model2.addAttribute("recipientName", recipient.getRecipientName());
 
-        // Transactie starten
-        Session session = null;
-        Transaction transaction = null;
-        transaction.begin();
 
-        try {
         //uit tranferobject schrijven naar database in 3 stappen. Nb: de checks staan in de update-functies.
-        //1.update tabel betaler(debitIban)
-        boolean afschrijving = accountValidator.UpdateDebitBalance(iban, transfer);
 
-        //2. update tabel ontvanger (crebitiban)  // deze apart of opnemen in stap 1?
-        boolean bijschrijving = accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
+        //1.check op rekening betaler
 
-        //3. insert in tabel transfer
+        accountValidator.debitDeductionIsAllowed(iban, transfer);
+
+        //2. check op rekening ontvanger
+
+
+        // 3. If 1 en 2 true, alle drie de mutaties op database uitvoeren
+
+        accountValidator.UpdateDebitBalance(iban, transfer);
+
+        accountValidator.UpdateCreditBalance(transfer.getCreditIban(), transfer, recipient);
+
         transferValidator.saveTransfer(transfer);
-
-        // indien beide updates gelukt zijn, dus niet een gestruikeld over een check, hele transactie doorvoeren
-        if(afschrijving & bijschrijving)
-        {transaction.commit();}
-
-        // indien een of beide updates mislukt zijn, alles terugdraaien
-        else {transaction.rollback();}
-
-        // catch statement nog te gebruiken; in eerste versie gooien we geen exeptions
-        }catch (Exception ex) {
-            ex.printStackTrace();
-            transaction.rollback(); }
-        finally {session.close();}
 
         return "TransferConfirmation";
     }
+
+
+
+
+//                //toevoegen links naar specifieke foutmeldingspagina?
+
+
 
     @GetMapping(value = "accountsummary")
     public String transferAccountSummaryHandler() {
         return "AccountSummary";
     }
 }
-

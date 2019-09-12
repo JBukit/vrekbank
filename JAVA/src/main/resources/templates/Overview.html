@@ -3,48 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <title>RekeningOverzicht</title>
-</head>
-<body>
-    <h1> Welkom <span th:text="${firstName}"/></h1>
 
-    <!--Alleen laten zien indien deze klant een persoonlijke rekening heeft -->
-    <div th:unless="${#lists.isEmpty(personalAccounts)}">
-        <h2>Overzicht van persoonlijke rekeningen</h2>
-            <table>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+
+<!-- Nav Bar -->
+
+<section class="colored-section-navbar" id="title">
+
+    <div class="container-fluid navbarheight">
+
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+
+            <a class="navbar-brand" href="">VrekBank</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</section>
+
+
+<!-- Welcome message  -->
+
+
+<section class="white-section" id="testies">
+
+    <div class="container-fluid">
+
+            <div class="col-md">
+                <h1> Welkom <span th:text="${firstName}"/></h1>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Table personal account -->
+
+<section class="white-section" id="testies">
+
+    <section class="container-fluid">
+
+        <!--Alleen laten zien indien deze klant een persoonlijke rekening heeft -->
+        <div th:unless="${#lists.isEmpty(personalAccounts)}">
+            <h3>Overzicht van persoonlijke rekeningen</h3>
+            <table class="table table-hover">
+                <thead>
                 <tr>
-                    <td>Rekeningnummer: </td>
-                    <td>Saldo: </td>
+                    <th scope="col">Rekeningnummer: </th>
+                    <th scope="col">Saldo: </th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr th:each="personalAccount : ${personalAccounts}">
                     <td><a th:href="@{rekening(iban=${personalAccount.iban})}"><span th:text="${personalAccount.iban}"/></a></td>
                     <td><span th:text="${personalAccount.balance}"/></td>
                     </form>
                 </tr>
+                </tbody>
             </table>
-    </div>
-    <!-- Lege regel -->
-    <br>
-    <!-- Alleen laten zien indien deze klant een zakelijke rekening heeft -->
-    <div th:unless="${#lists.isEmpty(businessAccounts)}">
-        <h2>Overzicht van zakelijke rekeningen</h2>
-        <table>
-            <tr>
-                <td>Rekeningnummer: </td>
-                <td>Saldo: </td>
-                <td>Bedrijfsnaam:</td>
-            </tr>
-            <tr th:each="businessAccount : ${businessAccounts}">
-                <td><a th:href="@{rekening(iban=${businessAccount.iban})}"><span th:text="${businessAccount.iban}"/></td>
-                <td><span th:text="${businessAccount.balance}"/></td>
-                <td><span th:text="${businessAccount.companyName}"/></td>
-            </tr>
-        </table>
-    </div>
 
 
-<br>
-    <h2>Klik <a href="openaccount">hier</a> om een nieuwe rekening te openen. </h2>
-    <h2>Klik <a href="login">hier</a> om terug te gaan naar het inlog-scherm. </h2>
+        </div>
+
+    </section>
+
+</section>
+
+
+
+<!-- Table business account -->
+
+<section class="white-section" id="testies">
+
+    <section class="container-fluid">
+
+        <!-- Alleen laten zien indien deze klant een zakelijke rekening heeft -->
+        <div th:unless="${#lists.isEmpty(businessAccounts)}">
+            <h3>Overzicht van zakelijke rekeningen</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Rekeningnummer: </th>
+                    <th scope="col">Saldo: </th>
+                    <th scope="col">Bedrijfsnaam: </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="businessAccount : ${businessAccounts}">
+                    <td><a th:href="@{rekening(iban=${businessAccount.iban})}"><span th:text="${businessAccount.iban}"/></td>
+                    <td><span th:text="${businessAccount.balance}"/></td>
+                    <td><span th:text="${businessAccount.companyName}"/></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+
+</section>
+</section>
+
+<!-- Colored Section -->
+
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+        <a href="/openaccount" class="btn btn-info btn-lg" role="button">Open een nieuwe rekening</a>
+        </div>
+        <div class="knop">
+        <a href="/login" class="btn btn-outline-light btn-lg" role="button">Terug naar login scherm</a>
+    </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer class="white-section" id="footer">
+
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+
+</footer>
+
+
 
 </body>
 </html>
