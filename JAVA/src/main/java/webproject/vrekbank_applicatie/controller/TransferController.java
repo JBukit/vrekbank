@@ -55,7 +55,6 @@ public class TransferController {
 
         //2. check op rekening ontvanger
 
-
         // 3. If 1 en 2 true, alle drie de mutaties op database uitvoeren
 
         accountValidator.UpdateDebitBalance(iban, transfer);
