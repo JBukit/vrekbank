@@ -65,9 +65,8 @@ public class TransferController {
         }
     }
 
-
     @GetMapping(value = "accountsummary")
     public String transferAccountSummaryHandler() {
         return "AccountSummary";
     }
-}
+}+

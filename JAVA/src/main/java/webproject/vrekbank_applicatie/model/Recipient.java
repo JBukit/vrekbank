@@ -9,16 +9,47 @@ package webproject.vrekbank_applicatie.model;
 public class Recipient {
 
     //variabele
-    private String recipientName;
+    private String personalName;
+    private String companyName;
 
+//// constructor voor betaling naar priverekening
+//    public Recipient(String personalName) {
+//        this.personalName = personalName;
+//        this.companyName = null;
+//    }
+////constructor voor betaling naar priverekening
+//    public Recipient(String companyName) {
+//        this.personalName = null;
+//        this.companyName = companyName;
+//    }
 
-// constructor
-    public Recipient(String recipientName) {
-        this.recipientName = recipientName;
+    // constructors
+
+    public Recipient() {
+        this.personalName = null;
+        this.companyName = null;
     }
 
-    //getter
-    public String getRecipientName() {
-        return recipientName;
+    public Recipient(String personalName, String companyName) {
+        this.personalName = personalName;
+        this.companyName = companyName;
+    }
+
+    //getters and setters
+
+    public String getPersonalName() {
+        return personalName;
+    }
+
+    public void setPersonalName(String personalName) {
+        this.personalName = personalName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
