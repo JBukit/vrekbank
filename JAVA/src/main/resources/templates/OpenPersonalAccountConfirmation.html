@@ -60,21 +60,6 @@
     </div>
 </section>
 
-
-<!-- Rocket image  -->
-
-<section class="colored-section" id="testies">
-
-    <div class="container-fluid">
-
-        <div class="col-lg">
-            <img class="img-fluid" src="images/rocket.png" alt="rocket">
-        </div>
-    </div>
-
-</section>
-
-
 <!-- Opening personal account confirmation  -->
 
 <section class="colored-section" id="testies">
@@ -82,26 +67,25 @@
     <div class="container-fluid">
 
         <div class="col-md">
+            <h1> Uw nieuwe rekening is aangemaakt.</h1>
+            <br>
+            <br>
+            <!-- Rocket image  -->
+            <section class="colored-section" id="testies">
 
-            <h2>Je nieuwe rekening is aangemaakt</h2>
+                <div class="container-fluid">
 
+                    <div class="col-lg">
+                        <img class="img-fluid" src="images/rocket.png" alt="rocket">
+                    </div>
+                </div>
+            </section>
+            <br>
+            <h5>Op uw nieuwe rekening krijgt u een welkomstbedrag van € 100,-</h5>
+            <br>
+            <h6>Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span></h6>
         </div>
-
-        <h5>
-            U heeft een particuliere rekening geopend.
-            Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span>
-
-            Op uw nieuwe rekening krijgt u een welkomstcadeau van VrekBank;
-            U heeft het fantastische bedrag van <span th:text="${saldo}"></span> Euro op deze rekening staan.
-
-            Gelieve niet te proberen onder een saldo van <span th:text="${minimumsaldo}"></span> Euro uit te komen, anders
-            zien wij ons genoodzaakt Incassobureau Binnen Zonder Kloppen te activeren...
-
-        </h5>
-
-
     </div>
-
 </section>
 
 
@@ -112,8 +96,8 @@
 
     <div class="container-fluid">
 
-        <div class="knop">
-            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
+        <div style="text-align: center;">
+            <a href="/Overview" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
         </div>
 
     </div>
