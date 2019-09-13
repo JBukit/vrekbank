@@ -14,6 +14,7 @@ p {
   color: #8f8f8f;
 }
 
+
 /* Headings */
 
 .big-heading {
@@ -191,8 +192,7 @@ p {
 /*Below CSS for Login.html*/
 
 html,body{
-  background-image: url('https://i.imgur.com/Ee8kCfB.png');
-  /*background-color: #96C1B7;*/
+  background-color: #96C1B7;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -206,18 +206,28 @@ html,body{
 
 .logincard{
   height: 400px;
-  margin-top: auto;
+  margin-top: 60px;
   margin-bottom: auto;
   width: 400px;
-  background-color: rgba(0,0,0,0.2) !important;
+  background-color: #6F99AB;
 }
 
 .loginheader h3{
   color: white;
 }
 
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #6F99AB;
+  border-bottom: 0px solid;
+}
+
 .card-footer{
+  padding: .75rem 1.25rem;
+  background-color: #6F99AB;
   height: 100px;
+  border-top: 0px;
 }
 
 .justify-content-center {
@@ -231,26 +241,29 @@ html,body{
   border:0 !important;
 }
 
+#bluebaby{
+  background-color: #A1C6D3;
+  color: #A1C6D3;
+}
+
 input:focus{
   box-shadow: 0 0 0 0 !important;
-
 }
 
 .remember{
   color: white;
 }
 
-.remember input
-{
+.remember input {
   width: 20px;
   height: 20px;
   margin-left: 15px;
   margin-right: 5px;
 }
 
-.login_btn{
-  color: black;
-  background-color: #96C1B7;
+.login_btn {
+  color: white;
+  background-color: #A1C6D3;
   width: 100px;
 }
 
@@ -265,7 +278,17 @@ input:focus{
 
 .links a{
   margin-left: 4px;
+  color: white;
 }
+
+.fa-user{
+  color: white;
+}
+
+.fa-key{
+  color: white;
+}
+
 
 
 /*Below CSS for Error.html*/
@@ -332,7 +355,6 @@ input:focus{
   height: 15rem;
   width: 25rem;
 }
-
 
 
 
