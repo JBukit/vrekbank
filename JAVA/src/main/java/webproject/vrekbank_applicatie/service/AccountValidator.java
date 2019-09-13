@@ -8,6 +8,7 @@ import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
+import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class AccountValidator {
 
     @Autowired
     AccountDao accountDao;
+
+
+    @Autowired
+    BusinessAccountDao businessAccountDao;
 
     public AccountValidator() {
         super();
@@ -70,7 +75,10 @@ public class AccountValidator {
     public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
         // 1. Controleer of iban ontvanger in de database voorkomt
         if (accountDao.findByIban(iban) != null) {
-            if (accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
+            if (!accountDao.findByIban(iban).isBusinessAccount() &
+                    accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
+                return true;
+            } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
                 return true;
             } else {
                 return false;
