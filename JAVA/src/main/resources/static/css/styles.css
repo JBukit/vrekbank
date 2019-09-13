@@ -237,7 +237,7 @@ html,body{
 .input-group-prepend span{
   width: 50px;
   background-color: #96C1B7;
-  color: black;
+  color: white;
   border:0 !important;
 }
 
@@ -355,6 +355,20 @@ input:focus{
   height: 15rem;
   width: 25rem;
 }
+
+.fa-euro-sign {
+  color: white;
+}
+
+.fa-calendar-alt {
+  color: white;
+}
+
+.fa-comment {
+  color: white;
+}
+
+
 
 
 

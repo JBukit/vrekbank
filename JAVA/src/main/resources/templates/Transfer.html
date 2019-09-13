@@ -105,16 +105,15 @@
                     <span class="input-group-text">Naar</span>
                 </div>
                 <input type="text" name="creditIban" class="form-control" placeholder="IBAN ontvanger">
-
-                <div th:object="${Recipient}">
-                <input type="text" name="recipientName" class="form-control" placeholder="Naam ontvanger (achternaam zonder voorvoegsel)">
+<!--                <div th:object="${Recipient}">-->
+                <input type="text" th:object="${Recipient}" name="recipientName" class="form-control" placeholder="Naam ontvanger (achternaam zonder voorvoegsel)">
             </div>
 
 
             <div class="row">
 
                 <!--Transfer amount field-->
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="input-group" id="meow">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
@@ -126,7 +125,7 @@
                 </div>
 
                 <!--Transfer date field-->
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <div class="input-group" id="meow">
                         <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -149,9 +148,8 @@
                 <textarea class="form-control" name="description" placeholder="Omschrijving" aria-label="With textarea"></textarea>
             </div>
 
-            <input type="submit" value="Bevestig betaling" class="btn btn-outline-info btn-md" role="button">
+            <input type="submit" value="Bevestig betaling" class="btn btn-outline-light btn-lg" role="button">
 
-            </div>
         </form>
 
     </section>
@@ -166,7 +164,7 @@
     <div class="container-fluid">
 
         <div class="knop">
-            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
+            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-md" role="button">
         </div>
 
     </div>
