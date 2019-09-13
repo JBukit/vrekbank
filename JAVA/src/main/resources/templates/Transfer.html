@@ -105,7 +105,11 @@
                 </div>
                 <input type="text" name="creditIban" class="form-control" placeholder="IBAN ontvanger">
 <!--                <div th:object="${Recipient}">-->
-                <input type="text" th:object="${Recipient}" name="recipientName" class="form-control" placeholder="Naam ontvanger (achternaam zonder voorvoegsel)">
+                <input type="text" th:object="${Recipient}" name="personalName" class="form-control"
+                       placeholder="Achternaam ontvanger (zonder voorvoegsel)">
+
+                <input type="text" th:object="${Recipient}" name="companyName" class="form-control"
+                       placeholder="Bedrijfsnaam ontvanger">
             </div>
 
 
