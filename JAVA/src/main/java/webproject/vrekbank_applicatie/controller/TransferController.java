@@ -38,7 +38,7 @@ public class TransferController {
         model.addAttribute("date", transfer.getDate());
 
         // recipientname tijdelijk vastleggen
-        model2.addAttribute("recipientName", recipient.getRecipientName());
+        model2.addAttribute("recipientName", recipient.getPersonalName());
 
         //uit tranferobject schrijven naar database in 3 stappen.
         //1.check op rekening betaler

@@ -70,7 +70,7 @@ public class AccountValidator {
     public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
         // 1. Controleer of iban ontvanger in de database voorkomt
         if (accountDao.findByIban(iban) != null) {
-            if (accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getRecipientName())) {
+            if (accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
                 return true;
             } else {
                 return false;
