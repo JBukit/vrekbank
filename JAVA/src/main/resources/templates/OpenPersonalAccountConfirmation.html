@@ -3,41 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <title>Open PersonalAccount Confirmation </title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-<h1> Uw nieuwe rekening is aangemaakt.</h1>
+
+<!-- Nav Bar -->
+
+<section class="colored-section-navbar" id="title">
+
+    <div class="container-fluid navbarheight">
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+
+            <a class="navbar-brand" href="">VrekBank</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</section>
+
+<!-- Opening personal account confirmation  -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="col-md">
+            <h1> Uw nieuwe rekening is aangemaakt.</h1>
+            <br>
+            <br>
+            <!-- Rocket image  -->
+            <section class="colored-section" id="testies">
+
+                <div class="container-fluid">
+
+                    <div class="col-lg">
+                        <img class="img-fluid" src="images/rocket.png" alt="rocket">
+                    </div>
+                </div>
+            </section>
+            <br>
+            <h5>Op uw nieuwe rekening krijgt u een welkomstbedrag van € 100,-</h5>
+            <br>
+            <h6>Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span></h6>
+        </div>
+    </div>
+</section>
 
 
 
-    <h3>
+<!-- Buttons to go back -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div style="text-align: center;">
+            <a href="/Overview" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
+        </div>
+
+    </div>
+
+</section>
 
 
-    U heeft een particuliere rekening geopend.
-    Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span>
+<!-- Footer -->
 
-    <br>
-    <br>
-    <br>
+<footer class="colored-section" id="footer">
 
-        Op uw nieuwe rekening krijgt u een welkomstcadeau van VrekBank;
-        U heeft het fantastische bedrag van <span th:text="${saldo}"></span> Euro op deze rekening staan.
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
 
-    <br>
-    <br>
-    <br>
-
-    Gelieve niet te proberen onder een saldo van <span th:text="${minimumsaldo}"></span> Euro uit te komen, anders
-    zien wij ons genoodzaakt Incassobureau Binnen Zonder Kloppen te activeren...
-
-    <br>
-    <br>
-    <br>
-
-        <input type="button" value="Ga terug" onclick="history.back()">
-
-    </h3>
+</footer>
 
 </body>
 </html>

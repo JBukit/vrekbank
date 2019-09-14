@@ -56,32 +56,25 @@
     <div class="container-fluid">
         <div class="col-md">
             <h1>Hallo <span th:text="${firstname}"></span>, welkom bij VrekBank.</h1>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
 </section>
 
 <section class="colored-section" id="testies">
-Vanaf vandaag bent u klant bij ons. Wij doen er alles aan om u goed van dienst te zijn.
+    <h3>Vanaf vandaag bent u klant bij ons.</h3>
+    <h3>Uw gebruikersnaam is: <span th:text="${username}"></span></h3>
 <br>
 <br>
-Uw gebruikersnaam is: <span th:text="${username}"></span>
 <br>
 <br>
-Klik <a href="/login">hier</a> om in te loggen.
-<br>
-Klik <a href="/index.html">hier</a> om terug te gaan naar het begin.
-</section>
-
-<section class="colored-section" id="testies">
-
-    <div class="container-fluid">
-
-        <div class="knop">
-            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
-        </div>
+    <div style="text-align: center;">
+        <a href="/index.html" class="btn btn-outline-light btn-lg mr-5" role="button">Homepage</a>
+        <a href="/login" class="btn btn-info btn-lg" role="button">Login</a>
 
     </div>
-
 </section>
 
 <footer class="colored-section" id="footer">

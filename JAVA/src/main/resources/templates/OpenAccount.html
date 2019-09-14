@@ -3,61 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <title>Open Account</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<h1> Open hier uw (extra) rekening</h1>
 
-<br>
-<br>
+<!-- Nav Bar -->
 
-<!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
-<form th:action="@{OpenPersonalAccountConfirmation}" th:object="${Customer}" method="post">
-<br>
-    <h2> Particuliere rekening</h2>
-<br>
-    <input type="submit" value="Vraag een particuliere rekening aan">
-</form>
+<section class="colored-section-navbar" id="title">
 
-<br>
-<br>
-<br>
+    <div class="container-fluid navbarheight">
 
-<h2> Zakelijke (MKB) rekening</h2>
-<br>
-<form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" id="BusinessAccount" method="post">
+        <nav class="navbar navbar-expand-lg navbar-dark">
 
-    Wat is de naam van het bedrijf waarvoor u de rekening wilt?:<br>
-<br>    <input type="text" name="CompanyName"><br>
-<br>
-    <!-- later dropdown menu van maken, als wij een tabel met sectoren aangemaakt hebben-->
-    In welke economische sector is uw bedrijf actief?
-    <br>
-    <br>
-    <select name="sector" form="BusinessAccount" required>
-        <option value="Bouw">Bouw</option>
-        <option value="Financien">Financien</option>
-        <option value="Handel">Handel</option>
-        <option value="Horeca">Horeca</option>
-        <option value="Industrie">Industrie</option>
-        <option value="Landbouw">Landbouw</option>
-        <option value="Logistiek">Logistiek</option>
-        <option value="Onderwijs">Onderwijs</option>
-        <option value="IT">IT</option>
-        <option value="Zorg">Zorg</option>
-    </select>
-<br>
-<br>
-<br>
-    <input type="submit" value="Vraag een MKB rekening aan">
-</form>
-<br>
-<br>
-<h3></h3>Ga naar uw <a href="Overview">rekeningoverzicht</a>
-<br>
-<br>
-<input type="button" value="Log out en ga terug naar index" onclick="window.location.href='Index.html'" />
+            <a class="navbar-brand" href="">VrekBank</a>
 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Over ons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Locaties</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</section>
+
+
+<!-- Open new account heading -->
+
+<section class="colored-section" id="testies">
+    <div class="container-fluid">
+        <div class="col-md">
+
+            <h1>Open hier je (extra) rekening</h1>
+        </div>
+    </div>
+</section>
+
+
+<!-- Open new personal account form -->
+
+<section class="colored-section" id="testies">
+
+    <section class="container-fluid">
+
+        <h2> Particuliere rekening</h2>
+
+        <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
+        <form th:action="@{OpenPersonalAccountConfirmation}" th:object="${Customer}" method="post">
+
+            <input type="submit" value="Vraag een particuliere rekening aan" class="btn btn-outline-info btn-md" role="button">
+
+        </form>
+
+    </section>
+</section>
+
+
+<!-- Open new business account form -->
+
+<section class="colored-section" id="testies">
+
+    <section class="container-fluid">
+
+        <h2> Zakelijke (MKB) rekening</h2>
+
+        <form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" id="BusinessAccount" method="post">
+
+            <div class="form-group col-sm-6 offset-3">
+                <label for="inputCompanyName">Wat is de naam van het bedrijf waarvoor u de rekening wilt?</label>
+                <input type="text" name="CompanyName" class="form-control" id="inputCompanyName" placeholder="Bedrijfsnaam">
+            </div>
+
+            <div class="form-group col-sm-6 offset-3">
+                <label for="inputSector">In welke economische sector is uw bedrijf actief?</label>
+                <select id="inputSector" class="form-control" name="sector" form="BusinessAccount" required>
+                    <option selected>Kies...</option>
+                    <option value="Bouw">Bouw</option>
+                    <option value="Financien">Financien</option>
+                    <option value="Handel">Handel</option>
+                    <option value="Horeca">Horeca</option>
+                    <option value="Industrie">Industrie</option>
+                    <option value="Landbouw">Landbouw</option>
+                    <option value="Logistiek">Logistiek</option>
+                    <option value="Onderwijs">Onderwijs</option>
+                    <option value="IT">IT</option>
+                    <option value="Zorg">Zorg</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Vraag een MKB rekening aan" class="btn btn-outline-info btn-md" role="button">
+
+        </form>
+
+    </section>
+</section>
+
+
+<!-- Buttons Transfer & Overview -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a onclick="window.location.href='Index.html'" class="btn btn-outline-light btn-md" role="button">Log out en ga terug naar index</a>
+        </div>
+        <div class="knop">
+            <a href="/overview" class="btn btn-outline-light btn-md" role="button">Terug naar account overview</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer class="colored-section" id="footer">
+
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+
+</footer>
 
 </body>
+
 </html>
