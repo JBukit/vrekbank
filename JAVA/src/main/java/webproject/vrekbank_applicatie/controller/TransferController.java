@@ -49,7 +49,7 @@ public class TransferController {
         boolean nameCorrect = accountValidator.creditAdditionIsAllowed(transfer.getCreditIban(), transfer, recipient);
 
         // 3. If 1 en 2 true, alle drie de mutaties op database uitvoeren
-        if (balanceOK & nameCorrect) {
+        if (balanceOK && nameCorrect) {
 
             accountValidator.updateDebitBalance(iban, transfer);
 

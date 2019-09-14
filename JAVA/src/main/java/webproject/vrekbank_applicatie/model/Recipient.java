@@ -8,7 +8,7 @@ package webproject.vrekbank_applicatie.model;
 
 public class Recipient {
 
-    //variabele
+    //variabelen
     private String personalName;
     private String companyName;
 

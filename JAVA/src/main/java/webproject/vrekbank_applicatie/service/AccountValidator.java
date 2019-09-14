@@ -2,9 +2,7 @@ package webproject.vrekbank_applicatie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import webproject.vrekbank_applicatie.model.Account;
-import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
@@ -75,7 +73,7 @@ public class AccountValidator {
     public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
         // 1. Controleer of iban ontvanger in de database voorkomt
         if (accountDao.findByIban(iban) != null) {
-            if (!accountDao.findByIban(iban).isBusinessAccount() &
+            if (!accountDao.findByIban(iban).isBusinessAccount() &&
                     accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
                 return true;
             } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
