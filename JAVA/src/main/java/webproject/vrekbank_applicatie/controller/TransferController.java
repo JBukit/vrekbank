@@ -60,9 +60,13 @@ public class TransferController {
             return "TransferConfirmation";
 
         } else if (!balanceOK) {
-            return "TransferFailedLackOfFunds";
+            model.addAttribute("IssueLackOfFunds", "Helaas, deze transactie gaat niet door wegens " +
+                    "een groots en meeslepend gebrek aan Euries op uw rekening...");
+            return "TransferFailed";
         } else {
-            return "TransferFailedCreditIban";
+            model.addAttribute("IssueRecipient", "Deze transactie kunnen we niet uitvoeren; de IBAN van de " +
+                    "ontvanger is niet bij ons bekend of de naam van de ontvanger is onjuist.");
+            return "TransferFailed";
         }
     }
 

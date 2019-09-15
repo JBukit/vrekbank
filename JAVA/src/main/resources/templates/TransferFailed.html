@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>TransferFailedCreditIban</title>
@@ -88,9 +88,12 @@
 
         </div>
 
-        <h5>
-            Het IBAN van de ontvanger is niet bij ons bekend of de naam van de ontvanger klopt niet.
-        </h5>
+
+        <h5><span th:text="${IssueLackOfFunds}"></span><br></h5>
+
+        <h5><span th:text="${IssueRecipient}"></span><br></h5>
+
+
 
         <h5>
             Ga terug en probeer het opnieuw.
