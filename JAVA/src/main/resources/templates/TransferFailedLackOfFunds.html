@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>TransferFailedLackofFunds</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -59,47 +59,59 @@
 </section>
 
 
-<!-- Login form -->
+<!-- Failed transfer image  -->
 
-    <div class="d-flex justify-content-center h-70">
+<section class="colored-section" id="testies">
 
-        <div class="card logincard">
-            <div class="card-header loginheader">
-                <h3>Log in</h3>
-            </div>
-            <div class="card-body">
-                <form th:action="@{Overview}" th:object="${Customer}" method="post">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="bluebaby"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" class="form-control" name="username" placeholder="username">
+    <div class="container-fluid">
 
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="bluebaby"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" name="password" placeholder="password">
-                    </div>
-                    <div class="row align-items-center remember">
-                        <input type="checkbox">Onthoud mij
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn">
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Nog geen account?<a href="/registration">Registreer</a>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <input type="button" class="btn btn-outline-light btn-sm" value="Ga terug" onclick="history.back()">
-                </div>
-            </div>
+        <div class="col-lg">
+            <img class="img-fluid" src="images/failed.png" alt="failed">
         </div>
-</div>
+    </div>
+
+</section>
+
+
+<!-- Error message -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="col-md">
+
+            <h2>Betaling mislukt.</h2>
+
+        </div>
+
+        <h5>
+            U heef namelijk te weinig Euries voor deze overboeking, en daar beginnen we niet aan!
+        </h5>
+
+        <h5>
+            Ga terug en probeer het opnieuw.
+        </h5>
+
+
+    </div>
+
+</section>
+
+
+<!-- Buttons to go back -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
+        </div>
+
+    </div>
+
+</section>
 
 
 <!-- Footer -->
@@ -118,4 +130,3 @@
 
 </body>
 </html>
-

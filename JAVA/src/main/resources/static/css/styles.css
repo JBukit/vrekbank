@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  color: #ffffff80;
+  color: black;
 }
 
 /* Headings */
@@ -54,10 +54,16 @@ p {
   padding: 0 0 4.5rem;
 }
 
-.navbar-brand {
-  font-family: "Ubuntu";
-  font-size: 2.5rem;
-  font-weight: bold;
+/*.navbar-brand {*/
+/*  font-family: "Ubuntu";*/
+/*  font-size: 2.5rem;*/
+/*  font-weight: bold;*/
+/*}*/
+
+img {
+  vertical-align: middle;
+  border-style: none;
+  width: 12rem;
 }
 
 .nav-item {
@@ -98,10 +104,11 @@ p {
 /* Title Image */
 
 .title-image {
-  width: 60%;
-  transform: rotate(0deg);
+  padding-top: 115px;
+  width: 75%;
+  transform: rotate(-17deg);
   position: absolute;
-  right: 00%;
+  right: 18%;
 }
 
 /* Features Section */
