@@ -55,8 +55,11 @@ public class EmployeeIndexController {
 
     @GetMapping (value = "MKBMostTransfers")
     public String MKBMostTransfersHandler () {
+
+    //lijst alle sectoren
         return "MKBMostTransfers";
     }
+
 
     @GetMapping (value = "MKBSectorView")
     public String MKBSectorViewHandler () {

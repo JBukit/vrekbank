@@ -48,7 +48,7 @@ public class LoginController {
             personalAccounts = personalAccountValidator.findAllPersonalAccountByCustomer(c);
             businessAccounts = businessAccountValidator.findAllBusinessAccountByCustomer(c);
 
-            model.addAttribute("personalAccounts",personalAccounts);
+            model.addAttribute("personalAccounts", personalAccounts);
             model.addAttribute("businessAccounts", businessAccounts);
 
             return "Overview";

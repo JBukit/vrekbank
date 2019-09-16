@@ -24,6 +24,7 @@ public class TransferController {
     @Autowired
     AccountValidator accountValidator;
 
+    // erg lang, nog opknippen en/of zaken verplaatsen naar service
     @PostMapping(value = "TransferConfirmation")
     public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer
             transfer, Model model, @ModelAttribute Recipient recipient, Model model2) {
@@ -31,52 +32,58 @@ public class TransferController {
         // in transferobject iban van betaler opnemen
         transfer.setDebitIban(iban);
 
-        // doorgeven naar volgend scherm
-        model.containsAttribute("iban");
-        model.containsAttribute("firstName");
-
-        // model vullen uit transferobject
-        model.addAttribute("debitIban", iban); // betaler
-        model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
-        model.addAttribute("transferAmount", transfer.getTransferAmount());
-        model.addAttribute("description", transfer.getDescription());
-        model.addAttribute("date", transfer.getDate());
-
-        // ingevoerde naam ontvanger vanuit tijdelijk object opnemen in model voor bevestigingsscherm
-        //nb tweede object van Model waarschijnlijk onnodig, nog opnemen in model?
-        model2.addAttribute("personalName", recipient.getPersonalName());
-        model2.addAttribute("companyName", recipient.getCompanyName());
-
-        //uit tranferobject schrijven naar database in 3 stappen.
-        //1.check op rekening betaler
-        boolean balanceOK = accountValidator.debitDeductionIsAllowed(iban, transfer);
-
-        //2. check op rekening ontvanger
-        boolean debitIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
-
-        //3. check op naam ontvanger
-        boolean nameCorrect = accountValidator.receiverNameIsCorrect(transfer.getCreditIban(), transfer, recipient);
-
-        // 4. If 1 tm 3 true, alle drie de mutaties op database uitvoeren
-        if (balanceOK && debitIbanCorrect && nameCorrect) {
-
-            accountValidator.updateDebitBalance(iban, transfer);
-
-            accountValidator.updateCreditBalance(transfer.getCreditIban(), transfer);
-
-            transferValidator.saveTransfer(transfer);
-
-            return "TransferConfirmation";
-
-        } else if (!balanceOK) {
-            model.addAttribute("IssueLackOfFunds", messageLackOfFunds);
-            return "TransferFailed";
-        } else if (!debitIbanCorrect) {
-            model.addAttribute("IssueDebitIban", messageDebitIbanUnknown);
-            return "TransferFailed";
+        //alle velden verplicht; vermoedelijk ook in html te regelen
+        if (transfer.getCreditIban().equals("") || transfer.getTransferAmount() <= 0.0 || transfer.getDate().equals("") ||
+                transfer.getDebitIban().equals("") || transfer.getDescription().equals("")) {
+            return "TransferRequestIncomplete";
         } else {
-            model.addAttribute("IssueRecipientName", messageRecipientNameUnknown);
-            return "TransferFailed";
+            // doorgeven naar volgend scherm
+            model.containsAttribute("iban");
+            model.containsAttribute("firstName");
+
+            // model vullen uit transferobject
+            model.addAttribute("debitIban", iban); // betaler
+            model.addAttribute("creditIban", transfer.getCreditIban()); // ontvanger
+            model.addAttribute("transferAmount", transfer.getTransferAmount());
+            model.addAttribute("description", transfer.getDescription());
+            model.addAttribute("date", transfer.getDate());
+
+            // ingevoerde naam ontvanger vanuit tijdelijk object opnemen in model voor bevestigingsscherm
+            //nb tweede object van Model waarschijnlijk onnodig, nog opnemen in model?
+            model2.addAttribute("personalName", recipient.getPersonalName());
+            model2.addAttribute("companyName", recipient.getCompanyName());
+
+            //uit tranferobject schrijven naar database in 3 stappen.
+            //1.check op rekening betaler
+            boolean balanceOK = accountValidator.debitDeductionIsAllowed(iban, transfer);
+
+            //2. check op rekening ontvanger
+            boolean debitIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
+
+            //3. check op naam ontvanger
+            boolean nameCorrect = accountValidator.receiverNameIsCorrect(transfer.getCreditIban(), transfer, recipient);
+
+            // 4. If 1 tm 3 true, alle drie de mutaties op database uitvoeren
+            if (balanceOK && debitIbanCorrect && nameCorrect) {
+
+                accountValidator.updateDebitBalance(iban, transfer);
+
+                accountValidator.updateCreditBalance(transfer.getCreditIban(), transfer);
+
+                transferValidator.saveTransfer(transfer);
+
+                return "TransferConfirmation";
+
+            } else if (!balanceOK) {
+                model.addAttribute("IssueLackOfFunds", messageLackOfFunds);
+                return "TransferFailed";
+            } else if (!debitIbanCorrect) {
+                model.addAttribute("IssueDebitIban", messageDebitIbanUnknown);
+                return "TransferFailed";
+            } else {
+                model.addAttribute("IssueRecipientName", messageRecipientNameUnknown);
+                return "TransferFailed";
+            }
         }
     }
 
