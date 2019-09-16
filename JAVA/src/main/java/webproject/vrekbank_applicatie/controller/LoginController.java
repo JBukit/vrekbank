@@ -3,9 +3,7 @@ package webproject.vrekbank_applicatie.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
@@ -55,5 +53,12 @@ public class LoginController {
         }
         // if check = not ok, go back to Login
         return "ErrorLogin";
+    }
+
+    @GetMapping (value = "overviewWithKnownName")
+    public String overviewHandler (@SessionAttribute ("name") String userName, Model model) {
+        Customer customer = customerValidator.findCustomerByUsername(userName);
+        loginOverviewHandler(customer, model);
+        return "Overview";
     }
 }
