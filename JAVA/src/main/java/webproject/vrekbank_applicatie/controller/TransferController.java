@@ -13,6 +13,11 @@ import webproject.vrekbank_applicatie.service.TransferValidator;
 @SessionAttributes({"name", "firstName", "iban"})
 public class TransferController {
 
+    private String messageLackOfFunds = "u lijdt aan een groots en meeslepend gebrek aan Euries op uw rekening...";
+    private String messageDebitIbanUnknown = "het rekeningnummer van de ontvanger niet bij ons bekend is.";
+    private String messageRecipientNameUnknown = "de opgegeven naam van de ontvanger niet klopt.";
+
+
     @Autowired
     TransferValidator transferValidator;
 
@@ -38,6 +43,7 @@ public class TransferController {
         model.addAttribute("date", transfer.getDate());
 
         // ingevoerde naam ontvanger vanuit tijdelijk object opnemen in model voor bevestigingsscherm
+        //nb tweede object van Model waarschijnlijk onnodig, nog opnemen in model?
         model2.addAttribute("personalName", recipient.getPersonalName());
         model2.addAttribute("companyName", recipient.getCompanyName());
 
@@ -46,10 +52,13 @@ public class TransferController {
         boolean balanceOK = accountValidator.debitDeductionIsAllowed(iban, transfer);
 
         //2. check op rekening ontvanger
-        boolean nameCorrect = accountValidator.creditAdditionIsAllowed(transfer.getCreditIban(), transfer, recipient);
+        boolean debitIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
 
-        // 3. If 1 en 2 true, alle drie de mutaties op database uitvoeren
-        if (balanceOK && nameCorrect) {
+        //3. check op naam ontvanger
+        boolean nameCorrect = accountValidator.receiverNameIsCorrect(transfer.getCreditIban(), transfer, recipient);
+
+        // 4. If 1 tm 3 true, alle drie de mutaties op database uitvoeren
+        if (balanceOK && debitIbanCorrect && nameCorrect) {
 
             accountValidator.updateDebitBalance(iban, transfer);
 
@@ -60,12 +69,13 @@ public class TransferController {
             return "TransferConfirmation";
 
         } else if (!balanceOK) {
-            model.addAttribute("IssueLackOfFunds", "Helaas, deze transactie gaat niet door wegens " +
-                    "een groots en meeslepend gebrek aan Euries op uw rekening...");
+            model.addAttribute("IssueLackOfFunds", messageLackOfFunds);
+            return "TransferFailed";
+        } else if (!debitIbanCorrect) {
+            model.addAttribute("IssueDebitIban", messageDebitIbanUnknown);
             return "TransferFailed";
         } else {
-            model.addAttribute("IssueRecipient", "Deze transactie kunnen we niet uitvoeren; de IBAN van de " +
-                    "ontvanger is niet bij ons bekend of de naam van de ontvanger is onjuist.");
+            model.addAttribute("IssueRecipientName", messageRecipientNameUnknown);
             return "TransferFailed";
         }
     }

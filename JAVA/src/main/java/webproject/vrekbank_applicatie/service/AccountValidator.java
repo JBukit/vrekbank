@@ -30,7 +30,6 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
-
     public Account prepareDeduction(String iban, Transfer transfer) {
         //1 Rekening betaler ophalen uit database
         Account payingAccount = accountDao.findByIban(iban);
@@ -65,22 +64,44 @@ public class AccountValidator {
         double balance = receivingAccount.getBalance();
         // 3. Nieuw saldo = oud saldo + bijschrijving
         double newBalance = balance + transfer.getTransferAmount();
-        // 4. Muteer het object
+        // 4. Muteer het object en geef nieuwe versie terug
         receivingAccount.setBalance(newBalance);
         return receivingAccount;
     }
 
-    public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
-        // 1. Controleer of iban ontvanger in de database voorkomt
+    // deze te complexe functie nog opsplitsen. Daarmee ook differentieren in output naar gebruiker
+//    public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
+//        if (accountDao.findByIban(iban) != null) {
+//            if (!accountDao.findByIban(iban).isBusinessAccount() &&
+//                    accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
+//                return true;
+//            } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } else {
+//            return false;
+//        }
+//    }
+
+    public boolean creditIbanDoesExist(String iban) {
         if (accountDao.findByIban(iban) != null) {
-            if (!accountDao.findByIban(iban).isBusinessAccount() &&
-                    accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
-                return true;
-            } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
-                return true;
-            } else {
-                return false;
-            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean receiverNameIsCorrect(String iban, Transfer transfer, Recipient recipient) {
+        if (!creditIbanDoesExist(iban)) {
+            return false;
+        }
+        else if (!accountDao.findByIban(iban).isBusinessAccount() &&
+                accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
+            return true;
+        } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
+            return true;
         } else {
             return false;
         }
@@ -91,6 +112,3 @@ public class AccountValidator {
         accountDao.save(prepareAddition(iban, transfer));
     }
 }
-
-
-
