@@ -16,6 +16,8 @@ public class TransferController {
     private String messageLackOfFunds = "u lijdt aan een groots en meeslepend gebrek aan Euries op uw rekening...";
     private String messageDebitIbanUnknown = "het rekeningnummer van de ontvanger niet bij ons bekend is.";
     private String messageRecipientNameUnknown = "de opgegeven naam van de ontvanger niet klopt.";
+    private String messageEmptyField = "een van de velden niet ingevuld was, of het te betalen bedrag niet hoger " +
+            "dan 0 was.";
 
 
     @Autowired
@@ -35,7 +37,8 @@ public class TransferController {
         //alle velden verplicht; vermoedelijk ook in html te regelen
         if (transfer.getCreditIban().equals("") || transfer.getTransferAmount() <= 0.0 || transfer.getDate().equals("") ||
                 transfer.getDebitIban().equals("") || transfer.getDescription().equals("")) {
-            return "TransferRequestIncomplete";
+            model.addAttribute("IssueEmptyField", messageEmptyField);
+            return "TransferFailed";
         } else {
             // doorgeven naar volgend scherm
             model.containsAttribute("iban");
