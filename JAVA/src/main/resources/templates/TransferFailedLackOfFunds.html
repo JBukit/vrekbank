@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transfer Confirmation</title>
+    <title>TransferFailedLackofFunds</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -10,8 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Favicon -->
@@ -21,15 +20,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -66,21 +59,21 @@
 </section>
 
 
-<!-- Arrow image  -->
+<!-- Failed transfer image  -->
 
 <section class="colored-section" id="testies">
 
     <div class="container-fluid">
 
         <div class="col-lg">
-            <img class="img-fluid" src="images/arrow.png" alt="arrow">
+            <img class="img-fluid" src="images/failed.png" alt="failed">
         </div>
     </div>
 
 </section>
 
 
-<!-- Transfer confirmation  -->
+<!-- Error message -->
 
 <section class="colored-section" id="testies">
 
@@ -88,22 +81,23 @@
 
         <div class="col-md">
 
-            <h2>Transactie geslaagd</h2>
+            <h2>Betaling mislukt.</h2>
 
         </div>
 
         <h5>
-            Je hebt <span th:text="${transferAmount}"></span> overgemaakt naar rekeningnummer <span
-                th:text="${creditIban}"></span>
-            op naam van
-                <span th:text="${personalName}"></span>
-                <span th:text="${companyName}"></span>
+            U heef namelijk te weinig Euries voor deze overboeking, en daar beginnen we niet aan!
+        </h5>
+
+        <h5>
+            Ga terug en probeer het opnieuw.
         </h5>
 
 
     </div>
 
 </section>
+
 
 <!-- Buttons to go back -->
 
@@ -112,22 +106,7 @@
     <div class="container-fluid">
 
         <div class="knop">
-            <input type="button" value="Doe nog een overboeking vanuit deze rekening" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
-        </div>
-
-    </div>
-
-</section>
-
-
-
-
-<section class="colored-section" id="testies">
-
-    <div class="container-fluid">
-
-        <div class="knop">
-            <a href="/accountsummary" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
+            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
         </div>
 
     </div>
