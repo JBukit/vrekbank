@@ -3,19 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <title>EmpoyeeIndex</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="css/employeestyles.css">
+
+<!-- Favicon -->
+<link rel="icon" href="css/favicon.ico">
+
+<!-- Font Awesome -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+<!-- Bootstrap Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<h1>Welkom op de werknemerssite van de VrekBank</h1>
-<br>
-<form action="employeeLogin">
-    <input type="submit" value="Login"/>
-</form>
-<br>
-<form action="employeeRegister">
-    <input type="submit" value="Registeren"/>
-</form>
-<br>
-<input type="button" value="Ga terug naar startpagina" onclick="history.back()">
+
+
+<!-- Nav Bar -->
+
+<section class="colored-section" id="title">
+
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-dark static-top">
+
+            <a href="/employeeIndex"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</section>
+
+
+<!-- Welcome message -->
+
+<section class="colored-section" id="testies">
+    <div class="container-fluid">
+        <div class="col-md">
+            <h1>Welkom op de werknemerssite van de VrekBank</h1>
+        </div>
+    </div>
+</section>
+
+
+<!-- Login and Register options -->
+
+<section class="colored-section" id="pinkie">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a href="/employeeLogin" class="btn btn-outline-light btn-lg" role="button">Login</a>
+        </div>
+        <div class="knop">
+            <a href="/employeeRegister" class="btn btn-outline-light btn-lg" role="button">Registreer</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<section class="footerimage text-white text-center">
+    <div class="overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <form>
+                    <div>
+                        <a onclick="history.back()" class="btn btn-outline-light btn-lg">Homepage</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
 
 </body>
 </html>

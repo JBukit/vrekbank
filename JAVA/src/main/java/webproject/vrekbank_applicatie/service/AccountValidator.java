@@ -8,14 +8,11 @@ import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
-import java.util.List;
-
 @Service
 public class AccountValidator {
 
     @Autowired
     AccountDao accountDao;
-
 
     @Autowired
     BusinessAccountDao businessAccountDao;
@@ -24,16 +21,31 @@ public class AccountValidator {
         super();
     }
 
-    // methods to add, check, update, delete customers
+    // methods to add, check, update, delete accounts
 
     public void saveAccount(Account account) {
         accountDao.save(account);
     }
 
+    // Voor betaler
 
-    public Account prepareDeduction(String iban, Transfer transfer) {
+    // in volgende twee functies zit nog dubbele code
+    public boolean debitDeductionIsAllowed(Transfer transfer) {
+        //voorwaarde voldoende op rekening checken
         //1 Rekening betaler ophalen uit database
-        Account payingAccount = accountDao.findByIban(iban);
+        Account payingAccount = accountDao.findByIban(transfer.getDebitIban());
+        // 2 Huidige balans van betaler uitlezen
+        double balance = payingAccount.getBalance();
+        // 3 Nieuw saldo uitrekenen
+        double newBalance = balance - transfer.getTransferAmount();
+        if (newBalance >= payingAccount.getMinimumBalance()) {
+            return true;
+        } else return false;
+    }
+
+    public Account prepareDeduction(Transfer transfer) {
+        //1 Rekening betaler ophalen uit database
+        Account payingAccount = accountDao.findByIban(transfer.getDebitIban());
         // 2 Huidige balans van betaler uitlezen
         double balance = payingAccount.getBalance();
         // 3 Nieuw saldo uitrekenen
@@ -44,53 +56,46 @@ public class AccountValidator {
         return payingAccount;
     }
 
-    public boolean debitDeductionIsAllowed(String iban, Transfer transfer) {
-        //voorwaarde voldoende op rekening checken
-        if (prepareDeduction(iban, transfer).getBalance() >= prepareDeduction(iban, transfer).getMinimumBalance()) {
+    public void updateDebitBalance(Transfer transfer) {
+        accountDao.save(prepareDeduction(transfer));
+    }
+
+    // Voor ontvanger
+
+    public boolean creditIbanDoesExist(String iban) {
+        if (accountDao.findByIban(iban) != null) {
             return true;
         } else {
             return false;
         }
     }
 
-    public void updateDebitBalance(String iban, Transfer transfer) {
-        accountDao.save(prepareDeduction(iban, transfer));
-    }
-
-
-    public Account prepareAddition(String iban, Transfer transfer) {
-        // 1. Rekening ontvanger ophalen
-        Account receivingAccount = accountDao.findByIban(iban);
-        // 2. Hoeveel geld op rekening ontvanger bepalen
-        double balance = receivingAccount.getBalance();
-        // 3. Nieuw saldo = oud saldo + bijschrijving
-        double newBalance = balance + transfer.getTransferAmount();
-        // 4. Muteer het object
-        receivingAccount.setBalance(newBalance);
-        return receivingAccount;
-    }
-
-    public boolean creditAdditionIsAllowed(String iban, Transfer transfer, Recipient recipient) {
-        // 1. Controleer of iban ontvanger in de database voorkomt
-        if (accountDao.findByIban(iban) != null) {
-            if (!accountDao.findByIban(iban).isBusinessAccount() &&
-                    accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
-                return true;
-            } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
-                return true;
-            } else {
-                return false;
-            }
+    public boolean receiverNameIsCorrect(Transfer transfer, Recipient recipient) {
+        if (!creditIbanDoesExist(transfer.getCreditIban())) {
+            return false;
+        } else if (!accountDao.findByIban(transfer.getCreditIban()).isBusinessAccount() &&
+                accountDao.findByIban(transfer.getCreditIban()).getOwner().getLastName().equals(recipient.getPersonalName())) {
+            return true;
+        } else if (businessAccountDao.findByIban(transfer.getCreditIban()).getCompanyName().equals(recipient.getCompanyName())) {
+            return true;
         } else {
             return false;
         }
     }
 
-    public void updateCreditBalance(String iban, Transfer transfer) {
-        prepareAddition(iban, transfer);
-        accountDao.save(prepareAddition(iban, transfer));
+    public Account prepareAddition(Transfer transfer) {
+        // 1. Rekening ontvanger ophalen
+        Account receivingAccount = accountDao.findByIban(transfer.getCreditIban());
+        // 2. Hoeveel geld op rekening ontvanger bepalen
+        double balance = receivingAccount.getBalance();
+        // 3. Nieuw saldo = oud saldo + bijschrijving
+        double newBalance = balance + transfer.getTransferAmount();
+        // 4. Muteer het object en geef nieuwe versie terug
+        receivingAccount.setBalance(newBalance);
+        return receivingAccount;
+    }
+
+    public void updateCreditBalance(Transfer transfer) {
+        accountDao.save(prepareAddition(transfer));
     }
 }
-
-
-

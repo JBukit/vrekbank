@@ -82,8 +82,7 @@
         <!--moet gaan leiden tot nieuwe instantie van account-object, en wegschrijven daarvan.-->
         <form th:action="@{OpenPersonalAccountConfirmation}" th:object="${Customer}" method="post">
 
-            <input type="submit" value="Vraag een particuliere rekening aan" class="btn btn-outline-info btn-md" role="button">
-
+            <button type="submit" class="btn btn-info btn-md">Vraag een particuliere rekening aan</button>
         </form>
 
     </section>
@@ -101,7 +100,7 @@
         <form th:action="@{OpenBusinessAccountConfirmation}" th:object="${BusinessAccount}" id="BusinessAccount" method="post">
 
             <div class="form-group col-sm-6 offset-3">
-                <label for="inputCompanyName">Wat is de naam van het bedrijf waarvoor u de rekening wilt?</label>
+                <label for="inputCompanyName">Wat is de naam van het bedrijf?</label>
                 <input type="text" name="CompanyName" class="form-control" id="inputCompanyName" placeholder="Bedrijfsnaam">
             </div>
 
@@ -122,7 +121,7 @@
                 </select>
             </div>
 
-            <input type="submit" value="Vraag een MKB rekening aan" class="btn btn-outline-info btn-md" role="button">
+            <button type="submit" class="btn btn-info btn-md">Vraag een MKB rekening aan</button>
 
         </form>
 
@@ -137,12 +136,8 @@
     <div class="container-fluid">
 
         <div class="knop">
-            <a onclick="window.location.href='Index.html'" class="btn btn-outline-light btn-md" role="button">Log out en ga terug naar index</a>
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
         </div>
-        <div class="knop">
-            <a href="/overview" class="btn btn-outline-light btn-md" role="button">Terug naar account overview</a>
-        </div>
-
     </div>
 
 </section>

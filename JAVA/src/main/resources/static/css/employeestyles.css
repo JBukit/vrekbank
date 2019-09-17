@@ -1,0 +1,276 @@
+/* General */
+
+body {
+    font-family: "Source Sans Pro";
+    text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Sans Pro";
+    font-weight: bold;
+}
+
+p {
+    color: black;
+}
+
+html,body{
+    background-color: #EE8583;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: "Source Sans Pro";
+}
+
+/* Headings */
+
+.big-heading {
+    font-family: "Source Sans Pro";
+    font-size: 3.5rem;
+    line-height: 1.5;
+}
+
+.section-heading {
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+/* Containers */
+
+.container-fluid{
+    padding: 7% 15%;
+}
+
+.container-end{
+    padding: 4% 10%;
+}
+
+/* Sections */
+
+.colored-section {
+    background-color: #EE8583;
+    color: #fff;
+}
+
+.white-section {
+    background-color: #fff;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    padding: 0 0 0rem;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    width: 12rem;
+}
+
+.nav-item {
+    padding: 0 18px;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+    font-family: "Source Sans Pro";
+}
+
+.navbar-image {
+    width: 40%;
+    transform: rotate(0deg);
+    position: absolute;
+    right: 70%;
+    padding: 0 0px;
+}
+
+/* Buttons */
+
+.download-button {
+    margin: 5% 3% 5% 0;
+}
+
+/* Title Section */
+
+#title {
+    background-color: #EE8583;
+    color: #fff;
+    text-align: left;
+}
+
+#title .container-fluid {
+    padding: 1% 15% 1%;
+}
+
+/* Title Image */
+
+.title-image {
+    padding-top: 115px;
+    width: 75%;
+    transform: rotate(-17deg);
+    position: absolute;
+    right: 18%;
+}
+
+
+/*Below CSS for Login.html*/
+
+.container{
+    height: 100%;
+    align-content: center;
+}
+
+.logincard{
+    height: 400px;
+    margin-top: 60px;
+    margin-bottom: 150px;
+    width: 400px;
+    background-color: #AF93A0;
+}
+
+.loginheader h3{
+    color: white;
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #AF93A0;
+    border-bottom: 0px solid;
+}
+
+.card-footer{
+    padding: .75rem 1.25rem;
+    background-color: #AF93A0;
+    height: 100px;
+    border-top: 0px;
+}
+
+.justify-content-center {
+    padding-bottom: 15px;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: #EFA7A9;
+    color: white;
+    border:0 !important;
+}
+
+#pinkbaby{
+    background-color: #E7C3C8;
+    color: #E7C3C8;
+}
+
+input:focus{
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember{
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.login_btn {
+    color: white;
+    background-color: #F7CDCD;
+    width: 100px;
+}
+
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+    color: white;
+}
+
+.fa-user{
+    color: white;
+}
+
+.fa-key{
+    color: white;
+}
+
+
+/*Below CSS for Error.html*/
+
+.error {
+    height: 100%;
+    font-family: "Source Sans Pro";
+}
+
+.error-actions .btn {
+    margin-left:6rem;
+    margin-top:25rem;
+}
+
+
+/*Below CSS for ErrorLogin.html*/
+
+.errorlogin {
+    height: 100%;
+    font-family: "Source Sans Pro";
+}
+
+.errorlogin-actions .btn {
+    margin-left:6rem;
+    margin-top:30rem;
+}
+
+/*Below CSS for Overview.html & AccountSummary.html*/
+
+.colored-section-navbar {
+    background-color: #96C1B7;
+    color: #fff;
+    height: 100px;
+}
+
+#testies .container-fluid {
+    padding: 1% 20% 5%;
+}
+
+#pinkie .container-fluid {
+    padding: 6% 20%;
+}
+
+.footerimage {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: url(../images/building.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+.footerimage .overlay{
+    position:absolute;
+    background-color:#EE8583;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    opacity:.4;
+}
+
+.knop {
+    padding-bottom: 10px;
+}
+
+
+
