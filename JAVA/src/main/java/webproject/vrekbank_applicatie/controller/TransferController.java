@@ -34,8 +34,10 @@ public class TransferController {
         // in transferobject iban van betaler opnemen
         transfer.setDebitIban(iban);
 
-        //alle velden verplicht; vermoedelijk ook in html te regelen
-        if (transfer.getCreditIban().equals("") || transfer.getTransferAmount() <= 0.0 || transfer.getDate().equals("") ||
+        //alle velden verplicht; is vermoedelijk ook in html te regelen
+        //eerst double in wrappperclass omzetten, zodat getoetst kan worden op = null
+        Double amountInWrapper = (Double) transfer.getTransferAmount();
+        if (transfer.getCreditIban().equals("") || amountInWrapper == null || transfer.getTransferAmount() <= 0.0 || transfer.getDate().equals("") ||
                 transfer.getDebitIban().equals("") || transfer.getDescription().equals("")) {
             model.addAttribute("IssueEmptyField", messageEmptyField);
             return "TransferFailed";
