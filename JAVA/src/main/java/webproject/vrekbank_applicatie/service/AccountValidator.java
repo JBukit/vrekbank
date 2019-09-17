@@ -70,13 +70,13 @@ public class AccountValidator {
         }
     }
 
-    public boolean receiverNameIsCorrect(String iban, Transfer transfer, Recipient recipient) {
-        if (!creditIbanDoesExist(iban)) {
+    public boolean receiverNameIsCorrect(Transfer transfer, Recipient recipient) {
+        if (!creditIbanDoesExist(transfer.getCreditIban())) {
             return false;
-        } else if (!accountDao.findByIban(iban).isBusinessAccount() &&
-                accountDao.findByIban(iban).getOwner().getLastName().equals(recipient.getPersonalName())) {
+        } else if (!accountDao.findByIban(transfer.getCreditIban()).isBusinessAccount() &&
+                accountDao.findByIban(transfer.getCreditIban()).getOwner().getLastName().equals(recipient.getPersonalName())) {
             return true;
-        } else if (businessAccountDao.findByIban(iban).getCompanyName().equals(recipient.getCompanyName())) {
+        } else if (businessAccountDao.findByIban(transfer.getCreditIban()).getCompanyName().equals(recipient.getCompanyName())) {
             return true;
         } else {
             return false;
