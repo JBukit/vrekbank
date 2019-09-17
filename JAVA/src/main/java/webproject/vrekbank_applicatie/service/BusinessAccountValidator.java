@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class BusinessAccountValidator {
 
-    private final int TOP10= 10;
+    private final int TOP10 = 10;
 
     @Autowired
     BusinessAccountDao businessAccountDao;
@@ -28,7 +28,7 @@ public class BusinessAccountValidator {
         businessAccountDao.save(businessAccount);
     }
 
-    public List<BusinessAccount> findAllBusinessAccountByCustomer (Customer customer) {
+    public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
         return accounts;
     }
@@ -51,9 +51,24 @@ public class BusinessAccountValidator {
         } else {
             size = TOP10;
         }
-        for (int i = 0; i < size; i++ ) {
+        for (int i = 0; i < size; i++) {
             top10.add(allAccounts.get(i));
         }
         return top10;
     }
+
+    public List<BusinessAccount> findBusinessAccountsBySector(String sector) {
+
+        // maak een lijst van alle business accounts in branche 'sector'
+
+        List<BusinessAccount> sectorList = businessAccountDao.findBusinessAccountsBySector(sector);
+
+        // geef gevulde lijst terug als 'sectorList'
+
+        return sectorList;
+
+
+    }
 }
+
+

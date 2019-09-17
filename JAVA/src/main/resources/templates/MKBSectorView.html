@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -11,8 +11,8 @@
     <table>
 
         <tr>
-            <td>Sector:</td>
-            <td>Aantal rekeningen:</td>
+            <td>Sector: Bouw</td>
+            <td>Aantal rekeningen: <span th:text="${numberOfAccountsBouw}"/></td>
             <td>Totaal:</td>
             <td>Gemiddeld:</td>
         </tr>
