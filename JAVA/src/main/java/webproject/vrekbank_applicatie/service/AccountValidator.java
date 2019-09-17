@@ -30,6 +30,7 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
+
     public Account prepareDeduction(String iban, Transfer transfer) {
         //1 Rekening betaler ophalen uit database
         Account payingAccount = accountDao.findByIban(iban);
@@ -55,7 +56,6 @@ public class AccountValidator {
     public void updateDebitBalance(String iban, Transfer transfer) {
         accountDao.save(prepareDeduction(iban, transfer));
     }
-
 
     public Account prepareAddition(String iban, Transfer transfer) {
         // 1. Rekening ontvanger ophalen
@@ -108,7 +108,6 @@ public class AccountValidator {
     }
 
     public void updateCreditBalance(String iban, Transfer transfer) {
-        prepareAddition(iban, transfer);
         accountDao.save(prepareAddition(iban, transfer));
     }
 }
