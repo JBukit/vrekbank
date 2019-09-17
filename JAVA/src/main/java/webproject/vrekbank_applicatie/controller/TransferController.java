@@ -35,10 +35,10 @@ public class TransferController {
         transfer.setDebitIban(iban);
 
         //alle velden verplicht; is vermoedelijk ook in html te regelen
-        //eerst double in wrappperclass omzetten, zodat getoetst kan worden op = null
+        //eerst double in wrappperclass zetten, zodat getoetst kan worden op = null
         Double amountInWrapper = (Double) transfer.getTransferAmount();
-        if (transfer.getCreditIban().equals("") || amountInWrapper == null || transfer.getTransferAmount() <= 0.0 || transfer.getDate().equals("") ||
-                transfer.getDebitIban().equals("") || transfer.getDescription().equals("")) {
+        if (transfer.getCreditIban().equals("") || amountInWrapper == null || transfer.getTransferAmount() <= 0.0 ||
+                transfer.getDate().equals("") || transfer.getDebitIban().equals("") || transfer.getDescription().equals("")) {
             model.addAttribute("IssueEmptyField", messageEmptyField);
             return "TransferFailed";
         } else {
@@ -60,7 +60,7 @@ public class TransferController {
 
             //uit tranferobject schrijven naar database in 3 stappen.
             //1.check op rekening betaler
-            boolean balanceOK = accountValidator.debitDeductionIsAllowed(iban, transfer);
+            boolean balanceOK = accountValidator.debitDeductionIsAllowed(transfer);
 
             //2. check op rekening ontvanger
             boolean debitIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
@@ -71,9 +71,9 @@ public class TransferController {
             // 4. If 1 tm 3 true, alle drie de mutaties op database uitvoeren
             if (balanceOK && debitIbanCorrect && nameCorrect) {
 
-                accountValidator.updateDebitBalance(iban, transfer);
+                accountValidator.updateDebitBalance(transfer);
 
-                accountValidator.updateCreditBalance(transfer.getCreditIban(), transfer);
+                accountValidator.updateCreditBalance(transfer);
 
                 transferValidator.saveTransfer(transfer);
 
