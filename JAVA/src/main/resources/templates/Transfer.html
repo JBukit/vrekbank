@@ -148,8 +148,10 @@
                 <textarea class="form-control" name="description" placeholder="Omschrijving" aria-label="With textarea"></textarea>
             </div>
 
-            <input type="submit" value="Bevestig betaling" class="btn btn-outline-light btn-lg" role="button">
-
+            <div style="text-align: center;">
+                <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg mr-5" role="button">
+                <button type="submit" class="btn btn-info btn-lg">Bevestig betaling</button>
+            </div>
         </form>
 
     </section>
@@ -164,10 +166,7 @@
     <div class="container-fluid">
 
         <div class="knop">
-            <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-md" role="button">
-        </div>
-        <div class="knop">
-            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-md" role="button">Terug naar account overview</a>
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-md" role="button">Terug naar overzicht</a>
         </div>
 
     </div>
