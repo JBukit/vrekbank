@@ -38,7 +38,7 @@ public class PersonalAccountValidator {
     public List<PersonalAccount> showTop10PersonalAccounts() {
         // make list with all accounts
         Iterable<PersonalAccount> iterable = personalAccountDao.findAll();
-        List<PersonalAccount> allAccounts = new ArrayList<>();
+        List<PersonalAccount> allAccounts = personalAccountDao.findAll();
         for (PersonalAccount account : iterable) {
             allAccounts.add(account);
         }
