@@ -63,13 +63,13 @@ public class TransferController {
             boolean balanceOK = accountValidator.debitDeductionIsAllowed(transfer);
 
             //2. check op rekening ontvanger
-            boolean debitIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
+            boolean creditIbanCorrect = accountValidator.creditIbanDoesExist(transfer.getCreditIban());
 
             //3. check op naam ontvanger
-            boolean nameCorrect = accountValidator.receiverNameIsCorrect(transfer.getCreditIban(), transfer, recipient);
+            boolean nameCorrect = accountValidator.receiverNameIsCorrect(transfer, recipient);
 
             // 4. If 1 tm 3 true, alle drie de mutaties op database uitvoeren
-            if (balanceOK && debitIbanCorrect && nameCorrect) {
+            if (balanceOK && creditIbanCorrect && nameCorrect) {
 
                 accountValidator.updateDebitBalance(transfer);
 
@@ -82,7 +82,7 @@ public class TransferController {
             } else if (!balanceOK) {
                 model.addAttribute("IssueLackOfFunds", messageLackOfFunds);
                 return "TransferFailed";
-            } else if (!debitIbanCorrect) {
+            } else if (!creditIbanCorrect) {
                 model.addAttribute("IssueDebitIban", messageDebitIbanUnknown);
                 return "TransferFailed";
             } else {
