@@ -4,9 +4,7 @@ package webproject.vrekbank_applicatie.model;
 //@author team 3, VrekBank, Jacco vd Heuvel
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -37,18 +35,8 @@ public class Customer {
     @OneToMany
     private List<BusinessAccount> businessAccounts;
 
-//    @ManyToMany (mappedBy = "personalAccountsOwned")
-//    private List<PersonalAccount> personalAccountsOwned;
-
-    // deze nog doen voor beide soorten rekening
-
-//    @OneToMany
-//    private List<Customer> accountsRepresented;
-
-//    @ManyToMany
-//    private List<Customer> accountsRepresented;
-
-
+    @ManyToMany (mappedBy = "accountHolders")
+    private List<Account> accounts;
 
     // constructors
     public Customer() {
@@ -75,7 +63,8 @@ public class Customer {
         this.PIN = PIN;
         this.personalAccounts = new ArrayList<>();
         this.businessAccounts = new ArrayList<>();
-//        this.accountsRepresented = new ArrayList<>();
+        this.accounts = new ArrayList<>();
+
     }
 
     //getters and setters
@@ -83,115 +72,93 @@ public class Customer {
     public int getCustomerId() {
         return customerId;
     }
-
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public String getSuffix() {
         return suffix;
     }
-
     public void setSuffix(String suffix) {
         this.suffix = suffix;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public String getAddress() {
         return address;
     }
-
     public void setAddress(String address) {
         this.address = address;
     }
-
     public String getZipcode() {
         return zipcode;
     }
-
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
     public String getCity() {
         return city;
     }
-
     public void setCity(String city) {
         this.city = city;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public char getSex() {
         return sex;
     }
-
     public void setSex(char sex) {
         this.sex = sex;
     }
-
     public String getDob() {
         return dob;
     }
-
     public void setDob(String dob) {
         this.dob = dob;
     }
-
     public int getBSN() {
         return BSN;
     }
-
     public void setBSN(int BSN) {
         this.BSN = BSN;
     }
-
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public int getPIN() {
         return PIN;
     }
-
     public void setPIN(int PIN) {
         this.PIN = PIN;
     }
-
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
     // overige methoden . Discussiepunt; mogen deze void zijn?
     //public PersonalAccount OpenPersonaAccount() {
     // }

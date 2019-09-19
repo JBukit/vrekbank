@@ -56,6 +56,7 @@ public class OpenAccountController {
         // zet in betreffende lijst
         //personalAccount.getOwners().add(user);
         personalAccount.setOwner(user);
+        personalAccount.addAccountHolder(user);
 
         // lijst eigenaren in account beschrijven met de klant. Daarnaast deze klant toevoegen in het lijstje rekeningen
         //in die klant
