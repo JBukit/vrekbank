@@ -1,70 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rekening Overzicht</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="css/favicon.ico">
+
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<h1>Overzicht sectoren</h1>
-<div>
-    <h2></h2>
-    <table>
+<section class="colored-section" id="testies">
 
-        <tr>
-            <td>Sector: Bouw</td>
-            <td>Aantal rekeningen: <span th:text="${numberOfAccountsBouw}"/></td>
-            <td>Totaal:</td>
-            <td>Gemiddeld:</td>
-        </tr>
+    <section class="container-fluid">
 
-        <tr><td></td></tr>
+        <div>
+            <h3>Overzicht Sectoren</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Sector: </th>
+                    <th scope="col">Aantal rekeningen: </th>
+                    <th scope="col">Totaal: </th>
+                    <th scope="col">Gemiddeld: </th>
+                </tr>
+                </thead>
 
-        <tr>
-            <td>Bouw</td>
-        </tr>
+                <tbody>
 
-        <tr>
-            <td>Financien</td>
-        </tr>
+                <tr>
+                    <td>Bouw</td>
+                    <td><span th:text="${numberOfAccountsBouw}"/></td>
+                </tr>
 
-        <tr>
-            <td>Handel</td>
-        </tr>
+                <tr>
+                    <td>Financien</td>
+                    <td><span th:text="${numberOfAccountsFinancien}"/></td>
+                </tr>
 
-        <tr>
-            <td>Horeca</td>
-        </tr>
+                <tr>
+                    <td>Handel</td>
+                    <td><span th:text="${numberOfAccountsHandel}"/></td>
+                </tr>
 
-        <tr>
-            <td>Industrie</td>
-        </tr>
+                <tr>
+                    <td>Horeca</td>
+                    <td><span th:text="${numberOfAccountsHoreca}"/></td>
+                </tr>
 
-        <tr>
-            <td>Landbouw</td>
-        </tr>
+                <tr>
+                    <td>Industrie</td>
+                    <td><span th:text="${numberOfAccountsIndustrie}"/></td>
+                </tr>
 
-        <tr>
-            <td>Logistiek</td>
-        </tr>
+                <tr>
+                    <td>Landbouw</td>
+                    <td><span th:text="${numberOfAccountsLandbouw}"/></td>
+                </tr>
 
-        <tr>
-            <td>Onderwijs</td>
-        </tr>
+                <tr>
+                    <td>Logistiek</td>
+                    <td><span th:text="${numberOfAccountsLogistiek}"/></td>
+                </tr>
 
-        <tr>
-            <td>IT</td>
-        </tr>
+                <tr>
+                    <td>Onderwijs</td>
+                    <td><span th:text="${numberOfAccountsOnderwijs}"/></td>
+                </tr>
 
-        <tr>
-            <td>Zorg</td>
-        </tr>
+                <tr>
+                    <td>IT</td>
+                    <td><span th:text="${numberOfAccountsIt}"/></td>
+                </tr>
 
-    </table>
+                <tr>
+                    <td>Zorg</td>
+                    <td><span th:text="${numberOfAccountsZorg}"/></td>
+                </tr>
 
-<br><br>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
 
-    <input type="button" value="Ga terug" onclick="history.back()">
+<section class="colored-section" id="testies">
 
-</div>
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a href="/employeeMkbWithName" class="btn btn-outline-light btn-lg" role="button">Ga Terug</a>
+        </div>
+
+    </div>
+
+</section>
+
 </body>
 </html>

@@ -68,6 +68,33 @@ public class EmployeeIndexController {
         List<BusinessAccount> sectorViewBouw = BusinessAccountValidator.findBusinessAccountsBySector("bouw");
         model.addAttribute("numberOfAccountsBouw", sectorViewBouw.size());
 
+        List<BusinessAccount> sectorViewFinancien = BusinessAccountValidator.findBusinessAccountsBySector("financien");
+        model.addAttribute("numberOfAccountsFinancien", sectorViewFinancien.size());
+
+        List<BusinessAccount> sectorViewHandel = BusinessAccountValidator.findBusinessAccountsBySector("handel");
+        model.addAttribute("numberOfAccountsHandel", sectorViewHandel.size());
+
+        List<BusinessAccount> sectorViewHoreca = BusinessAccountValidator.findBusinessAccountsBySector("horeca");
+        model.addAttribute("numberOfAccountsHoreca", sectorViewHoreca.size());
+
+        List<BusinessAccount> sectorViewIndustrie = BusinessAccountValidator.findBusinessAccountsBySector("industrie");
+        model.addAttribute("numberOfAccountsIndustrie", sectorViewIndustrie.size());
+
+        List<BusinessAccount> sectorViewLandbouw = BusinessAccountValidator.findBusinessAccountsBySector("landbouw");
+        model.addAttribute("numberOfAccountsLandbouw", sectorViewLandbouw.size());
+
+        List<BusinessAccount> sectorViewLogistiek = BusinessAccountValidator.findBusinessAccountsBySector("logistiek");
+        model.addAttribute("numberOfAccountsLogistiek", sectorViewLogistiek.size());
+
+        List<BusinessAccount> sectorViewOnderwijs = BusinessAccountValidator.findBusinessAccountsBySector("onderwijs");
+        model.addAttribute("numberOfAccountsOnderwijs", sectorViewOnderwijs.size());
+
+        List<BusinessAccount> sectorViewIt = BusinessAccountValidator.findBusinessAccountsBySector("it");
+        model.addAttribute("numberOfAccountsIt", sectorViewIt.size());
+
+        List<BusinessAccount> sectorViewZorg = BusinessAccountValidator.findBusinessAccountsBySector("zorg");
+        model.addAttribute("numberOfAccountsZorg", sectorViewZorg.size());
+
         return "MKBSectorView";
     }
 

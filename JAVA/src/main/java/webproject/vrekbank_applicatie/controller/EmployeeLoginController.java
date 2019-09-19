@@ -3,10 +3,7 @@ package webproject.vrekbank_applicatie.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.Employee;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.service.EmployeeValidator;
@@ -29,7 +26,7 @@ public class EmployeeLoginController {
 
     // handler voor checken of ingegeven login gegevens kloppen
     @PostMapping(value = "employeeOverview")
-    public String EmployeeOverviewHoofdParticulieren(@ModelAttribute Employee loggedInEmployee, Model model) {
+    public String EmployeeOverview(@ModelAttribute Employee loggedInEmployee, Model model) {
         // find employee based on inlog-information (userName en PW)
         Employee employee = employeeValidator.findEmployeeByUserName(loggedInEmployee.getUserName());
         model.addAttribute("name", loggedInEmployee.getUserName());
@@ -47,5 +44,14 @@ public class EmployeeLoginController {
         }
         return "EmployeeOverview";
     }
+
+    @GetMapping(value="employeeMkbWithName")
+    public String employeeWithNameHandler (@SessionAttribute ("name") String employeeName, Model model) {
+        Employee employee = employeeValidator.findEmployeeByUserName(employeeName);
+        EmployeeOverview(employee, model);
+
+        return "MKBOverview";
+    }
+
 
 }
