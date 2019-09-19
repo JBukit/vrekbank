@@ -109,6 +109,64 @@
 
 </section>
 
+<!-- Add new AccountHolder -->
+
+<section class="colored-section" id="testies">
+
+    <section class="container-fluid">
+
+        <h2>Toevoegen nieuwe rekeninghouder:</h2>
+
+        <form th:action="@{addAccountHolderConfirmation}" th:object="${Account}" method="post">
+
+            <div class="form-group col-sm-6 offset-3">
+                Nieuwe rekeninghouder:
+                <input type="text" name="nameNewAccountHolder" placeholder="voornaam">
+                <br>
+                Beveiligingscode (5-cijfers)
+                <input type="text" name="securityCode" placeholder="beveiligingscode"></div>
+            <br>
+            <form action="addAccountHolderConfirmation">
+                <input class="button" type="submit" value="toevoegen nieuwe rekeninghouder"/>
+            </form>
+        </form>
+
+
+
+
+
+
+    </section>
+
+</section>
+
+<!-- Buttons to go back -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="colored-section" id="footer">
+
+    <div class="container-end">
+        <i class="social-icon fab fa-facebook-f"></i>
+        <i class="social-icon fab fa-twitter"></i>
+        <i class="social-icon fab fa-instagram"></i>
+        <i class="social-icon fas fa-envelope"></i>
+        <p>© Copyright 2019 VrekBank</p>
+    </div>
+
+</footer>
 
 </body>
 </html>

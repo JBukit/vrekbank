@@ -58,6 +58,18 @@ public class AccountSummaryController {
         return "addAccountHolder";
     }
 
+    @PostMapping (value = "addAccountHolderConfirmation")
+    public String addAccountHolderConfirmation (@SessionAttribute ("iban") String iban, @RequestParam (value = "nameNewAccountHolder") String nameNewAccountHolder , @RequestParam(value = "securityCode") int securityCode, Model model) {
+        model.addAttribute("securityCode", securityCode);
+        System.out.println(securityCode);
+        model.containsAttribute("firstName");
+        model.containsAttribute("iban");
+        model.addAttribute("newAccountHolder", nameNewAccountHolder);
+        //accountValidator.saveAccountHolderConfirmationData(nameNewAccountHolder, iban,securityCode);
+
+        return "AddAccountHolderConfirmation";
+    }
+
 }
 
 
