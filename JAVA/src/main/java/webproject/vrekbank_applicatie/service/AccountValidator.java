@@ -3,10 +3,13 @@ package webproject.vrekbank_applicatie.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.Recipient;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
+
+import java.util.List;
 
 @Service
 public class AccountValidator {
@@ -100,4 +103,9 @@ public class AccountValidator {
     }
 
 
+    public List<Customer> findAllAccountHoldersByIban (String iban) {
+        Account account = accountDao.findByIban(iban);
+        List<Customer> accountHolders = account.getAccountHolders();
+        return accountHolders;
+    }
 }

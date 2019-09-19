@@ -73,8 +73,20 @@
 
 </section>
 
-<!-- Table information on new AccountHolder -->
-
+<!-- Current information in AccountHolders -->
+<div th:unless="${#lists.isEmpty(accountHolders)}">
+    <table  align="center">
+        <tr>
+            <td>KlantId:</td>
+            <td>KlantNaam:</td>
+        </tr>
+        <tr th:each="accountHolder : ${accountHolders}">
+            <td><span th:text="${accountHolder.customerId}"/></td>
+            <td><span th:text="${accountHolder.firstName}"/></td>
+            </form>
+        </tr>
+    </table>
+</div>
 
 
 

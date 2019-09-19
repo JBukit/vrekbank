@@ -51,9 +51,9 @@ public class AccountSummaryController {
     public String addAccountHolder (@SessionAttribute ("iban") String accountIban, Model model) {
         model.containsAttribute("firstName");
         model.containsAttribute("accountIban");
-//
-//        List<Customer> accountHolders = accountValidator.findAllAccountHoldersByAccountId(accountIban);
-//        model.addAttribute("accountHolders", accountHolders);
+
+        List<Customer> accountHolders = accountValidator.findAllAccountHoldersByIban(accountIban);
+        model.addAttribute("accountHolders", accountHolders);
 
         return "addAccountHolder";
     }
