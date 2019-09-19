@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 @Service
 public class BusinessAccountValidator {
 
-    private final int TOP10= 10;
+    private final int TOP10 = 10;
 
     @Autowired
     BusinessAccountDao businessAccountDao;
@@ -28,7 +30,7 @@ public class BusinessAccountValidator {
         businessAccountDao.save(businessAccount);
     }
 
-    public List<BusinessAccount> findAllBusinessAccountByCustomer (Customer customer) {
+    public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
         return accounts;
     }
@@ -51,9 +53,22 @@ public class BusinessAccountValidator {
         } else {
             size = TOP10;
         }
-        for (int i = 0; i < size; i++ ) {
+        for (int i = 0; i < size; i++) {
             top10.add(allAccounts.get(i));
         }
         return top10;
     }
+
+    public String serialize(BusinessAccount businessAccount) {
+        Gson gson = new Gson();
+        String json = gson.toJson(businessAccount);
+        return json;
+    }
+
+    public BusinessAccount deserialize(String json) {
+        Gson gson = new Gson();
+        BusinessAccount businessAccount = gson.fromJson(json, BusinessAccount.class);
+        return businessAccount;
+    }
 }
+
