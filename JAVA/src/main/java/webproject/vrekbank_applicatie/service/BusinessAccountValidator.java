@@ -59,6 +59,7 @@ public class BusinessAccountValidator {
         return top10;
     }
 
+
     public String serialize(BusinessAccount businessAccount) {
         Gson gson = new Gson();
         String json = gson.toJson(businessAccount);
@@ -69,6 +70,19 @@ public class BusinessAccountValidator {
         Gson gson = new Gson();
         BusinessAccount businessAccount = gson.fromJson(json, BusinessAccount.class);
         return businessAccount;
+    }
+
+    public List<BusinessAccount> findBusinessAccountsBySector(String sector) {
+
+        // maak een lijst van alle business accounts in branche 'sector'
+
+        List<BusinessAccount> sectorList = businessAccountDao.findBusinessAccountsBySector(sector);
+
+        // geef gevulde lijst terug als 'sectorList'
+
+        return sectorList;
+
+
     }
 }
 

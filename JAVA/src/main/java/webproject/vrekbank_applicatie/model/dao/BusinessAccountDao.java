@@ -16,4 +16,7 @@ public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Inte
     public List<BusinessAccount> findByOwner(Customer customer);
 
     public List<BusinessAccount> findAll ();
+
+    public List<BusinessAccount> findBusinessAccountsBySector(String sector);
+
 }

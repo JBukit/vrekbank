@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rekening Overzicht</title>
+    <title>Bevestiging toevoegen rekeninghouder</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -59,80 +59,29 @@
 </section>
 
 
-<!-- Welcome message  -->
-
-<section class="colored-section" id="testies">
-
-    <div class="container-fluid">
-
-        <div class="col-md">
-            <h1> Welkom <span th:text="${firstName}"/></h1>
-            <h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
-
-        </div>
-
-    </div>
-
-</section>
 
 
-<!-- Table overview transactions -->
-
-<section class="colored-section" id="testies">
-
-    <section class="container-fluid">
-
-        <div th:unless="${#lists.isEmpty(totalTransferList)}">
-            <h3>Overzicht van transacties</h3>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Datum: </th>
-                    <th scope="col">Omschrijving: </th>
-                    <th scope="col">Bedrag: </th>
-                    <th scope="col">Credit rekening: </th>
-                    <th scope="col">Debit rekening: </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transfer : ${totalTransferList}">
-                    <td><span th:text="${transfer.date}"/></td>
-                    <td><span th:text="${transfer.description}"/></td>
-                    <td><span th:text="${transfer.transferAmount}"/></td>
-                    <td><span th:text="${transfer.creditIban}"/></td>
-                    <td><span th:text="${transfer.debitIban}"/></td>
-                </tr>
-                </tbody>
-            </table>
 
 
-        </div>
-
-    </section>
-
-</section>
 
 
-<!-- Buttons Transfer & Overview -->
+
+
+
+
+<!-- Buttons to go back -->
 
 <section class="colored-section" id="testies">
 
     <div class="container-fluid">
 
         <div class="knop">
-            <a href="/transaction" class="btn btn-outline-light btn-lg" role="button">Geld overmaken</a>
-        </div>
-        <div class="knop">
-            <a href="/addAccountHolder" class="btn btn-outline-light btn-lg" role="button">Nieuwe rekeninghouder toevoegen</a>
-        </div>
-        <div class="knop">
-            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
         </div>
 
     </div>
 
 </section>
-
 
 <!-- Footer -->
 
@@ -149,6 +98,4 @@
 </footer>
 
 </body>
-
 </html>
-

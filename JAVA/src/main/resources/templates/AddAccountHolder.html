@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Rekening Overzicht</title>
+    <title>Toevoegen nieuwe rekeninghouder</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Favicon -->
@@ -20,9 +21,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -38,7 +45,8 @@
 
             <a href="/"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -58,7 +66,6 @@
     </div>
 </section>
 
-
 <!-- Welcome message  -->
 
 <section class="colored-section" id="testies">
@@ -67,72 +74,85 @@
 
         <div class="col-md">
             <h1> Welkom <span th:text="${firstName}"/></h1>
-            <h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
-
+            <h2>In dit scherm kan een nieuwe rekeninghouder aan de rekening <span th:text="${iban}"/> worden toegevoegd.
+            </h2>
         </div>
 
     </div>
 
 </section>
 
+<!-- Current information in AccountHolders -->
 
-<!-- Table overview transactions -->
+<section class="colored-section" id="testies">
+
+    <section class="container-fluid">
+        <div th:unless="${#lists.isEmpty(accountHolders)}">
+            <h3>Overzicht huidige rekeninghouders:</h3>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Rekeningnummer: </th>
+                    <th scope="col">Naam: </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="accountHolder : ${accountHolders}">
+                    <td><span th:text="${accountHolder.customerId}"/></td>
+                    <td><span th:text="${accountHolder.firstName}"/></td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</section>
+
+<!-- Add new AccountHolder -->
 
 <section class="colored-section" id="testies">
 
     <section class="container-fluid">
 
-        <div th:unless="${#lists.isEmpty(totalTransferList)}">
-            <h3>Overzicht van transacties</h3>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Datum: </th>
-                    <th scope="col">Omschrijving: </th>
-                    <th scope="col">Bedrag: </th>
-                    <th scope="col">Credit rekening: </th>
-                    <th scope="col">Debit rekening: </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="transfer : ${totalTransferList}">
-                    <td><span th:text="${transfer.date}"/></td>
-                    <td><span th:text="${transfer.description}"/></td>
-                    <td><span th:text="${transfer.transferAmount}"/></td>
-                    <td><span th:text="${transfer.creditIban}"/></td>
-                    <td><span th:text="${transfer.debitIban}"/></td>
-                </tr>
-                </tbody>
-            </table>
+        <h2>Toevoegen nieuwe rekeninghouder:</h2>
+
+        <form th:action="@{addAccountHolderConfirmation}" th:object="${Account}" method="post">
+
+            <div class="form-group col-sm-6 offset-3">
+                Nieuwe rekeninghouder:
+                <input type="text" name="nameNewAccountHolder" placeholder="voornaam">
+                <br>
+                Beveiligingscode (5-cijfers)
+                <input type="text" name="securityCode" placeholder="beveiligingscode"></div>
+            <br>
+            <form action="addAccountHolderConfirmation">
+                <input class="button" type="submit" value="toevoegen nieuwe rekeninghouder"/>
+            </form>
+        </form>
 
 
-        </div>
+
+
+
 
     </section>
 
 </section>
 
-
-<!-- Buttons Transfer & Overview -->
+<!-- Buttons to go back -->
 
 <section class="colored-section" id="testies">
 
     <div class="container-fluid">
 
         <div class="knop">
-            <a href="/transaction" class="btn btn-outline-light btn-lg" role="button">Geld overmaken</a>
-        </div>
-        <div class="knop">
-            <a href="/addAccountHolder" class="btn btn-outline-light btn-lg" role="button">Nieuwe rekeninghouder toevoegen</a>
-        </div>
-        <div class="knop">
-            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
         </div>
 
     </div>
 
 </section>
-
 
 <!-- Footer -->
 
@@ -149,6 +169,4 @@
 </footer>
 
 </body>
-
 </html>
-

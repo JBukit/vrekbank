@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -21,20 +23,12 @@ public abstract class Account {
     @ManyToOne
     private Customer owner;
 
-    //@ManyToMany (mappedBy = "accountsOwned")
-    //private List<Customer> owners;
-
-
-    //@ManyToMany (mappedBy = "personalAccountsOwned")
-//    private List<Customer> owners;
-
-//    @ManyToMany
-//    private List<Customer> representatives;
+    @ManyToMany
+    private List<Customer> accountHolders;
 
     // constructors
     public Account() {
-        //owners = new ArrayList<Customer>();
-//        representatives = new ArrayList<Customer>();
+        this(0,"",0,0,false);
     }
 
     public Account(int accountId, String iban, double balance,
@@ -44,8 +38,7 @@ public abstract class Account {
         this.balance = balance;
         this.minimumBalance = minimumBalance;
         this.businessAccount = businessAccount;
-        //this.owners = new ArrayList<>();
-//        this.representatives = new ArrayList<>();
+        this.accountHolders = new ArrayList<>();
     }
 
     // getters and setters
@@ -79,25 +72,19 @@ public abstract class Account {
     public void setBusinessAccount(boolean businessAccount) {
         this.businessAccount = businessAccount;
     }
-
     public Customer getOwner() {
         return owner;
     }
-
     public void setOwner(Customer owner) {
         this.owner = owner;
     }
-    //    public List<Customer> getOwners() {     return owners;}
+    public List<Customer> getAccountHolders() {
+        return accountHolders;
+    }
+    public void setAccountHolders(List<Customer> accountHolders) {
+        this.accountHolders = accountHolders;
+    }
 
-//    public void setOwners(List<Customer> owners) {this.owners = owners;}
-
-//    public List<Customer> getRepresentatives() {
-//        return representatives;
-//    }
-
-//    public void setRepresentatives(List<Customer> representatives) {
-//        this.representatives = representatives;
-//    }
 
     // methode om IBAN aan te maken
     public static String CreateIBAN() {
@@ -173,5 +160,9 @@ public abstract class Account {
             iban = ibanFinalString;
         }
         return iban;
+    }
+
+    public void addAccountHolder (Customer customer) {
+        accountHolders.add(customer);
     }
 }
