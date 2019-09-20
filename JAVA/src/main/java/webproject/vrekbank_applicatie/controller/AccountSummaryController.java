@@ -65,7 +65,7 @@ public class AccountSummaryController {
         model.containsAttribute("firstName");
         model.containsAttribute("iban");
         model.addAttribute("newAccountHolder", nameNewAccountHolder);
-        //accountValidator.saveAccountHolderConfirmationData(nameNewAccountHolder, iban,securityCode);
+        accountValidator.saveAccountHolderConfirmationData(nameNewAccountHolder, iban,securityCode);
 
         return "AddAccountHolderConfirmation";
     }
