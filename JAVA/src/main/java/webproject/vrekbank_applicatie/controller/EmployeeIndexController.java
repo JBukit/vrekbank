@@ -91,6 +91,7 @@ public class EmployeeIndexController {
             model.addAttribute("meanBalanceBouw", (String.format("€ %.2f", 0)));
         }
 
+
         List<BusinessAccount> sectorViewFinancien = BusinessAccountValidator.findBusinessAccountsBySector("financien");
         model.addAttribute("numberOfAccountsFinancien", sectorViewFinancien.size());
 
@@ -103,6 +104,7 @@ public class EmployeeIndexController {
         } else {
             model.addAttribute("meanBalanceFinancien", (String.format("€ %.2f", 0)));
         }
+
 
         List<BusinessAccount> sectorViewHandel = BusinessAccountValidator.findBusinessAccountsBySector("handel");
         model.addAttribute("numberOfAccountsHandel", sectorViewHandel.size());
@@ -117,17 +119,20 @@ public class EmployeeIndexController {
             model.addAttribute("meanBalanceHandel", (String.format("€ %.2f", 0.0)));
         }
 
+
         List<BusinessAccount> sectorViewHoreca = BusinessAccountValidator.findBusinessAccountsBySector("horeca");
         model.addAttribute("numberOfAccountsHoreca", sectorViewHoreca.size());
 
         Double totalBalanceHoreca = BusinessAccountValidator.findTotalBalanceBySector("horeca");
         model.addAttribute("totalBalanceHoreca", (String.format("€ %.2f", totalBalanceHoreca)));
+
         if (sectorViewHoreca.size() != 0){
             Double meanBalanceHoreca = (totalBalanceHoreca / sectorViewHoreca.size());
             model.addAttribute("meanBalanceHoreca", (String.format("€ %.2f", meanBalanceHoreca)));
         } else {
             model.addAttribute("meanBalanceHoreca", (String.format("€ %.2f", 0.0)));
         }
+
 
         List<BusinessAccount> sectorViewIndustrie = BusinessAccountValidator.findBusinessAccountsBySector("industrie");
         model.addAttribute("numberOfAccountsIndustrie", sectorViewIndustrie.size());
@@ -142,6 +147,7 @@ public class EmployeeIndexController {
             model.addAttribute("meanBalanceIndustrie", (String.format("€ %.2f", 0.0)));
         }
 
+
         List<BusinessAccount> sectorViewLandbouw = BusinessAccountValidator.findBusinessAccountsBySector("landbouw");
         model.addAttribute("numberOfAccountsLandbouw", sectorViewLandbouw.size());
 
@@ -154,6 +160,7 @@ public class EmployeeIndexController {
         } else {
             model.addAttribute("meanBalanceLandbouw", (String.format("€ %.2f", 0.0)));
         }
+
 
         List<BusinessAccount> sectorViewLogistiek = BusinessAccountValidator.findBusinessAccountsBySector("logistiek");
         model.addAttribute("numberOfAccountsLogistiek", sectorViewLogistiek.size());
@@ -168,6 +175,7 @@ public class EmployeeIndexController {
             model.addAttribute("meanBalanceLogistiek", (String.format("€ %.2f", 0.0)));
         }
 
+
         List<BusinessAccount> sectorViewOnderwijs = BusinessAccountValidator.findBusinessAccountsBySector("onderwijs");
         model.addAttribute("numberOfAccountsOnderwijs", sectorViewOnderwijs.size());
 
@@ -180,6 +188,7 @@ public class EmployeeIndexController {
         } else {
             model.addAttribute("meanBalanceOnderwijs", (String.format("€ %.2f", 0.0)));
         }
+
 
         List<BusinessAccount> sectorViewIt = BusinessAccountValidator.findBusinessAccountsBySector("it");
         model.addAttribute("numberOfAccountsIt", sectorViewIt.size());
@@ -207,6 +216,7 @@ public class EmployeeIndexController {
         } else {
             model.addAttribute("meanBalanceZorg", (String.format("€ %.2f", 0.0)));
         }
+
 
         return "MKBSectorView";
     }
