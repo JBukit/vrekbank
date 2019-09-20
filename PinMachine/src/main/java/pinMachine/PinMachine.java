@@ -58,8 +58,8 @@ public class PinMachine {
 
                 switch(answer) {
                     case "yes":
-                        System.out.println("Deze pinmachine met identifier" + pinMachindIdentifier + " is " +
-                                "geregistreerdt bij een MBK rekening");
+                        System.out.println("Deze pinmachine met identifier" + pinMachindIdentifier +
+                                "is geregistreerdt bij een MBK rekening");
                         break;
                     case "no":
                         System.out.println("Helaas, geen rekening met identifier" + pinMachindIdentifier + " gevonden...");
