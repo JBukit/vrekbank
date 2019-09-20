@@ -11,18 +11,18 @@ import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 
 @RestController
-        public class EmployeeOverviewController {
+public class EmployeeOverviewController {
 
-        @Autowired
+    @Autowired
     BusinessAccountValidator businessAccountValidator;
 
-//        @GetMapping(value = "/businessAccount/{pinMachineIdentifier}")
-//        public String getAttachedMKBAccount(@PathVariable int ) {
-//            BusinessAccount shopholdersAccount = businessAccountValidator.findById(id);
-//            String json = businessAccountValidator.serialize(businessAcc);
-//            return json;
-//        }
-//
+//    @GetMapping(value = "/businessAccount/{}")
+//    public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier)  {
+//        BusinessAccount shopholdersAccount = businessAccountValidator.findBusinessAccountByDailyConnectIdentifier(dailyConnectIdentifier);
+//        String json = businessAccountValidator.serialize(shopholdersAccount);
+//        return json;
+//    }
+
 //        @GetMapping(value = "/members/new")
 //        public String putMember(@RequestParam String json) {
 //            Member member = memberService.deserialize(json);
@@ -37,4 +37,4 @@ import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 //            }
 //            return "no";
 //        }
-    }
+}

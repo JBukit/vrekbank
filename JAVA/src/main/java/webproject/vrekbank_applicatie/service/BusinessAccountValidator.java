@@ -24,11 +24,12 @@ public class BusinessAccountValidator {
         super();
     }
 
-    // methods to add, check, update, delete customers
+    // methods to add, check, update, delete businessAccounts
 
     public void saveBusinessAccount(BusinessAccount businessAccount) {
         businessAccountDao.save(businessAccount);
     }
+
 
     public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);

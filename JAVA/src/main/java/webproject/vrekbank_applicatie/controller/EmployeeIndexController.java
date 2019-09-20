@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Employee;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
+import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.EmployeeValidator;
 import java.math.BigDecimal;
+import webproject.vrekbank_applicatie.service.TransferValidator;
+
+
 import java.util.List;
 
 
@@ -28,6 +32,9 @@ public class EmployeeIndexController {
 
     @Autowired
     BusinessAccountValidator BusinessAccountValidator;
+
+    @Autowired
+    TransferValidator transferValidator;
 
 
     @GetMapping (value = "employeeLogin")
@@ -56,9 +63,12 @@ public class EmployeeIndexController {
     }
 
     @GetMapping (value = "MKBMostTransfers")
-    public String MKBMostTransfersHandler () {
+    public String MKBMostTransfersHandler (@SessionAttribute("name") String name, Model model) {
+        model.containsAttribute(name);
 
-    //lijst alle sectoren
+        List<BusinessAccount> top10 = transferValidator.top10MostMKBTransfers();
+
+        model.addAttribute("top10", top10);
         return "MKBMostTransfers";
     }
 

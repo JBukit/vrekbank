@@ -21,4 +21,7 @@ public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Inte
 
     public Double findTotalBalanceBySector(String sector);
 
+    //Check if iban exists in the table BusinessAccount to check if it's a business account
+    public boolean existsByIban(String iban);
+
 }
