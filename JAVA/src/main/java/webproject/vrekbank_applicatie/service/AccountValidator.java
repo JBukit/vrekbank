@@ -1,5 +1,6 @@
 package webproject.vrekbank_applicatie.service;
 
+import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.*;
@@ -7,6 +8,7 @@ import webproject.vrekbank_applicatie.model.dao.AccountDao;
 import webproject.vrekbank_applicatie.model.dao.AccountHolderConfirmationDataDao;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -116,5 +118,19 @@ public class AccountValidator {
         confirmationData.setAccountIban(iban);
         confirmationData.setSecurityCode(securityCode);
         accountHolderConfirmationDataDao.save(confirmationData);
+    }
+
+    public List<Account> findAccountsWhereCustomerIsAccountHolder(Customer customer) {
+        System.out.println("start methode findAccountsWhereCustomerisAccountHolder");
+        System.out.println(customer.getUsername());
+        List<Account> accounts = new ArrayList<>();
+        accounts = accountDao.findAccountsByOwner(customer);
+        System.out.println(accounts.size());
+        for (int i = 0; i < accounts.size() ; i++) {
+            System.out.println(accounts.get(i).getIban());
+
+        }
+
+        return accounts;
     }
 }

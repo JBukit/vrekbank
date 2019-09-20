@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.service.AccountValidator;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Controller
 @SessionAttributes({"name", "firstName", "iban"})
@@ -25,6 +25,9 @@ public class OverviewController {
 
     @Autowired
     CustomerValidator customerValidator;
+
+    @Autowired
+    AccountValidator accountValidator;
 
     @GetMapping(value = "openaccount")
     public String overviewOpenAccountHandler() {
@@ -84,5 +87,32 @@ public class OverviewController {
 
         return "AccountSummary";
     }
+
+    @GetMapping (value = "accountholder")
+    public String overviewAccountHolder (@SessionAttribute ("name") String name, Model model) {
+        System.out.println("start overviewAccountHolder. Customer = " + name);
+
+        Customer customer = customerValidator.findCustomerByUsername(name);
+        System.out.println(customer.getUsername());
+        List<Account> accounts = accountValidator.findAccountsWhereCustomerIsAccountHolder(customer);
+        for (int i = 0; i < accounts.size(); i++) {
+            System.out.println(accounts.get(i).getIban());
+        }
+        model.addAttribute("accounts", accounts);
+
+
+
+
+        return "OverviewAccountHolder";
+    }
+
+    @PostMapping (value = "confirmationAccountHolder")
+    public String confirmationAccountHolder (Model model) {
+
+        return "ConfirmationAccountHolder";
+    }
+
+
+
 
 }

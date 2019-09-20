@@ -2,7 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Toevoegen nieuwe rekeninghouder</title>
+    <title>Overzicht met rekeningen als rekeninghouder</title>
+
+    <meta charset="UTF-8">
+    <title>RekeningOverzicht</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -33,7 +36,6 @@
 </head>
 
 <body>
-
 
 <!-- Nav Bar -->
 
@@ -66,37 +68,36 @@
     </div>
 </section>
 
-<!-- Welcome message  -->
 
-<section class="colored-section" id="testies">
+<br>
 
-    <div class="container-fluid">
 
-        <div class="col-md">
-            <h1> Welkom <span th:text="${firstName}"/></h1>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Current information in AccountHolders -->
+<!-- Overview of accounts of which Customer is accountHolder -->
 
 <section class="colored-section" id="testies">
 
     <section class="container-fluid">
-        <div th:unless="${#lists.isEmpty(accountHolders)}">
+        <div th:unless="${#lists.isEmpty(accounts)}">
             <h3>Overzicht huidige rekeninghouders van de rekening <span th:text="${iban}"/>:</h3>
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Naam: </th>
+                    <th scope="col">Iban:</th>
+                    <th scope="col">Rekeninghouders:</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="accountHolder : ${accountHolders}">
-                    <td><span th:text="${accountHolder.firstName}"/></td>
-                    </form>
+                <tr th:each="account : ${accounts}">
+                    <td><span th:text="${account.iban}"/></td>
+                    <td>
+                        <div th:unless="${#lists.isEmpty(account.accountHolders)}">
+                            <table>
+                                <tr th:each="accountHolder : ${account.accountHolders}">
+                                    <td><span th:text="${accountHolder.firstName}"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -105,46 +106,25 @@
 
 </section>
 
-<!-- Add new AccountHolder -->
 
-<section class="colored-section" id="testies">
+<!-- Confirm new account -->
 
-    <section class="container-fluid">
 
-        <h2>Toevoegen nieuwe rekeninghouder:</h2>
-
-        <form th:action="@{addAccountHolderConfirmation}" th:object="${Account}" method="post">
-
-            <div class="form-group col-sm-6 offset-3">
-                Nieuwe rekeninghouder:
-                <input type="text" name="nameNewAccountHolder" placeholder="voornaam">
-                <br>
-                Beveiligingscode (5-cijfers)
-                <input type="text" name="securityCode" placeholder="beveiligingscode"></div>
-            <br>
-            <form action="addAccountHolderConfirmation">
-                <input class="button" type="submit" value="toevoegen nieuwe rekeninghouder"/>
-            </form>
-
-        </form>
-
-    </section>
-
-</section>
-
-<!-- Button to go back -->
+<!-- Buttons -->
 
 <section class="colored-section" id="testies">
 
     <div class="container-fluid">
 
-        <div class="knop">
-            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar account overview</a>
+        <div style="text-align: center;">
+            <a href="/login" class="btn btn-outline-light btn-lg mr-5" role="button">Uitloggen</a>
+            <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg mr-5" role="button">Terug naar
+                overzicht</a>
         </div>
-
     </div>
 
 </section>
+
 
 <!-- Footer -->
 
@@ -159,6 +139,7 @@
     </div>
 
 </footer>
+
 
 </body>
 </html>
