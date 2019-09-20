@@ -13,6 +13,8 @@ public interface TransferDao extends CrudRepository<Transfer, Integer> {
         public List <Transfer> findByCreditIban (String creditIban);
         public List <Transfer> findByDebitIban (String debitIban);
 
+        public List <Transfer> findAll ();
+
 }
 
 
