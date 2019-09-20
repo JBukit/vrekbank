@@ -2,11 +2,9 @@ package webproject.vrekbank_applicatie.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import webproject.vrekbank_applicatie.model.Account;
-import webproject.vrekbank_applicatie.model.Customer;
-import webproject.vrekbank_applicatie.model.Recipient;
-import webproject.vrekbank_applicatie.model.Transfer;
+import webproject.vrekbank_applicatie.model.*;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
+import webproject.vrekbank_applicatie.model.dao.AccountHolderConfirmationDataDao;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
 import java.util.List;
@@ -19,6 +17,9 @@ public class AccountValidator {
 
     @Autowired
     BusinessAccountDao businessAccountDao;
+
+    @Autowired
+    AccountHolderConfirmationDataDao accountHolderConfirmationDataDao;
 
     public AccountValidator() {
         super();
@@ -107,5 +108,13 @@ public class AccountValidator {
         Account account = accountDao.findByIban(iban);
         List<Customer> accountHolders = account.getAccountHolders();
         return accountHolders;
+    }
+
+    public void saveAccountHolderConfirmationData(String nameNewAccountHolder, String iban,int securityCode){
+        AccountHolderConfirmationData confirmationData = new AccountHolderConfirmationData();
+        confirmationData.setAccountHolderName(nameNewAccountHolder);
+        confirmationData.setAccountIban(iban);
+        confirmationData.setSecurityCode(securityCode);
+        accountHolderConfirmationDataDao.save(confirmationData);
     }
 }

@@ -10,18 +10,18 @@ public class AccountHolderConfirmationData {
     @Id
     @GeneratedValue
     private int confirmationId;
-    private int accountNumber;
+    private String accountIban;
     private String accountHolderName;
     private int securityCode;
 
     public AccountHolderConfirmationData() {
-        this("",0,0);
+        this("","",0);
         this.confirmationId = 0;
     }
 
-    public AccountHolderConfirmationData(String accountHolderName, int accountNumber, int securityCode) {
+    public AccountHolderConfirmationData(String accountHolderName, String accountIban, int securityCode) {
         this.accountHolderName = accountHolderName;
-        this.accountNumber = accountNumber;
+        this.accountIban = accountIban;
         this.securityCode = securityCode;
     }
 
@@ -37,11 +37,11 @@ public class AccountHolderConfirmationData {
     public void setAccountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
     }
-    public int getAccountNumber() {
-        return accountNumber;
+    public String getAccountIban() {
+        return accountIban;
     }
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setAccountIban(String accountIban) {
+        this.accountIban = accountIban;
     }
     public int getSecurityCode() {
         return securityCode;
