@@ -23,10 +23,35 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Javascript for current time and date -->
+    <script>
+        function startTime() {
+            var today = new Date();
+            var d = today.getDate();
+            var month = today.getMonth()+1;
+            var y = today.getFullYear();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('time').innerHTML =
+                h + ":" + m + ":" + s + " <span class=\"far fa-clock\"></span>";
+            var t = setTimeout(startTime, 500);
+            document.getElementById('date').innerHTML =
+                 d + "-" + month + "-" + y + " <span class=\"far fa-calendar-alt\"></span>";
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i}  // add zero in front of numbers < 10
+            return i;
+        }
+    </script>
+
 </head>
 
-<body>
-
+<body onload="startTime()">
 
 <!-- Nav Bar -->
 
@@ -68,7 +93,6 @@
         <div class="col-md">
             <h1> Welkom <span th:text="${firstName}"/></h1>
             <h2>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h2>
-
         </div>
 
     </div>
@@ -83,6 +107,9 @@
     <section class="container-fluid">
 
         <div th:unless="${#lists.isEmpty(totalTransferList)}">
+            <h5><div class="text-right" id="time"></div></h5>
+            <h5><div class="text-right" id="date"></div></h5>
+
             <h3>Overzicht van transacties</h3>
             <table class="table table-hover">
                 <thead>
