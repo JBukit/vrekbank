@@ -32,14 +32,15 @@
     <section class="container-fluid">
 
         <div>
-            <h3>Overzicht Sectoren</h3>
+            <h3>Saldo-overzicht Sectoren</h3>
+            <br>
             <table class="table table-hover">
                 <thead>
                 <tr>
                     <th scope="col">Sector: </th>
                     <th scope="col">Aantal rekeningen: </th>
-                    <th scope="col">Totaal: </th>
-                    <th scope="col">Gemiddeld: </th>
+                    <th scope="col">Totaal saldo: </th>
+                    <th scope="col">Gemiddeld saldo: </th>
                 </tr>
                 </thead>
 
@@ -48,51 +49,79 @@
                 <tr>
                     <td>Bouw</td>
                     <td><span th:text="${numberOfAccountsBouw}"/></td>
+                    <td><span th:text="${totalBalanceBouw}"/></td>
+                    <td><span th:text="${meanBalanceBouw}"/></td>
                 </tr>
 
                 <tr>
-                    <td>Financien</td>
+                    <td>Financiën</td>
                     <td><span th:text="${numberOfAccountsFinancien}"/></td>
+                    <td><span th:text="${totalBalanceFinancien}"/></td>
+                    <td><span th:text="${meanBalanceFinancien}"/></td>
+
                 </tr>
 
                 <tr>
                     <td>Handel</td>
                     <td><span th:text="${numberOfAccountsHandel}"/></td>
+                    <td><span th:text="${totalBalanceHandel}"/></td>
+                    <td><span th:text="${meanBalanceHandel}"/></td>
                 </tr>
 
                 <tr>
                     <td>Horeca</td>
                     <td><span th:text="${numberOfAccountsHoreca}"/></td>
+                    <td><span th:text="${totalBalanceHoreca}"/></td>
+                    <td><span th:text="${meanBalanceHoreca}"/></td>
                 </tr>
 
                 <tr>
                     <td>Industrie</td>
                     <td><span th:text="${numberOfAccountsIndustrie}"/></td>
+                    <td><span th:text="${totalBalanceIndustrie}"/></td>
+                    <td><span th:text="${meanBalanceIndustrie}"/></td>
                 </tr>
 
                 <tr>
                     <td>Landbouw</td>
                     <td><span th:text="${numberOfAccountsLandbouw}"/></td>
+                    <td><span th:text="${totalBalanceLandbouw}"/></td>
+                    <td><span th:text="${meanBalanceLandbouw}"/></td>
                 </tr>
 
                 <tr>
                     <td>Logistiek</td>
                     <td><span th:text="${numberOfAccountsLogistiek}"/></td>
+                    <td><span th:text="${totalBalanceLogistiek}"/></td>
+                    <td><span th:text="${meanBalanceLogistiek}"/></td>
                 </tr>
 
                 <tr>
                     <td>Onderwijs</td>
                     <td><span th:text="${numberOfAccountsOnderwijs}"/></td>
+                    <td><span th:text="${totalBalanceOnderwijs}"/></td>
+                    <td><span th:text="${meanBalanceOnderwijs}"/></td>
                 </tr>
 
                 <tr>
                     <td>IT</td>
                     <td><span th:text="${numberOfAccountsIt}"/></td>
+                    <td><span th:text="${totalBalanceIt}"/></td>
+                    <td><span th:text="${meanBalanceIt}"/></td>
                 </tr>
 
                 <tr>
                     <td>Zorg</td>
                     <td><span th:text="${numberOfAccountsZorg}"/></td>
+                    <td><span th:text="${totalBalanceZorg}"/></td>
+                    <td><span th:text="${meanBalanceZorg}"/></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
 
                 </tbody>

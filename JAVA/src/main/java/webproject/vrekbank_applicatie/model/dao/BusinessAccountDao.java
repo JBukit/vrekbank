@@ -19,4 +19,6 @@ public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Inte
 
     public List<BusinessAccount> findBusinessAccountsBySector(String sector);
 
+    public Double findTotalBalanceBySector(String sector);
+
 }

@@ -78,11 +78,21 @@ public class BusinessAccountValidator {
 
         List<BusinessAccount> sectorList = businessAccountDao.findBusinessAccountsBySector(sector);
 
-        // geef gevulde lijst terug als 'sectorList'
-
         return sectorList;
+    }
 
+    public Double findTotalBalanceBySector(String sector){
 
+        // maak een lijst van alle business accounts in branche 'sector' en tel de saldos op
+
+        List<BusinessAccount> list = businessAccountDao.findBusinessAccountsBySector(sector);
+
+        Double totalBalance = 0.0;
+        for (BusinessAccount account : list) {
+            totalBalance += account.getBalance();
+        }
+
+        return totalBalance;
     }
 }
 
