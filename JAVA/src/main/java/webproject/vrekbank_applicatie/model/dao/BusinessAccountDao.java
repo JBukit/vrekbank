@@ -1,15 +1,16 @@
 package webproject.vrekbank_applicatie.model.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
-
+import webproject.vrekbank_applicatie.model.PinMachine;
 
 import java.util.List;
 
 public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Integer> {
     // additional methodes to check/update in database
+
+    public BusinessAccount findByPinMachine(PinMachine pinMachine);
 
     public BusinessAccount findByIban(String iban);
 

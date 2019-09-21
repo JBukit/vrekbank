@@ -1,17 +1,11 @@
 package webproject.vrekbank_applicatie.model;
 
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
-
 import javax.persistence.*;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class PinMachine {
     //pin voor dagelijkse identficatie, uit 8 cijfers
     @Id
-    @GeneratedValue
     private int dailyConnectIdentifier;
 
     // pin alleen om te koppelen, uit 5 cijfers

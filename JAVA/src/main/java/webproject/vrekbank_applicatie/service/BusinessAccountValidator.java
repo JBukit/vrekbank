@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
+import webproject.vrekbank_applicatie.model.PinMachine;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
+import webproject.vrekbank_applicatie.model.dao.PinMachineDao;
 
 @Service
 public class BusinessAccountValidator {
@@ -19,6 +21,7 @@ public class BusinessAccountValidator {
 
     @Autowired
     BusinessAccountDao businessAccountDao;
+
 
     public BusinessAccountValidator() {
         super();
@@ -30,6 +33,14 @@ public class BusinessAccountValidator {
         businessAccountDao.save(businessAccount);
     }
 
+    public BusinessAccount findByPinMachine(PinMachine pinMachine) {
+        return businessAccountDao.findByPinMachine(pinMachine);
+    }
+
+    public boolean exists(String iban) {
+        return businessAccountDao.existsByIban(iban);
+
+    }
 
     public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
@@ -59,7 +70,6 @@ public class BusinessAccountValidator {
         }
         return top10;
     }
-
 
     public String serialize(BusinessAccount businessAccount) {
         Gson gson = new Gson();
