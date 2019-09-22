@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.AddPinMachineRequest;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
+import webproject.vrekbank_applicatie.model.PinMachine;
+import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.PinMachineService;
 
+import java.util.Random;
+
 @RestController
-public class EmployeeOverviewController {
+public class MKBOverviewController {
 
     @Autowired
     BusinessAccountValidator businessAccountValidator;
@@ -22,24 +27,41 @@ public class EmployeeOverviewController {
     @Autowired
     PinMachineService pinMachineService;
 
+    @Autowired
+    AccountValidator accountValidator;
+
     // hier @ModelAttribute ook nodig?
     @PostMapping(value = "AddPinMachineConfirmation}")
     public String addPinMachineHandler(@ModelAttribute AddPinMachineRequest addPinMachineRequest, Model model) {
         if (businessAccountValidator.exists(addPinMachineRequest.getIban())) {
-// generate pin with 5 digits
 
-// check in db if it does not yet exists.
+            // generate pin with 5 digits and check if does not yet exist in db
+            int generatedAddIdentifier = 0;
+            while (pinMachineService.findByAddIdentifier(generatedAddIdentifier) == null) {
+                Random firstObjGenerator = new Random();
+                generatedAddIdentifier = firstObjGenerator.nextInt(100000);
 
-            //if so, redo stap 1 and 2
+                BusinessAccount businessAccount = businessAccountValidator.findByIban(addPinMachineRequest.getIban());
 
-            // if it does not, save tot DB
+                int generatedDailyConnectIdentifier = 0;
+                Random secondObjGenerator = new Random();
+                generatedDailyConnectIdentifier = secondObjGenerator.nextInt(100000000);
 
+                PinMachine pinMachine = new PinMachine(generatedDailyConnectIdentifier, generatedAddIdentifier, businessAccount);
+                businessAccount.setPinMachine(pinMachine);
+
+                pinMachineService.savePinmachine(pinMachine);
+                businessAccountValidator.saveBusinessAccount(businessAccount);
+
+                model.addAttribute("pinMachine", pinMachine);
+
+            }
             // return to confirmation screen.
             return "AddPinMachineConfirmation";
+        } else {
+            return "AddPinMachineFailed";
         }
-        else return "AddPinMachineFailed";
     }
-
 
     @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
     public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
@@ -49,7 +71,7 @@ public class EmployeeOverviewController {
         return json;
     }
 
-    //        @GetMapping(value = "/members/new")
+//        @GetMapping(value = "/members/new")
 //        public String putMember(@RequestParam String json) {
 //            Member member = memberService.deserialize(json);
 //            return member.getName() + " OK";
@@ -64,4 +86,5 @@ public class EmployeeOverviewController {
         }
         return "no";
     }
+
 }

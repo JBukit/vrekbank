@@ -42,6 +42,8 @@ public class BusinessAccountValidator {
 
     }
 
+    public BusinessAccount findByIban(String iban) {return businessAccountDao.findByIban(iban);}
+
     public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
         return accounts;

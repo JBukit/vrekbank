@@ -9,7 +9,6 @@ public class BusinessAccount extends Account {
     //private int companyId;
     private String companyName; // later vervangen door bovenstaande int, die gaat linken naar aparte bedrijventabel
     private String sector;
-
     @OneToOne
    @JoinColumn(name = "fk_pinMachine")
     private PinMachine pinMachine;
@@ -40,8 +39,17 @@ public class BusinessAccount extends Account {
         return sector;
     }
 
+    public PinMachine getPinMachine() {
+        return pinMachine;
+    }
+    public void setPinMachine(PinMachine pinMachine) {
+        this.pinMachine = pinMachine;
+    }
+
     public void setSector(String sector) {
         this.sector = sector;
+
+
     }
 
 }

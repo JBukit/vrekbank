@@ -7,6 +7,6 @@ public interface PinMachineDao  extends CrudRepository<PinMachine, Integer> {
 
     public PinMachine findByDailyConnectIdentifier(int dailyConnectIdentifier);
 
-
+    public PinMachine findByAddIdentifier(int addIdentifier);
 
 }

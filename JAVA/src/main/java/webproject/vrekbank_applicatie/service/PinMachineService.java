@@ -19,4 +19,11 @@ public class PinMachineService {
     public boolean exists(int dailyConnectIdentifier) {
         return pinMachineDao.existsById(dailyConnectIdentifier);
     }
+
+    public PinMachine findByAddIdentifier(int addIdentifier)
+    { PinMachine q = pinMachineDao.findByAddIdentifier(addIdentifier);
+    return q;
+    }
+
+    public void savePinmachine(PinMachine pinMachine) {pinMachineDao.save(pinMachine);}
 }
