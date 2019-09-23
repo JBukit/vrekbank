@@ -6,6 +6,7 @@ import webproject.vrekbank_applicatie.model.*;
 import webproject.vrekbank_applicatie.model.dao.AccountDao;
 import webproject.vrekbank_applicatie.model.dao.AccountHolderConfirmationDataDao;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
+import webproject.vrekbank_applicatie.model.dao.CustomerDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class AccountValidator {
 
     @Autowired
     AccountHolderConfirmationDataDao accountHolderConfirmationDataDao;
+
+    @Autowired
+    CustomerValidator customerValidator;
 
     public AccountValidator() {
         super();
@@ -123,16 +127,35 @@ public class AccountValidator {
     }
 
     public List<Account> findAccountsWhereCustomerIsAccountHolder(Customer customer) {
-        System.out.println("start methode findAccountsWhereCustomerisAccountHolder");
-        System.out.println(customer.getUsername());
         List<Account> accounts = new ArrayList<>();
         accounts = accountDao.findAccountsByOwner(customer);
-        System.out.println(accounts.size());
         for (int i = 0; i < accounts.size() ; i++) {
             System.out.println(accounts.get(i).getIban());
 
         }
 
         return accounts;
+    }
+
+    public boolean correctAccountHolderConfirmationData(String iban, String firstName, int securityCode) {
+        AccountHolderConfirmationData confirmationData = new AccountHolderConfirmationData();
+        confirmationData = accountHolderConfirmationDataDao.getAccountHolderConfirmationDataByAccountIban(iban);
+        if (confirmationData.getAccountHolderName().equals(firstName)) {
+            if (confirmationData.getSecurityCode() == securityCode) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addAccountHolderToAccount (String iban, String name) {
+        Account account = accountDao.findByIban(iban);
+        Customer customer = customerValidator.findCustomerByUsername(name);
+        account.addAccountHolder(customer);
+    }
+
+    public void deleteAccountHolderConfirmationData (String iban) {
+        AccountHolderConfirmationData confirmationData = accountHolderConfirmationDataDao.getAccountHolderConfirmationDataByAccountIban(iban);
+        accountHolderConfirmationDataDao.delete(confirmationData);
     }
 }
