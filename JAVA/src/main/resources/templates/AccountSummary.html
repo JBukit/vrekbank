@@ -93,6 +93,8 @@
         <div class="col-md">
             <h1> Welkom <span th:text="${firstName}"/></h1>
             <h5>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h5>
+            <h5>Je huidige saldo is €<span th:text="${#numbers.formatDecimal(balance, 0, 'POINT', 2, 'COMMA')}"/></h5>
+
         </div>
 
     </div>
