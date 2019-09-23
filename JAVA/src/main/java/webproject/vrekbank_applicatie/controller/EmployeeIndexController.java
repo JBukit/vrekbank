@@ -51,7 +51,8 @@ public class EmployeeIndexController {
         EmployeeLogin(employee, model);
         return "MKBOverview";
     }
-    
+
+
     @GetMapping (value = "MKBHighestBalance")
     public String MKBHighestBalanceHandler (@SessionAttribute("name") String name,
                                             @ModelAttribute Employee loggedInEmployee, Model model) {
