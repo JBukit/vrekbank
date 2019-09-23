@@ -5,5 +5,8 @@ import webproject.vrekbank_applicatie.model.AccountHolderConfirmationData;
 
 public interface AccountHolderConfirmationDataDao extends CrudRepository<AccountHolderConfirmationData,Integer> {
 
+    public AccountHolderConfirmationData getAccountHolderConfirmationDataByAccountIban (String iban);
+
+
 
 }
