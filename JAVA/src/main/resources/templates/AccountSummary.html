@@ -100,6 +100,8 @@
 </section>
 
 
+
+
 <!-- Table overview transactions -->
 
 <section class="colored-section" id="testies">
@@ -115,28 +117,25 @@
                 <thead>
                 <tr>
                     <th scope="col">Datum: </th>
-                    <th scope="col">Omschrijving: </th>
                     <th scope="col">Bedrag: </th>
-                    <th scope="col">Credit rekening: </th>
-                    <th scope="col">Debit rekening: </th>
+                    <th scope="col">Omschrijving: </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="transfer : ${totalTransferList}">
                     <td><span th:text="${transfer.date}"/></td>
+                    <td>
+<!--                        <span th:if="${transfer.creditIban == iban}">+</span>-->
+<!--                        <span th:unless="${transfer.debitIban == iban}">-</span>-->
+                        €<span th:text="${#numbers.formatDecimal(transfer.transferAmount, 0, 'POINT', 2, 'COMMA')}"/>
+                    </td>
                     <td><span th:text="${transfer.description}"/></td>
-                    <td><span th:text="${transfer.transferAmount}"/></td>
-                    <td><span th:text="${transfer.creditIban}"/></td>
-                    <td><span th:text="${transfer.debitIban}"/></td>
                 </tr>
                 </tbody>
             </table>
-
-
         </div>
 
     </section>
-
 </section>
 
 
