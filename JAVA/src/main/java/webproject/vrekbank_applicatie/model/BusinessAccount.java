@@ -49,7 +49,5 @@ public class BusinessAccount extends Account {
     public void setSector(String sector) {
         this.sector = sector;
 
-
     }
-
 }

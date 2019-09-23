@@ -54,9 +54,9 @@ public class TransferController {
             model.addAttribute("date", transfer.getDate());
 
             // ingevoerde naam ontvanger vanuit tijdelijk object opnemen in model voor bevestigingsscherm
-            //nb tweede object van Model waarschijnlijk onnodig, nog opnemen in model?
-            model2.addAttribute("personalName", recipient.getPersonalName());
-            model2.addAttribute("companyName", recipient.getCompanyName());
+
+            model.addAttribute("personalName", recipient.getPersonalName());
+            model.addAttribute("companyName", recipient.getCompanyName());
 
             //uit tranferobject schrijven naar database in 3 stappen.
             //1.check op rekening betaler

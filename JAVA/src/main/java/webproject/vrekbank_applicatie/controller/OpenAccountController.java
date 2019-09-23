@@ -74,35 +74,6 @@ public class OpenAccountController {
         return "OpenPersonalAccountConfirmation";
     }
 
-    // handler voor particulier rekening. later evt aan te passen tot 1 handler voor ook MKB,
-    // die via bijv radio knop beide subklassen kan aanmaken
-
-//    @PostMapping(value = "OpenPersonalAccountConfirmation")
-//    public String OpenAccountOpenPersonalAccountConfirmationHandler(@ModelAttribute PersonalAccount personalAccount, Model model) {
-//
-//        //Customer dezeklant = new Customer();
-//        //ArrayList<> lijstje = new ArrayList<Customer> (dezeklant);
-//
-//        // fill in new account/object
-//        personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
-//        personalAccount.setBalance(0);
-//        personalAccount.setMinimumBalance(0);
-//        personalAccount.setIBAN(CreateIBAN());
-//        personalAccount.setBusinessAccount(false);
-//        //personalAccount.setOwners(lijstje);
-//
-//        //opnemen in  model, in ieder geval om in bevestigingsscherm gegevens terug te kunnen geven.
-//        model.addAttribute("saldo", personalAccount.getBalance());
-//        model.addAttribute("minimumsaldo", personalAccount.getMinimumBalance());
-//        model.addAttribute("rekeningnummer", personalAccount.getIBAN());
-//
-//        // add accountinfo to database
-//
-//        validator.saveAccount(personalAccount);
-//
-//        // go to OpenAccountConfirmationScreen
-//        return "OpenPersonalAccountConfirmation";
-//    }
 
     // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
     @PostMapping(value = "OpenBusinessAccountConfirmation")

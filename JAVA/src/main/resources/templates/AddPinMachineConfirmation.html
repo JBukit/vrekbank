@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/employeestyles.css">
 
     <!-- Favicon -->
@@ -65,8 +66,6 @@
     </div>
 </section>
 
-
-</section>
 <!-- Transfer confirmation  -->
 
 <section class="colored-section" id="testies">
@@ -80,10 +79,10 @@
         </div>
 
         <h5>
-            Het gaat om zakelijke rekening <span th:text="${pinmachine.businessAccount}"></span>
+            Het gaat om zakelijke rekening <span th:text="${businessAccount}"></span>
 
             De vijfcijferige code om deze pinmachine aan te sluiten is
-            <span th:text="${pinmachine.addPinMachine}"></span>
+            <span th:text="${addIdentifier}"></span>
             Deze code dient u buiten het systeem om door te geven aan de winkelier.
         </h5>
 
@@ -91,6 +90,7 @@
     </div>
 
 </section>
+
 
 <!-- Buttons to go back -->
 

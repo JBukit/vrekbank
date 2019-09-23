@@ -15,10 +15,13 @@ public class PinMachine {
     @OneToOne(mappedBy = "pinMachine")
     private BusinessAccount businessAccount;
 
+    public PinMachine() {
+    }
+
     public PinMachine(int dailyConnectIdentifier, int addIdentifier, BusinessAccount businessAccount) {
         this.dailyConnectIdentifier = dailyConnectIdentifier;
         this.addIdentifier = addIdentifier;
-        //  this.businessAccount = businessAccount;
+        this.businessAccount = businessAccount;
     }
 
     public int getDailyConnectIdentifier() {

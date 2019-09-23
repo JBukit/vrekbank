@@ -20,7 +20,7 @@
 
 <section class="colored-section" id="testies">
 
-    <div class="container-fluid">
+    <section class="container-fluid">
 
         <h2> Voeg een pinmachine toe</h2>
 
@@ -28,16 +28,18 @@
         <form th:action="@{AddPinMachineConfirmation}" th:object="${AddPinMachineRequest}" method="post">
 
             <div class="form-group col-sm-6 offset-3">
-                <label for="inputIban">Aan welke rekening (IBAN) wilt u een pinautomaat koppelen?</label>
-                <input type="text" name="iban" class="form-control" id="inputIban" placeholder="IbanForPinMachine">
+                <label for="iban">Aan welke rekening (IBAN) wilt u een pinautomaat koppelen?</label>
+                <input type="text" name="iban" class="form-control" id="iban" placeholder="IbanForPinMachine">
             </div>
+            <br>
 
             <button type="submit" class="btn btn-info btn-md">Vraag een koppeling met een pinmachine aan voor deze
-                rekening</button>
+                rekening
+            </button>
 
         </form>
 
-    </div>
+    </section>
 </section>
 
 <br>
