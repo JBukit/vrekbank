@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
+import webproject.vrekbank_applicatie.model.PinMachine;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
+import webproject.vrekbank_applicatie.model.dao.PinMachineDao;
 
 @Service
 public class BusinessAccountValidator {
@@ -20,15 +22,27 @@ public class BusinessAccountValidator {
     @Autowired
     BusinessAccountDao businessAccountDao;
 
+
     public BusinessAccountValidator() {
         super();
     }
 
-    // methods to add, check, update, delete customers
+    // methods to add, check, update, delete businessAccounts
 
     public void saveBusinessAccount(BusinessAccount businessAccount) {
         businessAccountDao.save(businessAccount);
     }
+
+    public BusinessAccount findByPinMachine(PinMachine pinMachine) {
+        return businessAccountDao.findByPinMachine(pinMachine);
+    }
+
+    public boolean exists(String iban) {
+        return businessAccountDao.existsByIban(iban);
+
+    }
+
+    public BusinessAccount findByIban(String iban) {return businessAccountDao.findByIban(iban);}
 
     public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
@@ -59,7 +73,6 @@ public class BusinessAccountValidator {
         return top10;
     }
 
-
     public String serialize(BusinessAccount businessAccount) {
         Gson gson = new Gson();
         String json = gson.toJson(businessAccount);
@@ -78,11 +91,21 @@ public class BusinessAccountValidator {
 
         List<BusinessAccount> sectorList = businessAccountDao.findBusinessAccountsBySector(sector);
 
-        // geef gevulde lijst terug als 'sectorList'
-
         return sectorList;
+    }
 
+    public Double findTotalBalanceBySector(String sector){
 
+        // maak een lijst van alle business accounts in branche 'sector' en tel de saldos op
+
+        List<BusinessAccount> list = businessAccountDao.findBusinessAccountsBySector(sector);
+
+        Double totalBalance = 0.0;
+        for (BusinessAccount account : list) {
+            totalBalance += account.getBalance();
+        }
+
+        return totalBalance;
     }
 }
 

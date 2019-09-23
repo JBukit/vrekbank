@@ -31,6 +31,9 @@ public class AccountValidator {
         accountDao.save(account);
     }
 
+    public Account findByIban(String iban) {
+        return accountDao.findByIban(iban);
+    }
     // Voor betaler
 
     // in volgende twee functies zit nog dubbele code
@@ -104,7 +107,7 @@ public class AccountValidator {
     }
 
 
-    public List<Customer> findAllAccountHoldersByIban (String iban) {
+    public List<Customer> findAllAccountHoldersByIban(String iban) {
         Account account = accountDao.findByIban(iban);
         List<Customer> accountHolders = account.getAccountHolders();
         return accountHolders;

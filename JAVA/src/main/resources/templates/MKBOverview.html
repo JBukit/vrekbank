@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>MKBOverview</title>
@@ -13,8 +13,33 @@
     <input type="submit" value="Top 10 MKB rekeningen hoogste saldo"/>
 </form>
 <form action="MKBMostTransfers">
-    <input type="submit" value="Ga naar Pauline"/>
+    <input type="submit" value="Top 10 MKB klanten met de meeste transacties"/>
 </form>
+
+<br>
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <h2> Voeg een pinmachine toe</h2>
+
+        <!--vraagt pinmachine aan via controller.-->
+        <form th:action="@{AddPinMachineConfirmation}" th:object="${AddPinMachineRequest}" method="post">
+
+            <div class="form-group col-sm-6 offset-3">
+                <label for="inputIban">Aan welke rekening (IBAN) wilt u een pinautomaat koppelen?</label>
+                <input type="text" name="iban" class="form-control" id="inputIban" placeholder="IbanForPinMachine">
+            </div>
+
+            <button type="submit" class="btn btn-info btn-md">Vraag een koppeling met een pinmachine aan voor deze
+                rekening</button>
+
+        </form>
+
+    </div>
+</section>
+
 <br>
 <br>
 <input type="button" value="Ga terug" onclick="history.back()">
