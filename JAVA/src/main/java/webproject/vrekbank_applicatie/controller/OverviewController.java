@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.service.AccountValidator;
@@ -14,17 +15,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Controller
 @SessionAttributes({"name", "firstName", "iban"})
 public class OverviewController {
+
+    private final int TOP10 = 10;
 
     @Autowired
     TransferValidator transferValidator;
 
     @Autowired
     CustomerValidator customerValidator;
+
+    @Autowired
+    AccountValidator accountValidator;
 
     @GetMapping(value = "openaccount")
     public String overviewOpenAccountHandler() {
@@ -43,6 +48,8 @@ public class OverviewController {
         //pass name of logged in customer to show firstname on this page
         model.containsAttribute("firstName");
 
+        model.addAttribute("balance", accountValidator.findByIban(iban).getBalance());
+
         //pass IBAN number that was selected in Overview.html
         model.addAttribute("iban", iban);
         System.out.println("De IBAN die wordt doorgegeven is " + iban);
@@ -50,15 +57,21 @@ public class OverviewController {
         //Check transaction history for this IBAN
         List <Transfer> creditTransfers = new ArrayList<>();
         creditTransfers = transferValidator.findByCreditIban(iban);
-        /*for (int i = 0; i < creditTransfers.size(); i++) {
+
+/*      Below text for testing purposes
+        for (int i = 0; i < creditTransfers.size(); i++) {
             System.out.println(creditTransfers.get(i).getDescription());
-        }*/
+        }
+*/
 
         List <Transfer> debitTransfers = new ArrayList<>();
         debitTransfers = transferValidator.findByDebitIban(iban);
-        /*for (int i = 0; i < debitTransfers.size(); i++) {
+
+/*      Below text for testing purposes
+        for (int i = 0; i < debitTransfers.size(); i++) {
             System.out.println(debitTransfers.get(i).getDescription());
-        }*/
+        }
+*/
 
         List <Transfer> totalTransfers = new ArrayList<>();
         totalTransfers.addAll(creditTransfers);
@@ -66,12 +79,26 @@ public class OverviewController {
         totalTransfers.sort(Comparator.comparing(Transfer::getDate));
         Collections.reverse(totalTransfers);
 
+/*      Below text for testing purposes
         for (int i = 0; i < totalTransfers.size(); i++) {
             System.out.println(totalTransfers.get(i).getDate());
         }
+*/
+
+        //Show 10 most recent transactions
+        List<Transfer> top10 = new ArrayList<>();
+        int size = 0;
+        if (totalTransfers.size() < TOP10) {
+            size = totalTransfers.size();
+        } else {
+            size = TOP10;
+        }
+        for (int i = 0; i < size; i++ ) {
+            top10.add(totalTransfers.get(i));
+        }
 
         //pass on data from totalTransferList
-        model.addAttribute("totalTransferList", totalTransfers);
+        model.addAttribute("totalTransferList", top10);
 
 /*      Below text for testing purposes
         Make list with transfers, to be added from database
@@ -84,5 +111,21 @@ public class OverviewController {
 
         return "AccountSummary";
     }
+
+    @GetMapping (value = "accountholder")
+    public String overviewAccountHolder (@SessionAttribute ("name") String name, Model model) {
+        Customer customer = customerValidator.findCustomerByUsername(name);
+        List<Account> accounts = accountValidator.findAccountsWhereCustomerIsAccountHolder(customer);
+        model.addAttribute("accounts", accounts);
+
+        return "OverviewAccountHolder";
+    }
+
+    @PostMapping (value = "confirmationAccountHolder")
+    public String confirmationAccountHolder (Model model) {
+
+        return "ConfirmationAccountHolder";
+    }
+
 
 }

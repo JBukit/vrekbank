@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import webproject.vrekbank_applicatie.model.BusinessAccount;
-import webproject.vrekbank_applicatie.model.Employee;
-import webproject.vrekbank_applicatie.model.PersonalAccount;
-import webproject.vrekbank_applicatie.model.Transfer;
+import webproject.vrekbank_applicatie.model.*;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.EmployeeValidator;
 import java.math.BigDecimal;
@@ -38,7 +35,7 @@ public class EmployeeIndexController {
 
 
     @GetMapping (value = "employeeLogin")
-    public String EmployeeLogin () {
+    public String EmployeeLogin (@ModelAttribute Employee loggedInEmployee, Model model) {
         Employee employee = new Employee();
         return "EmployeeLogin";
     }
@@ -47,6 +44,14 @@ public class EmployeeIndexController {
     public String EmployeeIndexRegistrationHandler () {
         return "EmployeeRegistration";
     }
+
+    @GetMapping (value = "employeeIndexWithKnownName")
+    public String overviewHandler (@SessionAttribute ("name") String userName, Model model) {
+        Employee employee = employeeValidator.findEmployeeByUserName(userName);
+        EmployeeLogin(employee, model);
+        return "MKBOverview";
+    }
+
 
     @GetMapping (value = "MKBHighestBalance")
     public String MKBHighestBalanceHandler (@SessionAttribute("name") String name,
@@ -61,6 +66,7 @@ public class EmployeeIndexController {
         }
         return "MKBHighestBalance";
     }
+
 
     @GetMapping (value = "MKBMostTransfers")
     public String MKBMostTransfersHandler (@SessionAttribute("name") String name, Model model) {

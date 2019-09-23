@@ -93,11 +93,15 @@
         <div class="col-md">
             <h1> Welkom <span th:text="${firstName}"/></h1>
             <h5>Dit is het overzicht van rekeningnummer <span th:text="${iban}"/></h5>
+            <h5>Je huidige saldo is €<span th:text="${#numbers.formatDecimal(balance, 0, 'POINT', 2, 'COMMA')}"/></h5>
+
         </div>
 
     </div>
 
 </section>
+
+
 
 
 <!-- Table overview transactions -->
@@ -115,28 +119,25 @@
                 <thead>
                 <tr>
                     <th scope="col">Datum: </th>
-                    <th scope="col">Omschrijving: </th>
                     <th scope="col">Bedrag: </th>
-                    <th scope="col">Credit rekening: </th>
-                    <th scope="col">Debit rekening: </th>
+                    <th scope="col">Omschrijving: </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="transfer : ${totalTransferList}">
                     <td><span th:text="${transfer.date}"/></td>
+                    <td>
+                        <span th:if="${transfer.creditIban.equals(iban)}">+</span>
+                        <span th:if="${transfer.debitIban.equals(iban)}">-</span>
+                        €<span th:text="${#numbers.formatDecimal(transfer.transferAmount, 0, 'POINT', 2, 'COMMA')}"/>
+                    </td>
                     <td><span th:text="${transfer.description}"/></td>
-                    <td><span th:text="${transfer.transferAmount}"/></td>
-                    <td><span th:text="${transfer.creditIban}"/></td>
-                    <td><span th:text="${transfer.debitIban}"/></td>
                 </tr>
                 </tbody>
             </table>
-
-
         </div>
 
     </section>
-
 </section>
 
 

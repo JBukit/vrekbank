@@ -98,6 +98,7 @@ public class OpenAccountController {
 
         // koppel customer aan account
         businessAccount.setOwner(user);
+        businessAccount.addAccountHolder(user);
 
         // add accountinfo to database
         businessAccountValidator.saveBusinessAccount(businessAccount);
