@@ -129,10 +129,6 @@ public class AccountValidator {
     public List<Account> findAccountsWhereCustomerIsAccountHolder(Customer customer) {
         List<Account> accounts = new ArrayList<>();
         accounts = accountDao.findAccountsByAccountHolders(customer);
-        for (int i = 0; i < accounts.size(); i++) {
-            System.out.println(accounts.get(i).getIban());
-            System.out.println(accounts.get(i).getOwner().getUsername());
-        }
         return accounts;
     }
 

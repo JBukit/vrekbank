@@ -88,7 +88,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="account : ${accounts}">
-                    <td><span th:text="${account.iban}"/></td>
+                    <td><a th:href="@{rekening(iban=${account.iban})}"/><span th:text="${account.iban}"/></td>
                     <td>
                         <div th:unless="${#lists.isEmpty(account.accountHolders)}">
                             <table>

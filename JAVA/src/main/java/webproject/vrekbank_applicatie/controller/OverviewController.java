@@ -115,7 +115,6 @@ public class OverviewController {
     @GetMapping (value = "accountholder")
     public String overviewAccountHolder (@SessionAttribute ("name") String name, Model model) {
         Customer customer = customerValidator.findCustomerByUsername(name);
-        System.out.println(customer.getUsername());
         List<Account> accounts = accountValidator.findAccountsWhereCustomerIsAccountHolder(customer);
         model.addAttribute("accounts", accounts);
 
