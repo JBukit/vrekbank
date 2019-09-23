@@ -87,15 +87,26 @@
 
         <div class="col-md">
 
-            <h1> Helaas, een ons niet bekend rekeningnummer; daar kunnen we geen pinautomaat aan hangen.</h1>
+            <h2>Koppelen pinautomaat mislukt.</h2>
 
-            Ga terug en probeer het opnieuw.
+        </div>
+
+        <h5> Jammer maar helaas; we gaan er geen pinautomaat aanhangen, omdat
+
+            <span th:text="${IbanUnknown}"></span><br>
+
+            <span th:text="${PinMachineAddedBefore}"></span><br>
+
+
+            <br>
+
+            Ga terug en probeer het opnieuw, of doe wat anders leuks..
         </h5>
-
 
     </div>
 
 </section>
+
 
 
 <!-- Buttons to go back -->

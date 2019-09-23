@@ -9,7 +9,7 @@ public class BusinessAccount extends Account {
     //private int companyId;
     private String companyName; // later vervangen door bovenstaande int, die gaat linken naar aparte bedrijventabel
     private String sector;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
    @JoinColumn(name = "fk_pinMachine")
     private PinMachine pinMachine;
 

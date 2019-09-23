@@ -19,6 +19,15 @@ import java.util.Random;
 @SessionAttributes({"name"})
 public class MKBOverviewController {
 
+    private static final int IWANTFIVEDIGITS = 10000;
+    private static final int IWANTEIGHTDIGITS = 10000000;
+
+    private String pinMachineAddedBefore = " aan deze rekening al een pinmachine gekoppeld was. " +
+            "Een tweede toevoegen is op dit moment niet mogelijk. " +
+            "Wacht op een volgende release en/of stort " +
+            "astronomische bedragen naar het VrekBank Ontwikkelteam...";
+    private String ibanUnknown = " dit een ons niet bekend rekeningnummer is; daar kunnen we geen pinautomaat aan hangen.";
+
     @Autowired
     BusinessAccountValidator businessAccountValidator;
 
@@ -31,53 +40,47 @@ public class MKBOverviewController {
     // hier @SessionAttribute ook nodig?
     @PostMapping(value = "AddPinMachineConfirmation")
     public String addPinMachineHandler(@ModelAttribute AddPinMachineRequest
-            addPinMachineRequest, Model model) {
+                                               addPinMachineRequest, Model model) {
 
         if (businessAccountValidator.exists(addPinMachineRequest.getIban())) {
-            System.out.println( "En nu zit ik in de ifstatement; het iban is herkend!");
+
+            BusinessAccount businessAccount = businessAccountValidator.findByIban(addPinMachineRequest.getIban());
+            if (businessAccount.getPinMachine() != null) {
+                model.addAttribute("PinMachineAddedBefore", pinMachineAddedBefore);
+                return "AddpinMachineFailed";
+            }
+
             // generate pin with 5 digits and check if does not yet exist in db
             int generatedAddIdentifier = 0;
             Random firstObjGenerator = new Random();
             do {
-                generatedAddIdentifier = firstObjGenerator.nextInt(90000) + 10000;
+                generatedAddIdentifier = firstObjGenerator.nextInt(90000) + IWANTFIVEDIGITS;
             }
-            while(pinMachineService.findByAddIdentifier(generatedAddIdentifier) != null);
-
-            System.out.println("Eerste randomizer: " + generatedAddIdentifier);
+            while (pinMachineService.findByAddIdentifier(generatedAddIdentifier) != null);
 
             int generatedDailyConnectIdentifier = 0;
             Random secondObjGenerator = new Random();
-            do {generatedDailyConnectIdentifier = secondObjGenerator.nextInt(90000000) + 10000000;}
-            while(pinMachineService.findByDailyConnectIdentifier(generatedDailyConnectIdentifier) != null);
+            do {
+                generatedDailyConnectIdentifier = secondObjGenerator.nextInt(90000000) + IWANTEIGHTDIGITS;
+            }
+            while (pinMachineService.findByDailyConnectIdentifier(generatedDailyConnectIdentifier) != null);
 
-            System.out.println("voorbij de tweede randomizer: " + generatedDailyConnectIdentifier);
-
-            BusinessAccount businessAccount = businessAccountValidator.findByIban(addPinMachineRequest.getIban());
-            System.out.println("account opgehaald!");
 
             PinMachine pinMachine = new PinMachine(generatedDailyConnectIdentifier, generatedAddIdentifier, businessAccount);
 
-            System.out.println("Nieuwe pinmachine aangemaakt");
-
             businessAccount.setPinMachine(pinMachine);
 
-            System.out.println("pinmachine set in acocount");
-
             pinMachine.setBusinessAccount(businessAccount);
-            System.out.println("pinmachine aangepast met nieuwe account er in.");
 
-            //pinMachineService.savePinmachine(pinMachine);
-            //System.out.println("pinmachine in db opgeslagen");
+            businessAccountValidator.saveBusinessAccount(businessAccount);
 
-           // businessAccountValidator.saveBusinessAccount(businessAccount);
-            //System.out.println("account in db gezet");
+            pinMachineService.savePinmachine(pinMachine);
 
             model.addAttribute("pinMachine", pinMachine);
-            System.out.println( "pinmachine in model gezet");
-            // return to confirmation screen.
 
             return "AddPinMachineConfirmation";
         } else
-            return "AddPinMachineFailed";
+            model.addAttribute("IbanUnknown", ibanUnknown);
+        return "AddPinMachineFailed";
     }
 }
