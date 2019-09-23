@@ -79,7 +79,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="account : ${top10}">
-                    <td><span th:text="${account.balance}"/></td>
+                    <td>€ <span th:text="${#numbers.formatDecimal(account.balance, 0, 'POINT', 2, 'COMMA')}"/></td>
                     <td><span th:text="${account.iban}"/></td>
                 </tr>
                 </tbody>
@@ -90,11 +90,12 @@
 
 <section class="colored-section" id="pinkie">
     <div class="container-fluid">
-        <div style="text-align: center;">
-        <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">
+        <div class="knop">
+            <a href="/employeeIndexWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
         </div>
     </div>
 </section>
+
 
 </body>
 </html>
