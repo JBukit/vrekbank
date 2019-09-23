@@ -66,7 +66,7 @@ public class MKBOverviewController {
             System.out.println("pinmachine set in acocount");
 
             pinMachine.setBusinessAccount(businessAccount);
-            System.out.println("pinmachine aangepast met nieuwe account er in");
+            System.out.println("pinmachine aangepast met nieuwe account er in.");
 
             //pinMachineService.savePinmachine(pinMachine);
             //System.out.println("pinmachine in db opgeslagen");

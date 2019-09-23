@@ -74,15 +74,20 @@
 
         <div class="col-md">
 
-            <h2>U hebt een pinautomaat aangevraagd voor een zakelijke rekeninghouder (winkelier)</h2>
+
 
         </div>
 
-        <h5>
-            Het gaat om zakelijke rekening <span th:text="${businessAccount}"></span>
+        <h5>U hebt een pinautomaat aangevraagd voor een zakelijke rekeninghouder (winkelier).
+            <br>
+            <br>
+            Het gaat om zakelijke rekening <span th:text="${pinMachine.businessAccount.iban}"></span> .
+            <br>
+            <br>
 
             De vijfcijferige code om deze pinmachine aan te sluiten is
-            <span th:text="${addIdentifier}"></span>
+            <span th:text="${pinMachine.addIdentifier}"></span>.
+            <br>
             Deze code dient u buiten het systeem om door te geven aan de winkelier.
         </h5>
 
