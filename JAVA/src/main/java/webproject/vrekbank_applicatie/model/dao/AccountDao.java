@@ -14,4 +14,6 @@ public interface AccountDao extends CrudRepository<Account, Integer> {
 
     public List<Account> findAccountsByOwner(Customer customer);
 
+    public List<Account> findAccountsByAccountHolders (Customer customer);
+
 }
