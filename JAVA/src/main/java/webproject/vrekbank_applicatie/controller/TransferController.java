@@ -29,7 +29,7 @@ public class TransferController {
     // erg lang, nog opknippen en/of zaken verplaatsen naar service
     @PostMapping(value = "TransferConfirmation")
     public String transferTransferConfirmationHandler(@SessionAttribute("iban") String iban, @ModelAttribute Transfer
-            transfer, Model model, @ModelAttribute Recipient recipient, Model model2) {
+            transfer, Model model, @ModelAttribute Recipient recipient) {
 
         // in transferobject iban van betaler opnemen
         transfer.setDebitIban(iban);
@@ -53,10 +53,9 @@ public class TransferController {
             model.addAttribute("description", transfer.getDescription());
             model.addAttribute("date", transfer.getDate());
 
-            // ingevoerde naam ontvanger vanuit tijdelijk object opnemen in model voor bevestigingsscherm
+            // ingevoerde naam ontvanger (persoon/bedrijf) in tijdelijk object opnemen in model voor bevestigingsscherm
+            model.addAttribute("recipient", recipient);
 
-            model.addAttribute("personalName", recipient.getPersonalName());
-            model.addAttribute("companyName", recipient.getCompanyName());
 
             //uit tranferobject schrijven naar database in 3 stappen.
             //1.check op rekening betaler

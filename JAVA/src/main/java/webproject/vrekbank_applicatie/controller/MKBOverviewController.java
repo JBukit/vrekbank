@@ -32,25 +32,23 @@ public class MKBOverviewController {
     @PostMapping(value = "AddPinMachineConfirmation")
     public String addPinMachineHandler(@ModelAttribute AddPinMachineRequest
             addPinMachineRequest, Model model) {
-        System.out.println("Nu zit ik in de handler!!");
+
         if (businessAccountValidator.exists(addPinMachineRequest.getIban())) {
             System.out.println( "En nu zit ik in de ifstatement; het iban is herkend!");
             // generate pin with 5 digits and check if does not yet exist in db
             int generatedAddIdentifier = 0;
             Random firstObjGenerator = new Random();
-            while (generatedAddIdentifier == 0 || pinMachineService.findByAddIdentifier(generatedAddIdentifier) != null) {
-                generatedAddIdentifier = firstObjGenerator.nextInt(100000);
+            do {
+                generatedAddIdentifier = firstObjGenerator.nextInt(90000) + 10000;
             }
+            while(pinMachineService.findByAddIdentifier(generatedAddIdentifier) != null);
 
             System.out.println("Eerste randomizer: " + generatedAddIdentifier);
 
-
             int generatedDailyConnectIdentifier = 0;
             Random secondObjGenerator = new Random();
-            while (generatedDailyConnectIdentifier == 0 || pinMachineService.findByDailyConnectIdentifier
-                    (generatedDailyConnectIdentifier) != null) {
-                generatedDailyConnectIdentifier = secondObjGenerator.nextInt(100000000);
-            }
+            do {generatedDailyConnectIdentifier = secondObjGenerator.nextInt(90000000) + 10000000;}
+            while(pinMachineService.findByDailyConnectIdentifier(generatedDailyConnectIdentifier) != null);
 
             System.out.println("voorbij de tweede randomizer: " + generatedDailyConnectIdentifier);
 
