@@ -127,8 +127,8 @@
                 <tr th:each="transfer : ${totalTransferList}">
                     <td><span th:text="${transfer.date}"/></td>
                     <td>
-<!--                        <span th:if="${transfer.creditIban == iban}">+</span>-->
-<!--                        <span th:unless="${transfer.debitIban == iban}">-</span>-->
+                        <span th:if="${transfer.creditIban.equals(iban)}">+</span>
+                        <span th:if="${transfer.debitIban.equals(iban)}">-</span>
                         €<span th:text="${#numbers.formatDecimal(transfer.transferAmount, 0, 'POINT', 2, 'COMMA')}"/>
                     </td>
                     <td><span th:text="${transfer.description}"/></td>
