@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Overzicht met rekeningen als rekeninghouder</title>
+    <title>Registeren rekeninghouder succesvol</title>
 
     <meta charset="UTF-8">
     <title>RekeningOverzicht</title>
@@ -72,46 +72,6 @@
 <br>
 
 
-<!-- Overview of accounts of which Customer is accountHolder -->
-
-<section class="colored-section" id="testies">
-
-    <section class="container-fluid">
-        <div th:unless="${#lists.isEmpty(accounts)}">
-            <h3>Overzicht huidige rekeninghouders van de rekening <span th:text="${iban}"/>:</h3>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">Iban:</th>
-                    <th scope="col">Rekeninghouders:</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="account : ${accounts}">
-                    <td><span th:text="${account.iban}"/></td>
-                    <td>
-                        <div th:unless="${#lists.isEmpty(account.accountHolders)}">
-                            <table>
-                                <tr th:each="accountHolder : ${account.accountHolders}">
-                                    <td><span th:text="${accountHolder.firstName}"/></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-</section>
-
-
-<!-- Confirm new account -->
-
-
-
-
 
 
 
@@ -131,10 +91,10 @@
         <div style="text-align: center;">
             <a href="/login" class="btn btn-outline-light btn-lg mr-5" role="button">Uitloggen</a>
             <a href="/overviewWithKnownName" class="btn btn-outline-light btn-lg mr-5" role="button">Terug naar
-                overzicht</a>
+                rekeningoverzicht</a>
             <br>
             <br>
-            <a href="/addAccount" class="btn btn-outline-light btn-lg mr-5" role="button">Rekening als rekeninghouder toevoegen</a>
+            <a href="/accountholder" class="btn btn-outline-light btn-lg mr-5" role="button">Terug naar rekeningshouders-overzicht</a>
 
         </div>
     </div>
@@ -158,4 +118,5 @@
 
 
 </body>
+
 </html>
