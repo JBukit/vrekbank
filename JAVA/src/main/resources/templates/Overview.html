@@ -91,12 +91,22 @@
                 <tr>
                     <th scope="col">Rekeningnummer: </th>
                     <th scope="col">Saldo: </th>
+                    <th scope="col">Rekeninghouders: </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="personalAccount : ${personalAccounts}">
                     <td><a th:href="@{rekening(iban=${personalAccount.iban})}"><span th:text="${personalAccount.iban}"/></a></td>
                     <td><span th:text="${personalAccount.balance}"/></td>
+                    <td>
+                        <div th:unless="${#lists.isEmpty(personalAccount.accountHolders)}">
+                            <table align="center">
+                                <tr th:each="accountHolder : ${personalAccount.accountHolders}">
+                                    <td><span th:text="${accountHolder.firstName}"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
                     </form>
                 </tr>
                 </tbody>
@@ -126,6 +136,7 @@
                     <th scope="col">Rekeningnummer: </th>
                     <th scope="col">Saldo: </th>
                     <th scope="col">Bedrijfsnaam: </th>
+                    <th scope="col">Rekeninghouders: </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -133,6 +144,15 @@
                     <td><a th:href="@{rekening(iban=${businessAccount.iban})}"><span th:text="${businessAccount.iban}"/></td>
                     <td><span th:text="${businessAccount.balance}"/></td>
                     <td><span th:text="${businessAccount.companyName}"/></td>
+                    <td>
+                        <div th:unless="${#lists.isEmpty(businessAccount.accountHolders)}">
+                            <table align="center">
+                                <tr th:each="accountHolder : ${businessAccount.accountHolders}">
+                                    <td><span th:text="${accountHolder.firstName}"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -154,7 +174,8 @@
             <a href="/openaccount" class="btn btn-outline-light btn-lg" role="button">Open een nieuwe rekening</a>
             <br>
             <br>
-            <a href="/accountholder" class="btn btn-outline-light btn-lg" role="button">Overzicht rekeninghouders</a>
+            <a href="/addAccount" class="btn btn-outline-light btn-lg mr-5" role="button">Rekening als rekeninghouder toevoegen</a>
+
         </div>
     </div>
 

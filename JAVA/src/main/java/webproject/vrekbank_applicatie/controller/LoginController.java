@@ -43,8 +43,8 @@ public class LoginController {
             List<BusinessAccount> businessAccounts = new ArrayList<>();
 
             // find accounts for customer
-            personalAccounts = personalAccountValidator.findAllPersonalAccountByCustomer(c);
-            businessAccounts = businessAccountValidator.findAllBusinessAccountByCustomer(c);
+            personalAccounts = personalAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
+            businessAccounts = businessAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
 
             model.addAttribute("personalAccounts", personalAccounts);
             model.addAttribute("businessAccounts", businessAccounts);

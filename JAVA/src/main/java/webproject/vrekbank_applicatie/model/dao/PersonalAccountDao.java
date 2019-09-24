@@ -14,4 +14,6 @@ public interface PersonalAccountDao extends CrudRepository<PersonalAccount, Inte
 
     public List<PersonalAccount> findAll();
 
+    public List<PersonalAccount> findAccountsByAccountHolders (Customer customer);
+
 }

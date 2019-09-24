@@ -1,6 +1,7 @@
 package webproject.vrekbank_applicatie.model.dao;
 
 import org.springframework.data.repository.CrudRepository;
+import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PinMachine;
@@ -24,5 +25,7 @@ public interface BusinessAccountDao extends CrudRepository<BusinessAccount, Inte
 
     //Check if iban exists in the table BusinessAccount to check if it's a business account
     public boolean existsByIban(String iban);
+
+    public List<BusinessAccount> findAccountsByAccountHolders (Customer customer);
 
 }
