@@ -51,25 +51,15 @@
     </div>
 </section>
 
-<!-- Welcome message -->
-
-<section class="colored-section" id="testies">
-    <div class="container-fluid">
-        <div class="col-md">
-            <h1>Top 10 MKB rekeningen</h1>
-        </div>
-    </div>
-</section>
 
 <!-- Table that shows customers with highest balance -->
 
 <section class="colored-section" id="testies">
 
-    <div class="container-fluid">
+    <section class="container-fluid">
 
         <div th:unless="${#lists.isEmpty(top10)}">
-            <h4>Hier vind u de top 10 MKB rekeningen met het hoogste saldo:</h4>
-            <br>
+            <h4>Top 10 MKB rekeningen met het hoogste saldo</h4>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -82,19 +72,19 @@
                     <td>€ <span th:text="${#numbers.formatDecimal(account.balance, 0, 'POINT', 2, 'COMMA')}"/></td>
                     <td><span th:text="${account.iban}"/></td>
                 </tr>
+                <tr><td><td></tr>
                 </tbody>
             </table>
         </div>
-    </div>
-</section>
 
-<section class="colored-section" id="pinkie">
-    <div class="container-fluid">
         <div class="knop">
             <a href="/employeeIndexWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
         </div>
-    </div>
+
+    </section>
 </section>
+
+
 
 
 </body>

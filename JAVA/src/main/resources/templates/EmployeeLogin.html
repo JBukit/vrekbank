@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>EmployeeLogin</title>
+    <title>EmpoyeeLogin</title>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -27,6 +28,7 @@
 <body>
 
 
+
 <!-- Nav Bar -->
 
 <section class="colored-section" id="title">
@@ -42,9 +44,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Logout</a>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </nav>
@@ -52,65 +54,75 @@
 </section>
 
 
-<!-- Login form -->
-
-<div class="d-flex justify-content-center h-70">
-
-    <div class="card logincard">
-        <div class="card-header loginheader">
-            <h3>Log in (werknemers)</h3>
-        </div>
-        <div class="card-body">
-            <form th:action="@{employeeOverview}" th:object="${Employee}" method="post">
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-user"></i></span>
-                    </div>
-                    <input type="text" class="form-control" name="userName" placeholder="username" autofocus="true">
-
-                </div>
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" class="form-control" name="password" placeholder="wachtwoord">
-                </div>
-                <div class="row align-items-center remember">
-                    <input type="checkbox">Onthoud mij
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Login" class="btn float-right login_btn">
-                </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <div class="d-flex justify-content-center links">
-                Nog geen account?<a href="/employeeRegister">Registreer</a>
-            </div>
-            <div class="d-flex justify-content-center">
-                <input type="button" class="btn btn-outline-light btn-sm" value="Ga terug" onclick="history.back()">
-            </div>
-        </div>
-    </div>
-</div>
 
 
-<!-- Footer -->
+<section class="vid">
 
-<section class="footerimage text-white text-center">
     <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <form>
-                    <div class="knop">
-                        <a onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">Homepage</a>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted">
+        <source src="https://i.imgur.com/YXNcKxK.mp4" type="video/mp4">
+    </video>
+
+
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white paddo">
+
+
+                <div class="d-flex justify-content-center h-70">
+
+                    <div class="card logincard">
+                        <div class="card-header loginheader">
+                            <h3>Log in (werknemers)</h3>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{employeeOverview}" th:object="${Employee}" method="post">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="userName" placeholder="username" autofocus="true">
+
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" name="password" placeholder="wachtwoord">
+                                </div>
+                                <div class="row align-items-center remember">
+                                    <input type="checkbox">Onthoud mij
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn float-right login_btn">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center links">
+                                Nog geen account?<a href="/employeeRegister">Registreer</a>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <input type="button" class="btn btn-outline-light btn-sm" value="Ga terug" onclick="history.back()">
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+
+                <!--                <div class="col-lg paddi">-->
+                <!--                    -->
+                <!--                    <img class="heartbeat rounded" src="images/geld.png" alt="duck">-->
+
+                <!--                </div>-->
+
             </div>
         </div>
     </div>
+
 </section>
+
+
 
 </body>
 </html>
