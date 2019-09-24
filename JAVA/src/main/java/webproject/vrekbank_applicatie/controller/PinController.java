@@ -30,7 +30,7 @@ public class PinController {
 //            return member.getName() + " OK";
 //        }
 
-    @GetMapping(value = "/businessAccount/addPin/{clientPinMachine}")
+    @GetMapping(value = "/businessAccount/addPin/{json}")
     public String addPinMachine(@PathVariable String json) {
         PinMachine clientPinMachine = pinMachineService.deserialize(json);
 

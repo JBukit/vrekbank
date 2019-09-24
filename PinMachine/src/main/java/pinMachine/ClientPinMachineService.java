@@ -1,6 +1,7 @@
 package pinMachine;
 
 import com.google.gson.Gson;
+import org.hibernate.service.spi.InjectService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,14 +27,15 @@ public class ClientPinMachineService {
     }
 
     public void addPinMachineRequest(ClientPinMachine clientPinMachine) {
-        URL existsUrl;
+        URL addPinUrl;
         HttpURLConnection con;
         try {
-
             String json = serialize(clientPinMachine);
 
-            existsUrl = new URL("http://localhost:8080/businessAccount/exists/" + json);
-            con = (HttpURLConnection) existsUrl.openConnection();
+            System.out.println(json);
+
+            addPinUrl = new URL("http://localhost:8080/businessAccount/addPin/" + json);
+            con = (HttpURLConnection) addPinUrl.openConnection();
             con.setRequestMethod("GET");
             int code = con.getResponseCode();
             if (code == 200) {

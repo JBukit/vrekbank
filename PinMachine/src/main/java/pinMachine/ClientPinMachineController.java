@@ -8,38 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class PinController {
+public class ClientPinMachineController {
 
-    public PinController() {
+    public ClientPinMachineController() {
         super();
-
     }
 
     ClientPinMachineService clientPinMachineService;
-
-    public static void main(String[] args) { ;
-
-        Scanner pinScanner = new Scanner(System.in);
-        System.out.println("Als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
-
-        String addPinMachine = pinScanner.next();
-        if (addPinMachine.equals("koppelen")) {
-            System.out.println("Aan welke zakelijke IBAN wilt u uw pinautomaat koppelen?");
-            String inputIban = pinScanner.next();
-            System.out.println("Wat is het vijfcijferige controlegetal dat u van de bank heeft ontvangen?");
-            int inputAddIdentifier = pinScanner.nextInt();
-
-            ClientPinMachine clientPinMachine = new ClientPinMachine(0, inputAddIdentifier, inputIban);
-
-          //  clientPinMachineService.addPinMachineRequest(clientPinMachine);
-
-        } else {
-            System.out.println("commando onbekend");
-        }
-
-//        //client.run(id);
-
-    };
 
     private void run(int pinMachineIdentifier) {
         URL url;
@@ -64,7 +39,6 @@ public class PinController {
             System.out.println(content.toString());
         }
     }
-
 }
 
 

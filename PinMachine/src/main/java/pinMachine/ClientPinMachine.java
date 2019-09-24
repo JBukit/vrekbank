@@ -1,14 +1,17 @@
 package pinMachine;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-//    @Entity
+    @Entity
 public class ClientPinMachine {
     //pin voor dagelijkse identificatie, uit 8 cijfers
-//        @Id
+
+    @Id
     private int dailyConnectIdentifier;
 
     // pin alleen om te koppelen, uit 5 cijfers
