@@ -94,7 +94,7 @@ public class EmployeeIndexController {
             double meanBalanceBouw = (totalBalanceBouw / sectorViewBouw.size());
             model.addAttribute("meanBalanceBouw", (String.format("€ %.2f", meanBalanceBouw)));
         } else {
-            model.addAttribute("meanBalanceBouw", (String.format("€ %.2f", 0)));
+            model.addAttribute("meanBalanceBouw", (String.format("€ %.2f", 0.0)));
         }
 
 
@@ -108,7 +108,7 @@ public class EmployeeIndexController {
             double meanBalanceFinancien = (totalBalanceFinancien / sectorViewFinancien.size())  ;
             model.addAttribute("meanBalanceFinancien", (String.format("€ %.2f",meanBalanceFinancien)));
         } else {
-            model.addAttribute("meanBalanceFinancien", (String.format("€ %.2f", 0)));
+            model.addAttribute("meanBalanceFinancien", (String.format("€ %.2f", 0.0)));
         }
 
 
