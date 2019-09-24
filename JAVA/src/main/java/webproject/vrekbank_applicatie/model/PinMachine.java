@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 public class PinMachine {
-    //pin voor dagelijkse identficatie, uit 8 cijfers
+    //pin voor dagelijkse identificatie, uit 8 cijfers
     @Id
     private int dailyConnectIdentifier;
 
