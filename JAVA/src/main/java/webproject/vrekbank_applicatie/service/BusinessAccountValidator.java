@@ -42,7 +42,9 @@ public class BusinessAccountValidator {
 
     }
 
-    public BusinessAccount findByIban(String iban) {return businessAccountDao.findByIban(iban);}
+    public BusinessAccount findByIban(String iban) {
+        return businessAccountDao.findByIban(iban);
+    }
 
     public List<BusinessAccount> findAllBusinessAccountByCustomer(Customer customer) {
         List<BusinessAccount> accounts = businessAccountDao.findByOwner(customer);
@@ -94,7 +96,7 @@ public class BusinessAccountValidator {
         return sectorList;
     }
 
-    public double findTotalBalanceBySector(String sector){
+    public double findTotalBalanceBySector(String sector) {
 
         // maak een lijst van alle business accounts in branche 'sector' en tel de saldos op
 
@@ -113,5 +115,12 @@ public class BusinessAccountValidator {
         accounts = businessAccountDao.findAccountsByAccountHolders(customer);
         return accounts;
     }
-}
 
+    public boolean pinMachineExists(String iban) {
+        if (businessAccountDao.findByIban(iban).getPinMachine() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
