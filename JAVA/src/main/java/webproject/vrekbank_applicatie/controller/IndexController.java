@@ -21,6 +21,7 @@ public class IndexController {
 
     @GetMapping(value = "registration")
     public String indexRegistrationHandler(Model model) {
+        System.out.println("start registrationhandler");
         Customer customer = new Customer();
         model.addAttribute("customer",customer);
         return "registration";
