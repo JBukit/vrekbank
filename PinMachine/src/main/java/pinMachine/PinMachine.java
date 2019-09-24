@@ -44,11 +44,11 @@ public class PinMachine {
         }
     }
 
-    private void doesExistRequest(int pinMachindIdentifier) {
+    private void doesExistRequest(int dailyConnectIdentifier) {
         URL existsUrl;
         HttpURLConnection con;
         try {
-            existsUrl = new URL("http://localhost:8080/businessAccount/exists/" + pinMachindIdentifier);
+            existsUrl = new URL("http://localhost:8080/businessAccount/exists/" + dailyConnectIdentifier);
             con = (HttpURLConnection) existsUrl.openConnection();
             con.setRequestMethod("GET");
             int code = con.getResponseCode();
@@ -58,11 +58,11 @@ public class PinMachine {
 
                 switch(answer) {
                     case "yes":
-                        System.out.println("Deze pinmachine met identifier" + pinMachindIdentifier +
+                        System.out.println("Deze pinmachine met identifier" + dailyConnectIdentifier +
                                 "is geregistreerdt bij een MBK rekening");
                         break;
                     case "no":
-                        System.out.println("Helaas, geen rekening met identifier" + pinMachindIdentifier + " gevonden...");
+                        System.out.println("Helaas, geen rekening met identifier" + dailyConnectIdentifier + " gevonden...");
                         break;
                     default:
                         System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeuren. " +
