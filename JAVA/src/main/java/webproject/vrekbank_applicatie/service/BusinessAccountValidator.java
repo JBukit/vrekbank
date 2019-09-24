@@ -107,5 +107,11 @@ public class BusinessAccountValidator {
 
         return totalBalance;
     }
+
+    public List<BusinessAccount> findAccountsWhereCustomerIsAccountHolder(Customer customer) {
+        List<BusinessAccount> accounts = new ArrayList<>();
+        accounts = businessAccountDao.findAccountsByAccountHolders(customer);
+        return accounts;
+    }
 }
 

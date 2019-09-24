@@ -58,5 +58,11 @@ public class PersonalAccountValidator {
         }
         return top10;
     }
+
+    public List<PersonalAccount> findAccountsWhereCustomerIsAccountHolder(Customer customer) {
+        List<PersonalAccount> accounts = new ArrayList<>();
+        accounts = personalAccountDao.findAccountsByAccountHolders(customer);
+        return accounts;
+    }
 }
 

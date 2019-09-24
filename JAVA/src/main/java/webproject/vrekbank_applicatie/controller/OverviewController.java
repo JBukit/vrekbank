@@ -112,14 +112,6 @@ public class OverviewController {
         return "AccountSummary";
     }
 
-    @GetMapping (value = "accountholder")
-    public String overviewAccountHolder (@SessionAttribute ("name") String name, Model model) {
-        Customer customer = customerValidator.findCustomerByUsername(name);
-        List<Account> accounts = accountValidator.findAccountsWhereCustomerIsAccountHolder(customer);
-        model.addAttribute("accounts", accounts);
-
-        return "OverviewAccountHolder";
-    }
 
     @PostMapping (value = "confirmationAccountHolder")
     public String confirmationAccountHolder (Model model) {
