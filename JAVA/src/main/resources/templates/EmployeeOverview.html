@@ -53,25 +53,15 @@
 </section>
 
 
-<!-- Welcome message -->
-
-<section class="colored-section" id="testies">
-    <div class="container-fluid">
-        <div class="col-md">
-            <h1>Overzicht voor inzien gegevens, gebaseerd op functie van ingelogde Employee</h1>
-        </div>
-    </div>
-</section>
-
 
 <!-- Table that shows customers with highest balance -->
 
 <section class="colored-section" id="testies">
 
-    <div class="container-fluid">
+    <section class="container-fluid">
 
         <div th:unless="${#lists.isEmpty(top10)}">
-            <h3>Top 10 Particuliere klanten met hoogste saldo</h3>
+            <h4>Top 10 Particuliere klanten met hoogste saldo</h4>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -81,39 +71,21 @@
                 </thead>
                 <tbody>
                 <tr th:each="account : ${top10}">
-                    <td><span th:text="${account.balance}"/></td>
+                    <td>€ <span th:text="${#numbers.formatDecimal(account.balance, 0, 'POINT', 2, 'COMMA')}"/></td>
                     <td><span th:text="${account.iban}"/></td>
                 </tr>
+                <tr><td><td></tr>
                 </tbody>
             </table>
         </div>
 
-    </div>
-
+    </section>
 </section>
 
 <!-- add PinMachine form -->
 
 
 
-
-<!-- Footer -->
-
-<section class="footerimage text-white text-center">
-    <div class="overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <form>
-                        <div>
-                            <a onclick="history.back()" class="btn btn-outline-light btn-lg">Homepage</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 </body>
