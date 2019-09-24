@@ -23,17 +23,20 @@ public class PinController {
             System.out.println("Aan welke zakelijke IBAN wilt u uw pinautomaat koppelen?");
             String inputIban = pinScanner.next();
             System.out.println("Wat is het vijfcijferige controlegetal dat u van de bank heeft ontvangen?");
-            String inputAddIdentifier = pinScanner.next();
+            int inputAddIdentifier = pinScanner.nextInt();
+
+            ClientPinMachine clientPinMachine = new ClientPinMachine(0, inputAddIdentifier, inputIban);
+            PinController pinController = new PinController();
+            pinController.doesExistRequest(inputAddIdentifier);
+
 
         } else {
             System.out.println("commando onbekend");
         }
 
-
-        PinController pinMachine = new PinController();
 //
 //        //client.run(id);
-        pinMachine.doesExistRequest(1);
+
     }
 
     private void run(int pinMachineIdentifier) {
@@ -60,11 +63,11 @@ public class PinController {
         }
     }
 
-    private void doesExistRequest(int dailyConnectIdentifier) {
+    private void doesExistRequest(int addIdentifier) {
         URL existsUrl;
         HttpURLConnection con;
         try {
-            existsUrl = new URL("http://localhost:8080/businessAccount/exists/" + dailyConnectIdentifier);
+            existsUrl = new URL("http://localhost:8080/businessAccount/exists/" + addIdentifier);
             con = (HttpURLConnection) existsUrl.openConnection();
             con.setRequestMethod("GET");
             int code = con.getResponseCode();
@@ -74,11 +77,11 @@ public class PinController {
 
                 switch(answer) {
                     case "yes":
-                        System.out.println("Deze pinmachine met identifier" + dailyConnectIdentifier +
-                                "is geregistreerdt bij een MBK rekening");
+                        System.out.println("Deze pinmachine met identifier" + addIdentifier +
+                                "is geregistreerd bij een MBK rekening");
                         break;
                     case "no":
-                        System.out.println("Helaas, geen rekening met identifier" + dailyConnectIdentifier + " gevonden...");
+                        System.out.println("Helaas, geen rekening met identifier" + addIdentifier + " gevonden...");
                         break;
                     default:
                         System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeuren. " +
