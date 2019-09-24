@@ -1,5 +1,6 @@
 package webproject.vrekbank_applicatie.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.PinMachine;
@@ -9,8 +10,10 @@ import webproject.vrekbank_applicatie.service.PinMachineService;
 @RestController
 public class PinController {
 
+    @Autowired
     BusinessAccountValidator businessAccountValidator;
 
+    @Autowired
     PinMachineService pinMachineService;
 
     @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
@@ -27,7 +30,7 @@ public class PinController {
 //            return member.getName() + " OK";
 //        }
 
-    @GetMapping(value = "/businessAccount/exists/{clientPinMachine}")
+    @GetMapping(value = "/businessAccount/addPin/{clientPinMachine}")
     public String addPinMachine(@PathVariable String json) {
         PinMachine clientPinMachine = pinMachineService.deserialize(json);
 
@@ -39,8 +42,8 @@ public class PinController {
                 PinMachine pinMachineinDb = pinMachineService.findByAddIdentifier(clientPinMachine.getAddIdentifier());
                 int dailyConnectIdentifier = pinMachineinDb.getDailyConnectIdentifier();
                 String dailyConnectIdentifierInString = Integer.toString(dailyConnectIdentifier);
-                return dailyConnectIdentifierInString;
-            } else return "Helaas, addIdentifier is niet correct";
-        }else return "Helaas, bij deze rekening is geen verzoek tot pin toevoegen gedaan door de bank.";
+                return "Gelukt!";
+            } else return "AddIdentifierIncorrect";
+        } else return "PinMachineUnknown";
     }
 }
