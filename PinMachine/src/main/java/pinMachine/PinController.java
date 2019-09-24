@@ -6,17 +6,33 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
-public class PinMachine {
+public class PinController {
 
-    public PinMachine() {
+    public PinController() {
         super();
     }
 
     public static void main(String[] args) {
-        PinMachine pinMachine = new PinMachine();
+        Scanner pinScanner = new Scanner(System.in);
+        System.out.println("Als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
 
-        //client.run(id);
+        String addPinMachine = pinScanner.next();
+        if (addPinMachine.equals("koppelen")){
+            System.out.println("Aan welke zakelijke IBAN wilt u uw pinautomaat koppelen?");
+            String inputIban = pinScanner.next();
+            System.out.println("Wat is het vijfcijferige controlegetal dat u van de bank heeft ontvangen?");
+            String inputAddIdentifier = pinScanner.next();
+
+        } else {
+            System.out.println("commando onbekend");
+        }
+
+
+        PinController pinMachine = new PinController();
+//
+//        //client.run(id);
         pinMachine.doesExistRequest(1);
     }
 
