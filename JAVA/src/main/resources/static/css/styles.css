@@ -134,6 +134,10 @@ img {
   background-color: #96C1B7;
 }
 
+#testimonials .container-fluid {
+  padding: 2% 15%;
+}
+
 .testimonial-text {
   font-size: 3rem;
   line-height: 1.5;
@@ -145,9 +149,14 @@ img {
   margin: 20px;
 }
 
+.carousel-item {
+  height: 410px;
+  overflow: hidden;
+  width: 100%;
+}
+
 #press {
   background-color: #96C1B7;
-  padding-bottom: 3%;
 }
 
 .press-logo {
@@ -421,9 +430,7 @@ input:focus{
 
 
 
-.carousel-item .container-fluid {
-  padding: 2% 15%;
-}
+
 
 
 
