@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class ClientPinMachineLauncher {
 
-    public static void main(String[] args) {
+    public ClientPinMachine clientPinMachine = new ClientPinMachine();
 
+    public static void main(String[] args) {
 
         Scanner pinScanner = new Scanner(System.in);
 
-        //userstory koppelen nieuwe automaat
+        //userstory het eenmalig koppelen van nieuwe automaat
         System.out.println("Beste winkelier, als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
 
         String addPinMachine = pinScanner.next();
@@ -20,10 +21,13 @@ public class ClientPinMachineLauncher {
             int inputAddIdentifier = pinScanner.nextInt();
 
             ClientPinMachine clientPinMachine = new ClientPinMachine(0, inputAddIdentifier, inputIban);
-
             ClientPinMachineService clientPinMachineService = new ClientPinMachineService();
 
-            clientPinMachineService.pinMachineCanBeAdded(inputIban, inputAddIdentifier);
+            //onderstaande functie haalt tevens een functie aan die de 8cijferige code ophaalt
+            long dailyConnectIdentifierToInsert = clientPinMachineService.pinMachineCanBeAdded(inputIban, inputAddIdentifier);
+            clientPinMachine.setDailyConnectIdentifier(dailyConnectIdentifierToInsert);
+
+
             //clientPinMachineService.doesExistRequest(inputAddIdentifier);
             //clientPinMachineService.addPinMachineRequest(clientPinMachine);
 
@@ -33,16 +37,17 @@ public class ClientPinMachineLauncher {
             System.out.println("commando onbekend");
         }
 
+        //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten
 
         //Vanaf hier: User story 3: Betalen
-        System.out.println("Als de klant met pin wil betalen, type dan 'betalen' ");
+        System.out.println("Aan winkelier: Als de klant met pin wil betalen, type dan 'betalen' ");
         String clientWantsToPay = pinScanner.next();
         if (clientWantsToPay.equals("betalen")) {
-            System.out.println("Wat is het bedrag dat de klant moet betalen?");
+            System.out.println("Aan winkelier: Wat is het bedrag dat de klant moet betalen?");
             float amountClientNeedsToPay = pinScanner.nextFloat();
-            System.out.println("Wat is uw rekeningnummer (IBAN) ?");
+            System.out.println("Beste klant, wat is uw rekeningnummer (IBAN) ?");
             String ibanClientForPinPayment = pinScanner.next();
-            System.out.println("Voer nu uw pincode in");
+            System.out.println("Aan klant: Voer nu uw pincode in");
             int pincodeClientForPinPayment = pinScanner.nextInt();
 
         }

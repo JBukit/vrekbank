@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class PinMachine {
     //pin voor dagelijkse identificatie, uit 8 cijfers
     @Id
-    private int dailyConnectIdentifier;
+    private long dailyConnectIdentifier;
 
     // pin alleen om te koppelen, uit 5 cijfers
 
@@ -24,11 +24,11 @@ public class PinMachine {
         this.businessAccount = businessAccount;
     }
 
-    public int getDailyConnectIdentifier() {
+    public long getDailyConnectIdentifier() {
         return dailyConnectIdentifier;
     }
 
-    public void setDailyConnectIdentifier(int dailyConnectIdentifier) {
+    public void setDailyConnectIdentifier(long dailyConnectIdentifier) {
         this.dailyConnectIdentifier = dailyConnectIdentifier;
     }
 

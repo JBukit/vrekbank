@@ -2,17 +2,13 @@ package pinMachine;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
-    @Entity
+@Entity
 public class ClientPinMachine {
     //pin voor dagelijkse identificatie, uit 8 cijfers
 
     @Id
-    private int dailyConnectIdentifier;
+    private long dailyConnectIdentifier;
 
     // pin alleen om te koppelen, uit 5 cijfers
 
@@ -21,19 +17,24 @@ public class ClientPinMachine {
     private String iban;
 
     public ClientPinMachine() {
+        super();
+        this.dailyConnectIdentifier = 0;
+        this.addIdentifier = 0;
+        this.iban = "";
     }
 
     public ClientPinMachine(int dailyConnectIdentifier, int addIdentifier, String iban) {
+        super();
         this.dailyConnectIdentifier = dailyConnectIdentifier;
         this.addIdentifier = addIdentifier;
         this.iban = iban;
     }
 
-    public int getDailyConnectIdentifier() {
+    public long getDailyConnectIdentifier() {
         return dailyConnectIdentifier;
     }
 
-    public void setDailyConnectIdentifier(int dailyConnectIdentifier) {
+    public void setDailyConnectIdentifier(long dailyConnectIdentifier) {
         this.dailyConnectIdentifier = dailyConnectIdentifier;
     }
 
