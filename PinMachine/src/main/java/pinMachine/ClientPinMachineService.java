@@ -115,7 +115,8 @@ public class ClientPinMachineService {
                         System.out.println("Helaas... De ingevoerde 5 cijferige koppelcode " +addIdentifier+ " is niet correct");
                         break;
                     default:
-                        System.out.println("Geen idee, dr is wat mis...");
+                        System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeurd. " +
+                                "Ik adviseer in paniek gillend rondrennen.");
                 }
             } else {
                 System.out.println("Server connection problem. Status code: " + code);
