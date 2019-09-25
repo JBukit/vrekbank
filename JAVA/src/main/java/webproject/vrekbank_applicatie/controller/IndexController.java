@@ -16,7 +16,7 @@ public class IndexController {
     @GetMapping(value = "login")
     public String indexLoginHandler() {
        Customer customer = new Customer();
-        return "login";
+        return "Login";
     }
 
     @GetMapping(value = "registration")
@@ -24,13 +24,13 @@ public class IndexController {
         System.out.println("start registrationhandler");
         Customer customer = new Customer();
         model.addAttribute("customer",customer);
-        return "registration";
+        return "Registration";
     }
 
     @GetMapping(value = "initdb")
     public String initdb(Model model){
         customerFileLauncher.makeCustomerList();
-        return "login";
+        return "Login";
     }
 
 //    @GetMapping (value = "employeeIndex")
