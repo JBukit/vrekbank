@@ -1,10 +1,16 @@
-package webproject.vrekbank_applicatie.model;
+package pinMachine;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-@Entity
-public class PinMachine {
+    @Entity
+public class ClientPinMachine {
     //pin voor dagelijkse identificatie, uit 8 cijfers
+
     @Id
     private int dailyConnectIdentifier;
 
@@ -12,16 +18,15 @@ public class PinMachine {
 
     private int addIdentifier;
 
-    @OneToOne(mappedBy = "pinMachine")
-    private BusinessAccount businessAccount;
+    private String iban;
 
-    public PinMachine() {
+    public ClientPinMachine() {
     }
 
-    public PinMachine(int dailyConnectIdentifier, int addIdentifier, BusinessAccount businessAccount) {
+    public ClientPinMachine(int dailyConnectIdentifier, int addIdentifier, String iban) {
         this.dailyConnectIdentifier = dailyConnectIdentifier;
         this.addIdentifier = addIdentifier;
-        this.businessAccount = businessAccount;
+        this.iban = iban;
     }
 
     public int getDailyConnectIdentifier() {
@@ -40,12 +45,12 @@ public class PinMachine {
         this.addIdentifier = addIdentifier;
     }
 
-    public BusinessAccount getBusinessAccount() {
-        return businessAccount;
+    public String getIban() {
+        return iban;
     }
 
-    public void setBusinessAccount(BusinessAccount businessAccount) {
-        this.businessAccount = businessAccount;
+    public void setIban(String iban) {
+        this.iban = iban;
     }
 }
 

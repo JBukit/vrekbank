@@ -33,8 +33,8 @@ public class IndexController {
         return "login";
     }
 
-    @GetMapping (value = "employeeIndex")
-    public String indexEmployeeHandler () {
-        return "EmployeeIndex";
-    }
+//    @GetMapping (value = "employeeIndex")
+//    public String indexEmployeeHandler () {
+//        return "EmployeeIndex";
+//    }
 }

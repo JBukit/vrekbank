@@ -35,7 +35,9 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark static-top">
 
-            <a href="employeeIndex"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+
+            <a href="Index.html"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="employeeLogin">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -51,25 +53,15 @@
     </div>
 </section>
 
-<!-- Welcome message -->
-
-<section class="colored-section" id="testies">
-    <div class="container-fluid">
-        <div class="col-md">
-            <h1>Top 10 MKB rekeningen</h1>
-        </div>
-    </div>
-</section>
 
 <!-- Table that shows customers with highest balance -->
 
 <section class="colored-section" id="testies">
 
-    <div class="container-fluid">
+    <section class="container-fluid">
 
         <div th:unless="${#lists.isEmpty(top10)}">
-            <h3>Hier vind u de top 10 MKB rekeningen met het hoogste saldo:</h3>
-            <br>
+            <h4>Top 10 MKB rekeningen met het hoogste saldo</h4>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -82,18 +74,16 @@
                     <td>€ <span th:text="${#numbers.formatDecimal(account.balance, 0, 'POINT', 2, 'COMMA')}"/></td>
                     <td><span th:text="${account.iban}"/></td>
                 </tr>
+                <tr><td><td></tr>
                 </tbody>
             </table>
         </div>
-    </div>
-</section>
 
-<section class="colored-section" id="pinkie">
-    <div class="container-fluid">
         <div class="knop">
             <a href="employeeIndexWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
         </div>
-    </div>
+
+    </section>
 </section>
 
 

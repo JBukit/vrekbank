@@ -2,14 +2,16 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>EmployeeLogin</title>
+    <title>EmpoyeeLogin</title>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&display=swap" rel="stylesheet">
 
     <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/employeestyles.css">
 
     <!-- Favicon -->
@@ -19,9 +21,15 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <!-- Bootstrap Scripts -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -35,16 +43,18 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark static-top">
 
-            <a href="employeeIndex"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+            <a href="Index.html"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Logout</a>
-                    </li>
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a class="nav-link" href="#">Logout</a>-->
+                    <!--                    </li>-->
                 </ul>
             </div>
         </nav>
@@ -52,65 +62,75 @@
 </section>
 
 
-<!-- Login form -->
+<section class="vid">
 
-<div class="d-flex justify-content-center h-70">
-
-    <div class="card logincard">
-        <div class="card-header loginheader">
-            <h3>Log in (werknemers)</h3>
-        </div>
-        <div class="card-body">
-            <form th:action="@{employeeOverview}" th:object="${Employee}" method="post">
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-user"></i></span>
-                    </div>
-                    <input type="text" class="form-control" name="userName" placeholder="username" autofocus="true">
-
-                </div>
-                <div class="input-group form-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-key"></i></span>
-                    </div>
-                    <input type="password" class="form-control" name="password" placeholder="wachtwoord">
-                </div>
-                <div class="row align-items-center remember">
-                    <input type="checkbox">Onthoud mij
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Login" class="btn float-right login_btn">
-                </div>
-            </form>
-        </div>
-        <div class="card-footer">
-            <div class="d-flex justify-content-center links">
-                Nog geen account?<a href="/employeeRegister">Registreer</a>
-            </div>
-            <div class="d-flex justify-content-center">
-                <input type="button" class="btn btn-outline-light btn-sm" value="Ga terug" onclick="history.back()">
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Footer -->
-
-<section class="footerimage text-white text-center">
     <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-9 mx-auto">
-                <form>
-                    <div class="knop">
-                        <a onclick="history.back()" class="btn btn-outline-light btn-lg" role="button">Homepage</a>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted">
+        <source src="https://i.imgur.com/YXNcKxK.mp4" type="video/mp4">
+    </video>
+
+
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white paddo">
+
+
+                <div class="d-flex justify-content-center h-70">
+
+                    <div class="card logincard">
+                        <div class="card-header loginheader">
+                            <h3>Log in (werknemers)</h3>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{employeeOverview}" th:object="${Employee}" method="post">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-user"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="userName" placeholder="username"
+                                           autofocus="true">
+
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="pinkbaby"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" class="form-control" name="password"
+                                           placeholder="wachtwoord">
+                                </div>
+                                <div class="row align-items-center remember">
+                                    <input type="checkbox">Onthoud mij
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Login" class="btn float-right login_btn">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-flex justify-content-center links">
+                                Nog geen account?<a href="/employeeRegister">Registreer</a>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <a href="Index.html"/><input type="button" class="btn btn-outline-light btn-sm"
+                                                             value="Ga terug"></a>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                </div>
+
+
+                <!--                <div class="col-lg paddi">-->
+                <!--                    -->
+                <!--                    <img class="heartbeat rounded" src="images/geld.png" alt="duck">-->
+
+                <!--                </div>-->
+
             </div>
         </div>
     </div>
+
 </section>
+
 
 </body>
 </html>

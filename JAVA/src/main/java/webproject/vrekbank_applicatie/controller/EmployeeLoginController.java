@@ -12,7 +12,7 @@ import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
 import java.util.List;
 
 @Controller
-@SessionAttributes({"name"})
+@SessionAttributes({"name", "firstName"})
 public class EmployeeLoginController {
 
     private final String FUNCTION_HEAD_PERSONAL = "Hoofd Particulieren";
@@ -30,6 +30,7 @@ public class EmployeeLoginController {
         // find employee based on inlog-information (userName en PW)
         Employee employee = employeeValidator.findEmployeeByUserName(loggedInEmployee.getUserName());
         model.addAttribute("name", loggedInEmployee.getUserName());
+        model.addAttribute("firstName", employee.getFirstName());
 
         // if function = Hoofd Particuliern, show 10 accounts with highest balance
         if (employee.getTypeFunction().equals(FUNCTION_HEAD_PERSONAL)) {
