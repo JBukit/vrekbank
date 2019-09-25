@@ -6,6 +6,8 @@ public class ClientPinMachineLauncher {
 
     public static void main(String[] args) {
 
+
+
         Scanner pinScanner = new Scanner(System.in);
         System.out.println("Als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
 
@@ -20,7 +22,11 @@ public class ClientPinMachineLauncher {
 
             ClientPinMachineService clientPinMachineService = new ClientPinMachineService();
 
-            clientPinMachineService.addPinMachineRequest(clientPinMachine);
+
+            clientPinMachineService.doExistRequest(inputAddIdentifier);
+            //clientPinMachineService.addPinMachineRequest(clientPinMachine);
+
+
 
             //        client.run(id);
 

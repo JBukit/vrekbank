@@ -14,7 +14,6 @@ public class ClientPinMachineController {
         super();
     }
 
-    ClientPinMachineService clientPinMachineService;
 
     private void run(int pinMachineIdentifier) {
         URL url;

@@ -12,8 +12,6 @@ import java.net.URL;
 
 public class ClientPinMachineService {
 
-    PinMachineDao pinMachineDao;
-
     public String serialize(ClientPinMachine clientPinMachine) {
         Gson gson = new Gson();
         String json = gson.toJson(clientPinMachine);
@@ -26,6 +24,38 @@ public class ClientPinMachineService {
         return clientPinMachine;
     }
 
+    public void doExistRequest(int addIdentifier) {
+        URL existsUrl;
+        HttpURLConnection con;
+        try {
+            existsUrl = new URL("http://localhost:8080/pinmachine/exists/" + addIdentifier);
+            con = (HttpURLConnection) existsUrl.openConnection();
+            con.setRequestMethod("GET");
+            int code = con.getResponseCode();
+            if (code == 200) {
+                BufferedReader response = getResponse(con);
+                String answer = response.readLine();
+
+                switch (answer) {
+                    case "yes":
+                        System.out.println("Betert, pinautomaat met koppelcode " + addIdentifier + " bestaat!");
+                        break;
+                    case "no":
+                        System.out.println("Booeee... Geen lid met koppelcode " + addIdentifier + " gevonden...");
+                        break;
+                    default:
+                        System.out.println("Wat? De server is gek geworden");
+                }
+            } else {
+                System.out.println("Server connection problem. Status code: " + code);
+            }
+        } catch (IOException ioe) {
+            System.out.println("IO Exception while connecting to server.");
+            System.out.println(ioe.getCause());
+            System.exit(-1000);
+        }
+    }
+
     public void addPinMachineRequest(ClientPinMachine clientPinMachine) {
         URL addPinUrl;
         HttpURLConnection con;
@@ -36,7 +66,10 @@ public class ClientPinMachineService {
 
             addPinUrl = new URL("http://localhost:8080/businessAccount/addPin/" + json);
             con = (HttpURLConnection) addPinUrl.openConnection();
-            con.setRequestMethod("GET");
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json; utf-8"); // toevoeging
+            con.setRequestProperty("Accept", "application/json"); //toevoeging
+            con.setDoOutput(true); //toevoeging
             int code = con.getResponseCode();
             if (code == 200) {
                 BufferedReader response = getResponse(con);

@@ -16,6 +16,15 @@ public class PinController {
     @Autowired
     PinMachineService pinMachineService;
 
+    @GetMapping(value = "pinmachine/exists/{addIdentifier}")
+    public String existsMember(@PathVariable int addIdentifier) {
+        boolean exists = pinMachineService.exists(addIdentifier);
+        if (exists) {
+            return "yes";
+        }
+        return "no";
+    }
+
     @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
     public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
         BusinessAccount shopholdersAccount = businessAccountValidator.findByPinMachine
@@ -30,7 +39,9 @@ public class PinController {
 //            return member.getName() + " OK";
 //        }
 
-    @GetMapping(value = "/businessAccount/addPin/{json}")
+
+
+    @PostMapping(value = "/businessAccount/addPin/{json}")
     public String addPinMachine(@PathVariable String json) {
         PinMachine clientPinMachine = pinMachineService.deserialize(json);
 
