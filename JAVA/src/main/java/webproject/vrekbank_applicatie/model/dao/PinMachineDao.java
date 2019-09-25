@@ -9,4 +9,6 @@ public interface PinMachineDao  extends CrudRepository<PinMachine, Integer> {
 
     public PinMachine findByAddIdentifier(int addIdentifier);
 
+
+
 }

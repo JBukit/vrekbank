@@ -24,7 +24,7 @@ public class ClientPinMachineService {
         return clientPinMachine;
     }
 
-    public void doExistRequest(int addIdentifier) {
+    public void doesExistRequest(int addIdentifier) {
         URL existsUrl;
         HttpURLConnection con;
         try {
@@ -41,10 +41,10 @@ public class ClientPinMachineService {
                         System.out.println("Betert, pinautomaat met koppelcode " + addIdentifier + " bestaat!");
                         break;
                     case "no":
-                        System.out.println("Booeee... Geen lid met koppelcode " + addIdentifier + " gevonden...");
+                        System.out.println("Booeee... Geen pinautomaat met koppelcode " + addIdentifier + " gevonden...");
                         break;
                     default:
-                        System.out.println("Wat? De server is gek geworden");
+                        System.out.println("Geen idee, er is wat mis...");
                 }
             } else {
                 System.out.println("Server connection problem. Status code: " + code);
@@ -56,36 +56,28 @@ public class ClientPinMachineService {
         }
     }
 
-    public void addPinMachineRequest(ClientPinMachine clientPinMachine) {
-        URL addPinUrl;
+    public void pinDoesExistRequest(String iban) {
+        URL existsUrl;
         HttpURLConnection con;
         try {
-            String json = serialize(clientPinMachine);
-
-            System.out.println(json);
-
-            addPinUrl = new URL("http://localhost:8080/businessAccount/addPin/" + json);
-            con = (HttpURLConnection) addPinUrl.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json; utf-8"); // toevoeging
-            con.setRequestProperty("Accept", "application/json"); //toevoeging
-            con.setDoOutput(true); //toevoeging
+            existsUrl = new URL("http://localhost:8080/pinmachine/existsbyiban/" + iban);
+            System.out.println(existsUrl);
+            con = (HttpURLConnection) existsUrl.openConnection();
+            con.setRequestMethod("GET");
             int code = con.getResponseCode();
             if (code == 200) {
                 BufferedReader response = getResponse(con);
                 String answer = response.readLine();
 
                 switch (answer) {
-                    case "Gelukt!":
-                        System.out.println("Deze pinmachine met identifier" + clientPinMachine.getAddIdentifier() +
-                                "is geregistreerd bij een MBK rekening");
+                    case "yes":
+                        System.out.println("Betert, pinautomaat voor rekeningg " + iban + " bestaat!");
                         break;
                     case "no":
-                        System.out.println("Helaas, geen gekoppeling met identifier" + clientPinMachine.getAddIdentifier());
+                        System.out.println("Booeee... Deze rekening " +iban+ " bestaat niet, of heeft geen pinautomaat");
                         break;
                     default:
-                        System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeuren. " +
-                                "Ik adviseer in paniek gillend rondrennen.");
+                        System.out.println("Geen idee, dr is wat mis...");
                 }
             } else {
                 System.out.println("Server connection problem. Status code: " + code);
@@ -96,6 +88,84 @@ public class ClientPinMachineService {
             System.exit(-1000);
         }
     }
+
+
+    public void pinMachineCanBeAdded(String iban, int addIdentifier) {
+        URL existsUrl;
+        HttpURLConnection con;
+        try {
+            existsUrl = new URL("http://localhost:8080/pinmachine/pinmachinecanbeadded/" + iban + "/" + addIdentifier);
+            System.out.println(existsUrl);
+            con = (HttpURLConnection) existsUrl.openConnection();
+            con.setRequestMethod("GET");
+            int code = con.getResponseCode();
+            if (code == 200) {
+                BufferedReader response = getResponse(con);
+                String answer = response.readLine();
+
+                switch (answer) {
+                    case "ok":
+                        // hier een functie aanroepen om  8 cijfers op te halen? BIj voorkeur POST
+                        System.out.println("Betert, pinautomaat voor rekeningg " + iban + " bestaat!");
+                        break;
+                    case "NoIbanFound":
+                        System.out.println("Helaas... Deze rekening " +iban+ " bestaat niet, of heeft geen pinautomaat");
+                        break;
+                    case "AddIdentifierNotCorrect":
+                        System.out.println("Helaas... De ingevoerde 5 cijferige koppelcode " +addIdentifier+ " is niet correct");
+                        break;
+                    default:
+                        System.out.println("Geen idee, dr is wat mis...");
+                }
+            } else {
+                System.out.println("Server connection problem. Status code: " + code);
+            }
+        } catch (IOException ioe) {
+            System.out.println("IO Exception while connecting to server.");
+            System.out.println(ioe.getCause());
+            System.exit(-1000);
+        }
+    }
+//    public void addPinMachineRequest(ClientPinMachine clientPinMachine) {
+//        URL addPinUrl;
+//        HttpURLConnection con;
+//        try {
+//            String json = serialize(clientPinMachine);
+//
+//            System.out.println(json);
+//
+//            addPinUrl = new URL("http://localhost:8080/businessAccount/addPin/" + json);
+//            con = (HttpURLConnection) addPinUrl.openConnection();
+//            con.setRequestMethod("POST");
+//            con.setRequestProperty("Content-Type", "application/json; utf-8"); // toevoeging
+//            con.setRequestProperty("Accept", "application/json"); //toevoeging
+//            con.setDoOutput(true); //toevoeging
+//            int code = con.getResponseCode();
+//            if (code == 200) {
+//                BufferedReader response = getResponse(con);
+//                String answer = response.readLine();
+//
+//                switch (answer) {
+//                    case "Gelukt!":
+//                        System.out.println("Deze pinmachine met identifier" + clientPinMachine.getAddIdentifier() +
+//                                "is geregistreerd bij een MBK rekening");
+//                        break;
+//                    case "no":
+//                        System.out.println("Helaas, geen gekoppeling met identifier" + clientPinMachine.getAddIdentifier());
+//                        break;
+//                    default:
+//                        System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeuren. " +
+//                                "Ik adviseer in paniek gillend rondrennen.");
+//                }
+//            } else {
+//                System.out.println("Server connection problem. Status code: " + code);
+//            }
+//        } catch (IOException ioe) {
+//            System.out.println("IO Exception while connecting to server.");
+//            System.out.println(ioe.getCause());
+//            System.exit(-1000);
+//        }
+  //  }
 
     private BufferedReader getResponse(HttpURLConnection con) throws IOException {
         InputStream response;

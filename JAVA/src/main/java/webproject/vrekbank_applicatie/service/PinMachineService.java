@@ -26,6 +26,7 @@ public class PinMachineService {
     }
 
 
+
     public boolean exists(int addIdentifier) {
         if (pinMachineDao.findByAddIdentifier(addIdentifier) != null) {
             return true;

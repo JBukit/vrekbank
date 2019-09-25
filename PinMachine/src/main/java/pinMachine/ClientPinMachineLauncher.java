@@ -7,9 +7,10 @@ public class ClientPinMachineLauncher {
     public static void main(String[] args) {
 
 
-
         Scanner pinScanner = new Scanner(System.in);
-        System.out.println("Als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
+
+        //userstory koppelen nieuwe automaat
+        System.out.println("Beste winkelier, als u uw pinautomaat voor het eerst wil aansluiten, type dan 'koppelen' ");
 
         String addPinMachine = pinScanner.next();
         if (addPinMachine.equals("koppelen")) {
@@ -22,16 +23,15 @@ public class ClientPinMachineLauncher {
 
             ClientPinMachineService clientPinMachineService = new ClientPinMachineService();
 
-
-            clientPinMachineService.doExistRequest(inputAddIdentifier);
+            clientPinMachineService.pinMachineCanBeAdded(inputIban, inputAddIdentifier);
+            //clientPinMachineService.doesExistRequest(inputAddIdentifier);
             //clientPinMachineService.addPinMachineRequest(clientPinMachine);
-
-
 
             //        client.run(id);
 
         } else {
             System.out.println("commando onbekend");
         }
+
     }
 }

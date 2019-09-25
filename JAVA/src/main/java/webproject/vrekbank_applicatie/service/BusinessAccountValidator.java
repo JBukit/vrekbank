@@ -42,6 +42,14 @@ public class BusinessAccountValidator {
 
     }
 
+    public boolean pinMachineExistsByIban(String iban) {
+        if (businessAccountDao.findByIban(iban) != null)
+            if (businessAccountDao.findByIban(iban).getPinMachine() != null) {
+                return true;
+            } else return false;
+        else return false;
+    }
+
     public BusinessAccount findByIban(String iban) {
         return businessAccountDao.findByIban(iban);
     }

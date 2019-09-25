@@ -16,13 +16,17 @@ public class PinController {
     @Autowired
     PinMachineService pinMachineService;
 
-    @GetMapping(value = "pinmachine/exists/{addIdentifier}")
-    public String existsMember(@PathVariable int addIdentifier) {
-        boolean exists = pinMachineService.exists(addIdentifier);
-        if (exists) {
-            return "yes";
-        }
-        return "no";
+    @GetMapping(value = "pinmachine/pinmachinecanbeadded/{iban}/{addIdentifier}")
+    public String pinMachineCanBeAdded(@PathVariable String iban, @PathVariable int addIdentifier) {
+        boolean ibanExists = businessAccountValidator.pinMachineExistsByIban(iban);
+        if (ibanExists) {
+            PinMachine pinMachineWithAddRequest = businessAccountValidator.findByIban(iban).getPinMachine();
+            if (addIdentifier == pinMachineWithAddRequest.getAddIdentifier()) {
+                Integer dailyConnectIdentifierInInteger = (pinMachineWithAddRequest.getDailyConnectIdentifier());
+                String dailyConnectIdentifierInString = dailyConnectIdentifierInInteger.toString();
+                return ("ok"); // dailyConnectIdentifierInString moet hier mee, maar hoe afpellen voor switch in client?
+            } else return "AddIdentifierNotCorrect";
+        } else return "NoIbanFound";
     }
 
     @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
@@ -38,7 +42,6 @@ public class PinController {
 //            Member member = memberService.deserialize(json);
 //            return member.getName() + " OK";
 //        }
-
 
 
     @PostMapping(value = "/businessAccount/addPin/{json}")
