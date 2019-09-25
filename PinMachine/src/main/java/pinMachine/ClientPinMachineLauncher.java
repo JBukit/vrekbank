@@ -33,5 +33,20 @@ public class ClientPinMachineLauncher {
         } else {
             System.out.println("commando onbekend");
         }
+
+        //Vanaf hier: User story 3: Betalen
+        System.out.println("Als de klant met pin wil betalen, type dan 'betalen' ");
+        String clientWantsToPay = pinScanner.next();
+        if(clientWantsToPay.equals("betalen")) {
+            System.out.println("Wat is het bedrag dat de klant moet betalen?");
+            float amountClientNeedsToPay = pinScanner.nextFloat();
+            System.out.println("Wat is uw rekeningnummer (IBAN) ?");
+            String ibanClientForPinPayment = pinScanner.next();
+            System.out.println("Voer nu uw pincode in");
+            int pincodeClientForPinPayment = pinScanner.nextInt();
+
+        }
+
+
     }
 }

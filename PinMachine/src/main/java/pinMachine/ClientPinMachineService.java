@@ -84,7 +84,7 @@ public class ClientPinMachineService {
                         System.out.println("Helaas, geen gekoppeling met identifier" + clientPinMachine.getAddIdentifier());
                         break;
                     default:
-                        System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeuren. " +
+                        System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeurd. " +
                                 "Ik adviseer in paniek gillend rondrennen.");
                 }
             } else {
