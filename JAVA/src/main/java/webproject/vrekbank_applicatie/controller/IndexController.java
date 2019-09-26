@@ -33,4 +33,11 @@ public class IndexController {
         return "Login";
     }
 
+
+    @GetMapping(value = "locations")
+    public String indexLocationsHandler() {
+        return "Locations";
+    }
+
+
 }
