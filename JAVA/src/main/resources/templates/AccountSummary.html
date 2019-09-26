@@ -108,12 +108,12 @@
 
     <section class="container-fluid">
 
-        <div th:unless="${#lists.isEmpty(totalTransferList)}">
             <h5><div class="text-right" id="time"></div></h5>
             <h5><div class="text-right" id="date"></div></h5>
             <h5><div class="text-left">Saldo: € <span th:text="${#numbers.formatDecimal(balance, 0, 'POINT', 2, 'COMMA')}"/></div></h5>
 
             <h3>Overzicht van transacties</h3>
+        <div th:unless="${#lists.isEmpty(totalTransferList)}">
             <table class="table table-hover">
                 <thead>
                 <tr>

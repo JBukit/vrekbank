@@ -2,30 +2,24 @@ package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
 import webproject.vrekbank_applicatie.model.Account;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
-import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
 import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 @Component
 public class CustomerFileLauncher {
 
-    public static final int FILE_SIZE = 4000;
+    public static final int CUSTOMER_FILE_SIZE = 4000;
+    public static final int COMPANYNAMES_FILE_SIZE = 1000;
     public static final double MINIMUMBALANCE = 0.0;
-    public static final boolean BUSINESSACCOUNT = false;
-    public static List<Customer> customerList;
 
     @Autowired
     CustomerValidator validator;
@@ -39,14 +33,13 @@ public class CustomerFileLauncher {
     public void makeCustomerList() {
         Scanner customerReader;
         Scanner companyReader;
-        customerList = new ArrayList<>();
         // Reads fakenames file, splits values and saves them as a customer object
         try {
             File fakeNames = new File("Namelist/FakeNames.csv");
             customerReader = new Scanner(fakeNames);
             File fakeCompanyNames = new File("Namelist/FakeCompanyNames.csv");
             companyReader = new Scanner(fakeCompanyNames);
-            for (int i = 0; i < FILE_SIZE; i++) {
+            for (int i = 0; i < CUSTOMER_FILE_SIZE; i++) {
                 String[] customerSplit = customerReader.nextLine().split(";");
                 String firstName = customerSplit[0];
                 System.out.println(firstName);
@@ -69,22 +62,22 @@ public class CustomerFileLauncher {
                 Account account = new PersonalAccount();
                 double balance = account.randomBalance();
                 String iban = Account.CreateIBAN();
-                PersonalAccount newPersonalAccount = new PersonalAccount(0, iban, balance, MINIMUMBALANCE, BUSINESSACCOUNT);
-                // Links personal account to the new customer by setting customer as a Owner and
+                PersonalAccount newPersonalAccount = new PersonalAccount(0, iban, balance, MINIMUMBALANCE, false);
+                // Links personal account to the new customer by setting customer as a Owner and Holder
                 newPersonalAccount.setOwner(newCustomer);
                 newPersonalAccount.addAccountHolder(newCustomer);
                 personalAccountValidator.savePersonalAccount(newPersonalAccount);
 
-                if (i <= 1000) {
-                    Account businessAaccount = new BusinessAccount();
+                // Creates a business account with random iban and balance
+                if (i <= COMPANYNAMES_FILE_SIZE) {
                     double businessBalance = account.randomBalance();
                     String businessIban = Account.CreateIBAN();
-                    boolean businessaccount2 = true;
                     String[] companySplit = companyReader.nextLine().split(";");
                     String companyName = companySplit[0];
                     String sector = companySplit[1];
                     BusinessAccount newBusinessAccount = new BusinessAccount(0, businessIban, businessBalance, MINIMUMBALANCE,
-                            businessaccount2, companyName, sector);
+                            true, companyName, sector);
+                    // Links business account to the new customer by setting customer as a Owner and Holder
                     newBusinessAccount.setOwner(newCustomer);
                     newBusinessAccount.addAccountHolder(newCustomer);
                     businessAccountValidator.saveBusinessAccount(newBusinessAccount);
