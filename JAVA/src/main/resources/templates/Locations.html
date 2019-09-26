@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RegistrationConfirmation</title>
+    <title>Locations</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -47,7 +47,7 @@
                         <a class="nav-link" href="#">Over Ons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="locations">Locaties</a>
+                        <a class="nav-link" href="#">Locaties</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
@@ -59,30 +59,18 @@
 </section>
 
 
-<section class="colored-section" id="testies">
-    <div class="container-fluid">
-        <div class="col-md">
-            <h1>Hallo <span th:text="${firstname}"></span>, welkom bij VrekBank.</h1>
-            <br>
-            <br>
-            <br>
-        </div>
-    </div>
-</section>
+<!--Map-->
 
 <section class="colored-section" id="testies">
-    <h3>Vanaf vandaag bent u klant bij ons.</h3>
-    <h3>Uw gebruikersnaam is: <span th:text="${username}"></span></h3>
-<br>
-<br>
-<br>
-<br>
-    <div style="text-align: center;">
-        <a href="/vrekbank" class="btn btn-outline-light btn-lg mr-5" role="button">Homepage</a>
-        <a href="login" class="btn btn-info btn-lg" role="button">Login</a>
-
+<div class="container-fluid">
+    <div class="map-responsive">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117963.09056684742!2d-81.2860424435222!3d19.32236322571389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2f620be6f6068d%3A0x19a74bccceb9262d!2sRum%20Point%2C%20Kaaimaneilanden!5e0!3m2!1snl!2snl!4v1569503196176!5m2!1snl!2snl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
     </div>
+</div>
 </section>
+
+
+<!--Footer-->
 
 <footer class="colored-section" id="footer">
     <div class="container-end">
@@ -93,5 +81,6 @@
         <p>© Copyright 2019 VrekBank</p>
     </div>
 </footer>
+
 </body>
 </html>
