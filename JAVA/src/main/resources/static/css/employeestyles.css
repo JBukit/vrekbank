@@ -14,6 +14,10 @@ p {
     color: black;
 }
 
+#footer p{
+    color: white;
+}
+
 html,body{
     background-color: #EE8583;
     background-size: cover;
