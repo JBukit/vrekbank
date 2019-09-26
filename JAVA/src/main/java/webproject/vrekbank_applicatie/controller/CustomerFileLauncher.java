@@ -87,6 +87,8 @@ public class CustomerFileLauncher {
                             businessaccount2, companyName, sector);
                     newBusinessAccount.setOwner(newCustomer);
                     newBusinessAccount.addAccountHolder(newCustomer);
+                    newBusinessAccount.setAccountManager
+                            (businessAccountValidator.assignEmployeeBasedOnSector(newBusinessAccount, sector));
                     businessAccountValidator.saveBusinessAccount(newBusinessAccount);
                 }
             }

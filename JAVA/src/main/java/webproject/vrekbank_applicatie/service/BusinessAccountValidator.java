@@ -137,7 +137,7 @@ public class BusinessAccountValidator {
         }
     }
 
-    public String assignAccountManagerBasedOnSector (BusinessAccount businessAccount, String sector) {
+    public String assignAccountManagerBasedOnSector(BusinessAccount businessAccount, String sector) {
         System.out.println("start methode assignAccountManager");
         Employee nameAccountManager = new Employee();
         nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
@@ -180,5 +180,49 @@ public class BusinessAccountValidator {
         businessAccount.setAccountManager(nameAccountManager);
 
         return nameAccountManager.getUserName();
+    }
+
+    //hieronder functie aangepast tot Employee teruggeven, ipv de daaruit gehaalde String. Met gebruik van onderstaande
+    //kan bovenstaande evt verkort worden
+    public Employee assignEmployeeBasedOnSector(BusinessAccount businessAccount, String sector) {
+        System.out.println("start methode assignAccountManager");
+        Employee accountManager = new Employee();
+        accountManager = employeeDao.findEmployeeByUserName("Elleke");
+        System.out.println(accountManager.getFirstName());
+
+        switch (sector) {
+            case "Bouw":
+                accountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Financien":
+                accountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Handel":
+                accountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Horeca":
+                accountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Industrie":
+                accountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Landbouw":
+                accountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Logistiek":
+                accountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Onderwijs":
+                accountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "IT":
+                accountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Zorg":
+                accountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+        }
+
+        return accountManager;
     }
 }
