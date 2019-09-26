@@ -140,7 +140,7 @@ public class BusinessAccountValidator {
     public String assignAccountManagerBasedOnSector (BusinessAccount businessAccount, String sector) {
         System.out.println("start methode assignAccountManager");
         Employee nameAccountManager = new Employee();
-        nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+        nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
         System.out.println(nameAccountManager.getFirstName());
 
         switch (sector) {
