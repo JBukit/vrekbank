@@ -87,12 +87,16 @@ public class OpenAccountController {
         businessAccount.setIban(CreateIBAN());
         businessAccount.setBusinessAccount(true);
 
+        // assign accountManager based on sector
+        String accountManager = businessAccountValidator.assignAccountManagerBasedOnSector(businessAccount,businessAccount.getSector());
+
         //opnemen in  model, om in bevestigingsscherm gegevens terug te kunnen geven.
         model.addAttribute("saldo", businessAccount.getBalance());
         model.addAttribute("minimumsaldo", businessAccount.getMinimumBalance());
         model.addAttribute("rekeningnummer", businessAccount.getIban());
         model.addAttribute("bedrijf", businessAccount.getCompanyName());
         model.addAttribute ("sector", businessAccount.getSector());
+        model.addAttribute("accountManager", accountManager);
 
         Customer user = customerValidator.findCustomerByUsername(name);
 

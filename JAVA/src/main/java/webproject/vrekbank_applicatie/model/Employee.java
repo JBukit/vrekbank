@@ -3,6 +3,9 @@ package webproject.vrekbank_applicatie.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -17,6 +20,9 @@ public class Employee {
     private String password;
     private String typeFunction;
 
+    @OneToMany
+    List<BusinessAccount> businessAccounts;
+
     // constructors
     public Employee() {
     }
@@ -28,6 +34,7 @@ public class Employee {
         this.userName = userName;
         this.password = password;
         this.typeFunction = function;
+        this.businessAccounts = new ArrayList<>();
     }
 
     // getters and setters
@@ -72,5 +79,11 @@ public class Employee {
     }
     public void setTypeFunction(String typeFunction) {
         this.typeFunction = typeFunction;
+    }
+    public List<BusinessAccount> getBusinessAccounts() {
+        return businessAccounts;
+    }
+    public void setBusinessAccounts(List<BusinessAccount> businessAccounts) {
+        this.businessAccounts = businessAccounts;
     }
 }

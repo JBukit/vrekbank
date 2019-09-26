@@ -13,6 +13,9 @@ public class BusinessAccount extends Account {
    @JoinColumn(name = "fk_pinMachine")
     private PinMachine pinMachine;
 
+    @ManyToOne
+    private Employee accountManager;
+
     // constructors
     public BusinessAccount() {
     }
@@ -26,28 +29,29 @@ public class BusinessAccount extends Account {
     }
 
     // getters and setters
-    
     public String getCompanyName() {
         return companyName;
     }
-
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-
     public String getSector() {
         return sector;
     }
-
     public PinMachine getPinMachine() {
         return pinMachine;
     }
     public void setPinMachine(PinMachine pinMachine) {
         this.pinMachine = pinMachine;
     }
-
     public void setSector(String sector) {
         this.sector = sector;
 
+    }
+    public Employee getAccountManager() {
+        return accountManager;
+    }
+    public void setAccountManager(Employee accountManager) {
+        this.accountManager = accountManager;
     }
 }

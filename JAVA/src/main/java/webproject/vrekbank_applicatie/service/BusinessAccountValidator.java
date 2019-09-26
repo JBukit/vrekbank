@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
+import webproject.vrekbank_applicatie.model.Employee;
 import webproject.vrekbank_applicatie.model.PinMachine;
 import webproject.vrekbank_applicatie.model.dao.BusinessAccountDao;
 
@@ -12,6 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
+import webproject.vrekbank_applicatie.model.dao.EmployeeDao;
 import webproject.vrekbank_applicatie.model.dao.PinMachineDao;
 
 @Service
@@ -21,6 +23,9 @@ public class BusinessAccountValidator {
 
     @Autowired
     BusinessAccountDao businessAccountDao;
+
+    @Autowired
+    EmployeeDao employeeDao;
 
 
     public BusinessAccountValidator() {
@@ -130,5 +135,50 @@ public class BusinessAccountValidator {
         } else {
             return false;
         }
+    }
+
+    public String assignAccountManagerBasedOnSector (BusinessAccount businessAccount, String sector) {
+        System.out.println("start methode assignAccountManager");
+        Employee nameAccountManager = new Employee();
+        nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+        System.out.println(nameAccountManager.getFirstName());
+
+        switch (sector) {
+            case "Bouw":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Financien":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Handel":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Horeca":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Industrie":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Tristan");
+                break;
+            case "Landbouw":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Logistiek":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Onderwijs":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "IT":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+            case "Zorg":
+                nameAccountManager = employeeDao.findEmployeeByUserName("Elleke");
+                break;
+        }
+
+        System.out.println("AccountManager = " + nameAccountManager.getUserName());
+        businessAccount.setAccountManager(nameAccountManager);
+
+        return nameAccountManager.getUserName();
     }
 }
