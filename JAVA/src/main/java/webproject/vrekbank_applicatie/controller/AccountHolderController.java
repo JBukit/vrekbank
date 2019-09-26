@@ -15,7 +15,7 @@ public class AccountHolderController {
 
     @GetMapping (value = "addAccount")
     public String addAccountAsAccountHolder (Model model) {
-        return "registerAccountAsAccountHolder";
+        return "RegisterAccountAsAccountHolder";
     }
 
     @PostMapping(value = "registerAccountHolderConfirmation")
@@ -23,9 +23,9 @@ public class AccountHolderController {
         if (accountValidator.correctAccountHolderConfirmationData(iban,firstName,securityCode)) {
             accountValidator.addAccountHolderToAccount(iban,userName);
             accountValidator.deleteAccountHolderConfirmationData(iban);
-            return "registerAccountHolderConfirmation";
+            return "RegisterAccountHolderConfirmation";
         } else {
-                    return "registerAccountHolderError";
+                    return "RegisterAccountHolderError";
         }
     }
 

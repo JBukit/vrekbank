@@ -18,33 +18,12 @@ public class AccountSummaryController {
     @Autowired
     AccountValidator accountValidator;
 
-
-
     @GetMapping(value = "transaction")
     public String accountSummaryTransactionHandler(@ModelAttribute Transfer transfer, Model model) {
         model.containsAttribute("firstName");
-
-
         model.containsAttribute("iban");
 
         return "Transfer";
-
-////
-//    Transfer transfer1 = new Transfer();
-//
-//    //Maak een if-statement:    transferamount > 0   &&   balance -transferamount >=  minimumbalance   &&
-//
-////    .addAttribute("name", .getUsername());
-//
-//        //Controlepunten:
-//        //0. Alle verplichte velden ingevuld?
-//        //1. Bedrag dat wordt overgemaakt moet groter zijn dan 0
-//        //2. Geen roodstand
-//        //3. Iban ontvanger moet valide zijn, bestaat de iban?
-//        //Indien niet aan een voorwaarde voldaan: Pagina wordt herladen en gebruiker moet het opnieuw invullen
-//
-//    }
-
     }
 
     @GetMapping (value = "addAccountHolder")
@@ -55,7 +34,7 @@ public class AccountSummaryController {
         List<Customer> accountHolders = accountValidator.findAllAccountHoldersByIban(accountIban);
         model.addAttribute("accountHolders", accountHolders);
 
-        return "addAccountHolder";
+        return "AddAccountHolder";
     }
 
     @PostMapping (value = "addAccountHolderConfirmation")
