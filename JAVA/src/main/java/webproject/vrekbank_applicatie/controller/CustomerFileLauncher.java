@@ -83,11 +83,11 @@ public class CustomerFileLauncher {
                     String[] companySplit = companyReader.nextLine().split(";");
                     String companyName = companySplit[0];
                     String sector = companySplit[1];
-                    BusinessAccount newBusinessaccount = new BusinessAccount(0, businessIban, businessBalance, MINIMUMBALANCE,
+                    BusinessAccount newBusinessAccount = new BusinessAccount(0, businessIban, businessBalance, MINIMUMBALANCE,
                             businessaccount2, companyName, sector);
-                    newBusinessaccount.setOwner(newCustomer);
-                    newBusinessaccount.addAccountHolder(newCustomer);
-                    businessAccountValidator.saveBusinessAccount(newBusinessaccount);
+                    newBusinessAccount.setOwner(newCustomer);
+                    newBusinessAccount.addAccountHolder(newCustomer);
+                    businessAccountValidator.saveBusinessAccount(newBusinessAccount);
                 }
             }
         } catch(FileNotFoundException geenfile){
