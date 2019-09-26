@@ -11,7 +11,6 @@ public class PinMachine {
     //pin alleen om te koppelen, uit 5 cijfers
 
     private int addIdentifier;
-
     @OneToOne(mappedBy = "pinMachine")
     private BusinessAccount businessAccount;
 
