@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>TransferFailed</title>
+    <title>EmployeeOverview</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -12,7 +12,7 @@
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/employeestyles.css">
 
     <!-- Favicon -->
     <link rel="icon" href="css/favicon.ico">
@@ -37,9 +37,9 @@
 
 <!-- Nav Bar -->
 
-<section class="colored-section-navbar" id="title">
+<section class="colored-section" id="title">
 
-    <div class="container-fluid navbarheight">
+    <div class="container-fluid">
 
         <nav class="navbar navbar-expand-lg navbar-dark static-top">
 
@@ -52,13 +52,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Over Ons</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="locations">Locaties</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="employeeLogin">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -67,21 +61,21 @@
 </section>
 
 
-<!-- Failed transfer image  -->
+<!-- Arrow image  -->
 
 <section class="colored-section" id="testies">
 
     <div class="container-fluid">
 
         <div class="col-lg">
-            <img class="img-fluid" src="images/failed.png" alt="failed">
+            <img class="img-fluid" src="images/balloon.png" alt="balloon">
         </div>
     </div>
 
 </section>
 
 
-<!-- Error message -->
+<!-- Welcome message  -->
 
 <section class="colored-section" id="testies">
 
@@ -89,25 +83,11 @@
 
         <div class="col-md">
 
-            <h2>Betaling mislukt.</h2>
+            <h2>Welkom <span th:text="${firstName}"/></h2>
 
         </div>
 
-        <h5> Jammer maar helaas; deze betaling gaan we niet uitvoeren, omdat
-
-            <span th:text="${IssueEmptyField}"></span><br>
-
-            <span th:text="${IssueLackOfFunds}"></span><br>
-
-            <span th:text="${IssueDebitIban}"></span><br>
-
-            <span th:text="${IssueRecipientName}"></span><br>
-
-            <br>
-
-            Ga terug en probeer het opnieuw.
-        </h5>
-
+        <h5> Je bent ingelogd als AccountManager</h5>
 
     </div>
 
@@ -124,29 +104,13 @@
             <input type="button" value="Ga terug" onclick="history.back()" class="btn btn-outline-light btn-lg"
                    role="button">
         </div>
-        <div class="knop">
-            <a href="overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar account
-                overview</a>
-        </div>
 
     </div>
 
 </section>
 
 
-<!-- Footer -->
 
-<footer class="colored-section" id="footer">
-
-    <div class="container-end">
-        <i class="social-icon fab fa-facebook-f"></i>
-        <i class="social-icon fab fa-twitter"></i>
-        <i class="social-icon fab fa-instagram"></i>
-        <i class="social-icon fas fa-envelope"></i>
-        <p>© Copyright 2019 VrekBank</p>
-    </div>
-
-</footer>
 
 </body>
 </html>

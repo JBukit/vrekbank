@@ -8,7 +8,7 @@ public class PinMachine {
     @Id
     private long dailyConnectIdentifier;
 
-    // pin alleen om te koppelen, uit 5 cijfers
+    //pin alleen om te koppelen, uit 5 cijfers
 
     private int addIdentifier;
     @OneToOne(mappedBy = "pinMachine")
