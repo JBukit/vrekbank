@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -164,5 +165,14 @@ public abstract class Account {
 
     public void addAccountHolder (Customer customer) {
         accountHolders.add(customer);
+    }
+
+    public double randomBalance() {
+        double minimal = 100.0;
+        double maximal = 1500.0;
+        double random = new Random().nextDouble();
+        double amount = minimal + (random * (maximal - minimal));
+        double result = Math.round(amount * 100.0) / 100.0;
+        return result;
     }
 }
