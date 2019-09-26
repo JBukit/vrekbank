@@ -32,27 +32,40 @@ public class LoginController {
         // find customer in database by Username of login
         Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
 
-        if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
-            // if check = ok, proceed:
-            // add Customer-name to html page to show username in page
-            model.addAttribute("name", customer.getUsername());
-            model.addAttribute("firstName",c.getFirstName());
+        // check if username exists
 
-            // make lists with accounts, to be added from database
-            List<PersonalAccount> personalAccounts = new ArrayList<>();
-            List<BusinessAccount> businessAccounts = new ArrayList<>();
+        if (c == null)
 
-            // find accounts for customer
-            personalAccounts = personalAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
-            businessAccounts = businessAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
+        // naar errorlogin
 
-            model.addAttribute("personalAccounts", personalAccounts);
-            model.addAttribute("businessAccounts", businessAccounts);
+            return "ErrorLogin";
 
-            return "Overview";
-        }
-        // if check = not ok, go back to Login
-        return "ErrorLogin";
+        // anders ga door
+
+            else
+            if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
+                // if check = ok, proceed:
+                // add Customer-name to html page to show username in page
+                model.addAttribute("name", customer.getUsername());
+                model.addAttribute("firstName",c.getFirstName());
+
+                // make lists with accounts, to be added from database
+                List<PersonalAccount> personalAccounts = new ArrayList<>();
+                List<BusinessAccount> businessAccounts = new ArrayList<>();
+
+                // find accounts for customer
+                personalAccounts = personalAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
+                businessAccounts = businessAccountValidator.findAccountsWhereCustomerIsAccountHolder(c);
+
+                model.addAttribute("personalAccounts", personalAccounts);
+                model.addAttribute("businessAccounts", businessAccounts);
+
+                return "Overview";
+
+            } else
+                // if check = not ok, go back to Login
+
+                return "ErrorLogin";
     }
 
     @GetMapping (value = "overviewWithKnownName")
