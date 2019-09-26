@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import webproject.vrekbank_applicatie.model.Account;
+import webproject.vrekbank_applicatie.model.BusinessAccount;
 import webproject.vrekbank_applicatie.model.Customer;
 import webproject.vrekbank_applicatie.model.PersonalAccount;
 import webproject.vrekbank_applicatie.service.AccountValidator;
+import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.CustomerValidator;
 import webproject.vrekbank_applicatie.service.PersonalAccountValidator;
 
@@ -31,13 +33,19 @@ public class CustomerFileLauncher {
     @Autowired
     PersonalAccountValidator personalAccountValidator;
 
+    @Autowired
+    BusinessAccountValidator businessAccountValidator;
+
     public void makeCustomerList() {
         Scanner customerReader;
+        Scanner companyReader;
         customerList = new ArrayList<>();
         // Reads fakenames file, splits values and saves them as a customer object
         try {
             File fakeNames = new File("Namelist/FakeNames.csv");
             customerReader = new Scanner(fakeNames);
+            File fakeCompanyNames = new File("Namelist/FakeCompanyNames.csv");
+            companyReader = new Scanner(fakeCompanyNames);
             for (int i = 0; i < FILE_SIZE; i++) {
                 String[] customerSplit = customerReader.nextLine().split(";");
                 String firstName = customerSplit[0];
@@ -66,9 +74,24 @@ public class CustomerFileLauncher {
                 newPersonalAccount.setOwner(newCustomer);
                 newPersonalAccount.addAccountHolder(newCustomer);
                 personalAccountValidator.savePersonalAccount(newPersonalAccount);
+
+                if (i <= 1000) {
+                    Account businessAaccount = new BusinessAccount();
+                    double businessBalance = account.randomBalance();
+                    String businessIban = Account.CreateIBAN();
+                    boolean businessaccount2 = true;
+                    String[] companySplit = companyReader.nextLine().split(";");
+                    String companyName = companySplit[0];
+                    String sector = companySplit[1];
+                    BusinessAccount newBusinessaccount = new BusinessAccount(0, businessIban, businessBalance, MINIMUMBALANCE,
+                            businessaccount2, companyName, sector);
+                    newBusinessaccount.setOwner(newCustomer);
+                    newBusinessaccount.addAccountHolder(newCustomer);
+                    businessAccountValidator.saveBusinessAccount(newBusinessaccount);
+                }
             }
-        } catch (FileNotFoundException geenfile) {
-            System.out.println("Not found");
+        } catch(FileNotFoundException geenfile){
+                        System.out.println("Not found");
         }
     }
 }
