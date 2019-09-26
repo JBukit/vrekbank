@@ -28,6 +28,7 @@
 
 <body>
 
+
 <!-- Nav Bar -->
 
 <section class="colored-section" id="title">
@@ -36,7 +37,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark static-top">
 
-            <a href="/employeeIndex"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+            <a href="/vrekbank"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/employeeLogin">Logout</a>
+                        <a class="nav-link" href="employeeLogin">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -52,17 +53,19 @@
     </section>
 </section>
 
+
+
 <section class="colored-section" id="pinkie">
     <h1>Welkom <span th:text="${firstName}"/></h1>
     <div class="container-fluid">
         <div class="knop">
-            <a href="/MKBSectorView" class="btn btn-outline-light btn-md" role="button">Gemiddelde saldo per sector</a>
+            <a href="MKBSectorView" class="btn btn-outline-light btn-md" role="button">Gemiddelde saldo per sector</a>
         </div>
         <div class="knop">
-            <a href="/MKBHighestBalance" class="btn btn-outline-light btn-md" role="button">Top 10 MKB rekeningen hoogste saldo</a>
+            <a href="MKBHighestBalance" class="btn btn-outline-light btn-md" role="button">Top 10 MKB rekeningen hoogste saldo</a>
         </div>
         <div class="knop">
-            <a href="/MKBMostTransfers" class="btn btn-outline-light btn-md" role="button">Top 10 MKB klanten met de meeste transacties</a>
+            <a href="MKBMostTransfers" class="btn btn-outline-light btn-md" role="button">Top 10 MKB klanten met de meeste transacties</a>
         </div>
     </div>
 </section>
