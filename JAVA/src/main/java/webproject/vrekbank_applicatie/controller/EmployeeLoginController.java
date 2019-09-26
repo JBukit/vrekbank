@@ -17,6 +17,7 @@ public class EmployeeLoginController {
 
     private final String FUNCTION_HEAD_PERSONAL = "Hoofd Particulieren";
     private final String FUNCTION_HEAD_MKB = "Hoofd MKB";
+    private final String FUNCTION_ACCOUNT_MANAGER = "AccountManager";
 
     @Autowired
     EmployeeValidator employeeValidator;
@@ -42,6 +43,10 @@ public class EmployeeLoginController {
 
         if (employee.getTypeFunction().equals(FUNCTION_HEAD_MKB)) {
             return "MKBOverview";
+        }
+
+        if (employee.getTypeFunction().equals(FUNCTION_ACCOUNT_MANAGER)){
+            return "AccountManagerOverview";
         }
         return "EmployeeOverview";
     }
