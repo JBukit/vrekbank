@@ -30,8 +30,22 @@ public class EmployeeLoginController {
     public String EmployeeOverview(@ModelAttribute Employee loggedInEmployee, Model model) {
         // find employee based on inlog-information (userName en PW)
         Employee employee = employeeValidator.findEmployeeByUserName(loggedInEmployee.getUserName());
+
+        // check if username exists
+        if (employee == null)
+
+        // naar employeErrorLogin
+            return "EmployeeErrorLogin";
+
+        // anders ga door naar password check
+
+        if (employee.getUserName().equals(loggedInEmployee.getUserName()) && employee.getPassword().equals(loggedInEmployee.getPassword())){
+
+        // if check = ok proceed
+
         model.addAttribute("name", loggedInEmployee.getUserName());
         model.addAttribute("firstName", employee.getFirstName());
+
 
         // if function = Hoofd Particuliern, show 10 accounts with highest balance
         if (employee.getTypeFunction().equals(FUNCTION_HEAD_PERSONAL)) {
@@ -48,7 +62,11 @@ public class EmployeeLoginController {
         if (employee.getTypeFunction().equals(FUNCTION_ACCOUNT_MANAGER)){
             return "AccountManagerOverview";
         }
-        return "EmployeeOverview";
+            //if check = not ok, go to EmployeeErrorLogin
+
+
+    }
+        return "EmployeeErrorLogin";
     }
 
     @GetMapping(value="employeeMkbWithName")

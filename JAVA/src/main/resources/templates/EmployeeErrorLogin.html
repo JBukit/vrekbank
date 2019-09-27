@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Open BusinessAccount Confirmation </title>
-
-    <meta charset="UTF-8">
-    <title>RegistrationConfirmation</title>
+    <title>ErrorLogin</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
@@ -14,7 +11,7 @@
 
     <!-- CSS Stylesheets -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/employeestyles.css">
 
     <!-- Favicon -->
     <link rel="icon" href="css/favicon.ico">
@@ -26,7 +23,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -42,19 +38,24 @@
 
             <a href="home"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
 
+
+            <!--            <a class="navbar-brand" href="#">-->
+            <!--                <img src="images/vreklogo.png" alt="">-->
+            <!--            </a>-->
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="over">Over Ons</a>
+                        <a class="nav-link" href="#">Over Ons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="locations">Locaties</a>
+                        <a class="nav-link" href="#">Locaties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact">Contact</a>
+                        <a class="nav-link" href="#">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -63,39 +64,65 @@
 </section>
 
 
+<!-- Arrow image  -->
+
 <section class="colored-section" id="testies">
+
     <div class="container-fluid">
-        <div class="col-md">
-            <h1> Uw nieuwe zakelijke rekening is aangemaakt.</h1>
-            <br>
-            <br>
-            <!-- Rocket image  -->
-            <section class="colored-section" id="testies">
 
-                <div class="container-fluid">
-
-                    <div class="col-lg">
-                        <img class="img-fluid" src="images/rocket.png" alt="rocket">
-                    </div>
-                </div>
-            </section>
-            <br>
-            <h5>Op uw nieuwe rekening krijgt u een welkomstbedrag van € 100,-</h5>
-            <br>
-            <h6>Bedrijfsnaam: <span th:text="${bedrijf}"></span><br>
-                Economische sector: <span th:text="${sector}"></span><br>
-                Uw rekeningnummer is: <span th:text="${rekeningnummer}"></span><br>
-                Uw accountManager is: <span th:text="${accountManager}"></span><br></h6>
-            <br>
-            <br>
-            <div style="text-align: center;">
-                <a href="overviewWithKnownName" class="btn btn-outline-light btn-lg" role="button">Terug naar overzicht</a>
-            </div>
+        <div class="col-lg">
+            <img class="img-fluid" src="images/clouds.png" alt="arrow">
         </div>
     </div>
+
 </section>
 
+
+<!-- Error message  -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="col-md">
+
+            <h2>Whoops!</h2>
+
+        </div>
+
+        <h5>
+            Deze combinatie van gebruikersnaam en wachtwoord bestaat niet.
+        </h5>
+
+        <h5>
+            Ga terug en probeer het opnieuw.
+        </h5>
+
+
+    </div>
+
+</section>
+
+
+<!-- Buttons to go back -->
+
+<section class="colored-section" id="testies">
+
+    <div class="container-fluid">
+
+        <div class="knop">
+            <a class="nav-link" href="employeeLogin"><input type="button" value="Ga terug" class="btn btn-outline-light btn-lg" role="button"></div></a>
+    </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
 <footer class="colored-section" id="footer">
+
     <div class="container-end">
         <i class="social-icon fab fa-facebook-f"></i>
         <i class="social-icon fab fa-twitter"></i>
@@ -103,6 +130,7 @@
         <i class="social-icon fas fa-envelope"></i>
         <p>© Copyright 2019 VrekBank</p>
     </div>
+
 </footer>
 
 </body>

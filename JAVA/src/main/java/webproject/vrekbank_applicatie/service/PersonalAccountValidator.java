@@ -37,11 +37,7 @@ public class PersonalAccountValidator {
 
     public List<PersonalAccount> showTop10PersonalAccounts() {
         // make list with all accounts
-        Iterable<PersonalAccount> iterable = personalAccountDao.findAll();
         List<PersonalAccount> allAccounts = personalAccountDao.findAll();
-        for (PersonalAccount account : iterable) {
-            allAccounts.add(account);
-        }
         // sort accounts based on descending balance
         allAccounts.sort(Comparator.comparing(PersonalAccount::getBalance).reversed());
         // make top10
@@ -55,6 +51,7 @@ public class PersonalAccountValidator {
         }
         for (int i = 0; i < size; i++ ) {
             top10.add(allAccounts.get(i));
+            System.out.println(allAccounts.get(i).getIban());
         }
         return top10;
     }
