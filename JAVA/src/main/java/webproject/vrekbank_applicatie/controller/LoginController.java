@@ -29,27 +29,25 @@ public class LoginController {
 
     @PostMapping(value = "Overview")
     public String loginOverviewHandler (@ModelAttribute Customer customer, Model model) {
+
         // find customer in database by Username of login
         Customer c = customerValidator.findCustomerByUsername(customer.getUsername());
 
         // check if username exists
-
         if (c == null)
 
-        //   naar errorlogin
+        // naar errorlogin
+        return "ErrorLogin";
 
-            return "ErrorLogin";
+        // anders ga naar password check
 
-        // anders ga door
-
-            else
             if (customer.getUsername().equals(c.getUsername()) && customer.getPassword().equals(c.getPassword())) {
-                // if check = ok, proceed:
+
                 // add Customer-name to html page to show username in page
                 model.addAttribute("name", customer.getUsername());
                 model.addAttribute("firstName",c.getFirstName());
 
-                // make lists with accounts, to be added from database
+                // make lists with accounts to be added from database
                 List<PersonalAccount> personalAccounts = new ArrayList<>();
                 List<BusinessAccount> businessAccounts = new ArrayList<>();
 
@@ -62,8 +60,8 @@ public class LoginController {
 
                 return "Overview";
 
-            } else
-                // if check = not ok, go back to Login
+            }
+                // if check = not ok, go to ErrorLogin
 
                 return "ErrorLogin";
     }

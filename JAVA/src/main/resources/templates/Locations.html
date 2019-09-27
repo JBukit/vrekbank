@@ -36,7 +36,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-dark static-top">
 
-            <a href="/vrekbank"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
+            <a href="home"><img class="navbar-brand" src="images/vreklogo.png" alt="HomePage"></a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,13 +44,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Over Ons</a>
+                        <a class="nav-link" href="over">Over Ons</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Locaties</a>
+                        <a class="nav-link" href="locations">Locaties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -61,13 +61,27 @@
 
 <!--Map-->
 
-<section class="colored-section" id="testies">
-<div class="container-fluid">
-    <div class="map-responsive">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117963.09056684742!2d-81.2860424435222!3d19.32236322571389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2f620be6f6068d%3A0x19a74bccceb9262d!2sRum%20Point%2C%20Kaaimaneilanden!5e0!3m2!1snl!2snl!4v1569503196176!5m2!1snl!2snl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+<div class="row" id="address">
+    <div class="container mt-5" >
+
+        <div class="row" style="height:350px;">
+            <div class="col-md-6 maps" >
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117963.09056684742!2d-81.2860424435222!3d19.32236322571389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2f620be6f6068d%3A0x19a74bccceb9262d!2sRum%20Point%2C%20Kaaimaneilanden!5e0!3m2!1snl!2snl!4v1569503196176!5m2!1snl!2snl" style="width:100%;height: 300px;" iframe="" width="100%; height=350px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen="">
+                </iframe>
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-uppercase mt-3 font-weight-bold text-white">VrekBank HQ</h2>
+                <div class="text-white">
+                    <i class="fas fa-phone mt-3"></i> <a href="tel:+">( +31) 12345678</a><br>
+                    <i class="fa fa-envelope mt-3"></i> <a href=""> hi@vrek.nl</a><br>
+                    <i class="fas fa-globe mt-3"></i> 1252 Rum Point Dr, North Side, Cayman Islands<br>
+                </div>
+                <img class="vault-image" src="images/moneybin.png" alt="vault">
+
+            </div>
+        </div>
     </div>
 </div>
-</section>
 
 
 <!--Footer-->
