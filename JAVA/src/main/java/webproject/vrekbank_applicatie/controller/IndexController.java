@@ -39,5 +39,14 @@ public class IndexController {
         return "Locations";
     }
 
+    @GetMapping(value = "contact")
+    public String indexContactHandler() {
+        return "Contact";
+    }
+
+    @GetMapping(value = "over")
+    public String indexOverHandler() {
+        return "Over";
+    }
 
 }
