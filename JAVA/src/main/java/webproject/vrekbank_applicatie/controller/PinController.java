@@ -10,7 +10,7 @@ import webproject.vrekbank_applicatie.service.PinMachineService;
 @RestController
 public class PinController {
 
-    private static final int INVALIDCODE = 0;
+    private static final long INVALIDCODE = 0;
 
     @Autowired
     BusinessAccountValidator businessAccountValidator;
@@ -24,7 +24,7 @@ public class PinController {
         if (ibanExists) {
             PinMachine pinMachineWithAddRequest = businessAccountValidator.findByIban(iban).getPinMachine();
             if (addIdentifier == pinMachineWithAddRequest.getAddIdentifier()) {
-                return "ok"; // dailyConnectIdentifierInString moet hier mee, maar hoe afpellen voor switch in client?
+                return "ok";
             } else return "AddIdentifierNotCorrect";
         } else return "NoIbanFound";
     }
@@ -37,19 +37,19 @@ public class PinController {
         if (ibanExists) {
             PinMachine pinMachineWithAddRequest = businessAccountValidator.findByIban(iban).getPinMachine();
             if (addIdentifier == pinMachineWithAddRequest.getAddIdentifier()) {
-                return (long) pinMachineWithAddRequest.getDailyConnectIdentifier();
+                return pinMachineWithAddRequest.getDailyConnectIdentifier();
             } else return INVALIDCODE;
         } else return INVALIDCODE;
     }
 
     //eerder experiment, even geparkeerd
-    @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
-    public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
-        BusinessAccount shopholdersAccount = businessAccountValidator.findByPinMachine
-                (pinMachineService.findByDailyConnectIdentifier(dailyConnectIdentifier));
-        String json = businessAccountValidator.serialize(shopholdersAccount);
-        return json;
-    }
+//    @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
+//    public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
+//        BusinessAccount shopholdersAccount = businessAccountValidator.findByPinMachine
+//                (pinMachineService.findByDailyConnectIdentifier(dailyConnectIdentifier));
+//        String json = businessAccountValidator.serialize(shopholdersAccount);
+//        return json;
+//    }
 
 //        @GetMapping(value = "/members/new")
 //        public String putMember(@RequestParam String json) {
@@ -57,21 +57,20 @@ public class PinController {
 //            return member.getName() + " OK";
 //        }
 
-
-    @PostMapping(value = "/businessAccount/addPin/{json}")
-    public String addPinMachine(@PathVariable String json) {
-        PinMachine clientPinMachine = pinMachineService.deserialize(json);
-
-        //controle of er een pinmachine bestaat
-        if (businessAccountValidator.pinMachineExists(clientPinMachine.getBusinessAccount().getIban())) {
-            //check controlegetal
-            if (pinMachineService.addIdentifierIsCorrect(clientPinMachine.getAddIdentifier())) {
-                //stuur daily connect identifier retour (8cijferige code)
-                PinMachine pinMachineinDb = pinMachineService.findByAddIdentifier(clientPinMachine.getAddIdentifier());
-                long dailyConnectIdentifier = pinMachineinDb.getDailyConnectIdentifier();
-                String dailyConnectIdentifierInString = Long.toString(dailyConnectIdentifier);
-                return "Gelukt!";
-            } else return "AddIdentifierIncorrect";
-        } else return "PinMachineUnknown";
-    }
+//    @PostMapping(value = "/businessAccount/addPin/{json}")
+//    public String addPinMachine(@PathVariable String json) {
+//        PinMachine clientPinMachine = pinMachineService.deserialize(json);
+//
+//        //controle of er een pinmachine bestaat
+//        if (businessAccountValidator.pinMachineExists(clientPinMachine.getBusinessAccount().getIban())) {
+//            //check controlegetal
+//            if (pinMachineService.addIdentifierIsCorrect(clientPinMachine.getAddIdentifier())) {
+//                //stuur daily connect identifier retour (8cijferige code)
+//                PinMachine pinMachineinDb = pinMachineService.findByAddIdentifier(clientPinMachine.getAddIdentifier());
+//                Long dailyConnectIdentifier = pinMachineinDb.getDailyConnectIdentifier();
+//                String dailyConnectIdentifierInString = Long.toString(dailyConnectIdentifier);
+//                return "Gelukt!";
+//            } else return "AddIdentifierIncorrect";
+//        } else return "PinMachineUnknown";
+//    }
 }

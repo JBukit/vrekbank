@@ -5,7 +5,7 @@ import webproject.vrekbank_applicatie.model.PinMachine;
 
 public interface PinMachineDao  extends CrudRepository<PinMachine, Integer> {
 
-    public PinMachine findByDailyConnectIdentifier(int dailyConnectIdentifier);
+    public PinMachine findByDailyConnectIdentifier(long dailyConnectIdentifier);
 
     public PinMachine findByAddIdentifier(int addIdentifier);
 

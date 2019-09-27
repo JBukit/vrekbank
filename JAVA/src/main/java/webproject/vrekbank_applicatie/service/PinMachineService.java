@@ -12,7 +12,7 @@ public class PinMachineService {
     @Autowired
     PinMachineDao pinMachineDao;
 
-    public PinMachine findByDailyConnectIdentifier(int dailyConnectIdentifier) {
+    public PinMachine findByDailyConnectIdentifier(long dailyConnectIdentifier) {
         PinMachine p = pinMachineDao.findByDailyConnectIdentifier(dailyConnectIdentifier);
         return p;
     }

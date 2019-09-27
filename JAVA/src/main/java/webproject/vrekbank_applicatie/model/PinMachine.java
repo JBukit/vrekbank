@@ -17,7 +17,7 @@ public class PinMachine {
     public PinMachine() {
     }
 
-    public PinMachine(int dailyConnectIdentifier, int addIdentifier, BusinessAccount businessAccount) {
+    public PinMachine(long dailyConnectIdentifier, int addIdentifier, BusinessAccount businessAccount) {
         this.dailyConnectIdentifier = dailyConnectIdentifier;
         this.addIdentifier = addIdentifier;
         this.businessAccount = businessAccount;

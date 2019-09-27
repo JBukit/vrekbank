@@ -20,7 +20,7 @@ import java.util.Random;
 public class MKBOverviewController {
 
     private static final int IWANTFIVEDIGITS = 10000;
-    private static final int IWANTEIGHTDIGITS = 10000000;
+    private static final long IWANTEIGHTDIGITS = 10000000;
 
     private String pinMachineAddedBefore = " aan deze rekening al een pinmachine gekoppeld was. " +
             "Een tweede toevoegen is op dit moment niet mogelijk. " +
@@ -58,7 +58,7 @@ public class MKBOverviewController {
             }
             while (pinMachineService.findByAddIdentifier(generatedAddIdentifier) != null);
 
-            int generatedDailyConnectIdentifier = 0;
+            long generatedDailyConnectIdentifier = 0;
             Random secondObjGenerator = new Random();
             do {
                 generatedDailyConnectIdentifier = secondObjGenerator.nextInt(90000000) + IWANTEIGHTDIGITS;
