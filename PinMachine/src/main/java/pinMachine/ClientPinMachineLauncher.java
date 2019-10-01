@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class ClientPinMachineLauncher {
 
-    public ClientPinMachine clientPinMachine = new ClientPinMachine();
+
+    public PinMachineDao pinMachineDao = new PinMachineDao();
 
     public static void main(String[] args) {
 
@@ -27,6 +28,8 @@ public class ClientPinMachineLauncher {
             long dailyConnectIdentifierToInsert = clientPinMachineService.pinMachineCanBeAdded(inputIban, inputAddIdentifier);
             clientPinMachine.setDailyConnectIdentifier(dailyConnectIdentifierToInsert);
 
+            PinMachineDao pinMachineDao = new PinMachineDao();
+            pinMachineDao.saveClientPinMachine(clientPinMachine);
 
             //clientPinMachineService.doesExistRequest(inputAddIdentifier);
             //clientPinMachineService.addPinMachineRequest(clientPinMachine);
