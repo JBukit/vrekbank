@@ -46,7 +46,7 @@ public class OpenAccountController {
         //ArrayList<> lijstje = new ArrayList<Customer> (dezeklant);
 
         // fill in new account/object
-        personalAccount.setAccountId(0); // op nul zetten, wordt door DB overschreven
+        personalAccount.setAccountId(0); // op nul zetten, wordt door hibernate bij DB overschreven
         personalAccount.setBalance(welkomstcadeau);
         personalAccount.setMinimumBalance(standaardminimum);
         personalAccount.setIban(CreateIBAN());
@@ -74,8 +74,7 @@ public class OpenAccountController {
         return "OpenPersonalAccountConfirmation";
     }
 
-
-    // tweede handler voor MKB rekeningen. NOG DOEN: bedrijfsnaam aanpassen
+    // tweede handler voor MKB rekeningen
     @PostMapping(value = "OpenBusinessAccountConfirmation")
     public String OpenAccountOpenBusinessAccountConfirmationHandler(@SessionAttribute("name") String name,
                                                                     @ModelAttribute BusinessAccount businessAccount,
