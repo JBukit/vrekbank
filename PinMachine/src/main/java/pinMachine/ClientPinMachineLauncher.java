@@ -1,13 +1,35 @@
 package pinMachine;
 
+import pinMachine.controller.ClientPinMachine;
+import pinMachine.controller.ClientPinMachineController;
+import pinMachine.service.ClientPinMachineService;
+import pinMachine.model.PinMachineDao;
+
 import java.util.Scanner;
 
 public class ClientPinMachineLauncher {
 
-    public PinMachineDao pinMachineDao = new PinMachineDao();
+    private ClientPinMachineController controller;
+    private ClientPinMachineService service;
+
+    public ClientPinMachineLauncher() {
+        super();
+    }
 
     public static void main(String[] args) {
+        ClientPinMachineLauncher launcher = new ClientPinMachineLauncher();
+        launcher.setup();
+        launcher.launch();
+    }
 
+    private void setup() {
+        controller = new ClientPinMachineController();
+        service = new ClientPinMachineService();
+
+      //  controller.setService(service);
+    }
+
+    private void launch() {
         Scanner pinScanner = new Scanner(System.in);
 
         //userstory het eenmalig koppelen van nieuwe automaat
@@ -59,6 +81,5 @@ public class ClientPinMachineLauncher {
             int pincodeClientForPinPayment = pinScanner.nextInt();
 
         }
-
     }
 }

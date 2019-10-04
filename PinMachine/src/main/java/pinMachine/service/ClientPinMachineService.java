@@ -1,7 +1,7 @@
-package pinMachine;
+package pinMachine.service;
 
 import com.google.gson.Gson;
-import org.hibernate.service.spi.InjectService;
+import pinMachine.controller.ClientPinMachine;
 
 import java.io.BufferedReader;
 import java.io.IOException;

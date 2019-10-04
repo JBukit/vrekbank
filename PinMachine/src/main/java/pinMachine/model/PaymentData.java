@@ -1,4 +1,4 @@
-package pinMachine;
+package pinMachine.model;
 
 public class PaymentData {
 

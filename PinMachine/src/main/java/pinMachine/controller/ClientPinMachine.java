@@ -1,4 +1,4 @@
-package pinMachine;
+package pinMachine.controller;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

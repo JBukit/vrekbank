@@ -1,9 +1,11 @@
-package pinMachine;
+package pinMachine.model;
 
 
 import org.hibernate.Session;
 
 import org.hibernate.Transaction;
+import pinMachine.controller.ClientPinMachine;
+import pinMachine.HibernateUtil;
 
 
 public class PinMachineDao //extends CrudRepository<ClientPinMachine, Integer>
