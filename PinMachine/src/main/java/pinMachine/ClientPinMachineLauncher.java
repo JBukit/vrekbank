@@ -1,5 +1,6 @@
 package pinMachine;
 
+import pinMachine.controller.ClientPinMachine;
 import pinMachine.controller.ClientPinMachineController;
 import pinMachine.service.ClientPinMachineService;
 import pinMachine.model.PinMachineDao;
@@ -8,6 +9,7 @@ public class ClientPinMachineLauncher {
     private ClientPinMachineController controller;
     private ClientPinMachineService service;
     private PinMachineDao dao;
+    private ClientPinMachine clientPinMachine;
 
     public ClientPinMachineLauncher() {
         super();

@@ -23,7 +23,7 @@ public class ClientPinMachine {
         this.iban = "";
     }
 
-    public ClientPinMachine(int dailyConnectIdentifier, int addIdentifier, String iban) {
+    public ClientPinMachine(long dailyConnectIdentifier, int addIdentifier, String iban) {
         super();
         this.dailyConnectIdentifier = dailyConnectIdentifier;
         this.addIdentifier = addIdentifier;

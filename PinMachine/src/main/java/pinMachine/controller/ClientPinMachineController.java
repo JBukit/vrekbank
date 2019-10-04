@@ -22,23 +22,29 @@ public class ClientPinMachineController {
     Scanner pinScanner = new Scanner(System.in);
 
     public void loopForCommand() {
-        System.out.println("Wat wilt u met deze fantastiche pinautomaat doen? ");
+        System.out.println();
+        System.out.println("Wat wilt u met deze fantastische pinautomaat doen? ");
+        System.out.println();
         System.out.println("Voor eerste keer aansluiten, type 'koppelen'.");
         System.out.println("Voor dagelijks aanmelden, type 'openen'.");
         System.out.println("Voor betalen, type 'betalen'.");
+        System.out.println();
         System.out.println("Voor stoppen, type 'stop'."); // nog opzoeken
         String command = pinScanner.next();
-        while (!command.equals("stop")) {
+        do {
             if (command.equals("koppelen")) {
                 addPinMachine();
+                loopForCommand();
             }
             if (command.equals("openen")) {
                 open();
+                loopForCommand();
             }
             if (command.equals("betalen")) {
                 pay();
+                loopForCommand();
             }
-        }
+        } while (!command.equals("stop"));
         System.out.println("De pinmachine wordt gesloten.");
     }
 
@@ -48,21 +54,20 @@ public class ClientPinMachineController {
         String inputIban = pinScanner.next();
         System.out.println("Wat is het vijfcijferige controlegetal dat u van de bank heeft ontvangen?");
         int inputAddIdentifier = pinScanner.nextInt();
+        service.pinMachineIsAdded(inputIban, inputAddIdentifier);
 
-        ClientPinMachine clientPinMachine = new ClientPinMachine(0, inputAddIdentifier, inputIban);
-
-        //onderstaande functie haalt tevens een functie aan die de 8cijferige code ophaalt
-        long dailyConnectIdentifierToInsert = service.pinMachineCanBeAdded(inputIban, inputAddIdentifier);
-        clientPinMachine.setDailyConnectIdentifier(dailyConnectIdentifierToInsert);
-
-        //PinMachineDao pinMachineDao = new PinMachineDao();
-        service.getDao().saveClientPinMachine(clientPinMachine);
-
-        System.out.println("Uw pinautomaat is nu gekoppeld.");
-        System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
-                "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
-        System.out.println();
     }
+
+//        if (dailyConnectIdentifierToInsert >= 0) {
+//            clientPinMachine.setDailyConnectIdentifier(dailyConnectIdentifierToInsert);
+//
+//            service.getDao().saveClientPinMachine(clientPinMachine);
+//
+//            System.out.println("Uw pinautomaat is nu gekoppeld.");
+//            System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
+//                    "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
+//            System.out.println();
+
 
     private void open() {
         //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten

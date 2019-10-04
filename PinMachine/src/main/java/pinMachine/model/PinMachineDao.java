@@ -8,8 +8,7 @@ import pinMachine.controller.ClientPinMachine;
 import pinMachine.HibernateUtil;
 
 
-public class PinMachineDao //extends CrudRepository<ClientPinMachine, Integer>
-{
+public class PinMachineDao {
 
     public void saveClientPinMachine(ClientPinMachine clientPinMachine) {
 
@@ -20,7 +19,7 @@ public class PinMachineDao //extends CrudRepository<ClientPinMachine, Integer>
             // start a transaction
             transaction = session.beginTransaction();
 
-            // save the student object
+            // save the pinMachine object
 
             session.save(clientPinMachine);
 
@@ -41,8 +40,9 @@ public class PinMachineDao //extends CrudRepository<ClientPinMachine, Integer>
         }
 
     }
+
 }
-    //Dit ombouwen voor lijst van betalingen / journaal?
+//Dit ombouwen voor lijst van betalingen / journaal?
 //    public List < Student > getStudents() {
 //
 //        try (Session session = HibernateUtil.getSessionFactory().openSession()) {

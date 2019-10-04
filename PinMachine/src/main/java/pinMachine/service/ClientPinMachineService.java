@@ -98,7 +98,7 @@ public class ClientPinMachineService {
 //        }
 //    }
 
-    public long pinMachineCanBeAdded(String iban, int addIdentifier) {
+    public boolean pinMachineIsAdded(String iban, int addIdentifier) {
         URL existsUrl;
         HttpURLConnection con;
         try {
@@ -117,14 +117,24 @@ public class ClientPinMachineService {
                         System.out.println();
                         // functie aanroeopen om met tweede http request de 8cijferige code op te halen
                         ClientPinMachineService clientPinMachineService = new ClientPinMachineService();
-                        long DailyConnectIdentifierReceivedFromServer =
+                        long dailyConnectIdentifierReceivedFromServer =
                                 clientPinMachineService.getDailyConnectIdentifierFromServer(iban, addIdentifier);
-                        return DailyConnectIdentifierReceivedFromServer;
+
+                        ClientPinMachine clientPinMachine = new ClientPinMachine(dailyConnectIdentifierReceivedFromServer,
+                                addIdentifier, iban);
+                        dao.saveClientPinMachine(clientPinMachine);
+
+                        System.out.println();
+                        System.out.println("Uw pinautomaat is nu gekoppeld.");
+                        System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
+                                "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
+                        System.out.println();
+                        return true;
                     case "NoIbanFound":
-                        System.out.println("Helaas... Deze rekening " + iban + " bestaat niet, of heeft geen pinautomaat");
+                        System.out.println("Helaas... Deze rekening " + iban + " bestaat niet, of heeft geen pinautomaat.");
                         break;
                     case "AddIdentifierNotCorrect":
-                        System.out.println("Jammer... De ingevoerde 5 cijferige koppelcode " + addIdentifier + " is niet correct");
+                        System.out.println("Jammer... De ingevoerde 5 cijferige koppelcode " + addIdentifier + " is niet correct.");
                         break;
                     default:
                         System.out.println("Rare zooi, er is iets onbekends en onbegrijpelijks gebeurd. " +
@@ -138,7 +148,7 @@ public class ClientPinMachineService {
             System.out.println(ioe.getCause());
             System.exit(-1000);
         }
-        return INVALIDCODE;
+        return false;
     }
 
     // functie die aangeroepen wordt na check
@@ -154,9 +164,7 @@ public class ClientPinMachineService {
                 BufferedReader response = getResponse(con);
                 String dailyConnectIdentifierReceivedFromServerInString = response.readLine();
                 long dailyConnectIdentifierReceivedFromServer = Long.parseLong(dailyConnectIdentifierReceivedFromServerInString);
-
                 return dailyConnectIdentifierReceivedFromServer;
-
             } else {
                 System.out.println("Server connection problem. Status code: " + code);
             }
