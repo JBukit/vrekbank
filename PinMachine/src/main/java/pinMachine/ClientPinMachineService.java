@@ -152,15 +152,6 @@ public class ClientPinMachineService {
                 String dailyConnectIdentifierReceivedFromServerInString = response.readLine();
                 long dailyConnectIdentifierReceivedFromServer = Long.parseLong(dailyConnectIdentifierReceivedFromServerInString);
 
-                System.out.println("Uw pinautomaat is nu gekoppeld.");
-                System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
-                        "zich dagelijks aan te melden wordt in uw applicatie opgeslagen.");
-                System.out.println("Mogelijk ingegeven door een stevige kruideniersmentaliteit heeft u nog geen database " +
-                        "bij ons afgenomen.");
-                System.out.println("We raden u aan uw pinapparaat 's avonds niet uit te zetten.");
-                System.out.println("Daarmee zou de dagelijks benodigde aanmeldcode verloren gaan en dan moet u het " +
-                        "apparaat opnieuw koppelen.");
-                System.out.println();
                 return dailyConnectIdentifierReceivedFromServer;
 
             } else {

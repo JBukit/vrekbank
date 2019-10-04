@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class ClientPinMachineLauncher {
 
-
     public PinMachineDao pinMachineDao = new PinMachineDao();
 
     public static void main(String[] args) {
@@ -30,6 +29,12 @@ public class ClientPinMachineLauncher {
 
             PinMachineDao pinMachineDao = new PinMachineDao();
             pinMachineDao.saveClientPinMachine(clientPinMachine);
+
+            System.out.println("Uw pinautomaat is nu gekoppeld.");
+            System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
+                    "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
+
+            System.out.println();
 
             //clientPinMachineService.doesExistRequest(inputAddIdentifier);
             //clientPinMachineService.addPinMachineRequest(clientPinMachine);
