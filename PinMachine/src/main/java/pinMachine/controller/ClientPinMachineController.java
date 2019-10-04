@@ -1,7 +1,9 @@
 package pinMachine.controller;
 
+import pinMachine.model.PaymentData;
 import pinMachine.model.PinMachineDao;
 import pinMachine.service.ClientPinMachineService;
+import pinMachine.service.PaymentService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +17,7 @@ public class ClientPinMachineController {
 
     private ClientPinMachineService service;
 
+    private PaymentService paymentService;
     public ClientPinMachineController() {
         super();
     }
@@ -41,7 +44,11 @@ public class ClientPinMachineController {
                 loopForCommand();
             }
             if (command.equals("betalen")) {
-                pay();
+                try {
+                    pay();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 loopForCommand();
             }
         } while (!command.equals("stop"));
@@ -73,19 +80,22 @@ public class ClientPinMachineController {
         //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten
     }
 
-    private void pay() {
+    private void pay() throws IOException {
         //Vanaf hier: User story 3: Betalen
-        System.out.println("Aan winkelier: Als de klant met pin wil betalen, type dan 'betalen' ");
-        String clientWantsToPay = pinScanner.next();
-        if (clientWantsToPay.equals("betalen")) {
-            System.out.println("Aan winkelier: Wat is het bedrag dat de klant moet betalen?");
-            float amountClientNeedsToPay = pinScanner.nextFloat();
-            System.out.println("Beste klant, wat is uw rekeningnummer (IBAN) ?");
-            String ibanClientForPinPayment = pinScanner.next();
-            System.out.println("Aan klant: Voer nu uw pincode in");
-            int pincodeClientForPinPayment = pinScanner.nextInt();
-        }
+        System.out.println("Aan winkelier: Wat is het bedrag dat de klant moet betalen?");
+        double amountClientNeedsToPay = pinScanner.nextDouble();
+        System.out.println("Beste klant, wat is uw rekeningnummer (IBAN) ?");
+        String ibanClientForPinPayment = pinScanner.next();
+        System.out.println("Aan klant: Voer nu uw pincode in");
+        int pincodeClientForPinPayment = pinScanner.nextInt();
+
+        PaymentData paymentData;
+        paymentData = new PaymentData(ibanClientForPinPayment, pincodeClientForPinPayment, amountClientNeedsToPay);
+
+        paymentService.PaymentRequest(paymentData);
     }
+
+
 
 //    private void run(int pinMachineIdentifier) {
 //        URL url;

@@ -1,23 +1,41 @@
 package pinMachine.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class PaymentData {
 
+    @Id
+    @GeneratedValue
+    private int paymentId;
     private String iban;
     private int pin;
-    private int paymentAmount;
+    private double paymentAmount;
 
 
     public PaymentData() {
         super();
+        this.paymentId = 0;
         this.iban = "";
         this.pin = 0;
-        this.paymentAmount = 0;
+        this.paymentAmount = 0.0;
     }
-    public PaymentData(String iban, int pin, int paymentAmount) {
+    public PaymentData(String iban, int pin, double paymentAmount) {
         super();
+        this.paymentId = 0;
         this.iban = iban;
         this.pin = pin;
         this.paymentAmount = paymentAmount;
+    }
+
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     public String getIban() {
@@ -36,11 +54,11 @@ public class PaymentData {
         this.pin = pin;
     }
 
-    public int getPaymentAmount() {
+    public double getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(int paymentAmount) {
+    public void setPaymentAmount(double paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 }
