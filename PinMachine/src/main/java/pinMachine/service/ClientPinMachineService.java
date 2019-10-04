@@ -2,6 +2,7 @@ package pinMachine.service;
 
 import com.google.gson.Gson;
 import pinMachine.controller.ClientPinMachine;
+import pinMachine.model.PinMachineDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +12,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ClientPinMachineService {
+
+    private PinMachineDao dao;
 
     private final static long INVALIDCODE = 0;
 
@@ -215,5 +218,13 @@ public class ClientPinMachineService {
         reader = new InputStreamReader(response);
         in = new BufferedReader(reader);
         return in;
+    }
+
+    public PinMachineDao getDao() {
+        return dao;
+    }
+
+    public void setDao(PinMachineDao dao) {
+        this.dao = dao;
     }
 }
