@@ -42,6 +42,16 @@ public class PinController {
         } else return INVALIDCODE;
     }
 
+    // voor betalen elegantere oplossing, met postmapping en json
+
+    @PostMapping(value = "https://localhost:8080/paymentmachine/payment")
+    public String paymentThroughPinMachine(@PathVariable String json) {
+        PinMachine clientPinMachine = pinMachineService.deserialize(json);
+        return "bla";
+    }
+
+}
+
     //eerder experiment, even geparkeerd
 //    @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
 //    public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
@@ -73,4 +83,3 @@ public class PinController {
 //            } else return "AddIdentifierIncorrect";
 //        } else return "PinMachineUnknown";
 //    }
-}

@@ -2,13 +2,17 @@ package pinMachine;
 
 import pinMachine.controller.ClientPinMachine;
 import pinMachine.controller.ClientPinMachineController;
+import pinMachine.model.PaymentDao;
 import pinMachine.service.ClientPinMachineService;
 import pinMachine.model.PinMachineDao;
+import pinMachine.service.PaymentService;
 
 public class ClientPinMachineLauncher {
     private ClientPinMachineController controller;
     private ClientPinMachineService service;
+    private PaymentService paymentService;
     private PinMachineDao dao;
+    private PaymentDao paymentDao;
     private ClientPinMachine clientPinMachine;
 
     public ClientPinMachineLauncher() {
@@ -28,6 +32,13 @@ public class ClientPinMachineLauncher {
 
         controller.setService(service);
         service.setDao(dao);
+        ///
+        paymentService = new PaymentService();
+        paymentDao = new PaymentDao();
+
+        controller.setPaymentService(paymentService);
+        paymentService.setPaymentDao(paymentDao);
+
     }
 
     private void launch() {

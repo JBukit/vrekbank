@@ -19,7 +19,7 @@ public class ClientPinMachineService {
 
     private static int clientDailyConnectIdentifier = 0;
 
-    public String serialize(ClientPinMachine clientPinMachine) {
+    private String serialize(ClientPinMachine clientPinMachine) {
         Gson gson = new Gson();
         String json = gson.toJson(clientPinMachine);
         return json;

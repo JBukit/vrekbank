@@ -18,6 +18,7 @@ public class ClientPinMachineController {
     private ClientPinMachineService service;
 
     private PaymentService paymentService;
+
     public ClientPinMachineController() {
         super();
     }
@@ -62,7 +63,6 @@ public class ClientPinMachineController {
         System.out.println("Wat is het vijfcijferige controlegetal dat u van de bank heeft ontvangen?");
         int inputAddIdentifier = pinScanner.nextInt();
         service.pinMachineIsAdded(inputIban, inputAddIdentifier);
-
     }
 
 //        if (dailyConnectIdentifierToInsert >= 0) {
@@ -74,7 +74,6 @@ public class ClientPinMachineController {
 //            System.out.println("De 8cijferige code die uw pinmachine nodig heeft om " +
 //                    "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
 //            System.out.println();
-
 
     private void open() {
         //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten
@@ -89,13 +88,17 @@ public class ClientPinMachineController {
         System.out.println("Aan klant: Voer nu uw pincode in");
         int pincodeClientForPinPayment = pinScanner.nextInt();
 
+
         PaymentData paymentData;
         paymentData = new PaymentData(ibanClientForPinPayment, pincodeClientForPinPayment, amountClientNeedsToPay);
 
-        paymentService.PaymentRequest(paymentData);
+        System.out.println("iban: " + paymentData.getIban());
+        System.out.println("pint:" + paymentData.getPin());
+        System.out.println("bedrag" + paymentData.getPaymentAmount());
+        System.out.println("id: " + paymentData.getPaymentId());
+
+        paymentService.paymentRequest(paymentData);
     }
-
-
 
 //    private void run(int pinMachineIdentifier) {
 //        URL url;
@@ -127,5 +130,21 @@ public class ClientPinMachineController {
 
     public void setService(ClientPinMachineService service) {
         this.service = service;
+    }
+
+    public PaymentService getPaymentService() {
+        return paymentService;
+    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
+    public Scanner getPinScanner() {
+        return pinScanner;
+    }
+
+    public void setPinScanner(Scanner pinScanner) {
+        this.pinScanner = pinScanner;
     }
 }

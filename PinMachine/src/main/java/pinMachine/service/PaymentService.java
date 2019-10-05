@@ -2,6 +2,7 @@ package pinMachine.service;
 
 import com.google.gson.Gson;
 import pinMachine.controller.ClientPinMachine;
+import pinMachine.model.PaymentDao;
 import pinMachine.model.PaymentData;
 
 import java.io.BufferedReader;
@@ -13,6 +14,7 @@ import java.net.URL;
 
 public class PaymentService {
 
+private PaymentDao paymentDao;
 
     public String serialize(PaymentData paymentData) {
         Gson gson = new Gson();
@@ -20,11 +22,8 @@ public class PaymentService {
         return json;
     }
 
-    public void PaymentRequest(PaymentData paymentData) throws IOException {
+    public void paymentRequest(PaymentData paymentData) throws IOException {
 
-        String json =  serialize(paymentData);
-
-        System.out.println(json); //check
 
         URL obj = new URL("https://localhost:8080/paymentmachine/payment");
 
@@ -32,12 +31,15 @@ public class PaymentService {
 
         postConnection.setRequestMethod("POST");
 
-        postConnection.setRequestProperty("userId", "a1bcdefgh");
+        //  postConnection.setRequestProperty("userId", "a1bcdefgh");`
 
-        postConnection.setRequestProperty("Content-Type", "application/json");
+        postConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+
+        postConnection.setRequestProperty("Accept", "application/json");
 
         postConnection.setDoOutput(true);
 
+        String json =  serialize(paymentData);
         OutputStream os = postConnection.getOutputStream();
 
         os.write(json.getBytes());
@@ -70,13 +72,21 @@ public class PaymentService {
 
             // print result
 
-            System.out.println(response.toString());
+            System.out.println("Dit was de reactie : " + response.toString());
 
         } else {
 
-            System.out.println("POST NOT WORKED");
+            System.out.println("POST FAILED");
 
         }
 
+    }
+
+    public PaymentDao getPaymentDao() {
+        return paymentDao;
+    }
+
+    public void setPaymentDao(PaymentDao paymentDao) {
+        this.paymentDao = paymentDao;
     }
 }
