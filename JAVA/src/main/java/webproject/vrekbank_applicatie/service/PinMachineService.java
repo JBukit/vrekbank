@@ -3,6 +3,7 @@ package webproject.vrekbank_applicatie.service;
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import webproject.vrekbank_applicatie.model.PaymentData;
 import webproject.vrekbank_applicatie.model.PinMachine;
 import webproject.vrekbank_applicatie.model.dao.PinMachineDao;
 
@@ -50,5 +51,11 @@ public class PinMachineService {
         Gson gson = new Gson();
         PinMachine pinMachine = gson.fromJson(json, PinMachine.class);
         return pinMachine;
+    }
+
+    public PaymentData deserializePaymentData(String json) {
+        Gson gson = new Gson();
+        PaymentData paymentData = gson.fromJson(json, PaymentData.class);
+        return paymentData;
     }
 }

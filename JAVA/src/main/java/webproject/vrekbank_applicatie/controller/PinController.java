@@ -3,7 +3,9 @@ package webproject.vrekbank_applicatie.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import webproject.vrekbank_applicatie.model.BusinessAccount;
+import webproject.vrekbank_applicatie.model.PaymentData;
 import webproject.vrekbank_applicatie.model.PinMachine;
+import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.PinMachineService;
 
@@ -14,6 +16,9 @@ public class PinController {
 
     @Autowired
     BusinessAccountValidator businessAccountValidator;
+
+    @Autowired
+    AccountValidator accountvalidator;
 
     @Autowired
     PinMachineService pinMachineService;
@@ -46,9 +51,30 @@ public class PinController {
 
     @PostMapping(value = "https://localhost:8080/paymentmachine/payment")
     public String paymentThroughPinMachine(@PathVariable String json) {
-        PinMachine clientPinMachine = pinMachineService.deserialize(json);
+        PaymentData paymentData = pinMachineService.deserializePaymentData(json);
+
+        // check iban
+
+        //let op, eerder bestaande functie CREDITibandoesexist is verkeerde benaming voor dit gebruik, nog aanpassen.
+        boolean ibanShopperExists = accountvalidator.creditIbanDoesExist(paymentData.getIban());
+
+
+        //check pin . Nog even op eerste eigenaar, niet via lijst rekeninghouders.
+
+        boolean pinShopperIsCorrect = accountvalidator.findByIban(paymentData.getIban()).getOwner().getPIN() == paymentData.getPin();
+
+        //NB volgens instructies zijn alle pins goed. Test nu makkelijker:
+        pinShopperIsCorrect = true;
+
+
+        // if iban en pin ok, transfer aanzwengelen
+        
+
+
+
         return "bla";
     }
+
 
 }
 
