@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import webproject.vrekbank_applicatie.model.PaymentData;
 import webproject.vrekbank_applicatie.model.PinMachine;
+import webproject.vrekbank_applicatie.model.Transfer;
 import webproject.vrekbank_applicatie.model.dao.PinMachineDao;
 
 @Service
@@ -46,6 +47,13 @@ public class PinMachineService {
         String json = gson.toJson(pinMachine);
         return json;
     }
+
+    public String serializeTransfer(Transfer transfer) {
+        Gson gson = new Gson();
+        String json = gson.toJson(transfer);
+        return json;
+    }
+
 
     public PinMachine deserialize(String json) {
         Gson gson = new Gson();

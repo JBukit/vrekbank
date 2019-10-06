@@ -2,12 +2,11 @@ package webproject.vrekbank_applicatie.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import webproject.vrekbank_applicatie.model.BusinessAccount;
-import webproject.vrekbank_applicatie.model.PaymentData;
-import webproject.vrekbank_applicatie.model.PinMachine;
+import webproject.vrekbank_applicatie.model.*;
 import webproject.vrekbank_applicatie.service.AccountValidator;
 import webproject.vrekbank_applicatie.service.BusinessAccountValidator;
 import webproject.vrekbank_applicatie.service.PinMachineService;
+import webproject.vrekbank_applicatie.service.TransferValidator;
 
 @RestController
 public class PinController {
@@ -22,6 +21,9 @@ public class PinController {
 
     @Autowired
     PinMachineService pinMachineService;
+
+    @Autowired
+    TransferValidator transferValidator;
 
     @GetMapping(value = "pinmachine/pinmachinecanbeadded/{iban}/{addIdentifier}")
     public String pinMachineCanBeAdded(@PathVariable String iban, @PathVariable int addIdentifier) {
@@ -48,6 +50,7 @@ public class PinController {
     }
 
     // voor betalen elegantere oplossing, met postmapping en json
+    Transfer transfer;
 
     @PostMapping(value = "https://localhost:8080/paymentmachine/payment")
     public String paymentThroughPinMachine(@PathVariable String json) {
@@ -58,27 +61,53 @@ public class PinController {
         //let op, eerder bestaande functie CREDITibandoesexist is verkeerde benaming voor dit gebruik, nog aanpassen.
         boolean ibanShopperExists = accountvalidator.creditIbanDoesExist(paymentData.getIban());
 
-
+        //rekening shopper ophalen en referentie aan toe kennen(meerdere keren nodig)
+        Account shoppersAccount = accountvalidator.findByIban(paymentData.getIban());
         //check pin . Nog even op eerste eigenaar, niet via lijst rekeninghouders.
 
-        boolean pinShopperIsCorrect = accountvalidator.findByIban(paymentData.getIban()).getOwner().getPIN() == paymentData.getPin();
+        boolean pinShopperIsCorrect = shoppersAccount.getOwner().getPIN() == paymentData.getPin();
 
-        //NB volgens instructies zijn alle pins goed. Test nu makkelijker:
+        //check saldo
+
+        boolean shopperHasEuros = (shoppersAccount.getBalance() - paymentData.getPaymentAmount()) >=
+                shoppersAccount.getMinimumBalance();
+
+        //NB volgens instructies zijn alle pins goed in deze release. Test nu makkelijker:
         pinShopperIsCorrect = true;
 
 
-        // if iban en pin ok, transfer aanzwengelen
-        
+        if (ibanShopperExists && shopperHasEuros && pinShopperIsCorrect) {
+            transfer.setDebitIban(paymentData.getIban());
 
+            //dit moet nog via proces openen, via een sessie bijv, en hier die pinmachine ophalen
+            // Zodat er verschillende pinmachines geopend kunnen zijn
+            String shopkeepersIban = pinMachineService.findByDailyConnectIdentifier(13990188).getBusinessAccount().getIban();
+            transfer.setCreditIban(shopkeepersIban);
+            transfer.setDate("vandaag!");  // datum  nog ophalen
+            transfer.setDescription("pinbetaling");
+            transfer.setTransferAmount(paymentData.getPaymentAmount());
 
+            transferValidator.saveTransfer(transfer);
 
-        return "bla";
+            accountvalidator.updateDebitBalance(transfer);
+
+            accountvalidator.updateCreditBalance(transfer);
+
+            json = pinMachineService.serializeTransfer(transfer);
+
+        } else if (!ibanShopperExists) {
+        } ////do stuff,, creeer andere json
+        else if (!pinShopperIsCorrect) {
+        } // do other stuff. Creer andere json. Nb hier komen we nu nooit; hard op true gezet.
+        else if (!shopperHasEuros) {
+        } // do yet other stuff.. creeer weer andere json
+
+        return json;
     }
-
 
 }
 
-    //eerder experiment, even geparkeerd
+//eerder experiment, even geparkeerd
 //    @GetMapping(value = "/businessAccount/{dailyConnectIdentifier}")
 //    public String getAttachedMKBAccount(@PathVariable int dailyConnectIdentifier) {
 //        BusinessAccount shopholdersAccount = businessAccountValidator.findByPinMachine
