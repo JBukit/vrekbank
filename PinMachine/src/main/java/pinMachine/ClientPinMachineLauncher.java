@@ -2,9 +2,9 @@ package pinMachine;
 
 import pinMachine.controller.ClientPinMachine;
 import pinMachine.controller.ClientPinMachineController;
-import pinMachine.model.PaymentDao;
+import pinMachine.model.dao.PaymentDao;
 import pinMachine.service.ClientPinMachineService;
-import pinMachine.model.PinMachineDao;
+import pinMachine.model.dao.PinMachineDao;
 import pinMachine.service.PaymentService;
 
 public class ClientPinMachineLauncher {

@@ -1,16 +1,10 @@
 package pinMachine.controller;
 
 import pinMachine.model.PaymentData;
-import pinMachine.model.PinMachineDao;
 import pinMachine.service.ClientPinMachineService;
 import pinMachine.service.PaymentService;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Scanner;
 
 public class ClientPinMachineController {
@@ -22,6 +16,8 @@ public class ClientPinMachineController {
     public ClientPinMachineController() {
         super();
     }
+
+    private String status = "closed";
 
     Scanner pinScanner = new Scanner(System.in);
 
@@ -75,29 +71,46 @@ public class ClientPinMachineController {
 //                    "zich dagelijks bij de bank aan te melden is in uw locale database opgeslagen.");
 //            System.out.println();
 
-    private void open() {
-        //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten
+    //userstory 2: dagelijks aanmelding van de automaat (met de 8 cijfers) en journaal starten
+    private boolean open() {
+        if (true == true)  // hier nog request inbouwen met gebruik van dailyidentifier uit lokale database.
+        // object pinmachine obhalen, json van maken, versturen, door bank laten checken en reactie.
+
+        // tevens start journaalpagina doen. (alternatief; list met bladzijden overslaan en aan einde dag selectie
+        // draaien op datum, daarmee de juiste transfers ophalen en naar console printen.)
+        {
+            status = "opened";
+            System.out.println("Winkelier, uw pinmachine is geopend, u kunt betalingen laten doen ");
+            return true;
+        } else
+            return false;
     }
 
+    //onderstaande nog uitbreiden wanneer open werkt; happy flow if(open), else
+    // );
     private void pay() throws IOException {
-        //Vanaf hier: User story 3: Betalen
-        System.out.println("Aan winkelier: Wat is het bedrag dat de klant moet betalen?");
-        double amountClientNeedsToPay = pinScanner.nextDouble();
-        System.out.println("Beste klant, wat is uw rekeningnummer (IBAN) ?");
-        String ibanClientForPinPayment = pinScanner.next();
-        System.out.println("Aan klant: Voer nu uw pincode in");
-        int pincodeClientForPinPayment = pinScanner.nextInt();
+        if (status.equals("closed")) {
+            System.out.println("Helaas, u moet de pinautomaat eerst openen (dagelijk aanmelden), " +
+                    "voordat er betaald kan worden");
+        } else if (status.equals("opened")) {
+            //Vanaf hier: User story 3: Betalen
+            System.out.println("Aan winkelier: Wat is het bedrag dat de klant moet betalen?");
+            double amountClientNeedsToPay = pinScanner.nextDouble();
+            System.out.println("Beste klant, wat is uw rekeningnummer (IBAN) ?");
+            String ibanClientForPinPayment = pinScanner.next();
+            System.out.println("Aan klant: Voer nu uw pincode in");
+            int pincodeClientForPinPayment = pinScanner.nextInt();
 
+            PaymentData paymentData;
+            paymentData = new PaymentData(ibanClientForPinPayment, pincodeClientForPinPayment, amountClientNeedsToPay);
 
-        PaymentData paymentData;
-        paymentData = new PaymentData(ibanClientForPinPayment, pincodeClientForPinPayment, amountClientNeedsToPay);
+            System.out.println("iban: " + paymentData.getIban());
+            System.out.println("pint:" + paymentData.getPin());
+            System.out.println("bedrag" + paymentData.getPaymentAmount());
+            System.out.println("id: " + paymentData.getPaymentId());
 
-        System.out.println("iban: " + paymentData.getIban());
-        System.out.println("pint:" + paymentData.getPin());
-        System.out.println("bedrag" + paymentData.getPaymentAmount());
-        System.out.println("id: " + paymentData.getPaymentId());
-
-        paymentService.paymentRequest(paymentData);
+            paymentService.paymentRequest(paymentData);
+        }
     }
 
 //    private void run(int pinMachineIdentifier) {

@@ -15,7 +15,6 @@ public class PaymentData {
     private int pin;
     private double paymentAmount;
 
-
     public PaymentData() {
         super();
         this.paymentId = 0;

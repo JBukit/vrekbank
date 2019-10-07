@@ -1,16 +1,13 @@
-package pinMachine.model;
-
+package pinMachine.model.dao;
 
 import org.hibernate.Session;
-
 import org.hibernate.Transaction;
-import pinMachine.controller.ClientPinMachine;
 import pinMachine.HibernateUtil;
+import pinMachine.model.PaymentData;
 
+public class PaymentDao {
 
-public class PinMachineDao {
-
-    public void saveClientPinMachine(ClientPinMachine clientPinMachine) {
+    public void savePayment(PaymentData paymentdata) {
 
         Transaction transaction = null;
 
@@ -21,7 +18,7 @@ public class PinMachineDao {
 
             // save the pinMachine object
 
-            session.save(clientPinMachine);
+            session.save(paymentdata);
 
             // commit transaction
 
@@ -40,16 +37,4 @@ public class PinMachineDao {
         }
 
     }
-
 }
-//Dit ombouwen voor lijst van betalingen / journaal?
-//    public List < Student > getStudents() {
-//
-//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-//
-//            return session.createQuery("from Student", Student.class).list();
-//
-//        }
-//
-//    }
-
