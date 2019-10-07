@@ -93,15 +93,20 @@ public class PinController {
 
             accountvalidator.updateCreditBalance(transfer);
 
-            json = pinMachineService.serializeTransfer(transfer);
-
+        // voor drie foutscenarios leeg transferobject gebruiken als failrecord:
         } else if (!ibanShopperExists) {
-        } ////do stuff,, creeer andere json
-        else if (!pinShopperIsCorrect) {
-        } // do other stuff. Creer andere json. Nb hier komen we nu nooit; hard op true gezet.
-        else if (!shopperHasEuros) {
-        } // do yet other stuff.. creeer weer andere json
+            transfer.setDebitIban("Betaling gefaald."); // identifier voor client en boodschap voor winkelier
+            transfer.setDescription("Gefaald; opgegeven rekening is niet bekend.");
+        } else if (!pinShopperIsCorrect) {
+            //Nb hier komen we nu nooit; hard op true gezet.
+            transfer.setDebitIban("Betaling gefaald."); // identifier voor client en boodschap voor winkelier
+            transfer.setDescription("Gefaald; opgegeven PIN is niet correct.");
+        } else if (!shopperHasEuros) {
+            transfer.setDebitIban("Betaling gefaald."); // identifier voor client en boodschap voor winkelier
+            transfer.setDescription("Gefaald; uw saldo is te laag voor deze betaling.");
+        }
 
+        json = pinMachineService.serializeTransfer(transfer);
         return json;
     }
 

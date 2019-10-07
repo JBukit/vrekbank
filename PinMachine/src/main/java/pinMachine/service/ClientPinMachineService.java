@@ -2,7 +2,7 @@ package pinMachine.service;
 
 import com.google.gson.Gson;
 import pinMachine.controller.ClientPinMachine;
-import pinMachine.model.PinMachineDao;
+import pinMachine.model.dao.PinMachineDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
